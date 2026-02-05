@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect World Studio - AI-Powered Android Apps</title>
+    <meta name="description" content="AI-powered apps designed to improve productivity and simplify everyday tasks. Smart scan, instant OCR, complete PDF tools — all in your pocket.">
+    
+    <!-- Fonts: Outfit (Headings) + Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            /* Palette: Dark Aurora */
+            --bg-void: #020617;
+            --bg-deep: #0f172a;
+            --primary: #38BDF8;   /* Sky Blue */
+            --primary-glow: rgba(56, 189, 248, 0.5);
+            --secondary: #818CF8; /* Indigo */
+            --accent: #F472B6;    /* Pink/Magenta for pop */
+            
+            /* Text */
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-dark: #0F172A;
+
+            /* Glassmorphism */
+            --glass-surface: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.05);
+            --blur-amount: 16px;
+
+            /* Spacing & Radius */
+            --radius-lg: 24px;
+            --radius-pill: 100px;
+            --container-width: 1100px;
+        }
+
+        /* ===== Resets & Base ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+        ul { list-style: none; }
+        img { display: block; max-width: 100%; }
+
+        /* ===== Background Aurora ===== */
+        .aurora-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.15), transparent 25%);
+            filter: blur(60px);
+            opacity: 0.8;
+            animation: aurora-pulse 10s ease-in-out infinite alternate;
+        }
+        @keyframes aurora-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        /* ===== Layout ===== */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navigation (Floating Island) ===== */
+        nav {
+            position: fixed;
+            top: 24px; left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: var(--container-width);
+            padding: 12px 24px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-menu a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover { color: var(--text-main); }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 80px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            animation: fade-in-up 0.8s ease-out;
+        }
+
+        .badge-dot {
+            width: 8px; height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fade-in-up 0.8s ease-out 0.1s backwards;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fade-in-up 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            animation: fade-in-up 0.8s ease-out 0.3s backwards;
+        }
+
+        .btn-outline {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+        /* Hero Image/Banner */
+        .hero-banner {
+            margin-top: 64px;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 80px -20px rgba(0,0,0,0.5);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            animation: fade-in-up 1s ease-out 0.4s backwards;
+        }
+
+        .hero-banner img { width: 100%; height: auto; }
+        
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, var(--bg-void) 100%);
+        }
+
+        /* ===== Stats Grid ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding: 40px 0;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: var(--glass-surface);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ===== Apps Section ===== */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 80px 0 16px;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 60px;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            padding-bottom: 80px;
+        }
+
+        .app-card {
+            background: var(--glass-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Hover glow effect */
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100%;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 60%);
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .app-card:hover::before { opacity: 1; }
+
+        .app-icon {
+            width: 80px; height: 80px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .app-icon-placeholder {
+            width: 80px; height: 80px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            display: grid; place-items: center;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.5);
+            border: 2px dashed rgba(255,255,255,0.1);
+        }
+
+        .app-title { font-size: 1.5rem; margin-bottom: 8px; z-index: 1; }
+        .app-badge { 
+            background: rgba(56, 189, 248, 0.15); 
+            color: var(--primary); 
+            padding: 4px 12px; 
+            border-radius: 100px; 
+            font-size: 0.75rem; 
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+            z-index: 1;
+        }
+
+        .app-desc { 
+            color: var(--text-muted); 
+            margin-bottom: 24px; 
+            font-size: 0.95rem;
+            z-index: 1;
+        }
+
+        .rating-box {
+            display: flex; gap: 4px;
+            color: #FBBF24;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            align-items: center;
+            z-index: 1;
+        }
+        .rating-val { color: var(--text-main); font-weight: 600; margin-left: 8px; }
+
+        .app-link-row {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .footer-links-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links-row a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .footer-links-row a:hover { color: var(--text-main); }
+
+        .copyright { color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+
+        /* ===== Animation Keyframes ===== */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Mobile Responsive ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-menu { display: none; } /* Simplified mobile nav for now */
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 0; }
+            .hero-banner { margin-top: 32px; }
+            nav { width: calc(100% - 32px); top: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="aurora-bg"></div>
+
+    <!-- Nav -->
+    <nav>
+        <a href="#" class="nav-brand">
+            <img src="https://toaa-media.github.io/PublicPages/perfectworld/avatar.jpg" alt="Logo" class="nav-avatar">
+            Perfect World Studio
+        </a>
+        <div class="nav-menu">
+            <a href="#apps">Apps</a>
+            <a href="#features">Features</a>
+        </div>
+        <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" target="_blank" class="btn-cta">
+            <span>Google Play</span>
+            <i data-lucide="external-link" width="16"></i>
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero container">
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Available on Google Play
+        </div>
+        <h1>AI-Powered Apps for the Future of Productivity</h1>
+        <p>Smart scan, instant OCR, complete PDF tools — all in your pocket. Designed with pixel-perfect precision and AI intelligence.</p>
+        
+        <div class="hero-actions">
+            <a href="#apps" class="btn-cta">
+                <i data-lucide="zap" width="18"></i>
+                Explore Apps
+            </a>
+            <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" target="_blank" class="btn-outline">
+                <i data-lucide="play" width="18"></i>
+                Play Store
+            </a>
+        </div>
+
+        <div class="hero-banner">
+            <img src="https://toaa-media.github.io/PublicPages/perfectworld/header.jpg" alt="Perfect World Studio Showcase">
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num">1K+</div>
+                <div class="stat-label">Total Downloads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">5.0</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">1</div>
+                <div class="stat-label">Apps Published</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">50+</div>
+                <div class="stat-label">Countries Reached</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apps -->
+    <section id="apps" class="container">
+        <h2 class="section-title">Our Applications</h2>
+        <p class="section-desc">Each app is crafted with attention to detail, performance, and user experience.</p>
+        
+        <div class="app-grid">
+            <!-- SharpScan -->
+            <article class="app-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.vn.toaa.smartscannerocr', '_blank')">
+                <img src="https://toaa-media.github.io/PublicPages/smartscan/app-icon.png" alt="SharpScan" class="app-icon">
+                <span class="app-badge">Productivity</span>
+                <h3 class="app-title">SharpScan - Scanner OCR + AI</h3>
+                <p class="app-desc">Smart scan, instant OCR, complete PDF tools. AI-powered edge detection and text extraction in your pocket.</p>
+                
+                <div class="rating-box">
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <span class="rating-val">5.0</span>
+                </div>
+
+                <div class="app-link-row">
+                    View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                </div>
+            </article>
+
+            <!-- Coming Soon -->
+            <article class="app-card" style="opacity: 0.6; cursor: default;">
+                <div class="app-icon-placeholder">
+                    <i data-lucide="rocket" width="32"></i>
+                </div>
+                <span class="app-badge" style="background: rgba(255,255,255,0.1); color: var(--text-muted);">Coming Soon</span>
+                <h3 class="app-title">More Apps Brewing</h3>
+                <p class="app-desc">We are working on new AI-powered productivity tools. Stay tuned for our next big release.</p>
+                
+                <div class="app-link-row" style="color: var(--text-muted);">
+                    In Development... <i data-lucide="loader" width="18"></i>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-brand">
+                <img src="https://toaa-media.github.io/PublicPages/perfectworld/avatar.jpg" alt="Logo" class="nav-avatar">
+                Perfect World Studio
+            </a>
+            
+
+
+            <p class="copyright">© 2025 Perfect World Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Simple Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.app-card, .stat-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
