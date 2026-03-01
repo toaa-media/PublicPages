@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - SharpVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #121212;
+            --bg-surface: #1E1E1E;
+            --primary: #00BFA5;
+            --primary-glow: rgba(0, 191, 165, 0.12);
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A5;
+            --divider: #333333;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--divider);
+            padding: 20px 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00BFA5 0%, #64FFDA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .last-updated {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--bg-surface);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--divider);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .intro h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Policy Sections */
+        .section-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--divider);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--primary-glow);
+            border-color: rgba(0, 191, 165, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: var(--primary-glow);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .section-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .section-card p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--text-main);
+            font-weight: 600;
+            background: var(--primary-glow);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            background: var(--primary);
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 24px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .contact-info {
+            margin-top: 48px;
+            text-align: center;
+            padding: 32px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 191, 165, 0.05) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--divider);
+        }
+        
+        .contact-info h3 {
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            main {
+                padding: 24px 16px 60px;
+            }
+            .section-card {
+                padding: 24px;
+            }
+            .intro h1 {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">SharpVault</div>
+        <div class="last-updated">Effective: March 2026</div>
+    </header>
+
+    <main>
+        <div class="intro">
+            <div class="badge">Privacy First</div>
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is not just a feature—it is the absolute foundation of SharpVault. We built this application with a uncompromising zero-knowledge architecture to ensure your data remains exclusively yours.</p>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">
+                    <!-- Icon: Security Shield -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zM12 18.99C8.35 17.9 5.54 13.92 5.17 9.87L12 6.83l6.83 3.04c-.37 4.05-3.18 8.03-6.83 9.12z"/></svg>
+                </div>
+                <h2>1. Zero Data Collection (Offline First)</h2>
+            </div>
+            <p>SharpVault is meticulously engineered as a <span class="highlight">100% offline application</span>. We intentionally do not maintain any servers, databases, or cloud infrastructure to store, relay, or analyze your data.</p>
+            <ul>
+                <li><strong>No Telemetry:</strong> We do not track how you use the app or interact with features.</li>
+                <li><strong>No Analytics:</strong> We do not secretly collect crash reports or behavior metrics.</li>
+                <li><strong>No Internet Required:</strong> Your vault operates completely untethered from the web.</li>
+            </ul>
+            <p><strong>Put simply: We do not collect, transmit, or share any of your personal information, media files, passwords, or usage analytics.</strong> Everything happens locally on your physical device.</p>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">
+                    <!-- Icon: Vpn Key -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                </div>
+                <h2>2. Military-Grade Local Encryption</h2>
+            </div>
+            <p>Every file, photo, video, text note, and metadata entry you store inside SharpVault is encrypted directly on your device using <span class="highlight">AES-256-GCM encryption</span>.</p>
+            <p>The cryptographic keys protecting your data are derived securely from your Master PIN and are stored exclusively within the impenetrable secure hardware enclave of your device (Android Keystore). Because we utilize a <span class="highlight">Zero-Knowledge Proof</span> model, the developers cannot decrypt your files, and neither can anyone else who does not possess your device along with your Master PIN or biometric signature.</p>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">
+                    <!-- Icon: Settings/Permissions -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+                </div>
+                <h2>3. Device Permissions & Usage</h2>
+            </div>
+            <p>SharpVault strictly requests only the local device permissions vital to provide its core functionality. These permissions are used exclusively within the sandbox of your device:</p>
+            <ul>
+                <li><strong>Storage & Media:</strong> Required to seamlessly read from and write to your device's storage when importing files into the encrypted vault or exporting them back to your public gallery.</li>
+                <li><strong>Camera:</strong> Required exclusively for the "Intruder Detection" feature to silently capture photos of unauthorized access attempts locally.</li>
+                <li><strong>Biometrics:</strong> Required to allow fingerprint or facial recognition unlock. SharpVault relies on the native Android OS API to verify identity; we never access, read, or export raw biometric data.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">
+                    <!-- Icon: Visibility / Spy -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                <h2>4. Intruder Logs & Duress Features</h2>
+            </div>
+            <p>Advanced security features involving data generation—such as Intruder Detection photos or Fake Vault configurations—are managed entirely inside your local encrypted Realm database.</p>
+            <p>These localized logs and configurations exist solely for your personal security monitoring, audit trails, and protection under situational duress. They are inherently invisible to other apps on your device and are never sent to external networks.</p>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">
+                    <!-- Icon: Description -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                </div>
+                <h2>5. Policy Modifications</h2>
+            </div>
+            <p>Because SharpVault intentionally lacks internet connectivity constraints and does not fetch configuration updates dynamically, any changes to this Privacy Policy will be delivered exclusively through official application updates via the Google Play Store (or your respective secure platform). Continued use of the updated app constitutes your ongoing agreement to these terms.</p>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Questions about your privacy?</h3>
+            <p>We are fanatical about transparency and your right to privacy. If you have any inquiries regarding this Privacy Policy or our security architecture, please contact the developer via the official support channels provided on our app store listing.</p>
+        </div>
+    </main>
+</body>
+</html>
