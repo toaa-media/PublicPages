@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharpTransfer — Terms of Usage</title>
+    <meta name="description" content="SharpTransfer Terms of Usage. Read the terms and conditions for using SharpTransfer file transfer application.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0F14;
+            --bg-elevated: #111820;
+            --surface: #161D26;
+            --surface-hover: #1C2530;
+            --surface-alt: #212B38;
+            --primary: #3B82F6;
+            --primary-glow: rgba(59,130,246,0.25);
+            --primary-soft: rgba(59,130,246,0.08);
+            --primary-border: rgba(59,130,246,0.15);
+            --text: #F0F4F8;
+            --text-secondary: #8B95A5;
+            --text-tertiary: #5C6777;
+            --border: rgba(255,255,255,0.06);
+            --border-light: rgba(255,255,255,0.1);
+            --accent-amber: #F59E0B;
+            --accent-amber-glow: rgba(245,158,11,0.25);
+            --accent-amber-soft: rgba(245,158,11,0.08);
+            --accent-amber-border: rgba(245,158,11,0.18);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ── Reading Progress Bar ── */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-amber), #FBBF24, var(--accent-amber));
+            z-index: 1000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 12px var(--accent-amber-glow);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            padding: 80px 24px 64px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 50% 0%, rgba(245,158,11,0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 300px at 20% 80%, rgba(59,130,246,0.06) 0%, transparent 70%),
+                linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%);
+            z-index: 0;
+        }
+        .hero > * { position: relative; z-index: 1; }
+
+        .hero-icon {
+            width: 72px; height: 72px;
+            background: var(--accent-amber-soft);
+            border: 1px solid var(--accent-amber-border);
+            border-radius: var(--radius-lg);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 32px;
+            box-shadow: 0 0 40px var(--accent-amber-glow);
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 38px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            color: var(--text-tertiary);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ── Table of Contents ── */
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+        .toc-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 6px;
+        }
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .toc-list a:hover {
+            background: var(--accent-amber-soft);
+            color: var(--text);
+        }
+        .toc-list .toc-num {
+            width: 22px; height: 22px;
+            background: var(--surface-alt);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .toc-list a:hover .toc-num {
+            background: var(--accent-amber);
+            color: #000;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 48px 24px 96px;
+        }
+
+        /* ── Intro Card ── */
+        .intro-card {
+            background: linear-gradient(135deg, var(--accent-amber-soft), rgba(245,158,11,0.03));
+            border: 1px solid var(--accent-amber-border);
+            border-radius: var(--radius-xl);
+            padding: 24px 28px;
+            margin-bottom: 48px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+        .intro-card::after {
+            content: '';
+            position: absolute;
+            top: -30px; right: -30px;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, var(--accent-amber-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .intro-card .icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            filter: drop-shadow(0 0 8px var(--accent-amber-glow));
+        }
+        .intro-card p {
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        .intro-card strong { color: #FBBF24; }
+
+        /* ── Sections ── */
+        section {
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+        }
+        h2 .num {
+            background: linear-gradient(135deg, var(--primary), #2563EB);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            width: 28px; height: 28px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 24px 0 10px;
+            color: #60A5FA;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h3::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        p { font-size: 15px; color: var(--text-secondary); margin-bottom: 14px; }
+        li { font-size: 15px; color: var(--text-secondary); }
+
+        ul, ol {
+            padding-left: 0;
+            margin-bottom: 16px;
+            list-style: none;
+        }
+        ul li, ol li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        strong { color: var(--text); font-weight: 600; }
+        em { color: var(--text-secondary); font-style: italic; }
+
+        code {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+            color: #60A5FA;
+        }
+
+        /* ── Warning Box ── */
+        .warning-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent-amber);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 16px 20px;
+            margin: 20px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .warning-box p { margin-bottom: 0; font-size: 14px; line-height: 1.7; }
+
+        /* ── Back to Top ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 44px; height: 44px;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 0.3s ease;
+            z-index: 900;
+            color: var(--text-secondary);
+            font-size: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--accent-amber);
+            color: #000;
+            border-color: var(--accent-amber);
+            box-shadow: 0 4px 20px var(--accent-amber-glow);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer-brand {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .footer-brand span {
+            background: linear-gradient(135deg, var(--primary), #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer p {
+            color: var(--text-tertiary);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .footer a:hover { color: #60A5FA; }
+        .footer-nav {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .footer-nav a {
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+        .footer-nav a:hover {
+            border-color: var(--primary-border);
+            background: var(--primary-soft);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero { padding: 56px 20px 48px; }
+            .container { padding: 32px 18px 72px; }
+            .toc-list { grid-template-columns: 1fr; }
+            .intro-card { flex-direction: column; gap: 12px; padding: 20px; }
+            .warning-box { flex-direction: column; gap: 8px; }
+            .back-to-top { bottom: 20px; right: 20px; }
+            .footer-nav { flex-direction: column; align-items: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="hero">
+    <div class="hero-icon">📜</div>
+    <h1><span>Sharp</span>Transfer — Terms of Usage</h1>
+    <p class="subtitle">Last updated · March 16, 2026</p>
+</header>
+
+<main class="container">
+
+    <div class="intro-card">
+        <div class="icon">📌</div>
+        <p>
+            <strong>Please read these Terms of Usage carefully before using SharpTransfer.</strong>
+            By downloading, installing, or using the App, you agree to be bound by these terms. If you do not agree, please do not use the App.
+        </p>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc" aria-label="Table of Contents">
+        <div class="toc-title">Contents</div>
+        <ul class="toc-list">
+            <li><a href="#acceptance"><span class="toc-num">1</span> Acceptance of Terms</a></li>
+            <li><a href="#service"><span class="toc-num">2</span> Description of Service</a></li>
+            <li><a href="#eligibility"><span class="toc-num">3</span> Eligibility</a></li>
+            <li><a href="#acceptable-use"><span class="toc-num">4</span> Acceptable Use</a></li>
+            <li><a href="#ip"><span class="toc-num">5</span> Intellectual Property</a></li>
+            <li><a href="#requirements"><span class="toc-num">6</span> Network & Device Requirements</a></li>
+            <li><a href="#web-server"><span class="toc-num">7</span> Embedded Web Server</a></li>
+            <li><a href="#warranties"><span class="toc-num">8</span> Disclaimer of Warranties</a></li>
+            <li><a href="#liability"><span class="toc-num">9</span> Limitation of Liability</a></li>
+            <li><a href="#termination"><span class="toc-num">10</span> Termination</a></li>
+            <li><a href="#opensource"><span class="toc-num">11</span> Open Source Components</a></li>
+            <li><a href="#governing"><span class="toc-num">12</span> Governing Law</a></li>
+            <li><a href="#severability"><span class="toc-num">13</span> Severability</a></li>
+            <li><a href="#contact"><span class="toc-num">14</span> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1 -->
+    <section id="acceptance">
+        <h2><span class="num">1</span> Acceptance of Terms</h2>
+        <p>
+            These Terms of Usage ("Terms") constitute a legally binding agreement between you ("User", "you") and the developers of SharpTransfer ("we", "us", "our"). By installing or using SharpTransfer ("the App"), you acknowledge that you have read, understood, and agree to comply with these Terms.
+        </p>
+        <p>
+            We reserve the right to modify these Terms at any time. Continued use of the App after any modification constitutes acceptance of the updated Terms.
+        </p>
+    </section>
+
+    <!-- 2 -->
+    <section id="service">
+        <h2><span class="num">2</span> Description of Service</h2>
+        <p>SharpTransfer is a free Android application that provides the following functionality:</p>
+        <ul>
+            <li><strong>Peer-to-Peer File Transfer</strong> — Send and receive files between Android devices over a local Wi-Fi network using the STFR protocol over TCP.</li>
+            <li><strong>PC Browser Transfer</strong> — Share files between an Android device and a PC via an embedded web server accessible through a browser.</li>
+            <li><strong>Device Discovery</strong> — Automatically discover nearby devices using mDNS/NSD, UDP broadcast, and QR code pairing.</li>
+            <li><strong>Clipboard & Text Sync</strong> — Send and receive text/clipboard content between connected devices.</li>
+            <li><strong>Transfer Management</strong> — Queue, schedule, pause, resume, and track file transfers with real-time progress.</li>
+        </ul>
+        <p>All services operate exclusively over the user's local Wi-Fi network. No internet connection is required for core functionality.</p>
+    </section>
+
+    <!-- 3 -->
+    <section id="eligibility">
+        <h2><span class="num">3</span> Eligibility</h2>
+        <p>
+            You must be at least 13 years of age (or the minimum age required in your jurisdiction) to use the App. If you are under the required age, you may only use the App under the supervision of a parent or legal guardian who agrees to these Terms.
+        </p>
+    </section>
+
+    <!-- 4 -->
+    <section id="acceptable-use">
+        <h2><span class="num">4</span> Acceptable Use</h2>
+        <p>You agree to use SharpTransfer only for lawful purposes. You shall <strong>not</strong> use the App to:</p>
+        <ul>
+            <li>Transfer files that infringe copyrights, trademarks, or other intellectual property rights of third parties.</li>
+            <li>Distribute malware, viruses, or any harmful software to other devices.</li>
+            <li>Transfer illegal, obscene, defamatory, or threatening content.</li>
+            <li>Attempt to exploit, tamper with, or reverse-engineer the App's transfer protocol or embedded web server for malicious purposes.</li>
+            <li>Use the App to gain unauthorized access to devices, networks, or systems.</li>
+            <li>Circumvent any security mechanisms (e.g., the web server PIN protection) on devices you do not own or have permission to access.</li>
+        </ul>
+
+        <div class="warning-box">
+            <p>⚠️ <strong>You are solely responsible</strong> for the content you transfer. We do not monitor, inspect, or filter files transferred through the App.</p>
+        </div>
+    </section>
+
+    <!-- 5 -->
+    <section id="ip">
+        <h2><span class="num">5</span> Intellectual Property</h2>
+        <p>
+            The App, including its source code, design, graphics, icons, user interface, STFR transfer protocol, and documentation, is the intellectual property of the SharpTransfer development team and is protected by applicable copyright and intellectual property laws.
+        </p>
+        <p>You are granted a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes on your compatible Android device.</p>
+        <p>You may <strong>not</strong>:</p>
+        <ul>
+            <li>Copy, modify, distribute, or create derivative works of the App.</li>
+            <li>Decompile, reverse-engineer, or disassemble the App, except to the extent permitted by applicable law.</li>
+            <li>Remove or alter any proprietary notices, labels, or marks.</li>
+        </ul>
+    </section>
+
+    <!-- 6 -->
+    <section id="requirements">
+        <h2><span class="num">6</span> Network & Device Requirements</h2>
+        <p>To use SharpTransfer effectively, the following conditions must be met:</p>
+        <ul>
+            <li><strong>Android 8.0 (API 26) or higher</strong> is required.</li>
+            <li>All participating devices must be connected to the <strong>same Wi-Fi network</strong>.</li>
+            <li>The router must allow local device-to-device communication (AP isolation must be disabled).</li>
+            <li>Required system permissions (Wi-Fi, Storage, Camera, Notifications) must be granted.</li>
+        </ul>
+        <p>We are not responsible for transfer failures caused by network configuration, router restrictions, or device incompatibilities outside our control.</p>
+    </section>
+
+    <!-- 7 -->
+    <section id="web-server">
+        <h2><span class="num">7</span> Embedded Web Server</h2>
+        <p>The App includes an embedded HTTP web server for browser-based file transfers.</p>
+        <ul>
+            <li>The web server operates on <strong>your local network only</strong> and is not accessible from the internet.</li>
+            <li>PIN protection is available to restrict unauthorized access.</li>
+            <li>You are responsible for ensuring that the web server is not exposed to untrusted networks (e.g., public Wi-Fi without PIN protection).</li>
+        </ul>
+
+        <div class="warning-box">
+            <p>⚠️ We recommend <strong>always enabling PIN protection</strong> when using the web server feature, especially on shared or public networks.</p>
+        </div>
+    </section>
+
+    <!-- 8 -->
+    <section id="warranties">
+        <h2><span class="num">8</span> Disclaimer of Warranties</h2>
+        <p>
+            SharpTransfer is provided <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> without warranties of any kind, either express or implied, including but not limited to:
+        </p>
+        <ul>
+            <li>Warranties of merchantability, fitness for a particular purpose, or non-infringement.</li>
+            <li>Guarantees that the App will be error-free, uninterrupted, or secure.</li>
+            <li>Guarantees of transfer speed, reliability, or data integrity in all network conditions.</li>
+        </ul>
+        <p>While the App implements SHA-256 checksums for transfer integrity verification, we cannot guarantee that all transfers will complete successfully under all circumstances.</p>
+    </section>
+
+    <!-- 9 -->
+    <section id="liability">
+        <h2><span class="num">9</span> Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, we shall not be liable for any:</p>
+        <ul>
+            <li><strong>Data loss or corruption</strong> resulting from file transfers, interrupted connections, or device failures.</li>
+            <li><strong>Indirect, incidental, special, consequential, or punitive damages</strong> arising from your use of the App.</li>
+            <li><strong>Unauthorized access</strong> to files shared via the embedded web server if PIN protection was not enabled.</li>
+            <li><strong>Damages</strong> resulting from third-party interference with your local network.</li>
+        </ul>
+        <p>You acknowledge that you use the App at your own risk and are responsible for maintaining backups of your important files.</p>
+    </section>
+
+    <!-- 10 -->
+    <section id="termination">
+        <h2><span class="num">10</span> Termination</h2>
+        <p>
+            You may stop using the App at any time by uninstalling it from your device. Upon uninstallation, all locally stored data (transfer history, trusted devices, preferences, and clipboard messages) will be permanently deleted.
+        </p>
+        <p>
+            We reserve the right to discontinue the App or any of its features at any time without prior notice.
+        </p>
+    </section>
+
+    <!-- 11 -->
+    <section id="opensource">
+        <h2><span class="num">11</span> Open Source Components</h2>
+        <p>
+            SharpTransfer may include open-source software components, each governed by their respective licenses. A list of open-source libraries and their licenses is available within the App under <em>Settings → About → Open Source Licenses</em>.
+        </p>
+    </section>
+
+    <!-- 12 -->
+    <section id="governing">
+        <h2><span class="num">12</span> Governing Law</h2>
+        <p>
+            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the developer is registered, without regard to conflict of law principles. Any disputes arising under these Terms shall be resolved in the competent courts of that jurisdiction.
+        </p>
+    </section>
+
+    <!-- 13 -->
+    <section id="severability">
+        <h2><span class="num">13</span> Severability</h2>
+        <p>
+            If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+        </p>
+    </section>
+
+    <!-- 14 -->
+    <section id="contact">
+        <h2><span class="num">14</span> Contact</h2>
+        <p>
+            If you have any questions, concerns, or feedback regarding these Terms, please contact us at:
+        </p>
+        <p style="color: #FBBF24; font-weight: 600; font-size: 16px;">
+            📧 publisher.perfectworld.studio@gmail.com
+        </p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-brand"><span>Sharp</span>Transfer</div>
+    <p>&copy; 2026 All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+    // Reading progress bar
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    }
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    function updateBackToTop() {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Scroll events
+    window.addEventListener('scroll', () => {
+        updateProgress();
+        updateBackToTop();
+    }, { passive: true });
+
+    // Scroll reveal sections
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>

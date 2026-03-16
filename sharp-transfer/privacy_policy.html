@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharpTransfer — Privacy Policy</title>
+    <meta name="description" content="SharpTransfer Privacy Policy. Learn how SharpTransfer handles your data with a privacy-first, offline-first architecture.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0F14;
+            --bg-elevated: #111820;
+            --surface: #161D26;
+            --surface-hover: #1C2530;
+            --surface-alt: #212B38;
+            --primary: #3B82F6;
+            --primary-glow: rgba(59,130,246,0.25);
+            --primary-soft: rgba(59,130,246,0.08);
+            --primary-border: rgba(59,130,246,0.15);
+            --text: #F0F4F8;
+            --text-secondary: #8B95A5;
+            --text-tertiary: #5C6777;
+            --border: rgba(255,255,255,0.06);
+            --border-light: rgba(255,255,255,0.1);
+            --accent-green: #10B981;
+            --accent-green-soft: rgba(16,185,129,0.1);
+            --accent-green-border: rgba(16,185,129,0.2);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ── Reading Progress Bar ── */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), #60A5FA, var(--primary));
+            z-index: 1000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            padding: 80px 24px 64px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 300px at 80% 80%, rgba(16,185,129,0.06) 0%, transparent 70%),
+                linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%);
+            z-index: 0;
+        }
+        .hero > * { position: relative; z-index: 1; }
+
+        .hero-icon {
+            width: 72px; height: 72px;
+            background: var(--primary-soft);
+            border: 1px solid var(--primary-border);
+            border-radius: var(--radius-lg);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 32px;
+            box-shadow: 0 0 40px var(--primary-glow);
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 38px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            color: var(--text-tertiary);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ── Table of Contents ── */
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+        .toc-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 6px;
+        }
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .toc-list a:hover {
+            background: var(--primary-soft);
+            color: var(--text);
+        }
+        .toc-list .toc-num {
+            width: 22px; height: 22px;
+            background: var(--surface-alt);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .toc-list a:hover .toc-num {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 48px 24px 96px;
+        }
+
+        /* ── Highlight Card ── */
+        .highlight-card {
+            background: linear-gradient(135deg, var(--primary-soft), rgba(59,130,246,0.04));
+            border: 1px solid var(--primary-border);
+            border-radius: var(--radius-xl);
+            padding: 24px 28px;
+            margin-bottom: 48px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            top: -30px; right: -30px;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .highlight-card .icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            filter: drop-shadow(0 0 8px var(--primary-glow));
+        }
+        .highlight-card p {
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        .highlight-card strong { color: #60A5FA; }
+
+        /* ── Sections ── */
+        section {
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+        }
+        h2 .num {
+            background: linear-gradient(135deg, var(--primary), #2563EB);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            width: 28px; height: 28px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 24px 0 10px;
+            color: #60A5FA;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h3::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        p { font-size: 15px; color: var(--text-secondary); margin-bottom: 14px; }
+        li { font-size: 15px; color: var(--text-secondary); }
+
+        ul {
+            padding-left: 0;
+            margin-bottom: 16px;
+            list-style: none;
+        }
+        ul li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        strong { color: var(--text); font-weight: 600; }
+        em { color: var(--text-secondary); font-style: italic; }
+
+        code {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+            color: #60A5FA;
+        }
+
+        /* ── Permission Grid ── */
+        .perm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .perm-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+        .perm-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .perm-card .label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .perm-card .desc {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+
+        /* ── Badge ── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-green-soft);
+            border: 1px solid var(--accent-green-border);
+            color: var(--accent-green);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 24px;
+            letter-spacing: 0.3px;
+        }
+        .badge::before {
+            content: '✓';
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        /* ── Back to Top ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 44px; height: 44px;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 0.3s ease;
+            z-index: 900;
+            color: var(--text-secondary);
+            font-size: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px var(--primary-glow);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer-brand {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .footer-brand span {
+            background: linear-gradient(135deg, var(--primary), #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer p {
+            color: var(--text-tertiary);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .footer a:hover { color: #60A5FA; }
+        .footer-nav {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .footer-nav a {
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+        .footer-nav a:hover {
+            border-color: var(--primary-border);
+            background: var(--primary-soft);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero { padding: 56px 20px 48px; }
+            .container { padding: 32px 18px 72px; }
+            .perm-grid { grid-template-columns: 1fr; }
+            .toc-list { grid-template-columns: 1fr; }
+            .highlight-card { flex-direction: column; gap: 12px; padding: 20px; }
+            .back-to-top { bottom: 20px; right: 20px; }
+            .footer-nav { flex-direction: column; align-items: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="hero">
+    <div class="hero-icon">🛡️</div>
+    <h1><span>Sharp</span>Transfer — Privacy Policy</h1>
+    <p class="subtitle">Last updated · March 16, 2026</p>
+</header>
+
+<main class="container">
+
+    <div class="highlight-card">
+        <div class="icon">🔒</div>
+        <p>
+            <strong>SharpTransfer does not collect, store, or transmit any personal data to external servers.</strong>
+            All operations happen entirely on your local Wi-Fi network. Your files never leave your devices.
+        </p>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc" aria-label="Table of Contents">
+        <div class="toc-title">Contents</div>
+        <ul class="toc-list">
+            <li><a href="#overview"><span class="toc-num">1</span> Overview</a></li>
+            <li><a href="#no-collect"><span class="toc-num">2</span> Information We Do Not Collect</a></li>
+            <li><a href="#local-data"><span class="toc-num">3</span> Data Stored Locally</a></li>
+            <li><a href="#permissions"><span class="toc-num">4</span> Permissions & Why</a></li>
+            <li><a href="#web-server"><span class="toc-num">5</span> Embedded Web Server</a></li>
+            <li><a href="#third-party"><span class="toc-num">6</span> Third-Party Services</a></li>
+            <li><a href="#security"><span class="toc-num">7</span> Data Security</a></li>
+            <li><a href="#children"><span class="toc-num">8</span> Children's Privacy</a></li>
+            <li><a href="#rights"><span class="toc-num">9</span> Your Rights</a></li>
+            <li><a href="#changes"><span class="toc-num">10</span> Changes to This Policy</a></li>
+            <li><a href="#contact"><span class="toc-num">11</span> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1 -->
+    <section id="overview">
+        <h2><span class="num">1</span> Overview</h2>
+        <p>
+            SharpTransfer ("the App") is a file transfer application for Android devices. It enables direct file sharing between Android devices and between Android and PC browsers over a local Wi-Fi network using a peer-to-peer connection.
+        </p>
+        <p>
+            This Privacy Policy explains what information the App accesses, how it is used, and your rights regarding your data. By using the App, you agree to the practices described in this policy.
+        </p>
+    </section>
+
+    <!-- 2 -->
+    <section id="no-collect">
+        <h2><span class="num">2</span> Information We Do <em>Not</em> Collect</h2>
+        <p>SharpTransfer is designed with a <strong>privacy-first, offline-first</strong> architecture. The App does <strong>not</strong>:</p>
+        <ul>
+            <li>Collect personal information (name, email, phone number, etc.)</li>
+            <li>Require user account registration or login to any cloud service</li>
+            <li>Send any data to external servers, analytics services, or third parties</li>
+            <li>Use advertising SDKs, tracking pixels, or fingerprinting</li>
+            <li>Access your contacts, call logs, SMS, or browsing history</li>
+            <li>Record or transmit location data (GPS)</li>
+        </ul>
+    </section>
+
+    <!-- 3 -->
+    <section id="local-data">
+        <h2><span class="num">3</span> Data Stored Locally on Your Device</h2>
+        <p>The App stores the following data <strong>exclusively on your device</strong> using a local database (Room) and preferences (DataStore):</p>
+
+        <h3>3.1 Transfer History</h3>
+        <p>Records of past file transfers (file name, size, date, status, peer device name) are saved for your convenience. You can clear this history at any time from <em>Settings → Clear History</em>.</p>
+
+        <h3>3.2 Trusted Devices</h3>
+        <p>When you choose to trust a peer device, its identifier and name are stored locally so future transfers can be auto-accepted. You can remove trusted devices at any time.</p>
+
+        <h3>3.3 Text / Clipboard Messages</h3>
+        <p>Text messages sent and received via the Clipboard Sync feature are persisted in the local database for history purposes. You can clear this history within the App.</p>
+
+        <h3>3.4 App Preferences</h3>
+        <p>Settings such as theme mode, default save location, notification preferences, and language preference are stored locally using Android DataStore. No preferences are synced to any cloud.</p>
+    </section>
+
+    <!-- 4 -->
+    <section id="permissions">
+        <h2><span class="num">4</span> Permissions &amp; Why We Need Them</h2>
+        <p>SharpTransfer requests only the permissions strictly necessary for its core functionality:</p>
+        <div class="perm-grid">
+            <div class="perm-card">
+                <div class="label">📶 Wi-Fi / Network</div>
+                <div class="desc">Discover nearby devices and transfer files over your local network.</div>
+            </div>
+            <div class="perm-card">
+                <div class="label">📂 Storage</div>
+                <div class="desc">Read files you select for sending and save received files to your device.</div>
+            </div>
+            <div class="perm-card">
+                <div class="label">📷 Camera</div>
+                <div class="desc">Scan QR codes to quickly pair with another device. No photos are taken or stored.</div>
+            </div>
+            <div class="perm-card">
+                <div class="label">🔔 Notifications</div>
+                <div class="desc">Show transfer progress, incoming transfer requests, and completion alerts.</div>
+            </div>
+            <div class="perm-card">
+                <div class="label">📳 Vibration</div>
+                <div class="desc">Provide haptic feedback when a transfer completes (can be disabled in Settings).</div>
+            </div>
+            <div class="perm-card">
+                <div class="label">⚙️ Foreground Service</div>
+                <div class="desc">Keep file transfers, the receiver, and the web server alive while in background.</div>
+            </div>
+        </div>
+        <p><span class="badge">No internet required</span> &nbsp;All permissions relate to local device and network operations only.</p>
+    </section>
+
+    <!-- 5 -->
+    <section id="web-server">
+        <h2><span class="num">5</span> Embedded Web Server</h2>
+        <p>
+            SharpTransfer includes an embedded web server (powered by Ktor) that runs locally on your device. This server is accessible <strong>only</strong> within your local Wi-Fi network at a URL like <code>http://192.168.x.x:8080</code>.
+        </p>
+        <ul>
+            <li>The web server is <strong>PIN-protected</strong> — only users with the correct PIN can upload or download files.</li>
+            <li>The server is <strong>active only while you manually start it</strong> and runs as a foreground service with a visible notification.</li>
+            <li>No data passes through the internet. All communication stays within your router.</li>
+        </ul>
+    </section>
+
+    <!-- 6 -->
+    <section id="third-party">
+        <h2><span class="num">6</span> Third-Party Services</h2>
+        <p>
+            SharpTransfer uses <strong>Google ML Kit (on-device barcode scanning)</strong> for QR code scanning. This library processes camera frames entirely on-device and does not send image data to Google servers.
+        </p>
+        <p>No other third-party services, SDKs, or analytics platforms are integrated into the App.</p>
+    </section>
+
+    <!-- 7 -->
+    <section id="security">
+        <h2><span class="num">7</span> Data Security</h2>
+        <p>
+            All file transfers use the custom <strong>STFR protocol</strong> over direct TCP connections within your local network. Files are sent peer-to-peer without passing through any intermediary server.
+        </p>
+        <ul>
+            <li>Transfer integrity is verified using SHA-256 checksums.</li>
+            <li>The local database is stored in the App's private sandbox, inaccessible to other apps.</li>
+            <li>The embedded web server supports PIN authentication to prevent unauthorized access.</li>
+        </ul>
+    </section>
+
+    <!-- 8 -->
+    <section id="children">
+        <h2><span class="num">8</span> Children's Privacy</h2>
+        <p>
+            SharpTransfer does not knowingly collect any personal information from children under the age of 13 (or the applicable age in your jurisdiction). The App does not require registration, does not collect personal data, and does not serve targeted content.
+        </p>
+    </section>
+
+    <!-- 9 -->
+    <section id="rights">
+        <h2><span class="num">9</span> Your Rights</h2>
+        <p>Since all data is stored locally on your device, you have full control:</p>
+        <ul>
+            <li><strong>Access & Delete:</strong> View and delete transfer history, trusted devices, and clipboard messages at any time through the App's settings.</li>
+            <li><strong>Revoke Permissions:</strong> You can revoke any permission via Android system settings. Some features may be unavailable without certain permissions.</li>
+            <li><strong>Uninstall:</strong> Uninstalling the App removes all locally stored data (database, preferences, cached files).</li>
+        </ul>
+    </section>
+
+    <!-- 10 -->
+    <section id="changes">
+        <h2><span class="num">10</span> Changes to This Policy</h2>
+        <p>
+            We may update this Privacy Policy from time to time. Any changes will be reflected within the App and on this page with a revised "Last updated" date. Continued use of the App after changes constitutes acceptance of the updated policy.
+        </p>
+    </section>
+
+    <!-- 11 -->
+    <section id="contact">
+        <h2><span class="num">11</span> Contact</h2>
+        <p>
+            If you have any questions about this Privacy Policy or the App's data practices, please contact us at:
+        </p>
+        <p style="color: #60A5FA; font-weight: 600; font-size: 16px;">
+            📧 publisher.perfectworld.studio@gmail.com
+        </p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-brand"><span>Sharp</span>Transfer</div>
+    <p>&copy; 2026 All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+    // Reading progress bar
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    }
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    function updateBackToTop() {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Scroll events
+    window.addEventListener('scroll', () => {
+        updateProgress();
+        updateBackToTop();
+    }, { passive: true });
+
+    // Scroll reveal sections
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
