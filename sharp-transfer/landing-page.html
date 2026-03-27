@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SharpTransfer - A native, blazingly fast TCP file transfer protocol for Android and PC via local Wi-Fi.">
+    <title>SharpTransfer | Next-Gen File Transfer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --surface-color: #0d0d0d;
+            --surface-hover: #141414;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --accent-gradient: linear-gradient(135deg, #ff8a05 0%, #ff5231 100%);
+            --accent-glow: rgba(255, 82, 49, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Ambient Background Orbs */
+        .ambient-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+        }
+
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: moveOrb 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 138, 5, 0.25);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 82, 49, 0.25);
+            bottom: -200px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes moveOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 50px) scale(1.1); }
+        }
+
+        /* Floating Navbar */
+        nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            background: rgba(13, 13, 13, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: slideDown 1s ease 0.2s both;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.125rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--text-primary);
+            color: var(--bg-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Layout Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 0 6rem;
+            text-align: center;
+            animation: fadeUp 1s ease 0.4s both;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--text-primary);
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            cursor: pointer;
+            text-decoration: none;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--accent-gradient);
+            z-index: -1;
+            border-radius: 100px;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            background: var(--bg-color);
+            z-index: -1;
+            border-radius: 100px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 0.8;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            50%, 100% { transform: translateX(200%) skewX(-15deg); }
+        }
+
+        .shine-fx {
+            position: absolute;
+            top: 0; left: -50%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            z-index: 2;
+            animation: shine 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(280px, auto);
+            gap: 1.5rem;
+            padding: 2rem 0 8rem;
+            animation: fadeUp 1s ease 0.6s both;
+        }
+
+        .bento-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Soft gradient glow on hover */
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            z-index: 0;
+            transition: opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-content {
+            z-index: 1;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            display: grid;
+            place-items: center;
+            margin-bottom: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .bento-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-primary);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .bento-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .bento-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Specific Grid Spans */
+        .card-large {
+            grid-column: span 2;
+        }
+        
+        .card-tall {
+            grid-row: span 2;
+            justify-content: space-between;
+        }
+
+        .card-flex-row {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-text-block {
+            max-width: 50%;
+        }
+
+        .card-visual-block {
+            width: 40%;
+            height: 100%;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            overflow: hidden;
+        }
+
+        /* Visuals for cards */
+        .card-image-wrapper { position: absolute; right: -20px; bottom: -20px; width: 60%; height: 70%; background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(139, 92, 246, 0.1)); border-radius: 20px 0 0 0; border-top: 1px solid var(--border-color); border-left: 1px solid var(--border-color); z-index: 0; overflow: hidden; }
+        .packet { position: absolute; height: 2px; background: linear-gradient(90deg, transparent, #ff8a05, transparent); width: 100px; animation: stream 2s infinite linear; }
+        .packet:nth-child(1) { top: 20%; left: -100px; animation-duration: 1.5s; }
+        .packet:nth-child(2) { top: 40%; left: -100px; animation-duration: 2.2s; animation-delay: 0.5s; }
+        .packet:nth-child(3) { top: 60%; left: -100px; animation-duration: 1.8s; animation-delay: 1.2s; }
+        .packet:nth-child(4) { top: 80%; left: -100px; animation-duration: 2.5s; animation-delay: 0.2s; }
+        @keyframes stream { 100% { transform: translateX(500px); } }
+
+        .qr-scanner { position: relative; width: 64px; height: 64px; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: auto; overflow: hidden; background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05)), linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05)); background-size: 10px 10px; }
+        .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: #ff8a05; box-shadow: 0 0 10px #ff8a05, 0 0 20px #ff8a05; animation: scan 2s infinite alternate ease-in-out; }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+        .server-node { position: relative; width: 64px; height: 64px; margin-bottom: auto; display: grid; place-items: center; }
+        .node-core { width: 16px; height: 16px; background: #ff5231; border-radius: 50%; z-index: 2; box-shadow: 0 0 20px #ff5231; }
+        .node-ring { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(255, 82, 49, 0.5); border-radius: 50%; animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1); }
+        .node-ring:nth-child(2) { animation-delay: 1s; }
+        @keyframes pulse-ring { 0% { transform: scale(0.3); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #38bdf8, #8b5cf6); border-radius: 4px; animation: load-bar 3s infinite ease-in-out; }
+        .progress-bar-fill-2 { height: 100%; background: rgba(255, 255, 255, 0.8); border-radius: 4px; animation: load-bar 3s infinite ease-in-out 0.5s; }
+        .progress-bar-fill-3 { height: 100%; background: rgba(255, 255, 255, 0.5); border-radius: 4px; animation: load-bar 3s infinite ease-in-out 1s; }
+        @keyframes load-bar { 0% { width: 0%; } 50%, 100% { width: 100%; } }
+
+        .transfer-rate-val { animation: rate-flicker 3s infinite; }
+        @keyframes rate-flicker { 0%, 100% { opacity: 1; text-shadow: none; } 45% { opacity: 1; text-shadow: 0 0 15px #38bdf8; } 50% { opacity: 0.8; } }
+
+        /* Footer CTA */
+        .bottom-cta {
+            width: 100%;
+            padding: 8rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .bottom-cta h2 {
+            font-size: 3rem;
+            letter-spacing: -1px;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Additional Sections */
+        .section-padding { padding: 6rem 0; width: 100%; border-top: 1px solid var(--border-color); }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 3rem; letter-spacing: -1px; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+
+        /* How it works enhanced */
+        .steps-container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 2.5rem; 
+            position: relative; 
+            padding-top: 1rem;
+        }
+
+        .step-card { 
+            background: rgba(255, 255, 255, 0.01); 
+            border: 1px solid var(--border-color); 
+            border-radius: 32px; 
+            padding: 3.5rem 2rem; 
+            text-align: center; 
+            position: relative; 
+            backdrop-filter: blur(20px); 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 1; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+
+        .step-card:hover { 
+            transform: translateY(-12px); 
+            background: rgba(255, 255, 255, 0.03); 
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .step-visual {
+            width: 84px;
+            height: 84px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
+        }
+
+        .step-visual svg { color: var(--text-primary); opacity: 0.8; }
+
+        .step-number { 
+            width: 32px; 
+            height: 32px; 
+            background: var(--accent-gradient); 
+            border-radius: 50%; 
+            display: grid; 
+            place-items: center; 
+            font-size: 0.875rem; 
+            font-weight: 800; 
+            color: white; 
+            margin-bottom: 1.5rem; 
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Animations for visuals */
+        .wifi-pulse-container .pulse-inner-ring {
+            position: absolute;
+            width: 100%; height: 100%;
+            border: 1px solid #ff8a05;
+            border-radius: 50%;
+            animation: wifi-ping 3s infinite;
+            opacity: 0;
+        }
+        @keyframes wifi-ping {
+            0% { transform: scale(0.2); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        .scan-bar-fx {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: #ff5231;
+            box-shadow: 0 0 15px #ff5231;
+            animation: qr-move 2s infinite alternate ease-in-out;
+        }
+        @keyframes qr-move { 0% { top: 10%; } 100% { top: 90%; } }
+
+        .bit-stream .bit-particle {
+            position: absolute;
+            width: 3px; height: 3px;
+            background: #ff8a05;
+            border-radius: 50%;
+            animation: bit-flow 2s infinite linear;
+            opacity: 0;
+        }
+        @keyframes bit-flow {
+            0% { transform: translateX(-40px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(40px); opacity: 0; }
+        }
+
+        /* Benchmarks */
+        .benchmark-box { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 24px; padding: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 4rem; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+        .benchmark-box::before { content: ''; position: absolute; right: -50px; bottom: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+        .benchmark-content { position: relative; z-index: 1; flex: 1; }
+        .benchmark-stats { position: relative; z-index: 1; flex: 1; }
+        .stat-item { padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+        .stat-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .stat-value { font-size: 4rem; font-weight: 800; line-height: 1; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem; letter-spacing: -2px; }
+        .stat-label { color: var(--text-secondary); font-size: 1.125rem; }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 2rem 0; cursor: pointer; transition: background 0.3s; }
+        .faq-item:first-child { border-top: 1px solid var(--border-color); }
+        .faq-item:hover { background: rgba(255,255,255,0.01); }
+        .faq-question { font-size: 1.25rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; width: 100%; transition: color 0.3s; }
+        .faq-question svg { width: 24px; height: 24px; stroke: var(--text-secondary); transition: transform 0.3s ease; }
+        .faq-item.active .faq-question svg { transform: rotate(45deg); stroke: var(--text-primary); }
+        .faq-answer { color: var(--text-secondary); margin-top: 1rem; line-height: 1.6; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.4s ease; opacity: 0; }
+        .faq-item.active .faq-answer { max-height: 500px; opacity: 1; margin-top: 1.5rem; }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translate(-50%, -20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3.5rem; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .card-large { grid-column: span 2; }
+            .card-tall { grid-row: span 1; }
+            .benchmark-box { flex-direction: column; text-align: center; gap: 2rem; padding: 2rem; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .steps-container { grid-template-columns: 1fr; gap: 1.5rem; }
+            .card-large { grid-column: span 1; }
+            .hero-actions { flex-direction: column; }
+            .card-flex-row { flex-direction: column !important; align-items: flex-start; gap: 2rem; }
+            .card-text-block { max-width: 100%; }
+            .card-visual-block { width: 100%; min-height: 160px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Ambient Background -->
+    <div class="ambient-grid"></div>
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="https://toaa-media.github.io/PublicPages/sharp-transfer/app-icon.jpg" alt="SharpTransfer Logo">
+            SharpTransfer
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it Works</a>
+            <a href="#performance">Benchmarks</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <a href="#download" class="nav-btn">Download</a>
+    </nav>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Move Gigabytes in Seconds. <br><span class="gradient-text">Pure, Raw Speed.</span></h1>
+            <p>Experience the future of local sharing. SharpTransfer uses a native STFR binary protocol to push files directly between Android, PC, and Browser at maximum Wi-Fi throughput—no cloud, no limits.</p>
+            <div class="hero-actions">
+                <a href="#download" class="btn-primary" aria-label="Download SharpTransfer">
+                    <div class="shine-fx"></div>
+                    Get SharpTransfer for Android
+                </a>
+            </div>
+        </section>
+
+        <!-- Bento Grid Sections -->
+        <section class="bento-grid" id="features">
+            
+            <!-- Card 1: Large -->
+            <div class="bento-card card-large">
+                <div class="card-image-wrapper">
+                    <div class="packet"></div>
+                    <div class="packet"></div>
+                    <div class="packet"></div>
+                    <div class="packet"></div>
+                </div>
+                <div class="card-content">
+                    <div class="bento-icon">
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Blazing TCP Transfer</h3>
+                        <p>Our custom STFR binary protocol circumvents overhead using flow-based I/O streams directly over your Wi-Fi interface. Experience maximum multi-thread throughput.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Small -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div class="qr-scanner">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div>
+                        <h3>QR Code Pairing</h3>
+                        <p>No IP typing. Instant pairing by scanning a securely generated code utilizing mDNS.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Small -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div class="server-node">
+                        <div class="node-ring"></div>
+                        <div class="node-ring"></div>
+                        <div class="node-core"></div>
+                    </div>
+                    <div>
+                        <h3>Embedded Server</h3>
+                        <p>Don't have the app on PC? Just open a browser window to securely push files via HTML module.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Large / Wide -->
+            <div class="bento-card card-large">
+                <div class="card-content card-flex-row">
+                    <div class="card-text-block">
+                        <div class="bento-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3>Background Execution</h3>
+                        <p>Foreground Service isolation guarantees persistent socket life even while you juggle other tasks.</p>
+                    </div>
+                    <!-- Abstract representation of the server process -->
+                    <div class="card-visual-block">
+                        <div style="width: 100%; height: 8px; background: rgba(56, 189, 248, 0.1); border-radius: 4px; overflow: hidden;"><div class="progress-bar-fill"></div></div>
+                        <div style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; overflow: hidden; margin-top: 4px;"><div class="progress-bar-fill-2"></div></div>
+                        <div style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; overflow: hidden; margin-top: 4px;"><div class="progress-bar-fill-3"></div></div>
+                        <div style="width: 100%; height: 2px; background: var(--border-color); margin: 0.5rem 0;"></div>
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">Network I/O</span>
+                            <span class="transfer-rate-val" style="font-size: 1.5rem; color: #fff; font-weight: 700;">116 <span style="font-size: 0.75rem; color: var(--text-secondary);">MB/s</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- How it Works Section -->
+        <section class="section-padding" id="how-it-works">
+            <div class="section-header reveal-on-scroll">
+                <h2>How SharpTransfer Works</h2>
+                <p>Three simple steps to bypass the cloud and move gigabytes of data locally.</p>
+            </div>
+            
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step-card reveal-on-scroll">
+                    <div class="step-visual">
+                        <div class="wifi-pulse-container">
+                            <div class="pulse-inner-ring"></div>
+                            <div class="pulse-inner-ring" style="animation-delay: 1s;"></div>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                        </div>
+                    </div>
+                    <div class="step-number">1</div>
+                    <h3 style="margin-bottom: 0.75rem;">Connect to Wi-Fi</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Ensure both devices are on the same local network or hotspot.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card reveal-on-scroll">
+                    <div class="step-visual">
+                        <div class="pair-scanner-fx">
+                            <div class="scan-bar-fx"></div>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        </div>
+                    </div>
+                    <div class="step-number">2</div>
+                    <h3 style="margin-bottom: 0.75rem;">Instant Pairing</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Scan the QR code or use mDNS for blazingly fast automatic discovery.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card reveal-on-scroll">
+                    <div class="step-visual">
+                        <div class="bit-stream">
+                            <div class="bit-particle" style="top: 20%; animation-delay: 0s;"></div>
+                            <div class="bit-particle" style="top: 50%; animation-delay: 0.6s;"></div>
+                            <div class="bit-particle" style="top: 80%; animation-delay: 1.2s;"></div>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path></svg>
+                        </div>
+                    </div>
+                    <div class="step-number">3</div>
+                    <h3 style="margin-bottom: 0.75rem;">Warp Transfer</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Hit send. Our custom STFR pipeline handles the data direct-to-the-metal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benchmark Section -->
+        <section class="section-padding reveal-on-scroll" id="performance">
+            <div class="benchmark-box">
+                <div class="benchmark-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">~120</div>
+                        <div class="stat-label">Megabytes per second on Wi-Fi 6</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">0%</div>
+                        <div class="stat-label">Cloud dependency / Internet usage</div>
+                    </div>
+                </div>
+                <div class="benchmark-content">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.1; letter-spacing: -1px;">Engineered to max out your router.</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.125rem;">Compared to standard Bluetooth or cloud-based transfers (like Google Drive or Telegram), SharpTransfer uses your router's full internal bandwidth. Transferring a 5GB 4K video takes less than a minute.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section-padding" id="faq">
+            <div class="section-header reveal-on-scroll">
+                <h2>Got Questions?</h2>
+                <p>Everything you need to know about the app.</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item reveal-on-scroll">
+                    <div class="faq-question">
+                        Is it completely free and ad-free?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </div>
+                    <div class="faq-answer">Absolutely. SharpTransfer is an open-source project built with a focus on transparency. We are committed to a clean experience, which means zero ads, zero tracking, and absolutely no data collection—just high-speed transfers you can trust.</div>
+                </div>
+                <div class="faq-item reveal-on-scroll">
+                    <div class="faq-question">
+                        Can I transfer files from my Android to a PC or iPhone?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </div>
+                    <div class="faq-answer">Absolutely. The Android app has an embedded Ktor web server. Just tap "Web Server" in the app, and open the provided URL on your PC or iPhone browser to securely upload/download files.</div>
+                </div>
+                <div class="faq-item reveal-on-scroll">
+                    <div class="faq-question">
+                        What happens if I minimize the app during transfer?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </div>
+                    <div class="faq-answer">The transfer continues flawlessly in the background. SharpTransfer utilizes Android Foreground Services with persistent notifications to keep the TCP sockets alive even if you switch apps or turn off the screen.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bottom-cta" id="download">
+            <h2>Ready to Move Fast?</h2>
+            <a href="https://play.google.com/store/apps/details?id=com.vn.toaa.sharptransfer" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem;" aria-label="Download App on Google Play">
+                <div class="shine-fx"></div>
+                Download App
+            </a>
+        </section>
+
+        <footer>
+            <div>SharpTransfer is a high-performance, ad-free project for the Android community. Built with Kotlin & Compose.</div>
+            <div class="footer-links">
+                <a href="https://toaa-media.github.io/PublicPages/sharp-transfer/privacy_policy.html" target="_blank">Privacy Policy</a>
+                <a href="https://toaa-media.github.io/PublicPages/sharp-transfer/terms_of_usage.html" target="_blank">Terms of Usage</a>
+            </div>
+            <div style="margin-top: 1.5rem; font-size: 0.75rem; opacity: 0.6;">&copy; 2026 CMS. All rights reserved.</div>
+        </footer>
+
+    </main>
+
+    <!-- Script for subtle mouse tracking glow on Bento cards, FAQ and Scroll Observer -->
+    <script>
+        // Mouse hover tracking
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        // Add both bento cards and new reveal items to the observer
+        document.querySelectorAll('.bento-card, .reveal-on-scroll').forEach((el, index) => {
+            el.style.animation = 'none';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = `opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
