@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfect World Studio - AI-Powered Android Apps</title>
-    <meta name="description" content="AI-powered Android apps for productivity and privacy. From smart scanning and OCR to encrypted photo vaults — crafted with precision by Perfect World Studio.">
+    <meta name="description" content="High-speed WiFi file sharing, intelligent OCR scanning, and secure privacy vaults. Discover the suite of AI-powered tools from Perfect World Studio.">
     
     <!-- Fonts: Outfit (Headings) + Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,6 +189,7 @@
             margin-bottom: 24px;
             background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fade-in-up 0.8s ease-out 0.1s backwards;
             max-width: 800px;
@@ -317,21 +318,46 @@
         }
 
         .app-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            animation-play-state: paused;
+            transform: translateY(-16px) scale(1.03);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 30px 60px -15px rgba(56, 189, 248, 0.25);
         }
+
+        @keyframes card-idle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .app-grid article:nth-child(1) { animation: card-idle 8s ease-in-out infinite; }
+        .app-grid article:nth-child(2) { animation: card-idle 8s ease-in-out infinite 2s; }
+        .app-grid article:nth-child(3) { animation: card-idle 8s ease-in-out infinite 4s; }
+        .app-grid article:nth-child(4) { animation: card-idle 8s ease-in-out infinite 6s; }
 
         /* Hover glow effect */
         .app-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 100%;
-            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 60%);
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.15), transparent 40%);
             opacity: 0;
             transition: 0.4s;
+            z-index: 0;
+            pointer-events: none;
         }
         .app-card:hover::before { opacity: 1; }
+
+        /* Shine effect on hover */
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-25deg);
+            transition: 0.75s;
+            pointer-events: none;
+        }
+        .app-card:hover::after { left: 150%; }
 
         .app-icon {
             width: 80px; height: 80px;
@@ -339,6 +365,10 @@
             margin-bottom: 24px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             z-index: 1;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .app-card:hover .app-icon {
+            transform: translateY(-8px) scale(1.05);
         }
 
         .app-icon-placeholder {
@@ -349,6 +379,18 @@
             font-size: 1.5rem;
             color: rgba(255,255,255,0.5);
             border: 2px dashed rgba(255,255,255,0.1);
+            animation: rotate-placeholder 10s linear infinite;
+        }
+        @keyframes rotate-placeholder {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .app-icon-placeholder i {
+            animation: counter-rotate-placeholder 10s linear infinite;
+        }
+        @keyframes counter-rotate-placeholder {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
         }
 
         .app-title { font-size: 1.5rem; margin-bottom: 8px; z-index: 1; }
@@ -363,6 +405,22 @@
             margin-bottom: 16px;
             letter-spacing: 0.05em;
             z-index: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes badge-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .app-badge::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: 0 0 10px var(--primary);
+            border-radius: 100px;
+            animation: badge-glow 3s infinite;
+            opacity: 0.2;
         }
 
         .app-desc { 
@@ -391,6 +449,24 @@
             font-weight: 600;
             z-index: 1;
         }
+
+        .app-link-row [data-lucide="arrow-right"] {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .app-card:hover .app-link-row [data-lucide="arrow-right"] {
+            transform: translateX(6px);
+        }
+
+        .rating-box i {
+            transition: transform 0.3s ease;
+        }
+        .app-card:hover .rating-box i {
+            transform: scale(1.15) rotate(10deg);
+        }
+        .app-card:hover .rating-box i:nth-child(2) { transition-delay: 0.05s; }
+        .app-card:hover .rating-box i:nth-child(3) { transition-delay: 0.1s; }
+        .app-card:hover .rating-box i:nth-child(4) { transition-delay: 0.15s; }
+        .app-card:hover .rating-box i:nth-child(5) { transition-delay: 0.2s; }
 
         /* ===== Footer ===== */
         footer {
@@ -467,7 +543,7 @@
             Available on Google Play
         </div>
         <h1>AI-Powered Apps for the Future of Productivity</h1>
-        <p>From smart scanning and OCR to encrypted privacy vaults — AI-powered tools designed with pixel-perfect precision, right in your pocket.</p>
+        <p>Revolutionize your mobile experience with blazingly fast file sharing, intelligent OCR scanning, and military-grade privacy. Precision-engineered AI at your fingertips.</p>
         
         <div class="hero-actions">
             <a href="#apps" class="btn-cta">
@@ -489,7 +565,7 @@
     <div class="container">
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-num">1K+</div>
+                <div class="stat-num">100K+</div>
                 <div class="stat-label">Total Downloads</div>
             </div>
             <div class="stat-card">
@@ -497,7 +573,7 @@
                 <div class="stat-label">Average Rating</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">2</div>
+                <div class="stat-num">3</div>
                 <div class="stat-label">Apps Published</div>
             </div>
             <div class="stat-card">
@@ -555,6 +631,27 @@
                 </div>
             </article>
 
+            <!-- SharpTransfer -->
+            <article class="app-card" onclick="window.open('https://play.google.com/store/apps/details?id=com.vn.toaa.sharptransfer', '_blank')">
+                <img src="https://toaa-media.github.io/PublicPages/sharp-transfer/app-icon.jpg" alt="SharpTransfer" class="app-icon">
+                <span class="app-badge">Utility</span>
+                <h3 class="app-title">SharpTransfer: WiFi File Share</h3>
+                <p class="app-desc">High-speed local file transfer. Move photos, videos, and large files between devices instantly without internet.</p>
+                
+                <div class="rating-box">
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <i data-lucide="star" fill="currentColor" width="16"></i>
+                    <span class="rating-val">5.0</span>
+                </div>
+
+                <div class="app-link-row">
+                    View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                </div>
+            </article>
+
             <!-- Coming Soon -->
             <article class="app-card" style="opacity: 0.6; cursor: default;">
                 <div class="app-icon-placeholder">
@@ -597,6 +694,16 @@
                 }
             });
         }, { threshold: 0.1 });
+
+        document.querySelectorAll('.app-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
 
         document.querySelectorAll('.app-card, .stat-card').forEach((el, index) => {
             el.style.opacity = '0';
