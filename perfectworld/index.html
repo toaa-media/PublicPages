@@ -440,21 +440,37 @@
         }
         .rating-val { color: var(--text-main); font-weight: 600; margin-left: 8px; }
 
-        .app-link-row {
+        .app-link-group {
             margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .app-link-row {
             display: flex;
             align-items: center;
             gap: 8px;
             color: var(--primary);
             font-weight: 600;
-            z-index: 1;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
-        .app-link-row [data-lucide="arrow-right"] {
+        .app-link-row:hover {
+            color: white;
+        }
+
+        .app-link-row [data-lucide] {
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .app-card:hover .app-link-row [data-lucide="arrow-right"] {
             transform: translateX(6px);
+        }
+        .app-card:hover .app-link-row [data-lucide="external-link"] {
+            transform: scale(1.1) rotate(10deg);
         }
 
         .rating-box i {
@@ -605,8 +621,13 @@
                     <span class="rating-val">5.0</span>
                 </div>
 
-                <div class="app-link-row">
-                    View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                <div class="app-link-group">
+                    <div class="app-link-row">
+                        View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                    </div>
+                    <div class="app-link-row" onclick="event.stopPropagation(); window.open('https://toaa-media.github.io/PublicPages/smartscan/landing-page.html', '_blank')">
+                        View on Website <i data-lucide="external-link" width="18"></i>
+                    </div>
                 </div>
             </article>
 
@@ -626,8 +647,13 @@
                     <span class="rating-val">5.0</span>
                 </div>
 
-                <div class="app-link-row">
-                    View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                <div class="app-link-group">
+                    <div class="app-link-row">
+                        View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                    </div>
+                    <div class="app-link-row" onclick="event.stopPropagation(); window.open('https://toaa-media.github.io/PublicPages/sharp-vault/landing-page.html', '_blank')">
+                        View on Website <i data-lucide="external-link" width="18"></i>
+                    </div>
                 </div>
             </article>
 
@@ -647,8 +673,13 @@
                     <span class="rating-val">5.0</span>
                 </div>
 
-                <div class="app-link-row">
-                    View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                <div class="app-link-group">
+                    <div class="app-link-row">
+                        View on Play Store <i data-lucide="arrow-right" width="18"></i>
+                    </div>
+                    <div class="app-link-row" onclick="event.stopPropagation(); window.open('https://toaa-media.github.io/PublicPages/sharp-transfer/landing-page.html', '_blank')">
+                        View on Website <i data-lucide="external-link" width="18"></i>
+                    </div>
                 </div>
             </article>
 
@@ -661,8 +692,10 @@
                 <h3 class="app-title">More Apps Brewing</h3>
                 <p class="app-desc">We are working on new AI-powered productivity tools. Stay tuned for our next big release.</p>
                 
-                <div class="app-link-row" style="color: var(--text-muted);">
-                    In Development... <i data-lucide="loader" width="18"></i>
+                <div class="app-link-group" style="color: var(--text-muted);">
+                    <div class="app-link-row">
+                        In Development... <i data-lucide="loader" width="18"></i>
+                    </div>
                 </div>
             </article>
         </div>
