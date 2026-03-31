@@ -19,10 +19,10 @@
             /* Palette: Dark Aurora */
             --bg-void: #020617;
             --bg-deep: #0f172a;
-            --primary: #38BDF8;   /* Sky Blue */
-            --primary-glow: rgba(56, 189, 248, 0.5);
-            --secondary: #818CF8; /* Indigo */
-            --accent: #F472B6;    /* Pink/Magenta for pop */
+            --primary: #F59E0B;   /* Amber/Orange */
+            --primary-glow: rgba(245, 158, 11, 0.5);
+            --secondary: #E11D48; /* Rose/Red */
+            --accent: #8B5CF6;    /* Violet/Purple */
             
             /* Text */
             --text-main: #F8FAFC;
@@ -30,7 +30,7 @@
             --text-dark: #0F172A;
 
             /* Glassmorphism */
-            --glass-surface: rgba(30, 41, 59, 0.4);
+            --glass-surface: rgba(30, 20, 45, 0.4);
             --glass-border: rgba(255, 255, 255, 0.1);
             --glass-highlight: rgba(255, 255, 255, 0.05);
             --blur-amount: 16px;
@@ -66,8 +66,8 @@
             top: 0; left: 0; width: 100%; height: 100vh;
             z-index: -1;
             background: 
-                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.15), transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(245, 158, 11, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(225, 29, 72, 0.15), transparent 25%);
             filter: blur(60px);
             opacity: 0.8;
             animation: aurora-pulse 10s ease-in-out infinite alternate;
@@ -133,22 +133,25 @@
         .nav-menu a:hover { color: var(--text-main); }
 
         .btn-cta {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% auto;
             color: white;
             padding: 10px 24px;
             border-radius: var(--radius-pill);
             font-weight: 600;
             font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.4s ease;
         }
 
         .btn-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+            background-position: right center;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
         }
 
         /* ===== Hero Section ===== */
@@ -166,8 +169,8 @@
             align-items: center;
             gap: 8px;
             padding: 6px 16px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
             color: var(--primary);
             border-radius: 100px;
             font-size: 0.85rem;
@@ -210,7 +213,8 @@
         }
 
         .btn-outline {
-            background: rgba(255,255,255,0.05);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             color: var(--text-main);
             padding: 10px 24px;
@@ -220,9 +224,15 @@
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
         
-        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+        .btn-outline:hover { 
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+            transform: translateY(-2px);
+        }
 
         /* Hero Image/Banner */
         .hero-banner {
@@ -300,7 +310,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 32px;
-            padding-bottom: 80px;
+            padding-bottom: 20px;
         }
 
         .app-card {
@@ -321,7 +331,7 @@
             animation-play-state: paused;
             transform: translateY(-16px) scale(1.03);
             border-color: var(--primary);
-            box-shadow: 0 30px 60px -15px rgba(56, 189, 248, 0.25);
+            box-shadow: 0 30px 60px -15px rgba(245, 158, 11, 0.25);
         }
 
         @keyframes card-idle {
@@ -339,7 +349,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.15), transparent 40%);
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(245, 158, 11, 0.15), transparent 40%);
             opacity: 0;
             transition: 0.4s;
             z-index: 0;
@@ -395,9 +405,9 @@
 
         .app-title { font-size: 1.5rem; margin-bottom: 8px; z-index: 1; }
         .app-badge { 
-            background: rgba(56, 189, 248, 0.15); 
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(225, 29, 72, 0.1)); 
             color: var(--primary); 
-            padding: 4px 12px; 
+            padding: 6px 14px; 
             border-radius: 100px; 
             font-size: 0.75rem; 
             font-weight: 700;
@@ -407,6 +417,8 @@
             z-index: 1;
             position: relative;
             overflow: hidden;
+            display: inline-block;
+            border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
         @keyframes badge-glow {
@@ -452,15 +464,25 @@
         .app-link-row {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             color: var(--primary);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(225, 29, 72, 0.02));
+            border: 1px solid rgba(245, 158, 11, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+            font-size: 0.85rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
         }
 
         .app-link-row:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
+            border-color: transparent;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
 
         .app-link-row [data-lucide] {
@@ -530,6 +552,216 @@
             .hero-banner { margin-top: 32px; }
             nav { width: calc(100% - 32px); top: 16px; }
         }
+        /* ===== Reviews Section ===== */
+        .reviews-container {
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 24px;
+            padding: 20px 0;
+            width: max-content;
+        }
+
+        /* Continuous scroll animation for reviews */
+        @keyframes scroll-reviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 12px)); }
+        }
+
+        .animate-scroll {
+            animation: scroll-reviews 40s linear infinite;
+        }
+
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        .review-card {
+            background: var(--glass-surface);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            padding: 28px;
+            border-radius: 20px;
+            width: 380px;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: default;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+        }
+
+        .review-card .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+
+        /* ===== Q&A Section ===== */
+        .qa-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .qa-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .qa-item {
+            background: var(--glass-surface);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .qa-item:hover {
+            border-color: rgba(245, 158, 11, 0.3);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .qa-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .qa-question {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .qa-item.active .qa-question {
+            color: var(--primary);
+        }
+
+        .qa-chevron {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: var(--text-muted);
+        }
+
+        .qa-item.active .qa-chevron {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .qa-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .qa-item.active .qa-answer {
+            max-height: 500px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .qa-answer-content {
+            padding: 24px 32px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .qa-question { padding: 20px; font-size: 1rem; }
+            .qa-answer-content { padding: 20px; }
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .reviewer-meta h4 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .reviewer-meta span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .review-content {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 4px;
+            color: #FBBF24;
+            margin-top: 16px;
+        }
+
+        /* Gradient mask for smooth edges */
+        .reviews-mask {
+            position: relative;
+        }
+
+        .reviews-mask::before,
+        .reviews-mask::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .reviews-mask::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-void), transparent);
+        }
+
+        .reviews-mask::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-void), transparent);
+        }
+
     </style>
 </head>
 <body>
@@ -701,6 +933,328 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-container">
+        <div class="container">
+            <h2 class="section-title">User Feedback</h2>
+            <p class="section-desc">Join thousands of satisfied users who have transformed their mobile productivity with our AI tools.</p>
+        </div>
+
+        <div class="reviews-mask">
+            <div class="reviews-track animate-scroll">
+                <!-- Review 1 -->
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">JD</div>
+                        <div class="reviewer-meta">
+                            <h4>James Dalton</h4>
+                            <span>Graphic Designer</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"SharpScan's OCR is remarkably accurate. It has saved me hours of manual typing. The interface is sleek and very responsive."</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <!-- Review 2 -->
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">SL</div>
+                        <div class="reviewer-meta">
+                            <h4>Sarah Lin</h4>
+                            <span>Software Engineer</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"SharpVault gives me the peace of mind I need. The encryption is top-notch and the 'fake vault' feature is pure genius!"</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <!-- Review 3 -->
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--accent), var(--primary));">MK</div>
+                        <div class="reviewer-meta">
+                            <h4>Marcus Knight</h4>
+                            <span>Digital Nomad</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"SharpTransfer is a lifesaver. Moving 4K videos between my phone and tablet is instant. No internet required!"</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <!-- Review 4 -->
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, #10B981, #3B82F6);">EW</div>
+                        <div class="reviewer-meta">
+                            <h4>Elena Wong</h4>
+                            <span>Project Manager</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"The attention to detail in these apps is incredible. Perfect World Studio really knows how to build premium tools."</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <!-- Duplicate for seamless scroll -->
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">JD</div>
+                        <div class="reviewer-meta">
+                            <h4>James Dalton</h4>
+                            <span>Graphic Designer</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"SharpScan's OCR is remarkably accurate. It has saved me hours of manual typing. The interface is sleek and very responsive."</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">SL</div>
+                        <div class="reviewer-meta">
+                            <h4>Sarah Lin</h4>
+                            <span>Software Engineer</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"SharpVault gives me the peace of mind I need. The encryption is top-notch and the 'fake vault' feature is pure genius!"</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--accent), var(--primary));">MK</div>
+                        <div class="reviewer-meta">
+                            <h4>Marcus Knight</h4>
+                            <span>Digital Nomad</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"SharpTransfer is a lifesaver. Moving 4K videos between my phone and tablet is instant. No internet required!"</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, #10B981, #3B82F6);">EW</div>
+                        <div class="reviewer-meta">
+                            <h4>Elena Wong</h4>
+                            <span>Project Manager</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"The attention to detail in these apps is incredible. Perfect World Studio really knows how to build premium tools."</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="faq" class="qa-section">
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            <p class="section-desc">Find quick answers to everything you need to know about our studio and apps.</p>
+            
+            <div class="qa-grid">
+                <!-- Q1 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>What is Perfect World Studio?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            We are a boutique Android development studio focused on high-performance utility tools and AI-powered productivity apps. Our mission is to create a "Perfect World" of digital experiences where tools are fast, secure, and beautiful.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Are your apps safe to use?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            Highly! We prioritize user privacy with local-first processing. Our Privacy Vault uses industrial-grade AES-256 encryption, and we never upload your sensitive data to any central server.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>How does the AI OCR Scanner work?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            It leverages advanced machine learning models (on-device) to detect text in images with high precision. It supports multiple languages and processes everything locally on your phone for maximum speed and privacy.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Is the WiFi File Share secure?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            Yes, SwiftShare creates a direct Peer-to-Peer (P2P) local connection between devices. No data ever leaves your local network or touches our servers during the transfer, making it faster and safer than cloud storage.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Can I use the apps offline?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            Most features, including OCR Scanning and Local File Sharing, are designed to work perfectly without an internet connection. We build our tools to be dependable in any situation.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Do you collect or sell user data?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            No. We believe your data belongs to you. Our apps do not track your activity, collect personal information, or sell data to third parties. We generate revenue through optional premium features, not your data.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>How do I get the latest updates?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            All our official apps are hosted on the Google Play Store. We recommend enabling "Auto-update" in your Play Store settings to ensure you always have the latest security patches and feature enhancements.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Are there any hidden costs?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            Our core utility features are entirely free. For power users who need advanced capabilities, we offer 'Pro' versions via a single one-time purchase or clear subscription models—no hidden tricks.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>What should I do if I find a bug?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            We love feedback! If you encounter an issue or have a feature request, please use the 'Contact Support' link in the footer or email us directly at support@perfectworld.studio. We respond to every user message.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Do you support older Android versions?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            We strive for broad compatibility. Most of our tools support Android 8.0 (Oreo) and above. For some AI features, a more modern version of Android (11+) might be required for optimal performance.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q11 -->
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleQA(this)" role="button" aria-expanded="false" tabindex="0">
+                        <span>Where are you located?</span>
+                        <i data-lucide="chevron-down" class="qa-chevron"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="qa-answer-content">
+                            Perfect World Studio is a global distributed team of developer-artists and designers. Our core mission is to bring high-quality, beautiful, and functional software to millions of users worldwide.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -718,6 +1272,33 @@
     <script>
         lucide.createIcons();
 
+        // QA Accordion Toggle
+        function toggleQA(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all other QA items
+            document.querySelectorAll('.qa-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('.qa-question').setAttribute('aria-expanded', 'false');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                element.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Add keyboard support for QA
+        document.querySelectorAll('.qa-question').forEach(q => {
+            q.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleQA(q);
+                }
+            });
+        });
+
         // Simple Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -728,7 +1309,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.app-card').forEach(card => {
+        document.querySelectorAll('.app-card, .review-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -738,7 +1319,7 @@
             });
         });
 
-        document.querySelectorAll('.app-card, .stat-card').forEach((el, index) => {
+        document.querySelectorAll('.app-card, .stat-card, .review-card').forEach((el, index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = `all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 0.1}s`;
