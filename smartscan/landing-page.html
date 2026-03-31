@@ -16,14 +16,14 @@
             --glass-highlight: rgba(255, 255, 255, 0.25);
             --glass-blur: 60px;
             
-            /* Semantic Colors */
-            --blue: #007AFF;
-            --purple: #AF52DE;
-            --pink: #FF2D55;
-            --teal: #5AC8FA;
-            --green: #34C759;
-            --orange: #FF9500;
-            --indigo: #5856D6;
+            /* Semantic Colors - Fiery Rose Palette */
+            --blue: #FF3B30;     /* Vibrant Red */
+            --purple: #AF52DE;   /* Warm Purple */
+            --pink: #FF2D55;     /* Hot Pink/Rose */
+            --teal: #FFD600;     /* Electric Yellow/Gold */
+            --green: #FF9500;    /* iOS Orange (replacing green for warmth) */
+            --orange: #FF9500;   /* iOS Orange */
+            --indigo: #D30038;   /* Deep Crimson */
             
             /* Neutrals */
             --bg-primary: #000000;
@@ -62,10 +62,10 @@
             inset: 0;
             z-index: 0;
             overflow: hidden;
-            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
-                        radial-gradient(ellipse 60% 40% at 0% 50%, rgba(0, 122, 255, 0.08), transparent),
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 45, 85, 0.15), transparent),
+                        radial-gradient(ellipse 60% 40% at 0% 50%, rgba(255, 59, 48, 0.08), transparent),
                         radial-gradient(ellipse 60% 40% at 100% 50%, rgba(175, 82, 222, 0.08), transparent),
-                        linear-gradient(180deg, #0a0a1a 0%, #000000 100%);
+                        linear-gradient(180deg, #120505 0%, #000000 100%);
         }
 
         .liquid-orb {
@@ -79,7 +79,7 @@
         .orb-1 {
             width: 900px;
             height: 900px;
-            background: radial-gradient(circle, rgba(0, 122, 255, 0.4) 0%, rgba(88, 86, 214, 0.2) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 59, 48, 0.4) 0%, rgba(255, 45, 85, 0.2) 50%, transparent 70%);
             top: -30%;
             left: -20%;
             animation-delay: 0s;
@@ -97,7 +97,7 @@
         .orb-3 {
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(90, 200, 250, 0.3) 0%, rgba(52, 199, 89, 0.15) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(175, 82, 222, 0.3) 0%, rgba(211, 0, 56, 0.15) 50%, transparent 70%);
             bottom: -20%;
             left: 30%;
             animation-delay: -16s;
@@ -106,7 +106,7 @@
         .orb-4 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(255, 149, 0, 0.25) 0%, rgba(255, 45, 85, 0.1) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 214, 0, 0.25) 0%, rgba(255, 149, 0, 0.1) 50%, transparent 70%);
             bottom: 20%;
             left: -15%;
             animation-delay: -12s;
@@ -276,7 +276,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 140px 24px 100px;
+            padding: 110px 24px 80px;
             position: relative;
             z-index: 2;
         }
@@ -566,7 +566,7 @@
            FEATURES SECTION
         ============================================= */
         .features {
-            padding: 140px 24px;
+            padding: 100px 24px;
             position: relative;
             z-index: 2;
         }
@@ -596,6 +596,13 @@
             line-height: 1.15;
         }
 
+        .features .section-title {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .section-desc {
             font-size: 1.1rem;
             color: var(--text-secondary);
@@ -612,18 +619,50 @@
 
         .feature-card {
             padding: 40px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: default;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.05),
+                transparent
+            );
+            transition: none;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .feature-card:hover::before {
+            animation: cardSweep 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes cardSweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .feature-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(255, 45, 85, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                        0 0 20px rgba(255, 45, 85, 0.2);
         }
 
         .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(-5deg);
+            transform: scale(1.15) rotate(-8deg);
+            box-shadow: 0 16px 40px rgba(255, 45, 85, 0.5);
         }
 
         .feature-icon {
@@ -658,7 +697,7 @@
            HOW IT WORKS
         ============================================= */
         .how-it-works {
-            padding: 140px 24px;
+            padding: 100px 24px;
             position: relative;
             z-index: 2;
         }
@@ -730,7 +769,7 @@
            TOOLS
         ============================================= */
         .tools {
-            padding: 140px 24px;
+            padding: 100px 24px;
             position: relative;
             z-index: 2;
         }
@@ -776,27 +815,47 @@
            TESTIMONIALS
         ============================================= */
         .testimonials {
-            padding: 140px 24px;
+            padding: 100px 24px;
             position: relative;
             z-index: 2;
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .testimonials-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 40px 0;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .testimonials-track {
+            display: flex;
             gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .testimonials-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 12px)); }
         }
 
         .testimonial-card {
+            width: 400px;
+            flex-shrink: 0;
             padding: 40px;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--pink);
+            box-shadow: 0 20px 40px rgba(255, 45, 85, 0.2);
         }
 
         .testimonial-stars {
@@ -844,10 +903,135 @@
         }
 
         /* =============================================
+           FAQ SECTION
+        ============================================= */
+        .faq {
+            padding: 100px 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 45, 85, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .faq-item.active {
+            background: rgba(255, 45, 85, 0.03);
+            border-color: rgba(255, 45, 85, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.1);
+        }
+
+        .faq-question {
+            padding: 24px 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .faq-item:hover .faq-question h3 {
+            color: var(--pink);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-icon::before, .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon::before {
+            width: 2px;
+            height: 18px;
+            left: 11px;
+            top: 3px;
+        }
+
+        .faq-icon::after {
+            width: 18px;
+            height: 2px;
+            top: 11px;
+            left: 3px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(135deg);
+        }
+
+        .faq-item.active .faq-icon::before, .faq-item.active .faq-icon::after {
+            background: var(--pink);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            transform: translateY(0);
+            padding: 0 32px 32px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .faq .section-title {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* =============================================
            CTA
         ============================================= */
         .cta {
-            padding: 140px 24px;
+            padding: 100px 24px;
             position: relative;
             z-index: 2;
         }
@@ -886,7 +1070,7 @@
            FOOTER
         ============================================= */
         .footer {
-            padding: 100px 24px 40px;
+            padding: 80px 24px 40px;
             position: relative;
             z-index: 2;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -1104,31 +1288,37 @@
                 <div class="feature-icon">📸</div>
                 <h3>Smart Auto-Scan</h3>
                 <p>Point your camera and SharpScan automatically detects document edges for perfectly cropped scans.</p>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--pink); filter: blur(60px); opacity: 0.1; pointer-events: none;"></div>
             </div>
             <div class="feature-card glass">
                 <div class="feature-icon">🔤</div>
                 <h3>AI-Powered OCR</h3>
                 <p>Extract text from any image or scan in seconds. Supports 50+ languages with 99% accuracy.</p>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--purple); filter: blur(60px); opacity: 0.1; pointer-events: none;"></div>
             </div>
             <div class="feature-card glass">
                 <div class="feature-icon">✍️</div>
                 <h3>Digital Signatures</h3>
                 <p>Sign contracts and forms digitally. Create, save, and reuse multiple signatures effortlessly.</p>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--blue); filter: blur(60px); opacity: 0.1; pointer-events: none;"></div>
             </div>
             <div class="feature-card glass">
                 <div class="feature-icon">📑</div>
                 <h3>PDF Tools Suite</h3>
                 <p>Merge, compress, split, reorder pages, add watermarks — your complete PDF toolkit.</p>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--teal); filter: blur(60px); opacity: 0.1; pointer-events: none;"></div>
             </div>
             <div class="feature-card glass">
                 <div class="feature-icon">📁</div>
                 <h3>Smart Organization</h3>
                 <p>Create folders, add tags, and search using OCR-powered intelligent text search.</p>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--green); filter: blur(60px); opacity: 0.1; pointer-events: none;"></div>
             </div>
             <div class="feature-card glass">
-                <div class="feature-icon">☁️</div>
-                <h3>Cloud Sync</h3>
-                <p>Access your scans anywhere. Sync across devices seamlessly with cloud backup.</p>
+                <div class="feature-icon">🔍</div>
+                <h3>Advanced Search</h3>
+                <p>Find any document instantly. Search by title or use AI to find specific text inside your scans.</p>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--indigo); filter: blur(60px); opacity: 0.1; pointer-events: none;"></div>
             </div>
         </div>
     </section>
@@ -1209,40 +1399,22 @@
             <h2 class="section-title">Loved by Users</h2>
             <p class="section-desc">See what our community is saying about SharpScan.</p>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card glass">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Best scanner app I've ever used! The OCR is incredibly accurate, and the PDF tools save me hours every week."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JD</div>
-                    <div class="author-info">
-                        <h5>John D.</h5>
-                        <span>Business Professional</span>
-                    </div>
-                </div>
+        <div class="testimonials-slider">
+            <div id="testimonials-track" class="testimonials-track">
+                <!-- Dynamically generated by JS -->
             </div>
-            <div class="testimonial-card glass">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"As a student, I scan all my lecture notes. The batch mode is a game-changer! Fast, clean scans every time."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">SM</div>
-                    <div class="author-info">
-                        <h5>Sarah M.</h5>
-                        <span>University Student</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card glass">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Finally, an app that does everything! Sign contracts, extract text, merge PDFs — all in one beautiful app."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MK</div>
-                    <div class="author-info">
-                        <h5>Mike K.</h5>
-                        <span>Freelance Designer</span>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </section>
+    
+    <!-- Q&A Section -->
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <div class="section-badge glass-pill">🙋‍♂️ Q&A</div>
+            <h2 class="section-title">Common Questions</h2>
+            <p class="section-desc">Everything you need to know about SharpScan to get started.</p>
+        </div>
+        <div id="faq-list" class="faq-list">
+            <!-- Dynamically generated by JS -->
         </div>
     </section>
 
@@ -1374,8 +1546,146 @@
                 }
             });
         }, { threshold: 0.5 });
-
         counters.forEach(counter => counterObserver.observe(counter));
+
+        // Testimonials Generator
+        const testimonialPool = [
+            { 
+                name: "John D.", 
+                role: "CEO & Founder", 
+                text: "SharpScan has completely transformed our office's digital filing system. The speed at which it processes high-resolution documents is unmatched, and the OCR accuracy even with handwritten notes is truly impressive. It's the only scanner app we trust for our sensitive corporate documents.", 
+                color: "var(--blue)" 
+            },
+            { 
+                name: "Sarah M.", 
+                role: "University Student", 
+                text: "I've tried every scanner app out there, and none come close to SharpScan. As a university student, I need to scan hundreds of pages of textbooks and my own messy lecture notes. The batch mode handles everything flawlessly, and the automatic edge detection is a life-saver for late-night study sessions.", 
+                color: "var(--purple)" 
+            },
+            { 
+                name: "Elena R.", 
+                role: "Corporate Lawyer", 
+                text: "In the legal profession, document clarity and security are non-negotiable. SharpScan provides crystal-clear PDFs every time, and the built-in digital signature tool has allowed me to close contracts while traveling without ever needing a printer. Highly recommended for any serious professional.", 
+                color: "var(--indigo)" 
+            },
+            { 
+                name: "Mike K.", 
+                role: "Freelance Designer", 
+                text: "The color reproduction in SharpScan is fantastic. I use it to digitize my physical sketches and mood boards, and they look just as vibrant on screen as they do on paper. The suite of PDF tools, like merging and compression, makes sharing my updated portfolio with clients incredibly easy and fast.", 
+                color: "var(--pink)" 
+            },
+            { 
+                name: "Dr. Wei Chen", 
+                role: "Senior Researcher", 
+                text: "Archiving old research papers used to be a daunting task until I found SharpScan. The ability to export in various formats and the high-quality PDF compression allows me to save gigabytes of space while keeping my entire archive easily searchable. It's a fundamental tool for my ongoing academic work.", 
+                color: "var(--orange)" 
+            },
+            { 
+                name: "David L.", 
+                role: "Real Estate Agent", 
+                text: "In real estate, timing is everything. Being able to scan, sign, and send property disclosure documents directly from my phone while at a showing has given me a competitive edge. The folder organization is intuitive and keeps all my different listings perfectly organized and ready for clients.", 
+                color: "var(--teal)" 
+            },
+            { 
+                name: "Aisha P.", 
+                role: "Content Creator", 
+                text: "The OCR feature in SharpScan is like magic! I can scan a physical book and instantly have the text ready to be used in my content. Plus, the new warm 'Fiery Rose' theme looks absolutely stunning—it's rare to find an app that is both this powerful and this visually beautiful.", 
+                color: "var(--pink)" 
+            },
+            { 
+                name: "Sofie T.", 
+                role: "Tech Entrepreneur", 
+                text: "What I appreciate most about SharpScan is the attention to detail in the user interface. It's incredibly fast, reliable, and it just works every single time I need it. As a startup founder, I value efficiency above all else, and this app delivers it in an extremely premium package.", 
+                color: "var(--blue)" 
+            },
+            { 
+                name: "Robert B.", 
+                role: "Architect", 
+                text: "Scanning blueprint drafts and site sketches requires a high level of detail preservation. SharpScan excels here, capturing even the finest pencil lines clearly. The export features ensure my designs are always professional when I share them with the engineering team for review.", 
+                color: "var(--indigo)" 
+            },
+            { 
+                name: "Lily W.", 
+                role: "Senior Teacher", 
+                text: "From scanning student tests for grading to creating digital handouts from physical books, SharpScan is my daily companion in the classroom. It's simplified my administrative workload significantly, allowing me more time to focus on my students' learning and development.", 
+                color: "var(--purple)" 
+            }
+        ];
+
+        function initTestimonials() {
+            const track = document.getElementById('testimonials-track');
+            if (!track) return;
+            
+            const itemsToGenerate = 100;
+            let html = '';
+            
+            for (let i = 0; i < itemsToGenerate; i++) {
+                const data = testimonialPool[i % testimonialPool.length];
+                html += `
+                    <div class="testimonial-card glass">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">${data.text}</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: ${data.color}">${data.name.split(' ').filter(n=>n.includes('.')).length ? data.name.split(' ').map(n=>n[0]).join('') : data.name.split(' ').map(n=>n[0]).join('')}</div>
+                            <div class="author-info">
+                                <h5>${data.name} #${i+1}</h5>
+                                <span>${data.role}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            track.innerHTML = html + html;
+            track.style.animationDuration = '600s'; // Slower for longer text to be readable
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTestimonials();
+            initFAQ();
+        });
+
+        // FAQ Logic
+        const faqData = [
+            { q: "Is SharpScan free to use?", a: "Yes, SharpScan is free to download and use for basic scanning. For power users, we offer a Subscription plan that unlocks advanced AI features and unlimited OCR." },
+            { q: "How does the AI-powered OCR work?", a: "Our advanced AI engine analyzes your scans to extract text with 99%+ accuracy. It currently supports multiple languages and makes your entire document library searchable by content." },
+            { q: "Is my data secure?", a: "Extremely. Your documents are stored locally on your device using encrypted storage. We don't have access to your private files unless you explicitly choose to share them." },
+            { q: "What PDF tools are included?", a: "SharpScan is a complete suite. You can Merge multiple files, Compress PDFs to save space, Extract specific pages, Reorder pages, and Add custom watermarks." },
+            { q: "Can I sign documents on my phone?", a: "Yes. Our built-in Sign Editor allows you to create, save, and place digital signatures on any PDF document in seconds—perfect for contracts and forms." },
+            { q: "Does the app support Batch Scanning?", a: "Absolutely. You can capture dozens of pages in one go, and the app will automatically detect edges and enhance each page for a professional result." },
+            { q: "Can I scan QR codes and Barcodes?", a: "Yes, SharpScan includes a dedicated high-speed QR and Barcode scanner, so you don't need a separate app for daily scanning tasks." },
+            { q: "Does it work without an internet connection?", a: "Scanning, image enhancement, and PDF management work completely offline. AI-powered features like OCR and Cloud Profile sync require a connection." },
+            { q: "How do I search for a specific document?", a: "You can use our Advanced Search to find files by title or use the OCR-powered search to find specific words inside your scanned documents." },
+            { q: "How can I contact the support team?", a: "For any assistance or feedback, please reach out to us at publisher.perfectworld.studio@gmail.com. We're here to help!" }
+        ];
+
+        function initFAQ() {
+            const list = document.getElementById('faq-list');
+            if (!list) return;
+            
+            faqData.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.className = 'faq-item';
+                div.innerHTML = `
+                    <div class="faq-question">
+                        <h3>${item.q}</h3>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${item.a}</p>
+                    </div>
+                `;
+                
+                div.querySelector('.faq-question').addEventListener('click', () => {
+                    const isActive = div.classList.contains('active');
+                    // Close others
+                    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                    if (!isActive) div.classList.add('active');
+                });
+                
+                list.appendChild(div);
+            });
+        }
     </script>
 </body>
 </html>
