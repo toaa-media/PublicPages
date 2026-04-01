@@ -6,34 +6,31 @@
     <title>Perfect World Studio - AI-Powered Android Apps</title>
     <meta name="description" content="High-speed WiFi file sharing, intelligent OCR scanning, and secure privacy vaults. Discover the suite of AI-powered tools from Perfect World Studio.">
     
-    <!-- Fonts: Outfit (Headings) + Inter (Body) -->
+    <!-- Fonts: Outfit (Headings) + Plus Jakarta Sans (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         :root {
-            /* Palette: Dark Aurora */
-            --bg-void: #020617;
-            --bg-deep: #0f172a;
-            --primary: #F59E0B;   /* Amber/Orange */
-            --primary-glow: rgba(245, 158, 11, 0.5);
-            --secondary: #E11D48; /* Rose/Red */
-            --accent: #8B5CF6;    /* Violet/Purple */
+            --bg: #030305;
+            --bg-grid: rgba(255, 255, 255, 0.02);
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-hover: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
             
-            /* Text */
-            --text-main: #F8FAFC;
-            --text-muted: #94A3B8;
-            --text-dark: #0F172A;
-
-            /* Glassmorphism */
-            --glass-surface: rgba(30, 20, 45, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-highlight: rgba(255, 255, 255, 0.05);
-            --blur-amount: 16px;
+            --primary: #00F0FF;
+            --primary-glow: rgba(0, 240, 255, 0.2);
+            --secondary: #7000FF;
+            --accent: #FF0055;
+            
+            --text-main: #FFFFFF;
+            --text-muted: #A1A1AA;
+            --text-dark: #71717A;
 
             /* Spacing & Radius */
             --radius-lg: 24px;
@@ -45,14 +42,20 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-void);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            background-image: 
+                linear-gradient(var(--bg-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center top;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .nav-logo {
+        h1, h2, h3, h4, .nav-logo {
             font-family: 'Outfit', sans-serif;
         }
 
@@ -60,21 +63,32 @@
         ul { list-style: none; }
         img { display: block; max-width: 100%; }
 
-        /* ===== Background Aurora ===== */
-        .aurora-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 15% 50%, rgba(245, 158, 11, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(225, 29, 72, 0.15), transparent 25%);
-            filter: blur(60px);
-            opacity: 0.8;
-            animation: aurora-pulse 10s ease-in-out infinite alternate;
+        /* ===== Global Utilities ===== */
+        .glass {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
         }
-        @keyframes aurora-pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.1); opacity: 0.6; }
+        .glass-pill {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #0088FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* ===== Layout ===== */
@@ -85,83 +99,149 @@
         }
 
         /* ===== Navigation (Floating Island) ===== */
-        nav {
+        .navbar {
             position: fixed;
             top: 24px; left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 48px);
-            max-width: var(--container-width);
+            max-width: 1000px;
             padding: 12px 24px;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-pill);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            background: rgba(3, 3, 5, 0.8) !important;
+            border-color: var(--border-hover) !important;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 800;
+            font-size: 1.25rem;
             letter-spacing: -0.02em;
         }
 
         .nav-avatar {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.2);
+            width: 32px; height: 32px;
+            border-radius: 8px;
             object-fit: cover;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
             gap: 32px;
+            align-items: center;
         }
         
-        .nav-menu a {
-            font-size: 0.95rem;
+        .nav-links a {
+            font-size: 0.9rem;
             color: var(--text-muted);
             font-weight: 500;
+            transition: color 0.2s;
         }
         
-        .nav-menu a:hover { color: var(--text-main); }
+        .nav-links a:hover { color: var(--text-main); }
 
-        .btn-cta {
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 200% auto;
-            color: white;
-            padding: 10px 24px;
-            border-radius: var(--radius-pill);
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
+        /* Buttons */
+        .btn {
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            transition: all 0.4s ease;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            border: none;
         }
 
-        .btn-cta:hover {
-            background-position: right center;
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+            background: #E4E4E7;
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            z-index: -1;
+            filter: blur(12px);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .btn-glow:hover::before {
+            opacity: 0.8;
+            filter: blur(16px);
         }
 
         /* ===== Hero Section ===== */
         .hero {
-            padding-top: 160px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 140px;
             padding-bottom: 80px;
-            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-blob {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(112, 0, 255, 0.05) 40%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            border-radius: 50%;
+            animation: breathe 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        .hero-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            z-index: 2;
         }
 
         .badge {
@@ -169,90 +249,80 @@
             align-items: center;
             gap: 8px;
             padding: 6px 16px;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            color: var(--primary);
             border-radius: 100px;
-            font-size: 0.85rem;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--primary);
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 32px;
-            animation: fade-in-up 0.8s ease-out;
-        }
-
-        .badge-dot {
-            width: 8px; height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--primary);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 800;
             line-height: 1.1;
+            letter-spacing: -0.03em;
             margin-bottom: 24px;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fade-in-up 0.8s ease-out 0.1s backwards;
-            max-width: 800px;
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 660px;
             margin-bottom: 40px;
-            animation: fade-in-up 0.8s ease-out 0.2s backwards;
+            line-height: 1.7;
         }
 
         .hero-actions {
             display: flex;
             gap: 16px;
-            animation: fade-in-up 0.8s ease-out 0.3s backwards;
-        }
-
-        .btn-outline {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            padding: 10px 24px;
-            border-radius: var(--radius-pill);
-            font-weight: 600;
-            display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline:hover { 
-            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
-            transform: translateY(-2px);
+            justify-content: center;
         }
 
-        /* Hero Image/Banner */
+        /* Hero Banner adaptation */
         .hero-banner {
             margin-top: 64px;
             width: 100%;
+            max-width: 1000px;
             border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 80px -20px rgba(0,0,0,0.5);
-            border: 1px solid var(--glass-border);
             position: relative;
-            animation: fade-in-up 1s ease-out 0.4s backwards;
+            z-index: 5;
+            animation: bannerBob 8s ease-in-out infinite;
         }
 
-        .hero-banner img { width: 100%; height: auto; }
-        
-        .hero-banner::after {
-            content: '';
+        .hero-banner img { 
+            width: 100%; 
+            height: auto;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 240, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-glow {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, var(--bg-void) 100%);
+            width: 80%; height: 80%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.2) 0%, rgba(112, 0, 255, 0.1) 40%, transparent 70%);
+            filter: blur(60px);
+            border-radius: 50%;
+            animation: glowPulse 4s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes bannerBob {
+            0%, 100% { transform: translateY(0px);   }
+            50%       { transform: translateY(-12px);  }
+        }
+        @keyframes glowPulse {
+            0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+            100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
         }
 
         /* ===== Stats Grid ===== */
@@ -267,16 +337,21 @@
         }
 
         .stat-card {
-            background: var(--glass-surface);
-            backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
             padding: 24px;
             border-radius: 20px;
             text-align: center;
             transition: transform 0.3s;
         }
         
-        .stat-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+        .stat-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
+        }
 
         .stat-num {
             font-size: 2.5rem;
@@ -284,6 +359,10 @@
             color: var(--primary);
             margin-bottom: 4px;
             font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #0088FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-label {
@@ -292,20 +371,41 @@
             font-weight: 500;
         }
 
-        /* ===== Apps Section ===== */
+        /* ===== Section Header ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin: 80px 0 16px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
-
         .section-desc {
-            text-align: center;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto 60px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
+        /* ===== Apps Section ===== */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -314,8 +414,10 @@
         }
 
         .app-card {
-            background: var(--glass-surface);
-            border: 1px solid var(--glass-border);
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
             border-radius: 24px;
             padding: 32px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -325,49 +427,32 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            z-index: 1;
         }
 
         .app-card:hover {
-            animation-play-state: paused;
-            transform: translateY(-16px) scale(1.03);
-            border-color: var(--primary);
-            box-shadow: 0 30px 60px -15px rgba(245, 158, 11, 0.25);
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 240, 255, 0.05);
         }
 
-        @keyframes card-idle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .app-grid article:nth-child(1) { animation: card-idle 8s ease-in-out infinite; }
-        .app-grid article:nth-child(2) { animation: card-idle 8s ease-in-out infinite 2s; }
-        .app-grid article:nth-child(3) { animation: card-idle 8s ease-in-out infinite 4s; }
-        .app-grid article:nth-child(4) { animation: card-idle 8s ease-in-out infinite 6s; }
-
-        /* Hover glow effect */
-        .app-card::before {
-            content: '';
+        .app-card-glow {
             position: absolute;
-            top: 0; left: 0; right: 0; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(245, 158, 11, 0.15), transparent 40%);
-            opacity: 0;
-            transition: 0.4s;
-            z-index: 0;
-            pointer-events: none;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            filter: blur(20px);
+            border-radius: 50%;
+            z-index: -1;
+            transition: all 0.4s;
         }
-        .app-card:hover::before { opacity: 1; }
-
-        /* Shine effect on hover */
-        .app-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -150%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-            transform: skewX(-25deg);
-            transition: 0.75s;
-            pointer-events: none;
+        .app-card:hover .app-card-glow {
+            transform: scale(1.5);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, transparent 70%);
         }
-        .app-card:hover::after { left: 150%; }
 
         .app-icon {
             width: 80px; height: 80px;
@@ -389,23 +474,11 @@
             font-size: 1.5rem;
             color: rgba(255,255,255,0.5);
             border: 2px dashed rgba(255,255,255,0.1);
-            animation: rotate-placeholder 10s linear infinite;
-        }
-        @keyframes rotate-placeholder {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .app-icon-placeholder i {
-            animation: counter-rotate-placeholder 10s linear infinite;
-        }
-        @keyframes counter-rotate-placeholder {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
         }
 
         .app-title { font-size: 1.5rem; margin-bottom: 8px; z-index: 1; }
         .app-badge { 
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(225, 29, 72, 0.1)); 
+            background: rgba(0, 240, 255, 0.08); 
             color: var(--primary); 
             padding: 6px 14px; 
             border-radius: 100px; 
@@ -416,23 +489,8 @@
             letter-spacing: 0.05em;
             z-index: 1;
             position: relative;
-            overflow: hidden;
             display: inline-block;
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        @keyframes badge-glow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        .app-badge::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            box-shadow: 0 0 10px var(--primary);
-            border-radius: 100px;
-            animation: badge-glow 3s infinite;
-            opacity: 0.2;
+            border: 1px solid rgba(0, 240, 255, 0.2);
         }
 
         .app-desc { 
@@ -467,9 +525,9 @@
             justify-content: center;
             gap: 8px;
             color: var(--primary);
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(225, 29, 72, 0.02));
-            border: 1px solid rgba(245, 158, 11, 0.1);
-            padding: 8px 16px;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            padding: 10px 16px;
             border-radius: 12px;
             font-weight: 600;
             font-size: 0.85rem;
@@ -482,7 +540,7 @@
             color: white;
             border-color: transparent;
             transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 240, 255, 0.3);
         }
 
         .app-link-row [data-lucide] {
@@ -573,7 +631,7 @@
         }
 
         .animate-scroll {
-            animation: scroll-reviews 40s linear infinite;
+            animation: scroll-reviews 300s linear infinite;
         }
 
         .animate-scroll:hover {
@@ -581,11 +639,12 @@
         }
 
         .review-card {
-            background: var(--glass-surface);
-            backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
             padding: 28px;
-            border-radius: 20px;
+            border-radius: 24px;
             width: 380px;
             flex-shrink: 0;
             transition: all 0.4s ease;
@@ -595,8 +654,8 @@
 
         .review-card:hover {
             transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
         }
 
         .review-card .quote-icon {
@@ -609,7 +668,7 @@
 
         /* ===== Q&A Section ===== */
         .qa-section {
-            padding: 80px 0;
+            padding: 120px 0;
             position: relative;
         }
 
@@ -622,23 +681,23 @@
         }
 
         .qa-item {
-            background: var(--glass-surface);
-            backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .qa-item:hover {
-            border-color: rgba(245, 158, 11, 0.3);
-            background: rgba(245, 158, 11, 0.05);
+            border-color: rgba(0, 240, 255, 0.3);
+            background: var(--surface-hover);
         }
 
         .qa-item.active {
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
-            background: rgba(245, 158, 11, 0.08);
+            background: rgba(0, 240, 255, 0.08);
         }
 
         .qa-question {
@@ -672,12 +731,12 @@
             max-height: 0;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(0, 0, 0, 0.2);
+            background: transparent;
         }
 
         .qa-item.active .qa-answer {
             max-height: 500px;
-            border-top: 1px solid var(--glass-border);
+            border-top: 1px solid var(--border);
         }
 
         .qa-answer-content {
@@ -762,50 +821,295 @@
             background: linear-gradient(to left, var(--bg-void), transparent);
         }
 
+        /* ===== App & Review Specific Styles added to preserve visual layout ===== */
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .reviewer-meta h4 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .reviewer-meta span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .review-content {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 4px;
+            color: #FBBF24;
+            margin-top: 16px;
+        }
+
+        .reviews-mask {
+            position: relative;
+        }
+
+        .reviews-mask::before,
+        .reviews-mask::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .reviews-mask::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg), transparent);
+        }
+
+        .reviews-mask::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg), transparent);
+        }
+
+        /* Responsive Layouts */
+        @media (max-width: 1024px) {
+            .app-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 0;  padding-top: 80px;}
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+            .app-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .cta-box { border-radius: 32px; padding: 32px 20px; }
+        }
+
+        /* ===== CTA Box ===== */
+        .cta-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .cta-box {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 48px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -10%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(112, 0, 255, 0.05) 50%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 540px;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .cta-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-visual {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .qr-card {
+            background: #fff;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-card img {
+            width: 140px;
+            height: 140px;
+            border-radius: 8px;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 24px;
+                border-radius: 32px;
+            }
+            .cta-content { margin-bottom: 40px; }
+            .cta-visual { justify-content: center; flex-direction: column; }
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 0 40px;
+            background: linear-gradient(to bottom, var(--bg) 0%, #010102 100%);
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="aurora-bg"></div>
-
     <!-- Nav -->
-    <nav>
+    <nav class="navbar glass-pill" id="navbar">
         <a href="#" class="nav-brand">
             <img src="https://toaa-media.github.io/PublicPages/perfectworld/avatar.jpg" alt="Logo" class="nav-avatar">
             Perfect World Studio
         </a>
-        <div class="nav-menu">
-            <a href="#apps">Apps</a>
-            <a href="#features">Features</a>
-        </div>
-        <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" target="_blank" class="btn-cta">
+        <ul class="nav-links">
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" target="_blank" class="btn btn-glow" style="padding: 10px 20px; font-size: 0.9rem;">
             <span>Google Play</span>
             <i data-lucide="external-link" width="16"></i>
         </a>
     </nav>
 
     <!-- Hero -->
-    <section class="hero container">
-        <div class="badge">
-            <span class="badge-dot"></span>
-            Available on Google Play
-        </div>
-        <h1>AI-Powered Apps for the Future of Productivity</h1>
-        <p>Revolutionize your mobile experience with blazingly fast file sharing, intelligent OCR scanning, and military-grade privacy. Precision-engineered AI at your fingertips.</p>
-        
-        <div class="hero-actions">
-            <a href="#apps" class="btn-cta">
-                <i data-lucide="zap" width="18"></i>
-                Explore Apps
-            </a>
-            <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" target="_blank" class="btn-outline">
-                <i data-lucide="play" width="18"></i>
-                Play Store
-            </a>
-        </div>
+    <section class="hero">
+        <div class="hero-blob"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">
+                    🚀 Available on Google Play
+                </div>
+                <h1>AI-Powered Apps for the<br><span class="text-gradient-primary">Future of Productivity</span></h1>
+                <p>Revolutionize your mobile experience with blazingly fast file sharing, intelligent OCR scanning, and military-grade privacy. Precision-engineered AI at your fingertips.</p>
+                
+                <div class="hero-actions">
+                    <a href="#apps" class="btn btn-glow">
+                        <i data-lucide="zap" width="18"></i>
+                        Explore Apps
+                    </a>
+                    <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" target="_blank" class="btn glass-pill">
+                        <i data-lucide="play" width="18"></i>
+                        Play Store
+                    </a>
+                </div>
+            </div>
 
-        <div class="hero-banner">
-            <img src="https://toaa-media.github.io/PublicPages/perfectworld/header.jpg" alt="Perfect World Studio Showcase">
+            <div class="hero-banner">
+                <div class="banner-glow"></div>
+                <img src="https://toaa-media.github.io/PublicPages/perfectworld/header.jpg" alt="Perfect World Studio Showcase">
+            </div>
         </div>
     </section>
 
@@ -832,9 +1136,12 @@
     </div>
 
     <!-- Apps -->
-    <section id="apps" class="container">
-        <h2 class="section-title">Our Applications</h2>
-        <p class="section-desc">Each app is crafted with attention to detail, performance, and user experience.</p>
+    <section id="apps" class="container" style="padding-top: 140px;">
+        <div class="section-header">
+            <div class="section-badge glass-pill">⚡ Our Portfolio</div>
+            <h2 class="section-title">Our Applications</h2>
+            <p class="section-desc">Each app is crafted with attention to detail, performance, and user experience.</p>
+        </div>
         
         <div class="app-grid">
             <!-- SharpScan -->
@@ -861,6 +1168,7 @@
                         View on Website <i data-lucide="external-link" width="18"></i>
                     </div>
                 </div>
+                <div class="app-card-glow"></div>
             </article>
 
             <!-- SharpVault -->
@@ -887,6 +1195,7 @@
                         View on Website <i data-lucide="external-link" width="18"></i>
                     </div>
                 </div>
+                <div class="app-card-glow"></div>
             </article>
 
             <!-- SharpTransfer -->
@@ -913,6 +1222,7 @@
                         View on Website <i data-lucide="external-link" width="18"></i>
                     </div>
                 </div>
+                <div class="app-card-glow"></div>
             </article>
 
             <!-- Coming Soon -->
@@ -934,170 +1244,18 @@
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="reviews-container">
+    <section id="reviews" class="reviews-container" style="padding-top: 140px; padding-bottom: 80px;">
         <div class="container">
-            <h2 class="section-title">User Feedback</h2>
-            <p class="section-desc">Join thousands of satisfied users who have transformed their mobile productivity with our AI tools.</p>
+            <div class="section-header">
+                <div class="section-badge glass-pill">💬 User Testimonials</div>
+                <h2 class="section-title">User Feedback</h2>
+                <p class="section-desc">Join thousands of satisfied users who have transformed their mobile productivity with our AI tools.</p>
+            </div>
         </div>
 
         <div class="reviews-mask">
-            <div class="reviews-track animate-scroll">
-                <!-- Review 1 -->
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">JD</div>
-                        <div class="reviewer-meta">
-                            <h4>James Dalton</h4>
-                            <span>Graphic Designer</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"SharpScan's OCR is remarkably accurate. It has saved me hours of manual typing. The interface is sleek and very responsive."</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <!-- Review 2 -->
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">SL</div>
-                        <div class="reviewer-meta">
-                            <h4>Sarah Lin</h4>
-                            <span>Software Engineer</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"SharpVault gives me the peace of mind I need. The encryption is top-notch and the 'fake vault' feature is pure genius!"</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <!-- Review 3 -->
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--accent), var(--primary));">MK</div>
-                        <div class="reviewer-meta">
-                            <h4>Marcus Knight</h4>
-                            <span>Digital Nomad</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"SharpTransfer is a lifesaver. Moving 4K videos between my phone and tablet is instant. No internet required!"</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <!-- Review 4 -->
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, #10B981, #3B82F6);">EW</div>
-                        <div class="reviewer-meta">
-                            <h4>Elena Wong</h4>
-                            <span>Project Manager</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"The attention to detail in these apps is incredible. Perfect World Studio really knows how to build premium tools."</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <!-- Duplicate for seamless scroll -->
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">JD</div>
-                        <div class="reviewer-meta">
-                            <h4>James Dalton</h4>
-                            <span>Graphic Designer</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"SharpScan's OCR is remarkably accurate. It has saved me hours of manual typing. The interface is sleek and very responsive."</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">SL</div>
-                        <div class="reviewer-meta">
-                            <h4>Sarah Lin</h4>
-                            <span>Software Engineer</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"SharpVault gives me the peace of mind I need. The encryption is top-notch and the 'fake vault' feature is pure genius!"</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, var(--accent), var(--primary));">MK</div>
-                        <div class="reviewer-meta">
-                            <h4>Marcus Knight</h4>
-                            <span>Digital Nomad</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"SharpTransfer is a lifesaver. Moving 4K videos between my phone and tablet is instant. No internet required!"</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
-
-                <article class="review-card">
-                    <i data-lucide="quote" class="quote-icon" width="40"></i>
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar" style="background: linear-gradient(135deg, #10B981, #3B82F6);">EW</div>
-                        <div class="reviewer-meta">
-                            <h4>Elena Wong</h4>
-                            <span>Project Manager</span>
-                        </div>
-                    </div>
-                    <p class="review-content">"The attention to detail in these apps is incredible. Perfect World Studio really knows how to build premium tools."</p>
-                    <div class="review-stars">
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                        <i data-lucide="star" fill="currentColor" width="14"></i>
-                    </div>
-                </article>
+            <div class="reviews-track animate-scroll" id="reviewsContainer">
+                <!-- 50 Reviews injected dynamically by JS -->
             </div>
         </div>
     </section>
@@ -1105,8 +1263,11 @@
     <!-- Q&A Section -->
     <section id="faq" class="qa-section">
         <div class="container">
-            <h2 class="section-title">Common Questions</h2>
-            <p class="section-desc">Find quick answers to everything you need to know about our studio and apps.</p>
+            <div class="section-header">
+                <div class="section-badge glass-pill">❓ FAQ</div>
+                <h2 class="section-title">Common Questions</h2>
+                <p class="section-desc">Find quick answers to everything you need to know about our studio and apps.</p>
+            </div>
             
             <div class="qa-grid">
                 <!-- Q1 -->
@@ -1255,22 +1416,95 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- CTA Section -->
+    <section class="cta-section" style="padding-top: 140px; padding-bottom: 100px;">
         <div class="container">
-            <a href="#" class="footer-brand">
-                <img src="https://toaa-media.github.io/PublicPages/perfectworld/avatar.jpg" alt="Logo" class="nav-avatar">
-                Perfect World Studio
-            </a>
-            
+            <div class="cta-box">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to upgrade your workflow?</h2>
+                    <p class="cta-desc">Join millions of users who trust Perfect World Studio apps. Experience precision, privacy, and speed like never before.</p>
+                    <a href="https://play.google.com/store/apps/dev?id=4806521470275352109" class="btn btn-glow">
+                        <i data-lucide="play" width="18"></i> Developer Page
+                    </a>
+                </div>
+                <div class="cta-visual">
+                    <div class="qr-card">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://play.google.com/store/apps/dev?id=4806521470275352109" alt="QR Code to Play Store">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer style="margin-top: 80px; padding-top: 100px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-brand">
+                        <img src="https://toaa-media.github.io/PublicPages/perfectworld/avatar.jpg" alt="Logo" class="nav-avatar">
+                        Perfect World Studio
+                    </a>
+                    <p class="footer-desc">Crafting high-performance utility tools and AI-powered productivity apps for the modern user.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Top Apps</h4>
+                    <ul>
+                        <li><a href="https://toaa-media.github.io/PublicPages/smartscan/landing-page.html">SharpScan</a></li>
+                        <li><a href="https://toaa-media.github.io/PublicPages/sharp-vault/landing-page.html">SharpVault</a></li>
+                        <li><a href="https://toaa-media.github.io/PublicPages/sharp-transfer/landing-page.html">SharpTransfer</a></li>
+                    </ul>
+                </div>
 
-            <p class="copyright">© 2025 Perfect World Studio. All rights reserved.</p>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="mailto:support@perfectworld.studio">Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Perfect World Studio. All rights reserved.</p>
+                <p>Designed with precision.</p>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Initialize Icons
         lucide.createIcons();
+
+        // Navbar Scroll State
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
         // QA Accordion Toggle
         function toggleQA(element) {
@@ -1280,16 +1514,20 @@
             // Close all other QA items
             document.querySelectorAll('.qa-item').forEach(otherItem => {
                 otherItem.classList.remove('active');
+                const content = otherItem.querySelector('.qa-answer');
+                content.style.maxHeight = null;
                 otherItem.querySelector('.qa-question').setAttribute('aria-expanded', 'false');
             });
 
             if (!isActive) {
                 item.classList.add('active');
+                const content = item.querySelector('.qa-answer');
+                content.style.maxHeight = content.scrollHeight + "px";
                 element.setAttribute('aria-expanded', 'true');
             }
         }
 
-        // Add keyboard support for QA
+        // Keyboard Support for QA
         document.querySelectorAll('.qa-question').forEach(q => {
             q.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -1299,16 +1537,47 @@
             });
         });
 
-        // Simple Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Add staggered animation delays for grid items
+                    if(entry.target.classList.contains('stat-card') || entry.target.classList.contains('app-card')) {
+                        const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+                        entry.target.style.transitionDelay = `${index * 0.1}s`;
+                    }
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Only animate once
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
+        // Elements to animate
+        const animatedElements = document.querySelectorAll(`
+            .section-header, 
+            .stat-card, 
+            .app-card, 
+            .qa-item, 
+            .cta-box, 
+            .review-card
+        `);
+
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            observer.observe(el);
+        });
+
+        // Cursor Glow Effect for Cards
         document.querySelectorAll('.app-card, .review-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -1319,12 +1588,119 @@
             });
         });
 
-        document.querySelectorAll('.app-card, .stat-card, .review-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 0.1}s`;
-            observer.observe(el);
-        });
+        // Dynamic Reviews Generation
+        const firstNames = ["James", "Sarah", "Marcus", "Elena", "David", "Amanda", "Thomas", "Linda", "Kevin", "Michelle", "Chris", "Jessica", "Alex", "Emily", "Daniel", "Laura", "Ryan", "Emma", "Michael", "Sophia", "Oliver", "Isabella", "William", "Mia", "James", "Charlotte", "Benjamin", "Amelia", "Lucas", "Harper"];
+        const lastNames = ["Dalton", "Lin", "Knight", "Wong", "Chen", "Royce", "Bell", "Tran", "Hart", "Lo", "Evans", "Miller", "Rodriguez", "Kim", "O'Connor", "Patel", "Gomez", "Smith", "Johnson", "Davis", "Brown", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin"];
+        const roles = ["Graphic Designer", "Software Engineer", "Digital Nomad", "Project Manager", "Content Creator", "Freelancer", "Photographer", "Student", "Business Owner", "Privacy Advocate", "UI Designer", "Data Analyst", "Consultant", "Entrepreneur", "Researcher", "Marketing Director", "Sales Lead", "Artist"];
+        
+        const reviewsVault = [
+            "SharpVault gives me the peace of mind I need. The encryption is top-notch and the 'fake vault' feature is pure genius!",
+            "Completely hides my private documents. Knowing it uses AES encryption helps me sleep at night.",
+            "I've audited many vault apps. SharpVault is one of the few that actually delivers on its security promises.",
+            "The camouflage app icon feature is brilliant. No one even knows I have a vault installed on my phone.",
+            "Incredible security features. I love the break-in alerts that take a photo of anyone trying to guess my pin.",
+            "Clean UI, zero ads, and perfect functionality. SharpVault is the absolute standard for privacy apps.",
+            "I moved all my sensitive client files here. The biometric fingerprint unlock makes it fast and secure.",
+            "The best photo hider I've ever used. It doesn't compress my images like other gallery vault apps do.",
+            "I lost my phone and was so glad I backed up my SharpVault to the cloud securely.",
+            "Simple, elegant, and secure. Everything a privacy tool in 2026 should be."
+        ];
+        
+        const reviewsScan = [
+            "SharpScan's OCR is remarkably accurate. It has saved me hours of manual typing. The interface is sleek and responsive.",
+            "Makes digitizing my notes effortless. It's the only AI scanner app I recommend to my entire team.",
+            "The OCR recognizes my cursive handwriting perfectly. It's an absolute game changer for university lectures.",
+            "Edge detection is flawless. I scan receipts all day and it gets it perfect every single time.",
+            "The PDF export quality is outstanding. It looks better than my physical $500 scanner at the office.",
+            "Incredibly fast processing. I can scan a 50-page legal document in exactly two minutes.",
+            "The AI enhancement cleans up shadows and paper wrinkles like magic. Highly, highly recommended.",
+            "I love that it works completely offline. Perfect for scanning sensitive documents on business flights.",
+            "No monthly subscriptions like the big name scanners. Just a solid, premium, one-time purchase app.",
+            "I've digitized my entire physical filing cabinet using SharpScan. A phenomenal piece of utility software."
+        ];
+        
+        const reviewsTransfer = [
+            "SharpTransfer is a lifesaver. Moving 4K videos between my phone and tablet is instant. No internet required!",
+            "I transfer massive RAW photography files daily. SharpTransfer moves gigabytes in seconds. Essential.",
+            "Cross-platform ability is what makes it superior. Windows, Mac, Android—it perfectly bridges the gap.",
+            "I used to wait hours to transfer family videos via Bluetooth. Now it takes literally just a few seconds.",
+            "The QR code pairing is so clever. I share files with clients across the desk instantly.",
+            "No cables, no cloud limits, no compression. The perfect tool for video editors and creators.",
+            "It consistently hits 150MB/s on my 5GHz local network. Mind-blowing speed.",
+            "The UI is gorgeous. It makes the mundane task of file sharing actually enjoyable.",
+            "Replaced Apple AirDrop for me entirely. Works flawlessly across all my mixed OS devices.",
+            "The best P2P transfer app. No bloated ads or tracking, just pure, unadulterated transfer speed."
+        ];
+        
+        const granients = [
+            "", 
+            "linear-gradient(135deg, var(--secondary), var(--accent))",
+            "linear-gradient(135deg, var(--accent), var(--primary))",
+            "linear-gradient(135deg, #10B981, #3B82F6)",
+            "linear-gradient(135deg, #F59E0B, #EF4444)",
+            "linear-gradient(135deg, #8B5CF6, #EC4899)",
+            "linear-gradient(135deg, #3B82F6, #8B5CF6)",
+            "linear-gradient(135deg, #10B981, #F59E0B)",
+            "linear-gradient(135deg, #6366F1, #A855F7)",
+            "linear-gradient(135deg, #EC4899, #F43F5E)"
+        ];
+
+        const reviewsContainer = document.getElementById('reviewsContainer');
+        if (reviewsContainer) {
+            let allTextPool = [...reviewsVault, ...reviewsScan, ...reviewsTransfer];
+            let reviewsHTML = '';
+            
+            // Generate 50 unique reviews
+            for(let i=0; i<50; i++) {
+                const fname = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const lname = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const role = roles[Math.floor(Math.random() * roles.length)];
+                // Ensure we cycle through or randomly pick text
+                const text = allTextPool[Math.floor(Math.random() * allTextPool.length)];
+                const bg = granients[Math.floor(Math.random() * granients.length)];
+                const initials = fname.charAt(0) + lname.charAt(0);
+                
+                // Add staggered animation delay
+                const delay = (i * 0.1).toFixed(1);
+
+                reviewsHTML += `
+                <article class="review-card" style="transition-delay: ${delay}s">
+                    <i data-lucide="quote" class="quote-icon" width="40"></i>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="${bg ? 'background: ' + bg + ';' : ''}">${initials}</div>
+                        <div class="reviewer-meta">
+                            <h4>${fname} ${lname}</h4>
+                            <span>${role}</span>
+                        </div>
+                    </div>
+                    <p class="review-content">"${text}"</p>
+                    <div class="review-stars">
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                        <i data-lucide="star" fill="currentColor" width="14"></i>
+                    </div>
+                </article>`;
+            }
+            
+            // Duplicate the generated HTML block to create a seamless infinite scroll effect
+            reviewsContainer.innerHTML = reviewsHTML + reviewsHTML;
+            
+            // Re-initialize Lucide icons for the newly injected HTML
+            lucide.createIcons();
+            
+            // Apply mousemove effect to new cards
+            document.querySelectorAll('.review-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
     </script>
 </body>
 </html>
