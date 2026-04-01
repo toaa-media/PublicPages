@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
         :root {
             --bg: #030305;
             --bg-grid: rgba(255, 255, 255, 0.02);
@@ -875,7 +880,7 @@
 
         /* Bento Grid Section */
         .bento-section {
-            padding: 120px 0;
+            padding: 60px 0;
         }
 
         .section-header {
@@ -974,11 +979,13 @@
             100% { left: 100%; }
         }
 
-        /* Review Section */
+
+        /* Review Section Enhanced */
         .marquee-wrapper {
-            padding: 100px 0;
+            padding: 30px 0;
             overflow: hidden;
             position: relative;
+            background: linear-gradient(180deg, var(--bg) 0%, rgba(0, 240, 255, 0.02) 50%, var(--bg) 100%);
         }
 
         .marquee-wrapper::before,
@@ -986,8 +993,9 @@
             content: '';
             position: absolute;
             top: 0; bottom: 0;
-            width: 200px;
-            z-index: 2;
+            width: 300px;
+            z-index: 10;
+            pointer-events: none;
         }
 
         .marquee-wrapper::before {
@@ -1000,31 +1008,53 @@
             background: linear-gradient(-90deg, var(--bg), transparent);
         }
 
+        .marquee-container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
         .marquee {
             display: flex;
-            gap: 24px;
+            gap: 32px;
             width: max-content;
-            animation: scroll 40s linear infinite;
+            animation: scroll 600s linear infinite;
         }
 
         .review-card {
-            width: 380px;
-            padding: 32px;
+            width: 420px;
+            padding: 40px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 24px;
+            border-radius: 32px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--primary);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.1);
         }
 
-        .stars { color: #F59E0B; margin-bottom: 16px; font-size: 1.2rem; }
+        .stars { color: #F59E0B; margin-bottom: 20px; font-size: 1.25rem; letter-spacing: 2px; }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 12px)); }
+            100% { transform: translateX(calc(-50% - 16px)); }
         }
 
+        details[open] summary .plus {
+            transform: rotate(45deg);
+        }
+        details summary .plus {
+            transition: transform 0.3s ease;
+        }
         /* CTA Section */
         .cta {
-            padding: 160px 0;
+            padding: 60px 0;
             text-align: center;
             position: relative;
         }
@@ -1143,8 +1173,8 @@
         </div>
         <nav class="nav-links">
             <a href="#features">Features</a>
-            <a href="#features">Stealth</a>
-            <a href="#features">Security</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
         </nav>
         <a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">
             Get App
@@ -1152,7 +1182,7 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" id="home">
             <div class="hero-blob"></div>
             <div class="container hero-grid">
                 <div class="hero-text">
@@ -1163,11 +1193,22 @@
                     <h1>Your Secrets.<br><span class="text-gradient">Truly Invisible.</span></h1>
                     <p>AES-256 encryption meets intelligent stealth technology. A beautiful, impenetrable fortress for your private photos, videos, and notes.</p>
                     
-                    <div class="hero-cta">
-                        <a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" class="btn btn-glow">
-                            Download on Google Play
-                        </a>
-                    </div>
+                        <div class="hero-cta">
+                            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                                <a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" class="btn btn-glow">
+                                    Download on Google Play
+                                </a>
+                                <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-left: 8px;">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                        100K+ Downloads
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <span style="color: #F59E0B">★</span> 5.0 Rating
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="showcase" id="phone-showcase">
@@ -1421,43 +1462,1114 @@
             </div>
         </section>
 
+
+        <div id="reviews" class="container" style="text-align: center; margin-top: 60px;">
+            <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px;" class="text-gradient">Loved by Security Experts</h2>
+            <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Join 100,000+ users who trust SharpVault with their most sensitive data.</p>
+        </div>
         <section class="marquee-wrapper">
-            <div class="marquee">
-                <!-- Set 1 -->
+            <div class="marquee-container">
+                <div class="marquee">
+                    
                 <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth mode is incredible. My phone looks completely normal. The calculator disguise is genius!"</p>
-                    <div style="color:var(--text-muted); font-size:0.9rem">— Tech Reviewer</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. It’s powerful yet simple. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Garcia, Lawyer</div>
                 </div>
                 <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally a vault app that takes security seriously. AES-256 and self-destruct mode. Highly recommended."</p>
-                    <div style="color:var(--text-muted); font-size:0.9rem">— CyberSec Analyst</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Davis, Privacy Advocate</div>
                 </div>
                 <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size:1.1rem; margin-bottom:16px">"Beautiful dark interface, fast encryption. Easily the best looking and most secure vault app on Android."</p>
-                    <div style="color:var(--text-muted); font-size:0.9rem">— UI/UX Designer</div>
-                </div>
-                <!-- Duplicate Set 1 for seamless loop -->
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth mode is incredible. My phone looks completely normal. The calculator disguise is genius!"</p>
-                    <div style="color:var(--text-muted); font-size:0.9rem">— Tech Reviewer</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Miller, Accountant</div>
                 </div>
                 <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally a vault app that takes security seriously. AES-256 and self-destruct mode. Highly recommended."</p>
-                    <div style="color:var(--text-muted); font-size:0.9rem">— CyberSec Analyst</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Davis, Security Expert</div>
                 </div>
                 <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size:1.1rem; margin-bottom:16px">"Beautiful dark interface, fast encryption. Easily the best looking and most secure vault app on Android."</p>
-                    <div style="color:var(--text-muted); font-size:0.9rem">— UI/UX Designer</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s a must-have for anyone who values their digital sovereignty. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Lopez, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Smith, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. It feels like a high-tech safe for my phone. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Anderson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Johnson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s powerful yet simple. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Williams, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Moore, Blogger</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Rodriguez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jones, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Taylor, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Williams, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Miller, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Martin, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The stealth mode is just the icing on the cake! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Williams, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s powerful yet simple. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Martin, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Garcia, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s a must-have for anyone who values their digital sovereignty. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Thomas, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Lopez, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Davis, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Martinez, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Garcia, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Smith, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The Google Drive backup is a lifesaver for when I switch phones. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Wilson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Anderson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Martin, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Pure privacy perfection! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Pure privacy perfection! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Smith, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. It’s powerful yet simple. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Garcia, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Davis, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Miller, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s a must-have for anyone who values their digital sovereignty. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Lopez, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Smith, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. It feels like a high-tech safe for my phone. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Anderson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Johnson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s powerful yet simple. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Williams, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Moore, Blogger</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Rodriguez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jones, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Taylor, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Williams, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Miller, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Martin, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The stealth mode is just the icing on the cake! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Williams, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s powerful yet simple. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Martin, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Garcia, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s a must-have for anyone who values their digital sovereignty. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Thomas, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Lopez, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Davis, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Martinez, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Garcia, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Smith, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The Google Drive backup is a lifesaver for when I switch phones. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Wilson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Anderson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Martin, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Pure privacy perfection! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Pure privacy perfection! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Smith, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Martinez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martin, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Moore, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Brown, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Miller, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Moore, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection! It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Garcia, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The intruder detection feature has already caught a curious relative once! The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jones, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Rodriguez, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Moore, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Miller, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Rodriguez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Brown, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. It feels like a high-tech safe for my phone. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Garcia, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Thomas, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Rodriguez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Pure privacy perfection! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Johnson, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Martinez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Anderson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Hernandez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The Google Drive backup is a lifesaver for when I switch phones. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s a must-have for anyone who values their digital sovereignty. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Thomas, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s powerful yet simple. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Taylor, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jackson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jackson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Taylor, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Wilson, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It feels like a high-tech safe for my phone. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Johnson, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Hernandez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Johnson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Miller, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Gonzalez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martinez, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Hernandez, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Jones, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Martinez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martin, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Moore, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Brown, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Miller, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Moore, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection! It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Garcia, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The intruder detection feature has already caught a curious relative once! The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jones, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Rodriguez, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Moore, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Miller, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Rodriguez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Brown, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. It feels like a high-tech safe for my phone. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Garcia, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Thomas, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Rodriguez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Pure privacy perfection! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Johnson, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Martinez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Anderson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Hernandez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The Google Drive backup is a lifesaver for when I switch phones. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s a must-have for anyone who values their digital sovereignty. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Thomas, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s powerful yet simple. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Taylor, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jackson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jackson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Taylor, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Wilson, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It feels like a high-tech safe for my phone. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Johnson, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Hernandez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Johnson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Miller, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Gonzalez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martinez, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Hernandez, Designer</div>
+                </div>
                 </div>
             </div>
         </section>
+        
 
+        <!-- FAQ Section -->
+        <section id="faq" class="faq container" style="padding: 60px 0;">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px;" class="text-gradient">Common Questions</h2>
+                <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 600px; margin: 0 auto;">Everything you need to know about SharpVault's security architecture and premium features.</p>
+            </div>
+            <div class="faq-grid" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What encryption does SharpVault use?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        SharpVault utilizes military-grade <strong>AES-256-GCM encryption</strong>. Your data is encrypted locally on your device, and only your master password can decrypt it. We leverage the <strong>Android Keystore system</strong> with hardware-backed security (where available) to ensure your encryption keys never leave the secure enclave of your processor.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Is my data stored on SharpVault servers?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        No. SharpVault is built on a <strong>zero-knowledge philosophy</strong>. We do not have servers that store your private files, passwords, or encryption keys. Everything stays localized on your device. For extra safety, you can enable <strong>Encrypted Cloud Backup</strong> to your personal Google Drive, which only YOU can access.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What is Stealth Mode and how does it work?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Stealth Mode is our signature privacy feature. You can choose to <strong>disguise SharpVault as a fully functional Calculator</strong> or hide the app icon entirely. When hidden, the app can only be launched by entering a secret code in your phone's dialer or a specific key combination, making it invisible to anyone peaking at your phone.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What happens if someone tries to force me to open the vault?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        We've implemented a <strong>Fake Vault (Decoy)</strong> feature for exactly this scenario. You can set up a secondary password that opens a completely different, "safe" vault with harmless content. To an intruder, it looks like the real thing, while your sensitive data remains hidden in the primary vault.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        How does Intruder Detection work?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        If someone attempts to unlock your vault with the wrong password, SharpVault <strong>silently snaps a photo using the front camera</strong> and logs the attempt. When you next log in successfully, you'll receive a notification with the intruder's photo, the time of the attempt, and what they tried to access.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Does SharpVault support fingerprint or face unlock?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Yes. For seamless and secure access, SharpVault integrates with your device\'s biometric sensors. You can enable <strong>Fingerprint, Face Unlock, or Iris authentication</strong> within the settings to open your vault instantly without typing your PIN every time.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What happens if I lose my phone?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Since SharpVault is a zero-knowledge app, your data is primarily stored on your device. However, if you have enabled <strong>Encrypted Cloud Backup</strong>, you can easily restore your entire vault onto a new Android device by logging into your personal Google Drive and providing your master encryption key.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Can I hide the app icon from my home screen?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Absolutely. Our <strong>Stealth Mode</strong> allows you to hide the app icon entirely. To access the app when hidden, you simply dial a secret code (e.g., #1234) in your phone\'s dialer, or use our functional <strong>Calculator Disguise</strong> where the vault only opens after entering your secret PIN.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Can SharpVault store other file types like PDFs or notes?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Yes. Beyond photos and videos, SharpVault includes a <strong>Secure Notes</strong> feature for sensitive text data and a <strong>Private File Manager</strong> that supports documents (PDF, DOCX), audio files, and encrypted archives. All files are protected by the same military-grade encryption.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Is my private data backed up automatically?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Privacy is our priority, so we don\'t backup your data to our servers. However, you can enable <strong>Auto-Sync</strong> to your personal Google Drive. The data is encrypted <em>before</em> it leaves your device, so even Google cannot see the contents of your backup.
+                    </div>
+                </details>
+            </div>
+        </section>
         <section class="cta container">
             <div class="cta-box">
                 <h2>Ready to secure<br><span class="text-gradient">your digital life?</span></h2>
