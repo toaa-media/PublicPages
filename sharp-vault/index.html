@@ -1,0 +1,2703 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharpVault — The Ultimate Secret Gallery</title>
+    <meta name="description" content="SharpVault is a modern Android vault app with AES-256 encryption, stealth mode, fake vault, intruder detection.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        :root {
+            --bg: #030305;
+            --bg-grid: rgba(255, 255, 255, 0.02);
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            
+            --primary: #00F0FF;
+            --primary-glow: rgba(0, 240, 255, 0.2);
+            --secondary: #7000FF;
+            --accent: #FF0055;
+            
+            --text-main: #FFFFFF;
+            --text-muted: #A1A1AA;
+            --text-dark: #71717A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(var(--bg-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center top;
+        }
+
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #0088FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+            background: #E4E4E7;
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            z-index: -1;
+            filter: blur(12px);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .btn-glow:hover::before {
+            opacity: 0.8;
+            filter: blur(16px);
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1000px;
+            z-index: 100;
+            border-radius: 100px;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .nav-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            overflow: hidden;
+        }
+
+        .hero-blob {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(112, 0, 255, 0.05) 40%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            border-radius: 50%;
+            animation: breathe 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 32px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        /* ==========================================
+           PREMIUM PHONE MOCKUP SHOWCASE
+           ========================================== */
+        .showcase {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            min-height: 720px;
+        }
+
+        /* Glow rings behind the phone */
+        .phone-orbit {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            pointer-events: none;
+        }
+        .phone-orbit-1 {
+            width: 520px; height: 520px;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: rgba(0, 240, 255, 0.12);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.04) 0%, transparent 70%);
+            animation: orbitSpin1 20s linear infinite;
+        }
+        .phone-orbit-2 {
+            width: 420px; height: 420px;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: rgba(112, 0, 255, 0.15);
+            animation: orbitSpin2 15s linear infinite reverse;
+        }
+        .phone-orbit-3 {
+            width: 320px; height: 320px;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: rgba(0, 240, 255, 0.08);
+            border-style: dashed;
+            animation: orbitSpin1 10s linear infinite;
+        }
+
+        @keyframes orbitSpin1 {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to   { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes orbitSpin2 {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to   { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+
+        /* Central phone glow burst */
+        .phone-glow {
+            position: absolute;
+            width: 300px; height: 300px;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(112, 0, 255, 0.08) 40%, transparent 70%);
+            filter: blur(40px);
+            border-radius: 50%;
+            animation: glowPulse 4s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        @keyframes glowPulse {
+            0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+            100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
+        }
+
+        /* The phone frame */
+        .phone-mockup {
+            width: 300px;
+            height: 620px;
+            position: relative;
+            z-index: 5;
+            transform-style: preserve-3d;
+            animation: phoneBob 8s ease-in-out infinite;
+            cursor: pointer;
+            /* initial 3D tilt */
+            --tiltX: 8deg;
+            --tiltY: -18deg;
+            transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
+            transition: transform 0.15s ease-out;
+        }
+
+        @keyframes phoneBob {
+            0%, 100% { transform: rotateX(8deg) rotateY(-18deg) translateY(0px);   }
+            25%       { transform: rotateX(4deg) rotateY(-12deg) translateY(-14px);  }
+            50%       { transform: rotateX(6deg) rotateY(-22deg) translateY(-22px);  }
+            75%       { transform: rotateX(10deg) rotateY(-14deg) translateY(-10px); }
+        }
+        .phone-mockup:hover { animation-play-state: paused; }
+
+        /* Outer frame shell */
+        .phone-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 44px;
+            background: linear-gradient(160deg, #2a2a2a 0%, #111 40%, #1a1a1a 100%);
+            box-shadow:
+                0 0 0 1px #3a3a3a,
+                0 0 0 2px #111,
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -1px 0 rgba(0,0,0,0.5),
+                -24px 40px 80px rgba(0,0,0,0.9),
+                0 0 60px rgba(0, 240, 255, 0.18),
+                0 0 120px rgba(112, 0, 255, 0.1);
+            position: relative;
+            padding: 16px;
+        }
+
+        /* Side buttons */
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 120px;
+            width: 3px;
+            height: 50px;
+            background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 60px 0 #1e1e1e, 0 25px 0 #1e1e1e;
+        }
+        .phone-frame::after {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 140px;
+            width: 3px;
+            height: 70px;
+            background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+            border-radius: 2px 0 0 2px;
+        }
+
+        /* Screen bezel */
+        .phone-screen-bezel {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            background: #0a0a0a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dynamic island */
+        .phone-dynamic-island {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 28px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            gap: 4px;
+        }
+        .di-camera {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1px solid #222;
+            position: relative;
+        }
+        .di-camera::after {
+            content: '';
+            position: absolute;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: #0d2a35;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Screen slider */
+        .phone-screens {
+            display: flex;
+            width: 400%; /* 4 screens */
+            height: 100%;
+            transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        /* Individual screen */
+        .phone-screen {
+            width: 25%; /* 100% of the visible area */
+            height: 100%;
+            flex-shrink: 0;
+            padding: 56px 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            background: #0f0f12;
+        }
+
+        /* Screen ambient gradient */
+        .phone-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% -5%, rgba(0,240,255,0.14) 0%, transparent 55%),
+                        radial-gradient(ellipse at 100% 100%, rgba(112,0,255,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        /* Scan-line shimmer on screen */
+        .phone-screen::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.012) 2px,
+                rgba(255,255,255,0.012) 4px
+            );
+            pointer-events: none;
+            z-index: 60;
+        }
+
+        /* Glass screen overlay reflection */
+        .phone-screen-reflection {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                rgba(255,255,255,0.07) 0%,
+                transparent 30%,
+                transparent 70%,
+                rgba(255,255,255,0.03) 100%
+            );
+            z-index: 70;
+            pointer-events: none;
+            border-radius: 32px;
+            animation: reflectionShift 6s ease-in-out infinite alternate;
+        }
+        @keyframes reflectionShift {
+            0%   { opacity: 0.5; }
+            100% { opacity: 1;   }
+        }
+
+        /* Status bar */
+        .phone-statusbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4px;
+            position: relative;
+            z-index: 2;
+        }
+        .status-time {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .status-icons {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .status-icons span {
+            font-size: 0.65rem;
+        }
+
+        /* Screen title row */
+        .screen-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .screen-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .screen-action-icon {
+            width: 34px; height: 34px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        /* ── SCREEN 1: Vault grid ── */
+        .vault-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .vault-tile {
+            border-radius: 18px;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: transform 0.3s;
+        }
+        .vault-tile.v-teal {
+            background: linear-gradient(135deg, rgba(0,240,255,0.12), rgba(0,240,255,0.04));
+            border-color: rgba(0,240,255,0.25);
+            color: #00f0ff;
+            box-shadow: inset 0 0 20px rgba(0,240,255,0.08), 0 0 20px rgba(0,240,255,0.08);
+            animation: tilePulse 3s ease-in-out infinite;
+        }
+        .vault-tile.v-purple {
+            background: linear-gradient(135deg, rgba(112,0,255,0.12), rgba(112,0,255,0.04));
+            border-color: rgba(112,0,255,0.25);
+            color: #a855f7;
+        }
+        .vault-tile.v-amber {
+            background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.04));
+            border-color: rgba(245,158,11,0.25);
+            color: #f59e0b;
+        }
+        .vault-tile.v-rose {
+            background: linear-gradient(135deg, rgba(255,0,85,0.12), rgba(255,0,85,0.04));
+            border-color: rgba(255,0,85,0.25);
+            color: #ff5252;
+        }
+        @keyframes tilePulse {
+            0%, 100% { box-shadow: inset 0 0 20px rgba(0,240,255,0.08), 0 0 15px rgba(0,240,255,0.08); }
+            50%       { box-shadow: inset 0 0 30px rgba(0,240,255,0.15), 0 0 30px rgba(0,240,255,0.15); }
+        }
+        .vault-tile svg { opacity: 0.9; }
+
+        /* Encrypted badge inside vault screen */
+        .enc-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,240,255,0.06);
+            border: 1px solid rgba(0,240,255,0.2);
+            border-radius: 50px;
+            padding: 8px 14px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+        }
+        .enc-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+            animation: dotBlink 1.5s ease-in-out infinite;
+        }
+        @keyframes dotBlink {
+            0%, 100% { opacity: 1; transform: scale(1);  }
+            50%       { opacity: 0.4; transform: scale(0.75); }
+        }
+
+        /* ── SCREEN 2: Gallery ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            position: relative;
+            z-index: 2;
+        }
+        .gallery-thumb {
+            border-radius: 10px;
+            background: #1e1e28;
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .gallery-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+        }
+        .gallery-thumb:nth-child(1) { background: linear-gradient(135deg, #1a0a2e, #2d0050); }
+        .gallery-thumb:nth-child(2) { background: linear-gradient(135deg, #002020, #004040); }
+        .gallery-thumb:nth-child(3) { background: linear-gradient(135deg, #200a0a, #4a0010); }
+        .gallery-thumb:nth-child(4) { background: linear-gradient(135deg, #0a1520, #002540); }
+        .gallery-thumb:nth-child(5) { background: linear-gradient(135deg, #1a1a00, #3a3a00); }
+        .gallery-thumb:nth-child(6) { background: linear-gradient(135deg, #0a2000, #104000); }
+        .gallery-thumb:nth-child(7) { background: linear-gradient(135deg, #20000a, #400010); }
+        .gallery-thumb:nth-child(8) { background: linear-gradient(135deg, #001a20, #002030); }
+        .gallery-thumb:nth-child(9) { background: linear-gradient(135deg, #1a0010, #300020); }
+        .gallery-lock-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-stats {
+            display: flex;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .gallery-stat {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            padding: 12px;
+            text-align: center;
+        }
+        .gallery-stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .gallery-stat-label {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+        }
+
+        /* ── SCREEN 3: Notes ── */
+        .note-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .note-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 14px 16px;
+        }
+        .note-item-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        .note-item-preview {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .note-item-meta {
+            font-size: 0.62rem;
+            color: var(--text-dark);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .note-enc-tag {
+            padding: 2px 8px;
+            background: rgba(0,240,255,0.08);
+            border-radius: 4px;
+            color: var(--primary);
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+
+        /* ── SCREEN 4: Stealth/Calculator ── */
+        .calc-screen-val {
+            background: transparent;
+            text-align: right;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: #fff;
+            padding: 10px 6px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .calc-screen-op {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 0 6px 8px;
+            position: relative;
+            z-index: 2;
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        .calc-btn {
+            border-radius: 50%;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: default;
+            transition: transform 0.1s;
+        }
+        .calc-btn.cb-dark  { background: #2a2a2a; color: #fff; }
+        .calc-btn.cb-gray  { background: #3a3a3a; color: #fff; }
+        .calc-btn.cb-teal  { background: linear-gradient(135deg, rgba(0,240,255,0.8), rgba(0,150,180,0.9)); color: #000; font-weight: 700; }
+        .calc-btn.cb-blk   { background: #1c1c1e; color: var(--text-muted); }
+        .calc-hint {
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Screen indicator dots */
+        .screen-dots {
+            position: absolute;
+            bottom: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .screen-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .screen-dot.active {
+            width: 20px;
+            border-radius: 3px;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        /* Floating badge chips */
+        .floating-chip {
+            position: absolute;
+            background: rgba(8, 8, 14, 0.82);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 18px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.7),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            z-index: 20;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .chip-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .chip-1 {
+            top: 12%;
+            right: -90px;
+            animation: chip1Float 9s ease-in-out infinite;
+            border-color: rgba(0,240,255,0.25);
+        }
+        .chip-2 {
+            bottom: 22%;
+            left: -100px;
+            animation: chip2Float 7s ease-in-out infinite 1s;
+            border-color: rgba(255,82,82,0.25);
+        }
+        .chip-3 {
+            top: 55%;
+            right: -80px;
+            animation: chip1Float 11s ease-in-out infinite 2s;
+            border-color: rgba(245,158,11,0.25);
+        }
+        @keyframes chip1Float {
+            0%, 100% { transform: translateY(0) rotate(-4deg);   }
+            50%       { transform: translateY(-18px) rotate(3deg); }
+        }
+        @keyframes chip2Float {
+            0%, 100% { transform: translateY(0) rotate(4deg);    }
+            50%       { transform: translateY(-22px) rotate(-3deg); }
+        }
+
+        /* ─── keyframes shared ─── */
+        @keyframes float {
+            0%   { transform: translateY(0) rotateY(-15deg) rotateX(5deg) scale(1.0); }
+            25%  { transform: translateY(-15px) rotateY(-8deg) rotateX(2deg) scale(1.02); }
+            50%  { transform: translateY(-30px) rotateY(-20deg) rotateX(6deg) scale(1.0); }
+            75%  { transform: translateY(-15px) rotateY(-25deg) rotateX(10deg) scale(0.98); }
+            100% { transform: translateY(0) rotateY(-15deg) rotateX(5deg) scale(1.0); }
+        }
+        @keyframes shine {
+            0%   { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        /* Bento Grid Section */
+        .bento-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 280px;
+            gap: 24px;
+        }
+
+        .bento-card {
+            background: rgba(20, 20, 24, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: rgba(30, 30, 36, 0.8);
+        }
+
+        .bento-large { grid-column: span 2; grid-row: span 2; }
+        .bento-wide { grid-column: span 2; grid-row: span 1; }
+        .bento-tall { grid-column: span 1; grid-row: span 2; }
+
+        .bento-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .bento-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .bento-large h3 { font-size: 2rem; }
+
+        .bento-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .encryption-visual {
+            margin-top: auto;
+            height: 120px;
+            width: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--border) 0px,
+                var(--border) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .encryption-scanner {
+            position: absolute;
+            top: 0; bottom: 0; left: 0;
+            width: 4px;
+            background: var(--primary);
+            box-shadow: 0 0 20px 4px var(--primary);
+            animation: scan 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes scan {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+
+
+        /* Review Section Enhanced */
+        .marquee-wrapper {
+            padding: 30px 0;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg) 0%, rgba(0, 240, 255, 0.02) 50%, var(--bg) 100%);
+        }
+
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 300px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg), transparent);
+        }
+
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(-90deg, var(--bg), transparent);
+        }
+
+        .marquee-container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .marquee {
+            display: flex;
+            gap: 32px;
+            width: max-content;
+            animation: scroll 600s linear infinite;
+        }
+
+        .review-card {
+            width: 420px;
+            padding: 40px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--primary);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.1);
+        }
+
+        .stars { color: #F59E0B; margin-bottom: 20px; font-size: 1.25rem; letter-spacing: 2px; }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 16px)); }
+        }
+
+        details[open] summary .plus {
+            transform: rotate(45deg);
+        }
+        details summary .plus {
+            transition: transform 0.3s ease;
+        }
+        /* CTA Section */
+        .cta {
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-box {
+            background: linear-gradient(180deg, rgba(20,20,24,0) 0%, rgba(0, 240, 255, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin: 0 auto 40px;
+            max-width: 600px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit';
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 40px; height: 40px; border-radius: 12px;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            max-width: 300px;
+        }
+
+        .footer h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer ul a {
+            color: var(--text-dark);
+            transition: color 0.2s;
+        }
+
+        .footer ul a:hover {
+            color: var(--text-main);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 80px; }
+            .hero h1 { margin-inline: auto; }
+            .hero p { margin-inline: auto; }
+            .hero-cta { justify-content: center; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-large, .bento-wide, .bento-tall { grid-column: span 1; grid-row: auto; min-height: 280px;}
+            .phone-mockup { transform: none; animation: none; margin: 0 auto; }
+            .floating-card { display: none; }
+            .cta-box { padding: 60px 20px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="glass" id="navbar">
+        <div class="nav-brand">
+            <img src="https://toaa-media.github.io/PublicPages/sharp-vault/app-icon.jpg" alt="Logo">
+            SharpVault
+        </div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">
+            Get App
+        </a>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-blob"></div>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Military-Grade Security
+                    </div>
+                    <h1>Your Secrets.<br><span class="text-gradient">Truly Invisible.</span></h1>
+                    <p>AES-256 encryption meets intelligent stealth technology. A beautiful, impenetrable fortress for your private photos, videos, and notes.</p>
+                    
+                        <div class="hero-cta">
+                            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                                <a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" class="btn btn-glow">
+                                    Download on Google Play
+                                </a>
+                                <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-left: 8px;">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                        100K+ Downloads
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <span style="color: #F59E0B">★</span> 5.0 Rating
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="showcase" id="phone-showcase">
+                    <!-- Orbit rings -->
+                    <div class="phone-orbit phone-orbit-1"></div>
+                    <div class="phone-orbit phone-orbit-2"></div>
+                    <div class="phone-orbit phone-orbit-3"></div>
+                    <div class="phone-glow"></div>
+
+                    <!-- The phone -->
+                    <div class="phone-mockup" id="phone3d">
+                        <div class="phone-frame">
+                            <div class="phone-screen-bezel">
+                                <!-- Dynamic Island -->
+                                <div class="phone-dynamic-island">
+                                    <div class="di-camera"></div>
+                                </div>
+
+                                <!-- Glass reflection -->
+                                <div class="phone-screen-reflection"></div>
+
+                                <!-- Sliding screens container -->
+                                <div class="phone-screens" id="phoneScreens">
+
+                                    <!-- SCREEN 1: Vault -->
+                                    <div class="phone-screen">
+                                        <div class="phone-statusbar">
+                                            <span class="status-time">9:41</span>
+                                            <div class="status-icons">
+                                                <span>▲</span><span>WiFi</span><span>🔋</span>
+                                            </div>
+                                        </div>
+                                        <div class="screen-title-row">
+                                            <span class="screen-title">My Vault</span>
+                                            <div class="screen-action-icon">
+                                                <svg width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="vault-grid">
+                                            <div class="vault-tile v-teal">
+                                                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                                Private
+                                            </div>
+                                            <div class="vault-tile v-purple">
+                                                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                                                Work
+                                            </div>
+                                            <div class="vault-tile v-amber">
+                                                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                                Photos
+                                            </div>
+                                            <div class="vault-tile v-rose">
+                                                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                                Notes
+                                            </div>
+                                        </div>
+                                        <div class="enc-badge">
+                                            <div class="enc-dot"></div>
+                                            AES-256 Encrypted
+                                        </div>
+                                    </div>
+
+                                    <!-- SCREEN 2: Gallery -->
+                                    <div class="phone-screen">
+                                        <div class="phone-statusbar">
+                                            <span class="status-time">9:41</span>
+                                            <div class="status-icons"><span>▲</span><span>🔋</span></div>
+                                        </div>
+                                        <div class="screen-title-row">
+                                            <span class="screen-title">Gallery</span>
+                                            <div class="screen-action-icon">
+                                                <svg width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-grid">
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                            <div class="gallery-thumb"></div>
+                                        </div>
+                                        <div class="gallery-stats">
+                                            <div class="gallery-stat">
+                                                <div class="gallery-stat-num" style="color:var(--primary)">247</div>
+                                                <div class="gallery-stat-label">Photos</div>
+                                            </div>
+                                            <div class="gallery-stat">
+                                                <div class="gallery-stat-num" style="color:#a855f7">38</div>
+                                                <div class="gallery-stat-label">Videos</div>
+                                            </div>
+                                            <div class="gallery-stat">
+                                                <div class="gallery-stat-num" style="color:#10b981">100%</div>
+                                                <div class="gallery-stat-label">Encrypted</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- SCREEN 3: Notes -->
+                                    <div class="phone-screen">
+                                        <div class="phone-statusbar">
+                                            <span class="status-time">9:41</span>
+                                            <div class="status-icons"><span>▲</span><span>🔋</span></div>
+                                        </div>
+                                        <div class="screen-title-row">
+                                            <span class="screen-title">Secure Notes</span>
+                                            <div class="screen-action-icon">
+                                                <svg width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="note-list">
+                                            <div class="note-item">
+                                                <div class="note-item-title">Key Passwords 🔑</div>
+                                                <div class="note-item-preview">Gmail: ••••••••••  Bank: ••••</div>
+                                                <div class="note-item-meta"><span class="note-enc-tag">ENCRYPTED</span> · 2h ago</div>
+                                            </div>
+                                            <div class="note-item">
+                                                <div class="note-item-title">Private Journal 📖</div>
+                                                <div class="note-item-preview">Today was amazing, went to...</div>
+                                                <div class="note-item-meta"><span class="note-enc-tag">ENCRYPTED</span> · Yesterday</div>
+                                            </div>
+                                            <div class="note-item">
+                                                <div class="note-item-title">Secret Plans ✨</div>
+                                                <div class="note-item-preview">Step 1: Surprise her with...</div>
+                                                <div class="note-item-meta"><span class="note-enc-tag">ENCRYPTED</span> · Mar 7</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- SCREEN 4: Calculator (Stealth) -->
+                                    <div class="phone-screen">
+                                        <div class="phone-statusbar">
+                                            <span class="status-time">9:41</span>
+                                            <div class="status-icons"><span>▲</span><span>🔋</span></div>
+                                        </div>
+                                        <div class="screen-title-row">
+                                            <span class="screen-title">Calculator</span>
+                                        </div>
+                                        <div class="calc-screen-val">1,234.56</div>
+                                        <div class="calc-screen-op">+ 567 =</div>
+                                        <div class="calc-grid">
+                                            <div class="calc-btn cb-gray">AC</div>
+                                            <div class="calc-btn cb-gray">+/-</div>
+                                            <div class="calc-btn cb-gray">%</div>
+                                            <div class="calc-btn cb-teal">÷</div>
+                                            <div class="calc-btn cb-dark">7</div>
+                                            <div class="calc-btn cb-dark">8</div>
+                                            <div class="calc-btn cb-dark">9</div>
+                                            <div class="calc-btn cb-teal">×</div>
+                                            <div class="calc-btn cb-dark">4</div>
+                                            <div class="calc-btn cb-dark">5</div>
+                                            <div class="calc-btn cb-dark">6</div>
+                                            <div class="calc-btn cb-teal">−</div>
+                                            <div class="calc-btn cb-dark">1</div>
+                                            <div class="calc-btn cb-dark">2</div>
+                                            <div class="calc-btn cb-dark">3</div>
+                                            <div class="calc-btn cb-teal">+</div>
+                                            <div class="calc-btn cb-dark" style="grid-column: span 2; border-radius: 50px; aspect-ratio: unset; justify-content: flex-start; padding-left: 24px;">0</div>
+                                            <div class="calc-btn cb-dark">.</div>
+                                            <div class="calc-btn cb-teal">=</div>
+                                        </div>
+                                        <div class="calc-hint">💡 Enter secret code to unlock vault</div>
+                                    </div>
+
+                                </div><!-- /phone-screens -->
+                            </div><!-- /phone-screen-bezel -->
+                        </div><!-- /phone-frame -->
+
+                        <!-- Indicator dots -->
+                        <div class="screen-dots" id="screenDots">
+                            <div class="screen-dot active" data-idx="0"></div>
+                            <div class="screen-dot" data-idx="1"></div>
+                            <div class="screen-dot" data-idx="2"></div>
+                            <div class="screen-dot" data-idx="3"></div>
+                        </div>
+                    </div><!-- /phone-mockup -->
+
+                    <!-- Floating chips -->
+                    <div class="floating-chip chip-1">
+                        <div class="chip-dot" style="background:var(--primary); box-shadow:0 0 10px var(--primary);"></div>
+                        AES-256 Active
+                    </div>
+                    <div class="floating-chip chip-2">
+                        <div class="chip-dot" style="background:#ff5252; box-shadow:0 0 10px #ff5252; animation: dotBlink 1s infinite;"></div>
+                        <div>
+                            <div>Intruder Captured</div>
+                            <div style="font-size:0.7rem; font-weight:400; color:var(--text-muted)">Photo saved · 9:38 AM</div>
+                        </div>
+                    </div>
+                    <div class="floating-chip chip-3">
+                        <div class="chip-dot" style="background:#f59e0b; box-shadow:0 0 10px #f59e0b;"></div>
+                        Stealth Mode ON
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="bento-section container" id="features">
+            <div class="section-header">
+                <h2>Designed for <span class="text-gradient">Absolute Privacy</span></h2>
+                <p style="color:var(--text-muted); font-size:1.2rem">Every feature meticulously crafted to protect your digital life.</p>
+            </div>
+            
+            <div class="bento-grid">
+                <div class="bento-card bento-large">
+                    <div class="bento-icon" style="color: var(--primary)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3>Military-Grade Encryption</h3>
+                    <p>Files are encrypted using AES-256 before they even touch your storage. It is mathematically impossible to decode without your master password.</p>
+                    <div class="encryption-visual">
+                        <div class="encryption-scanner"></div>
+                    </div>
+                </div>
+
+                <div class="bento-card bento-wide">
+                    <div class="bento-icon" style="color: var(--secondary)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Stealth Mode</h3>
+                    <p>Disguise SharpVault as an innocent Calculator app. It disappears from your recent apps list and blocks screenshots globally. Open it via a secret dialer code.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon" style="color: var(--accent)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </div>
+                    <h3>Decoy Vault</h3>
+                    <p>Forced to open your phone? Enter a fake PIN to show an empty, decoy vault to protect your real data.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon" style="color: #F59E0B">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Secure Notes</h3>
+                    <p>Write private journals, store passwords, and attach photos in a locally encrypted text editor.</p>
+                </div>
+
+                <div class="bento-card bento-wide">
+                    <div class="bento-icon" style="color: #10B981">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    </div>
+                    <h3>Intruder Capture</h3>
+                    <p>Someone trying to guess your PIN? SharpVault silently snaps a photo of the intruder using the front camera and saves it to your security log with timestamp and location.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <div id="reviews" class="container" style="text-align: center; margin-top: 60px;">
+            <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px;" class="text-gradient">Loved by Security Experts</h2>
+            <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Join 100,000+ users who trust SharpVault with their most sensitive data.</p>
+        </div>
+        <section class="marquee-wrapper">
+            <div class="marquee-container">
+                <div class="marquee">
+                    
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. It’s powerful yet simple. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Garcia, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Davis, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Miller, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s a must-have for anyone who values their digital sovereignty. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Lopez, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Smith, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. It feels like a high-tech safe for my phone. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Anderson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Johnson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s powerful yet simple. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Williams, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Moore, Blogger</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Rodriguez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jones, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Taylor, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Williams, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Miller, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Martin, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The stealth mode is just the icing on the cake! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Williams, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s powerful yet simple. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Martin, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Garcia, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s a must-have for anyone who values their digital sovereignty. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Thomas, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Lopez, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Davis, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Martinez, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Garcia, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Smith, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The Google Drive backup is a lifesaver for when I switch phones. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Wilson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Anderson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Martin, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Pure privacy perfection! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Pure privacy perfection! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Smith, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. It’s powerful yet simple. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Garcia, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Davis, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Miller, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s a must-have for anyone who values their digital sovereignty. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Lopez, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Smith, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. It feels like a high-tech safe for my phone. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Anderson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Johnson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s powerful yet simple. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Williams, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Moore, Blogger</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Rodriguez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jones, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Davis, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Taylor, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Williams, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Miller, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Martin, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. The stealth mode is just the icing on the cake! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Williams, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The Google Drive backup is a lifesaver for when I switch phones. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Taylor, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Lopez, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s powerful yet simple. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Martin, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The stealth mode is just the icing on the cake! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Garcia, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. It’s a must-have for anyone who values their digital sovereignty. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Williams, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Noah Thomas, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Lopez, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Davis, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Martinez, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Garcia, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Smith, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It’s powerful yet simple. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The Google Drive backup is a lifesaver for when I switch phones. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake! It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Wilson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Exactly what I was looking for. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Anderson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Martin, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Pure privacy perfection! Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Pure privacy perfection! Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Jackson, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Smith, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Martinez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martin, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Moore, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Brown, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Miller, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Moore, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection! It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Garcia, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The intruder detection feature has already caught a curious relative once! The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jones, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Rodriguez, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Moore, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Miller, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Rodriguez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Brown, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. It feels like a high-tech safe for my phone. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Garcia, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Thomas, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Rodriguez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Pure privacy perfection! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Johnson, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Martinez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Anderson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Hernandez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The Google Drive backup is a lifesaver for when I switch phones. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s a must-have for anyone who values their digital sovereignty. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Thomas, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s powerful yet simple. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Taylor, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jackson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jackson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Taylor, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Wilson, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It feels like a high-tech safe for my phone. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Johnson, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Hernandez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Johnson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Miller, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Gonzalez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martinez, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Hernandez, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I’ve tried many vault apps, but nothing comes close to the elegance and security of SharpVault. The calculator disguise is incredibly convincing, and the biometric unlock is seamless. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Jones, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mia Martinez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martin, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Jackson, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Moore, Privacy Advocate</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The intruder detection feature has already caught a curious relative once! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Brown, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Miller, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It feels like a high-tech safe for my phone. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Thomas, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Moore, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection! It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Garcia, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The intruder detection feature has already caught a curious relative once! The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ava Davis, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone. It’s powerful yet simple."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jones, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Designer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s a must-have for anyone who values their digital sovereignty. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Jackson, Photo Enthusiast</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Rodriguez, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Moore, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It’s powerful yet simple. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Taylor, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jack Miller, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Rodriguez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Jackson Brown, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. It feels like a high-tech safe for my phone. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Garcia, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Thomas, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Rodriguez, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Pure privacy perfection! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Mason Johnson, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— James Martinez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Martinez, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Anderson, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It’s a must-have for anyone who values their digital sovereignty. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Hernandez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. Easily the best looking and most secure vault app on Android. The intruder detection feature has already caught a curious relative once!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Liam Jackson, Journalist</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. It feels like a high-tech safe for my phone. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Ethan Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. The Google Drive backup is a lifesaver for when I switch phones. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Brown, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. It’s a must-have for anyone who values their digital sovereignty. It’s a must-have for anyone who values their digital sovereignty."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Thomas, Tech Explorer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. It’s powerful yet simple. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Alex Taylor, Influencer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Lopez, Traveler</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"This app is a fortress. The decoy vault feature is pure genius—it gives me a way to protect my real data even under pressure. The Google Drive backup is a lifesaver for when I switch phones. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Jackson, Student</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The stealth features are top-notch. Being able to hide the app entry entirely and only access it via a secret code is something other apps should learn from. Exactly what I was looking for. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Olivia Jackson, Freelancer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Exactly what I was looking for. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Evelyn Taylor, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. Highly recommended for anyone concerned about privacy. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Wilson, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. It feels like a high-tech safe for my phone. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Emma Miller, Consultant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Aiden Johnson, Lawyer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Finally, an app that doesn’t track me or collect my data. Everything stays on my device, encrypted and safe. Highly recommended for anyone concerned about privacy. Exactly what I was looking for."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Sophia Wilson, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"A fantastic blend of high-end security and premium design. The secure notes feature is where I keep all my sensitive logins and personal thoughts. The stealth mode is just the icing on the cake!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Hernandez, Creative Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"I was skeptical at first, but after reading the documentation, I realized how much thought went into the encryption architecture. Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Charlotte Martin, Accountant</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"Military-grade security in my pocket! I use it for everything from scanning sensitive documents to storing private travel memories. The stealth mode is just the icing on the cake! Pure privacy perfection!"</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Isabella Johnson, Entrepreneur</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. It feels like a high-tech safe for my phone."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Miller, Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"The UI is stunningly beautiful and very easy to use. I love how I can organize my files into separate encrypted vaults with different passwords. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Harper Gonzalez, Digital Nomad</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"SharpVault has completely changed how I manage my private photos. The AES-256 encryption gives me such peace of mind, knowing that even if my phone is lost, my data is unreachable. Easily the best looking and most secure vault app on Android. Easily the best looking and most secure vault app on Android."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Amelia Martinez, Security Expert</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p style="font-size:1.1rem; margin-bottom:16px">"As a journalist, protecting my sources and documentation is paramount. SharpVault provides a robust, zero-knowledge environment that I can truly trust. Exactly what I was looking for. Highly recommended for anyone concerned about privacy."</p>
+                    <div style="color:var(--text-muted); font-size:0.9rem">— Lucas Hernandez, Designer</div>
+                </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq container" style="padding: 60px 0;">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px;" class="text-gradient">Common Questions</h2>
+                <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 600px; margin: 0 auto;">Everything you need to know about SharpVault's security architecture and premium features.</p>
+            </div>
+            <div class="faq-grid" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What encryption does SharpVault use?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        SharpVault utilizes military-grade <strong>AES-256-GCM encryption</strong>. Your data is encrypted locally on your device, and only your master password can decrypt it. We leverage the <strong>Android Keystore system</strong> with hardware-backed security (where available) to ensure your encryption keys never leave the secure enclave of your processor.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Is my data stored on SharpVault servers?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        No. SharpVault is built on a <strong>zero-knowledge philosophy</strong>. We do not have servers that store your private files, passwords, or encryption keys. Everything stays localized on your device. For extra safety, you can enable <strong>Encrypted Cloud Backup</strong> to your personal Google Drive, which only YOU can access.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What is Stealth Mode and how does it work?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Stealth Mode is our signature privacy feature. You can choose to <strong>disguise SharpVault as a fully functional Calculator</strong> or hide the app icon entirely. When hidden, the app can only be launched by entering a secret code in your phone's dialer or a specific key combination, making it invisible to anyone peaking at your phone.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What happens if someone tries to force me to open the vault?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        We've implemented a <strong>Fake Vault (Decoy)</strong> feature for exactly this scenario. You can set up a secondary password that opens a completely different, "safe" vault with harmless content. To an intruder, it looks like the real thing, while your sensitive data remains hidden in the primary vault.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        How does Intruder Detection work?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        If someone attempts to unlock your vault with the wrong password, SharpVault <strong>silently snaps a photo using the front camera</strong> and logs the attempt. When you next log in successfully, you'll receive a notification with the intruder's photo, the time of the attempt, and what they tried to access.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Does SharpVault support fingerprint or face unlock?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Yes. For seamless and secure access, SharpVault integrates with your device\'s biometric sensors. You can enable <strong>Fingerprint, Face Unlock, or Iris authentication</strong> within the settings to open your vault instantly without typing your PIN every time.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        What happens if I lose my phone?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Since SharpVault is a zero-knowledge app, your data is primarily stored on your device. However, if you have enabled <strong>Encrypted Cloud Backup</strong>, you can easily restore your entire vault onto a new Android device by logging into your personal Google Drive and providing your master encryption key.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Can I hide the app icon from my home screen?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Absolutely. Our <strong>Stealth Mode</strong> allows you to hide the app icon entirely. To access the app when hidden, you simply dial a secret code (e.g., #1234) in your phone\'s dialer, or use our functional <strong>Calculator Disguise</strong> where the vault only opens after entering your secret PIN.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Can SharpVault store other file types like PDFs or notes?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Yes. Beyond photos and videos, SharpVault includes a <strong>Secure Notes</strong> feature for sensitive text data and a <strong>Private File Manager</strong> that supports documents (PDF, DOCX), audio files, and encrypted archives. All files are protected by the same military-grade encryption.
+                    </div>
+                </details>
+                <details class="glass" style="padding: 32px; border-radius: 32px; cursor: pointer; transition: all 0.3s ease;">
+                    <summary style="font-weight: 700; font-size: 1.25rem; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif;">
+                        Is my private data backed up automatically?
+                        <span class="plus" style="color: var(--primary); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                        Privacy is our priority, so we don\'t backup your data to our servers. However, you can enable <strong>Auto-Sync</strong> to your personal Google Drive. The data is encrypted <em>before</em> it leaves your device, so even Google cannot see the contents of your backup.
+                    </div>
+                </details>
+            </div>
+        </section>
+        <section class="cta container">
+            <div class="cta-box">
+                <h2>Ready to secure<br><span class="text-gradient">your digital life?</span></h2>
+                <p>Join thousands of users who trust SharpVault to protect their most sensitive data. Free to use, completely offline, zero tracking.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" class="btn btn-glow" style="padding: 18px 40px; font-size: 1.1rem;">
+                    Download for Android
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="https://toaa-media.github.io/PublicPages/sharp-vault/app-icon.jpg" alt="Logo">
+                        SharpVault
+                    </div>
+                    <p>The ultimate zero-knowledge secret gallery for Android. Built with military-grade encryption.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#security">Security</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault">Google Play Store</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://toaa-media.github.io/PublicPages/sharp-vault/privacy_policy.html">Privacy Policy</a></li>
+                        <li><a href="https://toaa-media.github.io/PublicPages/sharp-vault/terms_of_use.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 SharpVault by TOAA Media. All rights reserved.</span>
+                <span>Designed with precision.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Navbar blur on scroll ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+                navbar.style.borderColor = 'var(--border-hover)';
+            } else {
+                navbar.style.background = 'var(--surface)';
+                navbar.style.borderColor = 'var(--border)';
+            }
+        });
+
+        // ── Phone screen auto-slider ──
+        const screensEl = document.getElementById('phoneScreens');
+        const dots = document.querySelectorAll('.screen-dot');
+        const totalScreens = 4;
+        let currentScreen = 0;
+        let autoSlideTimer;
+
+        function goToScreen(idx) {
+            currentScreen = (idx + totalScreens) % totalScreens;
+            screensEl.style.transform = `translateX(-${currentScreen * 25}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentScreen));
+        }
+
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(() => goToScreen(currentScreen + 1), 3200);
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(autoSlideTimer);
+                goToScreen(parseInt(dot.dataset.idx));
+                startAutoSlide();
+            });
+        });
+
+        startAutoSlide();
+
+        // ── Mouse tilt on phone ──
+        const phone3d = document.getElementById('phone3d');
+        const showcase = document.getElementById('phone-showcase');
+
+        showcase.addEventListener('mousemove', (e) => {
+            const rect = showcase.getBoundingClientRect();
+            const cx = rect.left + rect.width  / 2;
+            const cy = rect.top  + rect.height / 2;
+            const dx = (e.clientX - cx) / (rect.width  / 2);
+            const dy = (e.clientY - cy) / (rect.height / 2);
+
+            const rotX =  dy * -12;
+            const rotY =  dx *  18;
+
+            phone3d.style.animation = 'none';
+            phone3d.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        });
+
+        showcase.addEventListener('mouseleave', () => {
+            phone3d.style.animation = 'phoneBob 8s ease-in-out infinite';
+            phone3d.style.transform = '';
+        });
+
+        // ── Touch swipe on phone ──
+        let touchStartX = 0;
+        screensEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        screensEl.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) {
+                clearInterval(autoSlideTimer);
+                goToScreen(diff > 0 ? currentScreen + 1 : currentScreen - 1);
+                startAutoSlide();
+            }
+        }, { passive: true });
+
+        // ── Status bar live clock ──
+        function updateClocks() {
+            const now = new Date();
+            const h = now.getHours().toString().padStart(2, '0');
+            const m = now.getMinutes().toString().padStart(2, '0');
+            document.querySelectorAll('.status-time').forEach(el => el.textContent = `${h}:${m}`);
+        }
+        updateClocks();
+        setInterval(updateClocks, 30000);
+    </script>
+</body>
+</html>
