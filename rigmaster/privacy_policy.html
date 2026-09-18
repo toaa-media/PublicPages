@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - RigMaster</title>
+    <style>
+        :root {
+            --bg: #0b0600;
+            --surface: #140b00;
+            --surface-card: #1c1102;
+            --border: #43392d;
+            --accent: #ffb442;
+            --text-primary: #fff1e0;
+            --text-secondary: #c4b5a5;
+            --text-muted: #85796c;
+            --badge-bg: rgba(255, 180, 66, 0.12);
+            --badge-border: rgba(255, 180, 66, 0.3);
+            --info-bg: rgba(76, 175, 80, 0.1);
+            --info-border: rgba(76, 175, 80, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.65;
+            font-size: 16px;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 48px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 680px) {
+            body { padding: 16px 8px; }
+            .container { padding: 24px 16px; border-radius: 8px; }
+        }
+
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .meta {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .meta span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .callout-box {
+            background: var(--info-bg);
+            border: 1px solid var(--info-border);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin: 24px 0;
+            color: var(--text-primary);
+        }
+
+        .callout-title {
+            color: var(--accent);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .callout-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--accent);
+            margin-top: 36px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(67, 57, 45, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            scroll-margin-top: 20px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        ul {
+            margin-left: 24px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        caption {
+            caption-side: top;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--surface-card);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-secondary);
+            background: rgba(20, 11, 0, 0.5);
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0;
+            }
+            .container {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                background: #ffffff !important;
+            }
+            h1, h2, h3, .callout-title {
+                color: #000000 !important;
+            }
+            p, li, td, th {
+                color: #222222 !important;
+            }
+            .callout-box {
+                background: #f8f9fa !important;
+                border: 1px solid #dee2e6 !important;
+            }
+            .brand-badge {
+                border: 1px solid #ccc !important;
+                color: #000000 !important;
+                background: #eee !important;
+            }
+            table, th, td {
+                border-color: #dee2e6 !important;
+            }
+            th {
+                background: #e9ecef !important;
+            }
+            td {
+                background: #ffffff !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+    <header class="header">
+        <div class="brand-badge">RigMaster Legal</div>
+        <h1>Privacy Policy</h1>
+        <div class="meta">
+            Application: <span>RigMaster — Rigging Sling Tension Calculator &amp; Lift Planning System</span> &bull; 
+            Package: <span>com.vn.perfectworld.rigmaster</span> &bull; 
+            Effective Date: <span>September 18, 2026</span>
+        </div>
+    </header>
+
+    <div class="callout-box">
+        <div class="callout-title">Offline-First &amp; Privacy Guarantee</div>
+        <p>RigMaster is engineered with strict privacy-by-design principles. We maintain a <strong>Zero Unauthorized Project Telemetry</strong> architecture: your rigging calculations, lift plans, equipment serials, inspection records, and lifting site data are stored strictly on your local device and are never harvested, sold, or shared.</p>
+    </div>
+
+    <h2 id="section-1">1. Introduction</h2>
+    <p>This Privacy Policy explains how <strong>Perfect World Studio</strong> ("we", "our", or "us") handles information when you install, access, and use the <strong>RigMaster</strong> mobile application ("App"). We respect your privacy and are committed to maintaining the absolute confidentiality of your professional engineering and industrial calculation data.</p>
+
+    <h2 id="section-2">2. Zero Project Telemetry &amp; Data Collection Policy</h2>
+    <p>RigMaster does not collect or transmit your engineering or calculation data to external servers. Specifically:</p>
+    <ul>
+        <li><strong>No Account Registration Required:</strong> All computational capabilities, equipment databases, and lift plan generators operate without requiring registration, email login, or user profiles.</li>
+        <li><strong>Zero Project Telemetry:</strong> All sling tension calculations, center of gravity (COG) calculations, equipment catalogs, crane load configurations, inspection defect logs, and digital approval signatures remain stored entirely on your local device via encrypted on-device storage.</li>
+        <li><strong>No Advertising or Tracking SDKs:</strong> RigMaster contains no third-party advertising SDKs, data brokers, or behavioral analytics trackers.</li>
+    </ul>
+
+    <h2 id="section-3">3. Device Permissions &amp; Hardware Usage</h2>
+    <p>To provide specialized industrial rigging tools, RigMaster may request access to specific device hardware features via standard operating system prompts. Each permission is used strictly locally:</p>
+
+    <div class="table-container">
+        <table>
+            <caption>Device Permissions and Local Data Handling</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Permission</th>
+                    <th scope="col">Purpose</th>
+                    <th scope="col">Data Handling &amp; Retention</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Camera</strong></td>
+                    <td>Scanning equipment QR/Barcode tags and capturing defect photos during equipment inspection.</td>
+                    <td>Photos and barcode inputs are stored locally in the application database. Zero image data is transmitted to cloud servers.</td>
+                </tr>
+                <tr>
+                    <td><strong>Motion Sensors (Accelerometer / Gyroscope)</strong></td>
+                    <td>Powers the digital clinometer and physical sling angle measurement tool.</td>
+                    <td>Real-time sensor streams are calculated in volatile RAM and immediately discarded. Never recorded or transmitted.</td>
+                </tr>
+                <tr>
+                    <td><strong>Biometrics (Face ID / Fingerprint)</strong></td>
+                    <td>Secures dual-authorization sign-offs on Critical Lift Plans (4-Eyes Approval).</td>
+                    <td>Authentication is handled strictly by your device's native Secure Enclave / KeyStore. No biometric signatures or sensor readings are accessible to the App.</td>
+                </tr>
+                <tr>
+                    <td><strong>Storage / File System</strong></td>
+                    <td>Exporting PDF Lift Plan certificates and saving encrypted backup files (<code>.rmbak</code>).</td>
+                    <td>Accessed via standard system Storage Access Framework / File Pickers. Files are saved to your designated folder under your direct control.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="section-4">4. Technical Crash Diagnostics &amp; Stability Reporting</h2>
+    <p>To identify software anomalies and maintain mission-critical stability, RigMaster integrates <strong>Firebase Crashlytics</strong> (operated by Google LLC).</p>
+    <ul>
+        <li><strong>Sanitized Diagnostics:</strong> Crash reports transmit technical error stack traces, operating system versions, and pseudonymous device identifiers solely for debugging.</li>
+        <li><strong>PII Scrubbing:</strong> Automated redaction scrubbers actively strip authorization tokens, user passwords, project paths, and personal identifiers before transmission.</li>
+        <li><strong>Third-Party Policy:</strong> Diagnostic data handling complies with <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Google Privacy Policy</a>.</li>
+        <li><strong>Development Deactivation:</strong> Diagnostics collection is deactivated in non-release builds and respects system-wide analytics opt-out settings.</li>
+    </ul>
+
+    <h2 id="section-5">5. Data Security &amp; Cryptography</h2>
+    <p>We implement industry-standard cryptographic mechanisms to protect local application assets:</p>
+    <ul>
+        <li><strong>Encrypted Backups:</strong> Offline database backups (<code>.rmbak</code>) are encrypted using <strong>AES-256-GCM</strong> with PBKDF2 key derivation (100,000 iterations). Backups cannot be decrypted without the user-defined passphrase.</li>
+        <li><strong>Cryptographic Pre-Hashing:</strong> Lift Plan PDF certificates contain SHA-256 normalized manifest digests embedded in verification QR codes for tamper-evident verification.</li>
+    </ul>
+
+    <h2 id="section-6">6. Data Retention &amp; User Control</h2>
+    <p>Because your data is stored locally on your device, you maintain complete ownership and control:</p>
+    <ul>
+        <li>You can export, backup, or delete individual lift plans, equipment records, and templates at any time.</li>
+        <li>Uninstalling the RigMaster application or clearing application data in your device settings permanently deletes all local records and stored files.</li>
+    </ul>
+
+    <h2 id="section-7">7. Children's Privacy</h2>
+    <p>RigMaster is an industrial engineering application intended for qualified professionals and is not directed to children under the age of 13. We do not knowingly collect personal information from children.</p>
+
+    <h2 id="section-8">8. Changes to This Privacy Policy</h2>
+    <p>We may update our Privacy Policy periodically to reflect changes in legal requirements or application features. Any updates will be reflected on this page with an updated "Effective Date".</p>
+
+    <h2 id="section-9">9. Contact Us</h2>
+    <p>If you have any questions or feedback regarding this Privacy Policy, please contact our legal and security team:</p>
+    <ul>
+        <li><strong>Email:</strong> <a href="mailto:publisher.perfectworld.studio@gmail.com">publisher.perfectworld.studio@gmail.com</a></li>
+        <li><strong>Developer:</strong> Perfect World Studio</li>
+        <li><strong>Application:</strong> RigMaster</li>
+    </ul>
+
+    <footer class="footer">
+        &copy; 2026 Perfect World Studio. All rights reserved. &bull; <a href="terms_of_usage.html">Terms of Usage</a>
+    </footer>
+</main>
+
+</body>
+</html>

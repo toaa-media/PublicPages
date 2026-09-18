@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Usage & Safety Disclaimer - RigMaster</title>
+    <style>
+        :root {
+            --bg: #0b0600;
+            --surface: #140b00;
+            --surface-card: #1c1102;
+            --border: #43392d;
+            --accent: #ffb442;
+            --danger: #ff5757;
+            --text-primary: #fff1e0;
+            --text-secondary: #c4b5a5;
+            --text-muted: #85796c;
+            --badge-bg: rgba(255, 180, 66, 0.12);
+            --badge-border: rgba(255, 180, 66, 0.3);
+            --danger-bg: rgba(255, 87, 87, 0.12);
+            --danger-border: rgba(255, 87, 87, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.65;
+            font-size: 16px;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 48px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 680px) {
+            body { padding: 16px 8px; }
+            .container { padding: 24px 16px; border-radius: 8px; }
+        }
+
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .meta {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .meta span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .disclaimer-box {
+            background: var(--danger-bg);
+            border: 2px solid var(--danger-border);
+            border-radius: 8px;
+            padding: 22px 24px;
+            margin: 28px 0;
+            color: var(--text-primary);
+        }
+
+        .disclaimer-title {
+            color: var(--danger);
+            font-size: 17px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .disclaimer-box p {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .disclaimer-box ul {
+            margin-left: 22px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--accent);
+            margin-top: 36px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(67, 57, 45, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            scroll-margin-top: 20px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        ul {
+            margin-left: 24px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0;
+            }
+            .container {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                background: #ffffff !important;
+            }
+            h1, h2, h3, .disclaimer-title {
+                color: #000000 !important;
+            }
+            p, li {
+                color: #222222 !important;
+            }
+            .disclaimer-box {
+                background: #fff5f5 !important;
+                border: 2px solid #dc3545 !important;
+            }
+            .brand-badge {
+                border: 1px solid #ccc !important;
+                color: #000000 !important;
+                background: #eee !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+    <header class="header">
+        <div class="brand-badge">RigMaster Legal &amp; Safety</div>
+        <h1>Terms of Usage</h1>
+        <div class="meta">
+            Application: <span>RigMaster — Rigging Sling Tension Calculator &amp; Lift Planning System</span> &bull; 
+            Package: <span>com.vn.perfectworld.rigmaster</span> &bull; 
+            Effective Date: <span>September 18, 2026</span>
+        </div>
+    </header>
+
+    <div class="disclaimer-box">
+        <div class="disclaimer-title">Critical Industrial Safety &amp; Engineering Disclaimer</div>
+        <p><strong>RIGMASTER IS AN ASSISTIVE COMPUTATIONAL PLANNING TOOL AND IS NOT A SUBSTITUTE FOR LICENSED PROFESSIONAL ENGINEERING JUDGMENT OR ON-SITE PHYSICAL RIGGING INSPECTIONS.</strong></p>
+        <ul>
+            <li>All calculations (including sling tensions, angle factors, D/d ratios, center-of-gravity shifts, and crane capacity deductions) must be independently verified by a <strong>Qualified Person</strong> or <strong>Certified Rigging Engineer</strong> in accordance with applicable industry standards (OSHA 1926.1400, ASME B30.9, ASME B30.5, EN 13414, ISO 12480).</li>
+            <li>Real-world variables—such as dynamic shock loading, wind speed, sling wear, temperature extremes, asymmetrical pick points, and unverified load weights—can cause catastrophic rigging failure if not physically inspected and evaluated on site.</li>
+            <li><strong>NO ACTUATOR CONTROL:</strong> RigMaster is purely an analytical estimation and documentation tool. It does NOT interface with, control, or override crane electronic control units (ECU), load moment indicators (LMI), or mechanical lifting actuators.</li>
+            <li><strong>DO NOT INITIATE ANY PHYSICAL LIFT WITHOUT A SIGNED, INDEPENDENTLY VERIFIED LIFT PLAN.</strong></li>
+        </ul>
+    </div>
+
+    <h2 id="section-1">1. Acceptance of Terms</h2>
+    <p>By downloading, installing, accessing, or using the <strong>RigMaster</strong> application ("App"), you agree to be bound by these Terms of Usage ("Terms"). If you do not agree to all terms and conditions set forth herein, do not install or use the App.</p>
+
+    <h2 id="section-2">2. Intended Audience &amp; Professional Qualifications</h2>
+    <p>RigMaster is designed specifically for trained rigging specialists, lift directors, safety inspectors, crane operators, and heavy-lift engineers. By using the App, you acknowledge that you possess the requisite knowledge, training, and certifications required by your local jurisdiction to plan and execute rigging operations safely.</p>
+
+    <h2 id="section-3">3. User Responsibilities &amp; Data Input Accuracy</h2>
+    <p>You are solely responsible for:</p>
+    <ul>
+        <li><strong>Input Accuracy:</strong> Entering exact, verified values for load weights, sling lengths, center-of-gravity offsets, pick-point coordinates, and hardware capacities.</li>
+        <li><strong>Hardware Compatibility:</strong> Verifying that shackles, spreader beams, wire ropes, and synthetic slings physically match the manufacturer Working Load Limits (WLL) and design safety factors assumed in your calculations.</li>
+        <li><strong>Physical Inspection:</strong> Conducting visual and dimensional inspections of all rigging gear before every lift to detect wear, cuts, heat damage, or deformation.</li>
+        <li><strong>Backup Encryption Passphrases:</strong> Maintaining secure custody of your passphrases used for encrypted database backups (<code>.rmbak</code>). Perfect World Studio cannot recover or decrypt lost passphrases.</li>
+    </ul>
+
+    <h2 id="section-4">4. Intellectual Property &amp; License Grant</h2>
+    <p>Perfect World Studio grants you a revocable, non-exclusive, non-transferable, limited license to download, install, and use RigMaster on compatible mobile devices in accordance with these Terms.</p>
+    <ul>
+        <li><strong>Application Rights:</strong> All visual designs, user interfaces, branding, software algorithms, and documentation are the exclusive intellectual property of Perfect World Studio.</li>
+        <li><strong>User Ownership:</strong> You retain 100% full ownership of all lift plans, rigging diagrams, inspection logs, and PDF verification certificates generated using the App.</li>
+    </ul>
+
+    <h2 id="section-5">5. Prohibited Conduct</h2>
+    <p>You agree not to:</p>
+    <ul>
+        <li>Decompile, reverse engineer, disassemble, or attempt to derive the source code of the App.</li>
+        <li>Modify, alter, or remove any copyright notices, proprietary markings, or safety warnings embedded in the App or generated PDF certificates.</li>
+        <li>Use the App in violation of any applicable local, state, national, or international heavy-lifting safety regulation or law.</li>
+    </ul>
+
+    <h2 id="section-6">6. Disclaimer of Warranties ("AS IS")</h2>
+    <p>THE APPLICATION IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, CALCULATION ACCURACY, TITLE, OR NON-INFRINGEMENT.</p>
+    <p>WE DO NOT WARRANT THAT THE APPLICATION WILL OPERATE UNINTERRUPTED, ERROR-FREE, OR THAT ITS COMPUTATIONAL ESTIMATIONS WILL PREDICT EVERY ENVIRONMENTAL OR MECHANICAL CONTINGENCY ENCOUNTERED IN THE FIELD.</p>
+
+    <h2 id="section-7">7. Limitation of Liability &amp; Indemnification</h2>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL PERFECT WORLD STUDIO, ITS DIRECTORS, EMPLOYEES, OR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES (INCLUDING LOSS OF LOAD, STRUCTURAL COLLAPSE, PROPERTY DAMAGE, BODILY INJURY, LOSS OF LIFE, LOST PROFITS, OR BUSINESS INTERRUPTION) ARISING OUT OF THE USE OR INABILITY TO USE THIS APPLICATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+    <p>You agree to indemnify, defend, and hold harmless Perfect World Studio from and against any claims, liabilities, damages, losses, and expenses (including legal fees) arising from your rigging operations, lift plan execution, or violation of these Terms.</p>
+
+    <h2 id="section-8">8. Modifications to Terms</h2>
+    <p>We reserve the right to revise or update these Terms at any time. Continued use of the App following any changes constitutes your binding acceptance of the revised Terms.</p>
+
+    <h2 id="section-9">9. Governing Law &amp; Dispute Resolution</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of Vietnam and international software commercial principles, without regard to conflict of law rules. Any dispute arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the competent courts in Vietnam.</p>
+
+    <h2 id="section-10">10. Contact Information</h2>
+    <p>For questions or formal inquiries regarding these Terms of Usage, please reach out to:</p>
+    <ul>
+        <li><strong>Email:</strong> <a href="mailto:publisher.perfectworld.studio@gmail.com">publisher.perfectworld.studio@gmail.com</a></li>
+        <li><strong>Developer:</strong> Perfect World Studio</li>
+        <li><strong>Application:</strong> RigMaster</li>
+    </ul>
+
+    <footer class="footer">
+        &copy; 2026 Perfect World Studio. All rights reserved. &bull; <a href="privacy_policy.html">Privacy Policy</a>
+    </footer>
+</main>
+
+</body>
+</html>
