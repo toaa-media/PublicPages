@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoai Nam Nguyen - Senior Mobile Developer & Mobile Architect | Portfolio Resume</title>
+  <meta name="description" content="Portfolio Resume of Hoai Nam Nguyen - Senior Mobile Developer & Mobile Architect with 10+ years experience in Android Native, Flutter, and Kotlin Multiplatform (KMP).">
+  <meta name="keywords" content="Mobile Architect, Senior Android Developer, Flutter Developer, Kotlin Multiplatform, Jetpack Compose, BLE GATT, Offline-First, Clean Architecture">
+  <meta name="author" content="Hoai Nam Nguyen">
+
+  <!-- Google Fonts: Inter & Source Serif 4 (With system fallbacks for 100% offline support) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       NOTION DESIGN SYSTEM - TOKENS & SYSTEM VARIABLES (From docs/DESIGN.md)
+       Theme: Dual-Mode "Warm Paper Notebook" & "Dark Graphite"
+       ========================================================================== */
+    :root {
+      /* Color Palette - Light Mode */
+      --color-notion-blue: #0075de;
+      --color-notion-blue-hover: #0060b8;
+      --color-paper-warmth: #f6f5f4;
+      --color-card-bg: #ffffff;
+      --color-pure-white: #ffffff;
+      --color-ink-black: #111111;
+      --color-charcoal: #1e1e1e;
+      --color-stone: #757575;
+      --color-graphite: #5a5753;
+      --color-slate: #696969;
+      --color-sky-tint: #e6f3fe;
+      --color-sky-tint-hover: #d8ecfe;
+      --color-marigold: #ffb110;
+      --color-peach: #f6d5b8;
+      --color-coral: #d93822;
+      --color-saffron: #c88400;
+      --color-vermillion: #e32d14;
+      --color-mocha: #b18164;
+      --color-signal-blue: #097fe8;
+      --color-sky-wash: #62aef0;
+      --color-midnight-ink: #02093a;
+
+      --color-nav-bg: rgba(246, 245, 244, 0.90);
+      --color-drawer-bg: #faf9f8;
+      --color-chip-bg: #f0eeeb;
+      --color-table-header: #faf9f8;
+      --color-table-hover: #faf9f8;
+      --color-code-bg: #f2f1ef;
+
+      /* Borders & Shadows */
+      --border-hairline: 1px solid rgba(0, 0, 0, 0.08);
+      --border-hairline-subtle: 1px solid rgba(0, 0, 0, 0.05);
+      --border-hairline-accent: 1px solid rgba(0, 117, 222, 0.25);
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      --radius-sm: 4px;
+      --radius-btn: 8px;
+      --radius-card: 12px;
+      --radius-pill: 9999px;
+
+      /* Typography */
+      --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, Cambria, "Times New Roman", Times, serif;
+
+      /* Layout */
+      --max-width: 1200px;
+      --section-gap: 56px;
+      --card-padding: 24px;
+    }
+
+    [data-theme="dark"] {
+      /* Color Palette - Dark Graphite Mode */
+      --color-notion-blue: #3b9eff;
+      --color-notion-blue-hover: #60a5fa;
+      --color-paper-warmth: #0f1115;
+      --color-card-bg: #181b21;
+      --color-pure-white: #181b21;
+      --color-ink-black: #f3f4f6;
+      --color-charcoal: #e5e7eb;
+      --color-stone: #9ca3af;
+      --color-graphite: #cbd5e1;
+      --color-slate: #94a3b8;
+      --color-sky-tint: rgba(59, 158, 255, 0.15);
+      --color-sky-tint-hover: rgba(59, 158, 255, 0.25);
+      --color-marigold: #f59e0b;
+      --color-peach: #3a2d24;
+      --color-coral: #f87171;
+      --color-saffron: #fbbf24;
+      --color-midnight-ink: #93c5fd;
+
+      --color-nav-bg: rgba(15, 17, 21, 0.90);
+      --color-drawer-bg: #1f232b;
+      --color-chip-bg: #242933;
+      --color-table-header: #1f232b;
+      --color-table-hover: #222731;
+      --color-code-bg: #242933;
+
+      /* Borders & Shadows */
+      --border-hairline: 1px solid rgba(255, 255, 255, 0.08);
+      --border-hairline-subtle: 1px solid rgba(255, 255, 255, 0.05);
+      --border-hairline-accent: 1px solid rgba(59, 158, 255, 0.3);
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--color-paper-warmth);
+      color: var(--color-ink-black);
+      font-family: var(--font-sans);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 80px;
+      transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    /* Sticky Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 64px;
+      background: var(--color-nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: var(--border-hairline);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.02);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15.5px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-pill);
+      background: var(--color-card-bg);
+      border: 2px solid var(--color-notion-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--color-notion-blue);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-stone);
+      padding: 6px 10px;
+      border-radius: var(--radius-btn);
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--color-ink-black);
+      background: rgba(125, 125, 125, 0.1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Notion Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: var(--color-notion-blue);
+      color: #ffffff;
+      border-color: var(--color-notion-blue);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-notion-blue-hover);
+      border-color: var(--color-notion-blue-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background-color: var(--color-sky-tint);
+      color: var(--color-notion-blue);
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--color-sky-tint-hover);
+    }
+
+    .btn-outline {
+      background-color: var(--color-card-bg);
+      color: var(--color-ink-black);
+      border: var(--border-hairline);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-table-hover);
+      border-color: rgba(125, 125, 125, 0.25);
+    }
+
+    .theme-toggle-btn {
+      padding: 7px 10px;
+      color: var(--color-stone);
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--color-ink-black);
+    }
+
+    .theme-icon-sun { display: none; }
+    .theme-icon-moon { display: block; }
+    [data-theme="dark"] .theme-icon-sun { display: block; }
+    [data-theme="dark"] .theme-icon-moon { display: none; }
+
+    /* Container & Section Structure */
+    .main-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      margin-top: var(--section-gap);
+    }
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--color-ink-black);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-icon {
+      color: var(--color-notion-blue);
+      flex-shrink: 0;
+    }
+
+    .section-subhead {
+      font-family: var(--font-serif);
+      font-size: 15.5px;
+      color: var(--color-graphite);
+      margin-top: 4px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 32px 0 16px;
+    }
+
+    .hero-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      position: relative;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-avatar-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: var(--radius-pill);
+      background: var(--color-paper-warmth);
+      border: 2.5px solid var(--color-notion-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
+    }
+
+    .avatar-monogram {
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--color-notion-blue);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-identity h1 {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: var(--color-ink-black);
+    }
+
+    .hero-title-tag {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-stone);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Notion Signature Pill */
+    .hero-pill {
+      background-color: var(--color-peach);
+      color: var(--color-ink-black);
+      border-radius: var(--radius-pill);
+      padding: 2px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+      letter-spacing: normal;
+    }
+
+    .hero-pill.blue { background-color: var(--color-sky-tint); color: var(--color-notion-blue); }
+    .hero-pill.yellow { background-color: rgba(251, 191, 36, 0.18); color: #b45309; }
+    [data-theme="dark"] .hero-pill.yellow { color: #fde047; }
+    .hero-pill.purple { background-color: rgba(147, 51, 234, 0.15); color: #7e22ce; }
+    [data-theme="dark"] .hero-pill.purple { color: #c084fc; }
+
+    .status-indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+      margin-right: 6px;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+
+    .hero-status .badge {
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 12.5px;
+      padding: 6px 12px;
+    }
+
+    [data-theme="dark"] .hero-status .badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .hero-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 16px;
+      font-size: 13.5px;
+      color: var(--color-graphite);
+    }
+
+    .hero-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-icon {
+      color: var(--color-stone);
+      flex-shrink: 0;
+    }
+
+    .hero-contact-item a:hover {
+      color: var(--color-notion-blue);
+      text-decoration: underline;
+    }
+
+    .hero-lead {
+      margin-top: 18px;
+      font-size: 15.5px;
+      color: var(--color-graphite);
+      line-height: 1.6;
+      max-width: 900px;
+    }
+
+    .hero-lead strong {
+      color: var(--color-ink-black);
+      font-weight: 600;
+    }
+
+    .hero-actions-bar {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding-top: 18px;
+      border-top: var(--border-hairline-subtle);
+    }
+
+    /* Bento Stats Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .bento-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-hairline-accent);
+    }
+
+    .bento-num {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--color-notion-blue);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .bento-num.coral { color: var(--color-coral); }
+    .bento-num.saffron { color: var(--color-saffron); }
+    .bento-num.dark { color: var(--color-charcoal); }
+
+    .bento-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-ink-black);
+      margin-top: 8px;
+    }
+
+    .bento-desc {
+      font-size: 12px;
+      color: var(--color-stone);
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    /* Architectural Philosophy & Executive Pillars Cards */
+    .arch-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .pillar-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+      color: var(--color-graphite);
+      line-height: 1.55;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .pillar-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-ink-black);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pillar-card strong {
+      color: var(--color-ink-black);
+      font-weight: 600;
+    }
+
+    /* Technical Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-ink-black);
+    }
+
+    .card-icon {
+      color: var(--color-notion-blue);
+      flex-shrink: 0;
+    }
+
+    .skill-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      background: var(--color-chip-bg);
+      border: 1px solid rgba(125, 125, 125, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 3px 8px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--color-graphite);
+      transition: all 0.15s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--color-paper-warmth);
+      color: var(--color-ink-black);
+      border-color: rgba(125, 125, 125, 0.3);
+    }
+
+    .skill-tag.accent {
+      background: var(--color-sky-tint);
+      color: var(--color-notion-blue);
+      border-color: rgba(0, 117, 222, 0.2);
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .skill-tag.accent {
+      border-color: rgba(59, 158, 255, 0.3);
+    }
+
+    /* Projects Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-pill);
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-stone);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--color-ink-black);
+      border-color: rgba(125, 125, 125, 0.3);
+    }
+
+    .filter-btn.active {
+      background: var(--color-ink-black);
+      color: var(--color-paper-warmth);
+      border-color: var(--color-ink-black);
+    }
+
+    /* Projects List & Card */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 28px;
+      box-shadow: var(--card-shadow);
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hairline-accent);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project-title-group h3 {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-ink-black);
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--color-stone);
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .project-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .badge-kmp { background: #fdf2e9; color: #c05621; }
+    [data-theme="dark"] .badge-kmp { background: #3a2213; color: #f6ad55; }
+    .badge-flutter { background: #ebf8ff; color: #2b6cb0; }
+    [data-theme="dark"] .badge-flutter { background: #16263b; color: #63b3ed; }
+    .badge-android { background: #f0fff4; color: #276749; }
+    [data-theme="dark"] .badge-android { background: #132d20; color: #68d391; }
+    .badge-iot { background: #faf5ff; color: #6b46c1; }
+    [data-theme="dark"] .badge-iot { background: #281a3d; color: #b794f4; }
+
+    .playstore-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #059669;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    [data-theme="dark"] .playstore-link {
+      background: #064e3b;
+      color: #6ee7b7;
+      border-color: #047857;
+    }
+
+    .playstore-link:hover {
+      background: #d1fae5;
+      color: #047857;
+    }
+
+    [data-theme="dark"] .playstore-link:hover {
+      background: #065f46;
+      color: #a7f3d0;
+    }
+
+    .project-desc {
+      font-size: 14.5px;
+      color: var(--color-graphite);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .project-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .project-bullets li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 14px;
+      color: var(--color-graphite);
+      line-height: 1.55;
+    }
+
+    .project-bullets li::before {
+      content: "-";
+      position: absolute;
+      left: 6px;
+      color: var(--color-notion-blue);
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .project-bullets strong {
+      color: var(--color-ink-black);
+      font-weight: 600;
+    }
+
+    .project-tech-footer {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: var(--border-hairline-subtle);
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .project-tech-label {
+      font-weight: 600;
+      color: var(--color-stone);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tech-chips {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-chip {
+      background: var(--color-chip-bg);
+      border: 1px solid rgba(125, 125, 125, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 2px 7px;
+      font-size: 12px;
+      color: var(--color-graphite);
+    }
+
+    /* Expandable Architecture Drawer */
+    .expand-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-notion-blue);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 4px 0;
+      font-family: var(--font-sans);
+    }
+
+    .expand-btn:hover {
+      text-decoration: underline;
+    }
+
+    .arch-drawer {
+      display: none;
+      margin-top: 14px;
+      padding: 16px;
+      background: var(--color-drawer-bg);
+      border: var(--border-hairline-subtle);
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: var(--color-graphite);
+      line-height: 1.6;
+    }
+
+    .arch-drawer.open {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Career Continuity Table */
+    .timeline-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .table-toolbar {
+      padding: 16px 20px;
+      background: var(--color-table-header);
+      border-bottom: var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .table-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-btn);
+      padding: 6px 12px;
+      font-size: 13px;
+      width: 280px;
+    }
+
+    .search-icon {
+      color: var(--color-stone);
+      flex-shrink: 0;
+    }
+
+    .table-search input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      background: transparent;
+      color: var(--color-ink-black);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+
+    th {
+      background: var(--color-table-header);
+      padding: 12px 16px;
+      font-weight: 600;
+      color: var(--color-stone);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: var(--border-hairline);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: var(--border-hairline-subtle);
+      color: var(--color-graphite);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    tr:hover td {
+      background: var(--color-table-hover);
+    }
+
+    td.col-period {
+      white-space: nowrap;
+      font-weight: 500;
+      color: var(--color-stone);
+      font-size: 13px;
+    }
+
+    td.col-project {
+      font-weight: 600;
+      color: var(--color-ink-black);
+    }
+
+    td.col-company {
+      font-weight: 500;
+      color: var(--color-ink-black);
+      white-space: nowrap;
+    }
+
+    /* Education & Languages */
+    .edu-lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: var(--color-card-bg);
+      border: var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .info-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-ink-black);
+      margin-bottom: 8px;
+    }
+
+    .inst-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-notion-blue);
+      margin-bottom: 4px;
+    }
+
+    .lang-item {
+      padding: 10px 0;
+      border-bottom: var(--border-hairline-subtle);
+    }
+
+    .lang-item:last-child {
+      border-bottom: none;
+    }
+
+    .lang-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-ink-black);
+      margin-bottom: 4px;
+    }
+
+    .lang-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 5px;
+      background: var(--color-chip-bg);
+      border: 1px solid rgba(125, 125, 125, 0.2);
+      border-radius: var(--radius-sm);
+      color: var(--color-stone);
+    }
+
+    .lang-desc {
+      font-size: 13px;
+      color: var(--color-stone);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding: 32px 0;
+      border-top: var(--border-hairline);
+      text-align: center;
+      color: var(--color-stone);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-notion-blue);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--color-ink-black);
+      color: var(--color-paper-warmth);
+      padding: 10px 18px;
+      border-radius: var(--radius-btn);
+      font-size: 13.5px;
+      font-weight: 500;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ==========================================================================
+       PRINT STYLESHEET (Clean High-Contrast Paper Export)
+       ========================================================================== */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding-bottom: 0 !important;
+        font-size: 10.5pt !important;
+      }
+
+      .top-nav, .filter-bar, .nav-actions, .table-toolbar, .expand-btn, footer, .toast, .no-print {
+        display: none !important;
+      }
+
+      .main-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+
+      .hero-card, .bento-card, .pillar-card, .skill-card, .project-card, .timeline-card, .info-card {
+        border: 1px solid #d0d0d0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin-bottom: 12pt !important;
+        padding: 14pt !important;
+        background: #ffffff !important;
+      }
+
+      .bento-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+      }
+
+      .arch-pillars-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
+      .arch-drawer {
+        display: block !important;
+        border: 1px solid #e0e0e0 !important;
+        background: #f9f9f9 !important;
+        color: #222222 !important;
+      }
+
+      h1, h2, h3, h4 {
+        color: #000000 !important;
+      }
+
+      .btn {
+        display: none !important;
+      }
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 992px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .arch-pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .edu-lang-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-card {
+        padding: 24px 18px;
+      }
+      .hero-identity h1 {
+        font-size: 28px;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-card {
+        padding: 20px 16px;
+      }
+      .hero-actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-actions-bar .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation -->
+  <nav class="top-nav" aria-label="Main Navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-mark">HN</div>
+        <span>Hoai Nam Nguyen</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#summary">Overview</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#flagships">Projects</a></li>
+        <li><a href="#timeline">Chronology</a></li>
+        <li><a href="#credentials">Education</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="btn btn-outline theme-toggle-btn no-print" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn btn-outline no-print" onclick="window.print()" title="Print or save as PDF">
+          <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Print / PDF
+        </button>
+        <a href="mailto:hoainam9390@gmail.com" class="btn btn-primary no-print">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- Hero Profile Section -->
+    <section class="hero-section" id="summary">
+      <div class="hero-card">
+        <div class="hero-top-row">
+          <div class="hero-avatar-group">
+            <div class="hero-avatar" aria-label="Hoai Nam Nguyen initials"><span class="avatar-monogram">HN</span></div>
+            <div class="hero-identity">
+              <h1>HOAI NAM NGUYEN</h1>
+              <div class="hero-title-tag">
+                <span>Senior Mobile Developer &amp; Architect</span>
+                <span class="hero-pill blue">Android Native</span>
+                <span class="hero-pill yellow">Flutter</span>
+                <span class="hero-pill purple">Kotlin Multiplatform</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-status no-print">
+            <span class="badge" style="background:#ecfdf5; color:#065f46; border: 1px solid #a7f3d0; font-size:13px; padding:6px 14px;">
+              <span class="status-indicator-dot" aria-hidden="true"></span> Available for Senior / Staff / Lead Roles
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-contact-row">
+          <div class="hero-contact-item">
+            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <span>Ho Chi Minh City, Vietnam</span>
+          </div>
+          <div class="hero-contact-item">
+            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span>(+84) 389 932 743</span>
+          </div>
+          <div class="hero-contact-item">
+            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <a href="mailto:hoainam9390@gmail.com">hoainam9390@gmail.com</a>
+          </div>
+        </div>
+
+        <p class="hero-lead">
+          <strong>Senior Mobile Developer &amp; Mobile Architect</strong> with <strong>10+ years of professional engineering experience</strong> architecting offline-first enterprise applications across <strong>Android Native (Kotlin/Java)</strong>, <strong>Flutter (Dart)</strong>, and <strong>Kotlin Multiplatform (KMP)</strong>, specializing in Clean Architecture, reactive concurrency pipelines, and hardware IoT integrations.
+        </p>
+
+        <div class="hero-actions-bar no-print">
+          <a href="#flagships" class="btn btn-primary">Explore Featured Projects</a>
+          <button class="btn btn-ghost" onclick="copyContactInfo()">Copy Contact Info</button>
+        </div>
+      </div>
+
+      <!-- Bento Key Metrics -->
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-num">10+</div>
+          <div class="bento-label">Years Experience</div>
+          <div class="bento-desc">Enterprise software engineering across Mobile &amp; Desktop ecosystems</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-num coral">20+</div>
+          <div class="bento-label">Production Apps</div>
+          <div class="bento-desc">Published commercial applications spanning Healthcare, Logistics, FinTech, &amp; IoT</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-num saffron">99.8%</div>
+          <div class="bento-label">Crash-Free Rate</div>
+          <div class="bento-desc">Sustained production stability through proactive memory &amp; thread profiling</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-num dark">60 FPS</div>
+          <div class="bento-label">Fluid Performance</div>
+          <div class="bento-desc">Jetpack Compose, Flutter Isolates &amp; low-overhead rendering pipelines</div>
+        </div>
+      </div>
+
+      <!-- Executive Architectural Pillars -->
+      <div class="arch-pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-card-title">
+            <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            <span>Architecture &amp; State Paradigms</span>
+          </div>
+          <p>
+            Deep expertise in <strong>Clean Architecture</strong>, <strong>MVI</strong>, <strong>MVVM</strong>, <strong>BLoC</strong>, and <strong>Riverpod</strong>, emphasizing decoupled multi-module architecture (API/Impl), high testability, GoF Design Patterns, and deterministic unidirectional data flows.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-card-title">
+            <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            <span>Offline-First &amp; Reactive Concurrency</span>
+          </div>
+          <p>
+            Proven track record delivering <strong>offline-first synchronization engines</strong>, multi-tier local persistence (Room, Realm, Isar, SQLite), and reactive pipelines utilizing <strong>Kotlin Coroutines &amp; Flow</strong>, <strong>RxJava3</strong>, and <strong>RxDart</strong>.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-card-title">
+            <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>Hardware IoT &amp; Technical Leadership</span>
+          </div>
+          <p>
+            Extensive production experience in <strong>Hardware IoT</strong> (BLE GATT, Nordic DFU, MQTT, Sockets), direct SSH database tunnels (HikariCP), and <strong>Google ML Kit</strong>. Demonstrated leadership steering Agile teams, conducting peer code reviews, and mentoring senior engineers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Technical Skills &amp; Architecture Arsenal</h2>
+          <p class="section-subhead">Curated competencies organized by engineering domain and production rigor</p>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- 1. Core Platforms -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> Core Platforms &amp; Languages</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Android Native</span>
+            <span class="skill-tag accent">Flutter (Dart)</span>
+            <span class="skill-tag accent">Kotlin Multiplatform (KMP)</span>
+            <span class="skill-tag">Compose Multiplatform</span>
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JVM Desktop (Windows)</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <!-- 2. Architecture -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Architecture &amp; Engineering Paradigms</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Clean Architecture</span>
+            <span class="skill-tag accent">MVI (Model-View-Intent)</span>
+            <span class="skill-tag">MVVM</span>
+            <span class="skill-tag">BLoC Pattern</span>
+            <span class="skill-tag">Riverpod</span>
+            <span class="skill-tag">Dependency Injection (Hilt, Koin, GetIt)</span>
+            <span class="skill-tag">Multi-Module (API/Impl)</span>
+            <span class="skill-tag">Offline-First Engine</span>
+            <span class="skill-tag">SOLID Principles</span>
+            <span class="skill-tag">Design Patterns (GoF)</span>
+          </div>
+        </div>
+
+        <!-- 3. UI & State -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> UI &amp; State Management</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Jetpack Compose</span>
+            <span class="skill-tag accent">Material 3</span>
+            <span class="skill-tag">Compose Multiplatform Canvas</span>
+            <span class="skill-tag">Riverpod (generator &amp; hooks)</span>
+            <span class="skill-tag">BLoC (flutter_bloc)</span>
+            <span class="skill-tag">StateFlow &amp; SharedFlow</span>
+            <span class="skill-tag">LiveData</span>
+            <span class="skill-tag">Flutter Hooks</span>
+            <span class="skill-tag">ViewBinding &amp; DataBinding</span>
+          </div>
+        </div>
+
+        <!-- 4. Concurrency -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Concurrency &amp; Reactive Pipelines</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Kotlin Coroutines (CPS)</span>
+            <span class="skill-tag accent">Structured Concurrency</span>
+            <span class="skill-tag">Kotlin Flow</span>
+            <span class="skill-tag">RxJava2 / RxJava3</span>
+            <span class="skill-tag">RxAndroid</span>
+            <span class="skill-tag">Dart Streams &amp; Futures</span>
+            <span class="skill-tag">Background Dart Isolates</span>
+            <span class="skill-tag">RxDart</span>
+          </div>
+        </div>
+
+        <!-- 5. Persistence -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Local Persistence &amp; Data Engines</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Room Database (WAL)</span>
+            <span class="skill-tag">InvalidationTracker</span>
+            <span class="skill-tag">MongoDB Realm Database</span>
+            <span class="skill-tag">Isar Database</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">MariaDB / MySQL</span>
+            <span class="skill-tag">HikariCP JDBC Pooling</span>
+            <span class="skill-tag">EncryptedSharedPreferences</span>
+          </div>
+        </div>
+
+        <!-- 6. Networking & IoT -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Networking, Protocols &amp; Hardware/IoT</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Bluetooth Low Energy (BLE GATT)</span>
+            <span class="skill-tag accent">Nordic DFU Over-the-Air</span>
+            <span class="skill-tag">MQTT Protocol</span>
+            <span class="skill-tag">Java Sockets &amp; TCP</span>
+            <span class="skill-tag">WebSockets (Pusher)</span>
+            <span class="skill-tag">CameraX &amp; Google ML Kit</span>
+            <span class="skill-tag">Google Maps &amp; Places APIs</span>
+            <span class="skill-tag">JSch (SSH Tunneling)</span>
+            <span class="skill-tag">Retrofit2 / OkHttp3 / Dio</span>
+            <span class="skill-tag">Firebase (FCM, Crashlytics, App Check)</span>
+          </div>
+        </div>
+
+        <!-- 7. Testing & Tooling -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Testing, DevOps &amp; Quality Engineering</span>
+          </div>
+          <div class="skill-tag-list">
+            <span class="skill-tag accent">Unit Testing (JUnit, MockK)</span>
+            <span class="skill-tag">Turbine</span>
+            <span class="skill-tag">Flutter Test</span>
+            <span class="skill-tag">Android Profiler (Memory/Thread)</span>
+            <span class="skill-tag">CI/CD (GitHub Actions)</span>
+            <span class="skill-tag">Gradle (Kotlin DSL)</span>
+            <span class="skill-tag">ProGuard / R8</span>
+            <span class="skill-tag">FVM</span>
+            <span class="skill-tag">Git / Postman / Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Flagship Projects Section -->
+    <section id="flagships">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Featured Flagship Projects</h2>
+          <p class="section-subhead">Deep-dive case studies showcasing architectural rigor and measurable business impact</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-bar no-print" role="tablist" aria-label="Filter projects by platform track">
+          <button class="filter-btn active" role="tab" aria-selected="true" aria-controls="projects-list" onclick="filterProjects('all', this)">All Projects (10)</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('kmp', this)">Kotlin Multiplatform</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('flutter', this)">Flutter Ecosystem</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('android', this)">Android Native</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('iot', this)">Hardware &amp; IoT</button>
+        </div>
+      </div>
+
+      <div class="projects-list" id="projects-list">
+
+        <!-- 1. EOB APP -->
+        <article class="project-card" data-category="kmp">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>EOB APP (KOTLIN MULTIPLATFORM)</h3>
+              <div class="project-meta">
+                <span>05/2026 - 08/2026</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Kotlin Multiplatform Engineer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-kmp">Kotlin Multiplatform</span>
+              <span class="badge" style="background:#f1f5f9; color:#475569;">Desktop &amp; Android</span>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            An enterprise-level inventory and floor map management application engineered to operate efficiently across Android and Windows desktop (JVM) platforms without intermediate web API overhead.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Cross-Platform Code Sharing:</strong> Architected a cross-platform enterprise inventory and floor-map management system across Android and JVM Desktop (Windows) using Kotlin Multiplatform (KMP) and MVI Clean Architecture, achieving ~80% shared business logic.</li>
+            <li><strong>Vector Floor-Map Rendering:</strong> Engineered multiplatform vector floor-map rendering from complex Excel datasets using Compose Multiplatform Canvas, sustaining fluid 60 FPS pan and zoom interactions across mobile and desktop runtimes.</li>
+            <li><strong>Hardware Abstractions:</strong> Formulated unified hardware abstractions (<code>expect</code>/<code>actual</code> declarations) for CameraX/ML Kit barcode scanning on Android and HID keyboard emulation on Desktop, establishing a single clean API across target platforms.</li>
+            <li><strong>Zero-Overhead Database Connectivity:</strong> Eliminated intermediate REST API overhead by engineering secure JDBC database connections to MariaDB via JSch SSH Tunneling and HikariCP connection pooling, ensuring fast data retrieval with zero connection leaks.</li>
+            <li><strong>Performance &amp; Memory Tuning:</strong> Engineered multi-threaded performance optimization and memory management across Android mobile devices and Windows desktop runtimes, preventing memory leaks during large dataset parsing.</li>
+          </ul>
+
+          <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+            <span><svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+            <span class="arrow">↓</span>
+          </button>
+          <div class="arch-drawer">
+            <strong>Key Architecture Highlights:</strong> Implemented single-module KMP code organization with strict boundaries; leveraged Koin for lightweight multiplatform dependency injection; Coroutines/Flow structured concurrency prevents UI thread stalls during Excel parsing; direct SSH-tunneled JDBC minimizes cloud hosting costs for on-premises deployments.
+          </div>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Kotlin Multiplatform</span>
+              <span class="tech-chip">Compose Multiplatform</span>
+              <span class="tech-chip">MVI Clean Architecture</span>
+              <span class="tech-chip">Koin DI</span>
+              <span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+              <span class="tech-chip">JSch (SSH Tunnel)</span>
+              <span class="tech-chip">HikariCP JDBC</span>
+              <span class="tech-chip">kotlinx.serialization</span>
+              <span class="tech-chip">CameraX</span>
+              <span class="tech-chip">Google ML Kit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. TSUNAGU INSPECTOR -->
+        <article class="project-card" data-category="flutter">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>TSUNAGU INSPECTOR (FLUTTER)</h3>
+              <div class="project-meta">
+                <span>01/2026 - 04/2026</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Flutter Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-flutter">Flutter</span>
+              <a href="https://play.google.com/store/apps/details?id=com.tsunagu.app" target="_blank" rel="noopener" class="playstore-link">
+                ▶ View on Google Play
+              </a>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            A specialized mobile application designed for quality control and detailed inspection workflows in garment and textile manufacturing, providing structured, real-time inspection data and digital evidence collection.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Decoupled Layered Architecture:</strong> Architected core quality inspection modules across 5 distinct textile categories by adhering strictly to Clean Architecture (<code>Presentation -&gt; Domain -&gt; Data</code>), accelerating feature modularity.</li>
+            <li><strong>Immutable State Management:</strong> Engineered unidirectional state management and immutable data pipelines utilizing Riverpod, Flutter Hooks, and Freezed, eliminating UI race conditions across 15+ complex inspection workflows.</li>
+            <li><strong>Fault-Tolerant Networking:</strong> Fortified networking architecture leveraging Dio and Dartz (<code>Either</code> pattern), establishing type-safe error boundaries and automated retry policies to ensure reliable data synchronization under unstable factory Wi-Fi.</li>
+            <li><strong>Background Image Offloading:</strong> Offloaded high-resolution photo compression and multipart uploads to background Dart Isolates, preventing UI thread jank and maintaining smooth 60 FPS UI performance during continuous camera inspections.</li>
+            <li><strong>Bilingual Manufacturing Operations:</strong> Deployed multi-language localization (Japanese and Vietnamese) across 200+ resource strings using Easy Localization to facilitate seamless cross-border manufacturing operations.</li>
+          </ul>
+
+          <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+            <span><svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+            <span class="arrow">↓</span>
+          </button>
+          <div class="arch-drawer">
+            <strong>Key Architecture Highlights:</strong> Used Dart Isolates to offload CPU-intensive image downsampling (10MB photos to &lt;800KB) off the main thread; Functional error handling with Dartz (Either&lt;Failure, Success&gt;) eliminates silent crashes in offline factory environments; Freezed immutable state models ensure reproducible QA testing.
+          </div>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Flutter (Dart)</span>
+              <span class="tech-chip">Clean Architecture</span>
+              <span class="tech-chip">Riverpod &amp; Flutter Hooks</span>
+              <span class="tech-chip">Freezed</span>
+              <span class="tech-chip">Dio &amp; Retrofit2</span>
+              <span class="tech-chip">GetIt &amp; Injectable</span>
+              <span class="tech-chip">Dartz (Either Pattern)</span>
+              <span class="tech-chip">Dart Isolates</span>
+              <span class="tech-chip">Easy Localization (i18n)</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. CONSTRUCTION MARKET SYSTEM -->
+        <article class="project-card" data-category="android">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>CONSTRUCTION MARKET SYSTEM (ANDROID NATIVE)</h3>
+              <div class="project-meta">
+                <span>09/2025 - 12/2025</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-android">Android Native</span>
+              <a href="https://play.google.com/store/apps/details?id=com.kenchiku_ichiba.expert" target="_blank" rel="noopener" class="playstore-link">
+                ▶ View on Google Play
+              </a>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            A specialized mobile management platform designed for construction professionals to manage projects, handle real-time field communication, and streamline onsite operations.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>100% Jetpack Compose &amp; Material 3:</strong> Delivered an onsite field-management application using 100% Jetpack Compose and Material 3 with Clean MVVM architecture across 25+ dynamic screens, accelerating UI feature delivery.</li>
+            <li><strong>Real-time Telemetry &amp; Chat:</strong> Engineered real-time group chat and bidirectional communication via Pusher WebSockets and FCM, implementing exponential backoff reconnection to maintain reliable messaging across intermittent onsite cellular connectivity.</li>
+            <li><strong>Scalable Concurrency Pipelines:</strong> Architected scalable dependency injection and asynchronous pipelines leveraging Dagger Hilt, Kotlin Coroutines, StateFlow, and Navigation Compose across 8 feature packages, adhering to SDLC best practices.</li>
+            <li><strong>Memory-Efficient Media Caching:</strong> Streamlined construction photo and document management, implementing Coil image caching with memory-efficient downsampling and local storage to handle heavy daily field inspection media without OutOfMemory errors.</li>
+            <li><strong>Near-Zero Crash Rate:</strong> Elevated app reliability to a 99.8% crash-free rate across diverse Android OEM devices through proactive memory profiling, architectural refactoring, and comprehensive peer code reviews.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Kotlin</span>
+              <span class="tech-chip">Jetpack Compose</span>
+              <span class="tech-chip">Material 3</span>
+              <span class="tech-chip">Clean MVVM</span>
+              <span class="tech-chip">Dagger Hilt</span>
+              <span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+              <span class="tech-chip">Navigation Compose</span>
+              <span class="tech-chip">Pusher (WebSockets)</span>
+              <span class="tech-chip">Coil</span>
+              <span class="tech-chip">FCM</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. WAKUNAVI / SKIPJOB -->
+        <article class="project-card" data-category="flutter">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>WAKUNAVI / SKIPJOB (FLUTTER)</h3>
+              <div class="project-meta">
+                <span>05/2025 - 08/2025</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Flutter Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-flutter">Flutter</span>
+              <span class="badge" style="background:#fef3c7; color:#92400e;">AI &amp; Media Feed</span>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            A modern Flutter-based mobile application (iOS &amp; Android) designed for media content distribution, interactive feeds, document management, and AI-powered assistance.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Cross-Platform Media Engine:</strong> Architected a cross-platform mobile application (iOS &amp; Android) for media streaming, digital publishing, and content discovery using Flutter and Riverpod state management.</li>
+            <li><strong>60 FPS Video Reels Feed:</strong> Engineered high-performance Instagram-style media feeds and video reels with smooth 60 FPS scrolling and prefetching via Flutter Cache Manager, minimizing video start latency.</li>
+            <li><strong>Google Gemini AI Integration:</strong> Integrated the Google Gemini API to enable conversational AI assistance, smart keyword filtering, and dynamic content synthesis.</li>
+            <li><strong>Hardened Cloud Security:</strong> Fortified mobile application security and backend integrations via Firebase (Firestore, Cloud Storage, Auth, Analytics, Crashlytics, App Check), preventing unauthorized API access.</li>
+            <li><strong>Scalable Navigation Architecture:</strong> Structured scalable deep routing and navigation flows utilizing GoRouter and Injectable/GetIt dependency injection across 30+ routed screens, eliminating memory leaks during continuous video playback.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Flutter (Dart)</span>
+              <span class="tech-chip">Riverpod (hooks &amp; generator)</span>
+              <span class="tech-chip">GoRouter</span>
+              <span class="tech-chip">Google Gemini API</span>
+              <span class="tech-chip">Firebase App Check</span>
+              <span class="tech-chip">Firestore</span>
+              <span class="tech-chip">Flutter Cache Manager</span>
+              <span class="tech-chip">Freezed</span>
+              <span class="tech-chip">Injectable &amp; GetIt</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. BIOTECH -->
+        <article class="project-card" data-category="android">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>BIOTECH (ANDROID NATIVE)</h3>
+              <div class="project-meta">
+                <span>01/2025 - 04/2025</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-android">Android Native</span>
+              <a href="https://play.google.com/store/apps/details?id=tech.fortebio.aotomatic" target="_blank" rel="noopener" class="playstore-link">
+                ▶ View on Google Play
+              </a>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            A comprehensive aquaculture farm management platform that empowers shrimp farmers and agricultural enterprises to digitize pond operations, monitor environmental parameters in real time, and optimize crop yield.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Agri-Tech Platform Architecture:</strong> Architected and delivered an enterprise aquaculture farm management platform for shrimp farmers across 50+ commercial facilities utilizing Kotlin, Jetpack Compose, and Clean MVVM Architecture.</li>
+            <li><strong>Telemetry &amp; Geo-Visualization:</strong> Engineered real-time farm monitoring and pond visualization modules, integrating the Google Maps API and custom telemetry analytics charts for tracking 6 key water quality parameters (pH, DO, salinity, temp, alkalinity, ammonia).</li>
+            <li><strong>Offline Sync &amp; Conflict Resolution:</strong> Synchronized farm telemetry pipelines and offline persistence using MongoDB Realm Database, Kotlin Coroutines, and StateFlow, ensuring robust conflict resolution across daily sensor records.</li>
+            <li><strong>Multi-Tier Security (RBAC):</strong> Enforced multi-tier role-based access control (RBAC) workflows, provisioning tailored operational permissions for farm owners, supervisors, and field technicians across 3 security tiers.</li>
+            <li><strong>Low-End Device Optimization:</strong> Optimized UI rendering pipelines and memory footprint on low-end agricultural Android devices (2GB RAM), sustaining consistent 60 FPS rendering under harsh field environments.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Kotlin</span>
+              <span class="tech-chip">Jetpack Compose</span>
+              <span class="tech-chip">MongoDB Realm DB</span>
+              <span class="tech-chip">Clean MVVM</span>
+              <span class="tech-chip">Dagger Hilt</span>
+              <span class="tech-chip">StateFlow</span>
+              <span class="tech-chip">Google Maps API</span>
+              <span class="tech-chip">Retrofit2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. HEINEKEN ENTERPRISE SYSTEMS -->
+        <article class="project-card" data-category="android">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>HEINEKEN ENTERPRISE SYSTEMS (BANQUET BMS &amp; SPO)</h3>
+              <div class="project-meta">
+                <span>07/2023 - 07/2024</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-android">Android Native</span>
+              <a href="https://play.google.com/store/apps/details?id=heinekenbrewerytour.vn.spo" target="_blank" rel="noopener" class="playstore-link">
+                ▶ SPO on Play Store
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=heinekenbrewerytour.vn.bms" target="_blank" rel="noopener" class="playstore-link">
+                ▶ BMS on Play Store
+              </a>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            Flagship enterprise mobile systems engineered for Heineken Vietnam to streamline nationwide field operations, equipment audits, banquet logistics, and POS merchandise verification.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Nationwide Enterprise Scale:</strong> Architected and delivered nationwide enterprise audit and banquet management mobile solutions for Heineken Vietnam across 1,000+ retail outlets and 500+ banquet venues using Kotlin, Java, and Clean Architecture.</li>
+            <li><strong>Zero-Loss Offline Engine:</strong> Pioneered a mission-critical offline-first synchronization engine using Room Database and a background JobIntentService queue, guaranteeing zero data loss across monthly audits in low-connectivity rural zones.</li>
+            <li><strong>Automated Order Reconnection:</strong> Automated background synchronization leveraging Room Database, Kotlin Coroutines, and LiveData, automatically syncing pending banquet transactions upon network reconnection.</li>
+            <li><strong>High-Speed Asset Scanning:</strong> Accelerated asset inventory and merchandise verification by integrating ML Kit and ZBar/ZXing barcode/QR scanning across 50,000+ retail trade assets.</li>
+            <li><strong>Enterprise Geofencing &amp; 2FA:</strong> Deployed nationwide outlet mapping with GPS geofencing and photo documentation with automated client-side compression, securing order workflows with 2FA across 4 administrative tiers.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Android Native (Kotlin &amp; Java)</span>
+              <span class="tech-chip">Room Database</span>
+              <span class="tech-chip">JobIntentService Offline Sync</span>
+              <span class="tech-chip">ML Kit Barcode</span>
+              <span class="tech-chip">ZBar/ZXing</span>
+              <span class="tech-chip">2FA Authentication</span>
+              <span class="tech-chip">Signature Pad</span>
+              <span class="tech-chip">EventBus</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. BRAIN SLEEP COIN -->
+        <article class="project-card" data-category="iot">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>BRAIN SLEEP COIN (ANDROID NATIVE &amp; IOT)</h3>
+              <div class="project-meta">
+                <span>04/2022 - 01/2023</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-iot">BLE &amp; IoT</span>
+              <span class="badge badge-android">Android Native</span>
+              <a href="https://play.google.com/store/apps/details?id=com.brain_sleep.sleepCoin" target="_blank" rel="noopener" class="playstore-link">
+                ▶ View on Google Play
+              </a>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            An IoT healthcare and sleep-tracking system designed to monitor, analyze, and improve users' sleep quality using advanced algorithms and connected hardware.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Continuous BLE GATT Optimization:</strong> Architected a continuous sleep-monitoring system interfacing with wearable sensors via Bluetooth Low Energy (BLE GATT), optimizing MTU negotiation (up to 512 bytes) and connection parameters to achieve &lt;2% battery consumption over 8-hour overnight tracking sessions.</li>
+            <li><strong>Resilient OEM Background Sync:</strong> Orchestrated resilient background sensor telemetry synchronization using Android WorkManager, Foreground Services, and the Google Health Connect API, preventing data loss despite aggressive OEM background battery restrictions.</li>
+            <li><strong>Over-the-Air Firmware (Nordic DFU):</strong> Spearheaded Nordic Semiconductor DFU (Device Firmware Update) integration over BLE, enabling reliable over-the-air firmware upgrades for connected hardware.</li>
+            <li><strong>Physiological Sleep Analytics:</strong> Integrated the Google Health Connect API and MPAndroidChart to visualize multi-day sleep quality scores and health trends across 7 distinct physiological sleep metrics.</li>
+            <li><strong>High-Throughput Overnight Persistence:</strong> Engineered a high-throughput local caching strategy with Realm DB and proactive memory management, processing 10,000+ telemetry data points per night with high battery efficiency.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Bluetooth Low Energy (BLE GATT)</span>
+              <span class="tech-chip">Nordic DFU</span>
+              <span class="tech-chip">Google Health Connect API</span>
+              <span class="tech-chip">Foreground Services</span>
+              <span class="tech-chip">WorkManager</span>
+              <span class="tech-chip">Realm Database</span>
+              <span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+              <span class="tech-chip">MPAndroidChart</span>
+              <span class="tech-chip">RxJava3</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. JGARO APP -->
+        <article class="project-card" data-category="android">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>JGARO APP (ANDROID NATIVE)</h3>
+              <div class="project-meta">
+                <span>02/2021 - 03/2022</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-android">Android Native</span>
+              <span class="badge" style="background:#e0f2fe; color:#0369a1;">Digital Signage</span>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            A mobile media scheduling and digital signage application broadcasting video and photo playlists to external displays.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Automated Commercial Broadcasting:</strong> Delivered a high-availability digital signage and media scheduling application enabling automated video and photo broadcasting across 50+ commercial external displays.</li>
+            <li><strong>Low-Latency Inter-Device Sockets:</strong> Engineered inter-device communication protocols using low-latency Java Sockets and RxJava2, sustaining sub-50ms command execution between the master controller and display client terminals.</li>
+            <li><strong>Complex Timetable Playlists:</strong> Structured a clean MVVM architecture with DataBinding and Realm, enabling users to construct complex media playlists and 24/7 timetable schedules with reliable playback.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Android Native (Kotlin)</span>
+              <span class="tech-chip">Java Sockets</span>
+              <span class="tech-chip">RxJava2 &amp; RxAndroid</span>
+              <span class="tech-chip">Realm Database</span>
+              <span class="tech-chip">DataBinding</span>
+              <span class="tech-chip">Unit Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9. COOLREVO APP -->
+        <article class="project-card" data-category="iot">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>COOLREVO APP (ANDROID NATIVE &amp; IOT)</h3>
+              <div class="project-meta">
+                <span>06/2020 - 01/2021</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-iot">IoT Video Streaming</span>
+              <span class="badge badge-android">Android Native</span>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            An IoT remote security surveillance application enabling comprehensive camera management for residential and commercial spaces.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Distributed Camera Surveillance:</strong> Delivered an enterprise IoT surveillance application enabling real-time remote camera management across 100+ commercial and residential camera nodes.</li>
+            <li><strong>Hardware-Accelerated HD Video:</strong> Engineered high-definition live video streaming (1080p @ 30 FPS), remote Pan/Tilt/Zoom (PTZ) controls (&lt;150ms command latency), and historical cloud footage playback.</li>
+            <li><strong>Sub-2s Push Alerts:</strong> Integrated real-time motion and sound alert notifications utilizing Firebase Cloud Messaging and Retrofit2 REST services, delivering security alerts to users within 2 seconds of detection.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Live Video Streaming (1080p)</span>
+              <span class="tech-chip">PTZ Camera Controls</span>
+              <span class="tech-chip">Hardware Acceleration</span>
+              <span class="tech-chip">Firebase Cloud Messaging</span>
+              <span class="tech-chip">Retrofit2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. FUNERAL HALL / EDENAID -->
+        <article class="project-card" data-category="android">
+          <div class="project-top">
+            <div class="project-title-group">
+              <h3>FUNERAL HALL / EDENAID (ANDROID NATIVE)</h3>
+              <div class="project-meta">
+                <span>08/2024 - 12/2024</span>
+                <span>•</span>
+                <span>Aris VN</span>
+                <span>•</span>
+                <span>Senior Android Developer</span>
+              </div>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-android">Android Native</span>
+              <a href="https://play.google.com/store/apps/details?id=com.bm.edenaid" target="_blank" rel="noopener" class="playstore-link">
+                ▶ View on Google Play
+              </a>
+            </div>
+          </div>
+
+          <p class="project-desc">
+            A comprehensive Android mobile application designed to simplify and streamline funeral hall reservations, mortuary facility management, and funeral supply package bookings.
+          </p>
+
+          <ul class="project-bullets">
+            <li><strong>Facility Booking Platform:</strong> Delivered an end-to-end facility booking and mortuary management app utilizing Kotlin, MVVM architecture, ViewBinding, and Dagger Hilt across 20+ specialized funeral hall facilities.</li>
+            <li><strong>Turn-by-Turn Navigation Routing:</strong> Streamlined location-based facility search and seamless turn-by-turn routing by integrating the Google Maps API and Kakao Navi SDK.</li>
+            <li><strong>Social Auth &amp; Deep-Links:</strong> Integrated social authentication and deep-link sharing with the Kakao SDK (Login, Share, Navi) alongside Firebase Cloud Messaging (FCM) for instant reservation updates.</li>
+            <li><strong>Memory &amp; Render Profiling:</strong> Identified and eliminated memory leaks and UI render stalls using the Android Profiler, ensuring smooth checkout and reservation processing.</li>
+          </ul>
+
+          <div class="project-tech-footer">
+            <span class="project-tech-label">Tech Stack:</span>
+            <div class="tech-chips">
+              <span class="tech-chip">Kotlin</span>
+              <span class="tech-chip">Dagger Hilt</span>
+              <span class="tech-chip">Realm Database</span>
+              <span class="tech-chip">Google Maps API</span>
+              <span class="tech-chip">Kakao SDK</span>
+              <span class="tech-chip">Android Profiler</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Career Continuity Matrix (2014 - 2024) -->
+    <section id="timeline">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Full Career Chronology &amp; Additional Projects (2014 - 2024)</h2>
+          <p class="section-subhead">Complete 10-year track record preserving continuous chronology and foundation systems</p>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="table-toolbar no-print">
+          <div class="table-search">
+            <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="projectSearchInput" placeholder="Filter projects by keyword or tech..." onkeyup="searchContinuityTable()">
+          </div>
+          <span style="font-size:13px; color:var(--color-stone);" id="tableCountDisplay">Showing 11 earlier projects</span>
+        </div>
+
+        <div class="table-scroll">
+          <table class="continuity-table" id="continuityTable">
+            <thead>
+              <tr>
+                <th style="width:140px;">Timeline</th>
+                <th style="width:230px;">Project &amp; Role</th>
+                <th style="width:130px;">Company</th>
+                <th style="width:280px;">Core Technologies</th>
+                <th>Key Impact &amp; Engineering Highlights</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-period">02/2023 - 06/2023</td>
+                <td class="col-project"><strong>Art Tool</strong><br><span style="font-size:12px; color:var(--color-stone);">Flutter Developer</span></td>
+                <td class="col-company">Aris VN</td>
+                <td>Flutter (Dart), BLoC, Isar DB, RxDart, FCM, Localization</td>
+                <td>Enterprise internal administration app serving 300+ corporate employees; attendance tracking, meeting room bookings, and multi-tier leave approval.</td>
+              </tr>
+              <tr>
+                <td class="col-period">01/2019 - 04/2020</td>
+                <td class="col-project"><strong>InnerBeans App</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Mobile Developer</span></td>
+                <td class="col-company">InnerBus VN</td>
+                <td>Android Native, React Native, Realm DB, Sockets, RxJava2</td>
+                <td>Gamified virtual collaboration platform for 1,000+ users; migrated 8 native components to React Native (~70% shared codebase); sub-100ms sync.</td>
+              </tr>
+              <tr>
+                <td class="col-period">08/2017 - 11/2018</td>
+                <td class="col-project"><strong>Pure PM App</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+                <td class="col-company">Pure Projects</td>
+                <td>Android (Java/Kotlin), Realm DB, MVVM, RxJava2, ButterKnife</td>
+                <td>Construction management tablet solution across 15+ major sites; sustained 60 FPS blueprint and 50+ MB multi-page PDF document inspection.</td>
+              </tr>
+              <tr>
+                <td class="col-period">04/2017 - 07/2017</td>
+                <td class="col-project"><strong>Biits Engage</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+                <td class="col-company">Nexle Corp</td>
+                <td>Android (Java), Dagger 2, RxJava, Java Sockets, SQLite</td>
+                <td>Commercial POS tablet deployed across 200+ retail stores; multi-tender checkout, automated tax calculation, and &lt;50ms inter-terminal order broadcasting.</td>
+              </tr>
+              <tr>
+                <td class="col-period">09/2016 - 03/2017</td>
+                <td class="col-project"><strong>Splyt</strong><br><span style="font-size:12px; color:var(--color-stone);">React Native Developer</span></td>
+                <td class="col-company">Nexle Corp</td>
+                <td>React Native, JavaScript, Google Maps API, FCM, APNs</td>
+                <td>Cross-platform social dining and bill-splitting across 50+ Singapore venues; dynamic group tab creation for up to 20 diners per table with automated micro-charges.</td>
+              </tr>
+              <tr>
+                <td class="col-period">03/2016 - 07/2016</td>
+                <td class="col-project"><strong>Taxi Amber</strong><br><span style="font-size:12px; color:var(--color-stone); font-weight:600; color:var(--color-notion-blue);">Tech Lead &amp; Senior Android</span></td>
+                <td class="col-company">Nexle Corp</td>
+                <td>Android (Java), Google Maps API, XMPP Protocol, GCM, SQLite</td>
+                <td>Fleet dispatch and ride-hailing solution for 1,000+ drivers; architected real-time GPS dispatch algorithm (&lt;2s, 3km radius); led engineering team of 5.</td>
+              </tr>
+              <tr>
+                <td class="col-period">11/2015 - 02/2016</td>
+                <td class="col-project"><strong>Smart Watch</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+                <td class="col-company">Nexle Corp</td>
+                <td>Android (Java), BLE GATT, SQLite, Retrofit</td>
+                <td>Low-power smartwatch companion app; continuous 12-hour outdoor hiking tracking via BLE with telemetry synchronization at a 1Hz frequency.</td>
+              </tr>
+              <tr>
+                <td class="col-period">05/2015 - 11/2015</td>
+                <td class="col-project"><strong>Travel Smart</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+                <td class="col-company">Nexle Corp</td>
+                <td>Android (Java), Google Maps, SQLite, GCM, Social OAuth</td>
+                <td>Pioneering travel discovery platform connecting 5,000+ travelers with 50+ certified tour operators across Vietnam with instant multi-criteria filtering.</td>
+              </tr>
+              <tr>
+                <td class="col-period">03/2015 - 05/2015</td>
+                <td class="col-project"><strong>Menu Search</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+                <td class="col-company">Nexle Corp</td>
+                <td>Android (Java), Google Places API, Google Maps, SQLite, GCM</td>
+                <td>Location-based dining discovery app (radius 500m to 10km in &lt;300ms); automated table reservations with 2-hour reminder alerts.</td>
+              </tr>
+              <tr>
+                <td class="col-period">11/2014 - 02/2015</td>
+                <td class="col-project"><strong>Internet of Things (IoT)</strong><br><span style="font-size:12px; color:var(--color-stone);">Android Developer</span></td>
+                <td class="col-company">Global CyberSoft</td>
+                <td>Android (Java), BLE GATT, MQTT Protocol, SQLite</td>
+                <td>IoT telemetry &amp; remote control interfacing with embedded Arduino hardware via BLE over a 20-meter range; real-time MQTT sensor metric streaming.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Credentials Section -->
+    <section id="credentials">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Education &amp; Languages</h2>
+          <p class="section-subhead">Academic credentials and linguistic capabilities</p>
+        </div>
+      </div>
+
+      <div class="edu-lang-grid">
+        <!-- Education Card -->
+        <div class="info-card">
+          <h4>Bachelor of Computer Science and Engineering</h4>
+          <div class="inst-name">Ho Chi Minh City University of Technology (HCMUT), Vietnam</div>
+          <p style="color:var(--color-stone); font-size:13px; margin-bottom:8px;">2008 - 2013 • Formal 5-Year Engineering Degree</p>
+          <p>
+            <strong>Major:</strong> Computer Science &amp; Software Engineering. Comprehensive foundation in Algorithms, Object-Oriented Design, Operating Systems, Computer Networks, and Enterprise Software Architecture.
+          </p>
+        </div>
+
+        <!-- Languages Card -->
+        <div class="info-card">
+          <h4>Languages</h4>
+          <div style="margin-top:16px;">
+            <div class="lang-item">
+              <div class="lang-name">
+                <span class="lang-title"><span class="lang-tag">EN</span> English</span>
+                <span class="badge" style="background:#e0f2fe; color:#0369a1; font-size:11px;">Basic Working</span>
+              </div>
+              <div class="lang-desc">Basic conversational communication and technical documentation reading/writing.</div>
+            </div>
+
+            <div class="lang-item" style="margin-top:14px;">
+              <div class="lang-name">
+                <span class="lang-title"><span class="lang-tag">VI</span> Vietnamese</span>
+                <span class="badge" style="background:#fef3c7; color:#92400e; font-size:11px;">Native</span>
+              </div>
+              <div class="lang-desc">Native proficiency.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="main-container">
+      <ul class="footer-links no-print">
+        <li><a href="#summary">Back to Top</a></li>
+        <li><a href="mailto:hoainam9390@gmail.com">Contact</a></li>
+      </ul>
+      <p>© 2026 Hoai Nam Nguyen • Built with Notion Design System (Warm Paper Palette)</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Element -->
+  <div id="toast" class="toast" role="alert" aria-live="polite">Contact info copied to clipboard!</div>
+
+  <!-- Interactive Client-side Script -->
+  <script>
+    // Theme Management (Dual-Mode: Light Warm Paper & Dark Graphite)
+    (function initTheme() {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('portfolio-theme');
+      } catch (e) {}
+
+      var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var activeTheme = savedTheme || (systemDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', activeTheme);
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function() {
+          var current = document.documentElement.getAttribute('data-theme') || 'light';
+          var nextTheme = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', nextTheme);
+          try {
+            localStorage.setItem('portfolio-theme', nextTheme);
+          } catch (e) {}
+        });
+      }
+
+      // Active Navigation Spy via IntersectionObserver (Compliant with taste-skill Section 5.D & 9.F)
+      var navLinks = document.querySelectorAll('.nav-links a');
+      var sections = document.querySelectorAll('section[id]');
+
+      if ('IntersectionObserver' in window && sections.length > 0) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.getAttribute('id');
+              navLinks.forEach(function(link) {
+                if (link.getAttribute('href') === '#' + id) {
+                  link.classList.add('active');
+                } else {
+                  link.classList.remove('active');
+                }
+              });
+            }
+          });
+        }, {
+          rootMargin: '-15% 0px -70% 0px',
+          threshold: 0
+        });
+
+        sections.forEach(function(section) {
+          observer.observe(section);
+        });
+      }
+    });
+
+    // Project Category Filtering
+    function filterProjects(category, btnElement) {
+      var buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(function(btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      btnElement.classList.add('active');
+      btnElement.setAttribute('aria-selected', 'true');
+
+      var cards = document.querySelectorAll('.project-card');
+      cards.forEach(function(card) {
+        var cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category || (category === 'iot' && cardCat === 'iot')) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Toggle Architectural Details Drawer
+    function toggleDrawer(btn) {
+      var drawer = btn.nextElementSibling;
+      var arrow = btn.querySelector('.arrow');
+      drawer.classList.toggle('open');
+      if (drawer.classList.contains('open')) {
+        arrow.textContent = '↑';
+      } else {
+        arrow.textContent = '↓';
+      }
+    }
+
+    // Search Career Continuity Table
+    function searchContinuityTable() {
+      var input = document.getElementById('projectSearchInput');
+      var filter = input.value.toLowerCase();
+      var table = document.getElementById('continuityTable');
+      var trs = table.getElementsByTagName('tr');
+      var visibleCount = 0;
+
+      for (var i = 1; i < trs.length; i++) {
+        var text = trs[i].textContent.toLowerCase();
+        if (text.indexOf(filter) > -1) {
+          trs[i].style.display = '';
+          visibleCount++;
+        } else {
+          trs[i].style.display = 'none';
+        }
+      }
+
+      var counter = document.getElementById('tableCountDisplay');
+      if (counter) {
+        counter.textContent = 'Showing ' + visibleCount + ' earlier projects';
+      }
+    }
+
+    // Copy Contact Info
+    function copyContactInfo() {
+      var text = "Hoai Nam Nguyen - Senior Mobile Developer & Architect | Phone: (+84) 389 932 743 | Email: hoainam9390@gmail.com";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          showToast("Contact details copied to clipboard!");
+        }).catch(function() {
+          showToast("Email: hoainam9390@gmail.com");
+        });
+      } else {
+        showToast("Email: hoainam9390@gmail.com");
+      }
+    }
+
+    // Show Toast
+    function showToast(message) {
+      var toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(function() {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
