@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Terms of Usage — WordQuest: English Adventure</title>
+  <meta name="description" content="Terms of Usage and End-User Agreement for WordQuest: English Adventure. Free offline educational software license, intellectual property, and user terms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       CSS Custom Properties / Theme Tokens
+       ------------------------------------------------------------- */
+    :root {
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Light Theme (Default) */
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-surface-tint: #f8fafc;
+      --bg-sidebar: #ffffff;
+      --bg-code: #f1f5f9;
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-on-accent: #ffffff;
+
+      --accent-primary: #ea580c; /* Warm Orange / Amber Adventure */
+      --accent-hover: #c2410c;
+      --accent-subtle: #ffedd5;
+      --accent-border: #fed7aa;
+
+      --success-bg: #ecfdf5;
+      --success-text: #065f46;
+      --success-border: #a7f3d0;
+
+      --info-bg: #eff6ff;
+      --info-text: #1e40af;
+      --info-border: #bfdbfe;
+
+      --border-color: #e2e8f0;
+      --border-light: #f1f5f9;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --shadow-card: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      --header-height: 68px;
+    }
+
+    /* Dark Mode Theme */
+    [data-theme="dark"] {
+      --bg-page: #0b0f17;
+      --bg-card: #131b26;
+      --bg-card-hover: #1a2433;
+      --bg-surface-tint: #111722;
+      --bg-sidebar: #131b26;
+      --bg-code: #1e293b;
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-on-accent: #ffffff;
+
+      --accent-primary: #f97316;
+      --accent-hover: #fb923c;
+      --accent-subtle: #2d1808;
+      --accent-border: #7c2d12;
+
+      --success-bg: #06281e;
+      --success-text: #34d399;
+      --success-border: #065f46;
+
+      --info-bg: #08203e;
+      --info-text: #60a5fa;
+      --info-border: #1e3a8a;
+
+      --border-color: #243142;
+      --border-light: #1a2433;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+      --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-page: #0b0f17;
+        --bg-card: #131b26;
+        --bg-card-hover: #1a2433;
+        --bg-surface-tint: #111722;
+        --bg-sidebar: #131b26;
+        --bg-code: #1e293b;
+
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --text-on-accent: #ffffff;
+
+        --accent-primary: #f97316;
+        --accent-hover: #fb923c;
+        --accent-subtle: #2d1808;
+        --accent-border: #7c2d12;
+
+        --success-bg: #06281e;
+        --success-text: #34d399;
+        --success-border: #065f46;
+
+        --info-bg: #08203e;
+        --info-text: #60a5fa;
+        --info-border: #1e3a8a;
+
+        --border-color: #243142;
+        --border-light: #1a2433;
+
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+        --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       Global Reset & Typography
+       ------------------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.68;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    /* -------------------------------------------------------------
+       Header & Navigation Bar
+       ------------------------------------------------------------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      height: var(--header-height);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(234, 88, 12, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      padding: 0.15rem 0.55rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--accent-border);
+      display: inline-block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .nav-tabs {
+      display: inline-flex;
+      background-color: var(--bg-surface-tint);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .nav-tab-link {
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.4rem 0.95rem;
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .nav-tab-link:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-tab-link.active {
+      background-color: var(--bg-card);
+      color: var(--accent-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .icon-btn {
+      background: var(--bg-surface-tint);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------
+       Hero Section
+       ------------------------------------------------------------- */
+    .hero-section {
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-page) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 2.75rem 1.25rem 2.25rem;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+    }
+
+    .badge-terms {
+      background: var(--info-bg);
+      color: var(--info-text);
+      border: 1px solid var(--info-border);
+    }
+
+    .badge-free {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    .badge-license {
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      border: 1px solid var(--accent-border);
+    }
+
+    .hero-title {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 840px;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.85rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .meta-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* -------------------------------------------------------------
+       Highlights Grid (Executive Summary Cards)
+       ------------------------------------------------------------- */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-border);
+    }
+
+    .highlight-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-body h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .highlight-body p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* -------------------------------------------------------------
+       Main Layout (Sidebar + Content)
+       ------------------------------------------------------------- */
+    .main-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* -------------------------------------------------------------
+       Sticky Sidebar & Table of Contents (TOC)
+       ------------------------------------------------------------- */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--header-height) + 1.5rem);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      max-height: calc(100vh - var(--header-height) - 3rem);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .toc-link {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      padding: 0.4rem 0.65rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .toc-link:hover {
+      background: var(--bg-card-hover);
+      color: var(--accent-primary);
+      text-decoration: none;
+    }
+
+    .toc-link.active {
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      font-weight: 700;
+      border-left: 3px solid var(--accent-primary);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .sidebar-support-card {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .sidebar-support-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .support-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 0.5rem 0.85rem;
+      background: var(--accent-primary);
+      color: var(--text-on-accent);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .support-btn:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(234, 88, 12, 0.4);
+    }
+
+    /* Mobile Quick Jump Drawer / Selector */
+    .mobile-toc-toggle {
+      display: none;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* -------------------------------------------------------------
+       Content Area & Legal Sections
+       ------------------------------------------------------------- */
+    .content-area {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .legal-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: calc(var(--header-height) + 1.5rem);
+    }
+
+    .legal-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .section-num {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .legal-section h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 1.75rem 0 0.65rem;
+      color: var(--text-primary);
+    }
+
+    .legal-section p {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .legal-section ul, .legal-section ol {
+      margin: 0.75rem 0 1.25rem 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .legal-section li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .legal-section strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* -------------------------------------------------------------
+       Callouts & Warnings
+       ------------------------------------------------------------- */
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      border-left: 4px solid;
+    }
+
+    .callout-success {
+      background: var(--success-bg);
+      border-left-color: #10b981;
+      color: var(--success-text);
+    }
+
+    .callout-info {
+      background: var(--info-bg);
+      border-left-color: #3b82f6;
+      color: var(--info-text);
+    }
+
+    .callout-warning {
+      background: var(--accent-subtle);
+      border-left-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .callout-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .callout p {
+      margin-bottom: 0 !important;
+      font-size: 0.9rem !important;
+      line-height: 1.55 !important;
+      color: inherit !important;
+    }
+
+    /* -------------------------------------------------------------
+       Footer
+       ------------------------------------------------------------- */
+    .site-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.25rem;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    /* -------------------------------------------------------------
+       Responsive Breakpoints
+       ------------------------------------------------------------- */
+    @media (max-width: 992px) {
+      .layout-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .sidebar.mobile-open {
+        display: block;
+        position: fixed;
+        top: calc(var(--header-height) + 10px);
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 100;
+        max-height: calc(100vh - var(--header-height) - 2rem);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .mobile-toc-toggle {
+        display: flex;
+      }
+
+      .content-area {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        height: auto;
+        padding: 0.65rem 0;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+
+      .header-actions {
+        justify-content: space-between;
+      }
+
+      .hero-section {
+        padding: 1.75rem 1rem 1.5rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-wrapper {
+        padding: 1.25rem 0.85rem 3rem;
+      }
+
+      .content-area {
+        padding: 1.25rem 0.85rem;
+        border-radius: var(--radius-md);
+      }
+
+      .section-header h2 {
+        font-size: 1.28rem;
+      }
+
+      .legal-section {
+        margin-bottom: 2.25rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+
+    /* -------------------------------------------------------------
+       Print Stylesheet
+       ------------------------------------------------------------- */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 12pt;
+      }
+
+      .site-header, .sidebar, .mobile-toc-toggle, .site-footer, .header-actions, .highlight-card, .support-btn {
+        display: none !important;
+      }
+
+      .main-wrapper, .hero-section {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .layout-grid {
+        display: block !important;
+      }
+
+      .content-area {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      .legal-section {
+        page-break-inside: avoid;
+        margin-bottom: 1.5in;
+      }
+
+      a {
+        color: #000000 !important;
+        text-decoration: underline !important;
+      }
+
+      .callout {
+        border-left: 2pt solid #666666 !important;
+        background: #f4f4f4 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Header & Global Navigation
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="terms_of_usage.html" class="brand">
+        <div class="brand-icon">⚔️</div>
+        <div>
+          <span>WordQuest</span>
+          <span class="brand-tag">English Adventure</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- Navigation Tab Switcher -->
+        <nav class="nav-tabs" aria-label="Legal Documents Navigation">
+          <a href="privacy_policy.html" class="nav-tab-link">
+            <span>🛡️</span> Privacy Policy
+          </a>
+          <a href="terms_of_usage.html" class="nav-tab-link active">
+            <span>📜</span> Terms of Usage
+          </a>
+        </nav>
+
+        <!-- Theme Toggle Button -->
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme color" title="Toggle Dark/Light Mode">
+          🌓
+        </button>
+
+        <!-- Print Button -->
+        <button class="icon-btn" onclick="window.print()" aria-label="Print Document" title="Print this Agreement">
+          🖨️
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       Hero Header & Executive Highlights
+       ============================================================ -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-badge-row">
+        <span class="badge badge-free">🎁 100% Free Educational Software</span>
+        <span class="badge badge-terms">⚖️ Fair End-User Agreement</span>
+        <span class="badge badge-license">📜 Personal Study License</span>
+      </div>
+
+      <h1 class="hero-title">Terms of Usage</h1>
+      <p class="hero-subtitle">
+        Please read these Terms of Usage carefully before downloading, installing, or playing WordQuest: English Adventure.
+        By accessing or using the Application, you agree to be bound by this legal agreement.
+      </p>
+
+      <div class="hero-meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Application</span>
+          <span class="meta-value">WordQuest: English Adventure</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Effective Date</span>
+          <span class="meta-value">October 13, 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Version</span>
+          <span class="meta-value">1.0.0 (Production)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Monetization</span>
+          <span class="meta-value">Zero Ads · Zero IAP · Zero Fees</span>
+        </div>
+      </div>
+
+      <!-- Highlights Grid -->
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-icon">🎓</div>
+          <div class="highlight-body">
+            <h4>Educational Purpose</h4>
+            <p>Designed as an engaging, self-directed English learning tool aligned with CEFR A1–A2 standards.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">💎</div>
+          <div class="highlight-body">
+            <h4>No Financial Obligations</h4>
+            <p>100% free with no in-app purchases, microtransactions, paywalls, or hidden charges.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">📱</div>
+          <div class="highlight-body">
+            <h4>Local Device Sovereignty</h4>
+            <p>Your game save data and backups reside entirely on your device. You control your progress.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🛡️</div>
+          <div class="highlight-body">
+            <h4>Content Ownership</h4>
+            <p>All quest storyboards, character designs, monsters, sound effects, and curriculum are protected IP.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Main Content & Sticky TOC Layout
+       ============================================================ -->
+  <div class="main-wrapper">
+    <!-- Mobile TOC Trigger -->
+    <button class="mobile-toc-toggle" id="mobileTocBtn" aria-expanded="false" aria-controls="tableOfContents">
+      <span>📖 Table of Contents</span>
+      <span id="mobileTocIcon">▼</span>
+    </button>
+
+    <div class="layout-grid">
+      <!-- Sticky Sidebar Navigation -->
+      <aside class="sidebar" id="tableOfContents">
+        <div class="sidebar-title">
+          <span>Table of Contents</span>
+          <span style="font-size: 0.75rem; color: var(--accent-primary);">12 Sections</span>
+        </div>
+        <nav>
+          <ul class="toc-list">
+            <li><a href="#sec-agreement" class="toc-link active">1. Agreement to Terms</a></li>
+            <li><a href="#sec-educational" class="toc-link">2. Educational Scope</a></li>
+            <li><a href="#sec-license" class="toc-link">3. License Grant</a></li>
+            <li><a href="#sec-ip" class="toc-link">4. Intellectual Property</a></li>
+            <li><a href="#sec-conduct" class="toc-link">5. Acceptable User Conduct</a></li>
+            <li><a href="#sec-speaking" class="toc-link">6. Speaking Studio Usage</a></li>
+            <li><a href="#sec-data-backup" class="toc-link">7. Local Data & Backups</a></li>
+            <li><a href="#sec-virtual-items" class="toc-link">8. In-Game Gold & Items</a></li>
+            <li><a href="#sec-disclaimer" class="toc-link">9. Warranty Disclaimers</a></li>
+            <li><a href="#sec-liability" class="toc-link">10. Limitation of Liability</a></li>
+            <li><a href="#sec-changes" class="toc-link">11. Modifications & Updates</a></li>
+            <li><a href="#sec-governing" class="toc-link">12. Governing Law & Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-support-card">
+          <p>Questions or institutional licensing inquiries?</p>
+          <a href="mailto:publisher.perfectworld.studio@gmail.com" class="support-btn">Contact Legal Team</a>
+        </div>
+      </aside>
+
+      <!-- Main Legal Content Area -->
+      <main class="content-area">
+
+        <!-- 1. Agreement to Terms -->
+        <section id="sec-agreement" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">1</span>
+            <h2>Agreement to Terms</h2>
+          </div>
+          <p>
+            These Terms of Usage ("Terms" or "Agreement") constitute a legally binding agreement between you (the "User", "you", or "your")
+            and the creators and maintainers of <strong>WordQuest: English Adventure</strong> ("WordQuest", "we", "us", or "our").
+          </p>
+          <p>
+            By downloading, installing, accessing, or playing WordQuest on Android, iOS, or any other platform, you affirm that you have read,
+            understood, and agreed to be bound by all terms in this document and our <a href="privacy_policy.html">Privacy Policy</a>.
+            If you do not agree with any part of these Terms, you must immediately uninstall and discontinue using the Application.
+          </p>
+          <p>
+            If you are under the legal age of majority in your jurisdiction, you represent that your parent or legal guardian has reviewed
+            and accepted these Terms on your behalf.
+          </p>
+        </section>
+
+        <!-- 2. Educational Scope -->
+        <section id="sec-educational" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">2</span>
+            <h2>Educational Scope & Nature of the Service</h2>
+          </div>
+          <p>
+            WordQuest is an offline interactive educational application crafted to assist learners in developing foundational English skills
+            (aligned roughly with the Common European Framework of Reference for Languages, CEFR levels A1 Breakthrough through A2 Waystage).
+          </p>
+          <p>
+            While WordQuest incorporates structured spaced repetition, contextual grammar challenges, listening comprehension, and speaking modules,
+            it is intended strictly as a supplementary self-study learning tool. WordQuest does not grant formal academic credits, degrees, or
+            standardized examination certifications (such as IELTS, TOEFL, or TOEIC).
+          </p>
+        </section>
+
+        <!-- 3. License Grant -->
+        <section id="sec-license" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">3</span>
+            <h2>License Grant & Permitted Usage</h2>
+          </div>
+          <p>
+            Subject to your compliance with these Terms, WordQuest grants you a personal, non-exclusive, non-transferable, revocable, and royalty-free
+            license to install and run the Application on personal devices solely for your personal, non-commercial educational use.
+          </p>
+          <p>
+            <strong>License Restrictions:</strong> You agree that you will NOT:
+          </p>
+          <ul>
+            <li>Decompile, reverse-engineer, disassemble, or attempt to derive the source code of the Application (except to the extent permitted by applicable open-source licenses or mandatory local laws).</li>
+            <li>Sublicense, sell, rent, lease, distribute, or commercially exploit any portion of the software, graphics, or audio assets.</li>
+            <li>Modify, adapt, translate, or create derivative works of the curriculum, character assets, or game narrative without prior written permission.</li>
+            <li>Bypass, disable, or tamper with security mechanisms, cryptographic routines, or local storage validation safeguards.</li>
+          </ul>
+        </section>
+
+        <!-- 4. Intellectual Property -->
+        <section id="sec-ip" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">4</span>
+            <h2>Intellectual Property & Proprietary Rights</h2>
+          </div>
+          <p>
+            All rights, titles, and interests in and to WordQuest: English Adventure—including but not limited to the codebase, game design,
+            quest storylines, NPC dialogues, linguistic curriculum, vocabulary databases, character art, monster illustrations, icons, animations,
+            audio recordings, voice-overs, sound effects, and trademarks—are the exclusive intellectual property of the WordQuest development team
+            or their respective licensors.
+          </p>
+          <p>
+            All third-party open-source libraries incorporated into WordQuest are subject to their respective open-source licenses (such as MIT, Apache 2.0,
+            and BSD licenses) as credited in the application's Open Source Acknowledgements.
+          </p>
+        </section>
+
+        <!-- 5. Acceptable User Conduct -->
+        <section id="sec-conduct" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">5</span>
+            <h2>Acceptable User Conduct</h2>
+          </div>
+          <p>
+            WordQuest is designed to foster a safe, positive, and empowering educational environment. When using the Application, you agree not to:
+          </p>
+          <ul>
+            <li>Use the Application for any unlawful, fraudulent, or malicious purpose.</li>
+            <li>Introduce malicious code, corrupted backup files (<code>.wqbak</code>), or scripts intended to crash or corrupt the local database engine.</li>
+            <li>Misrepresent your identity, falsely claim affiliation with WordQuest, or use the Application's branding in unauthorized promotional material.</li>
+          </ul>
+        </section>
+
+        <!-- 6. Speaking Studio Usage -->
+        <section id="sec-speaking" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">6</span>
+            <h2>Speaking Studio & Audio Recording Responsibilities</h2>
+          </div>
+          <p>
+            WordQuest provides an on-device Speaking Studio feature that utilizes your device microphone (<code>RECORD_AUDIO</code>) to enable
+            self-recording and audio waveform comparison against native English reference models.
+          </p>
+          <div class="callout callout-info">
+            <div class="callout-title">
+              <span>🎙️</span> Your Voice Sovereignty
+            </div>
+            <p>
+              As detailed in our Privacy Policy, your recorded audio is processed strictly on your physical device and is never uploaded to any remote server.
+              You remain the sole owner of any personal audio recorded during practice sessions and have the unfettered ability to delete recordings at any time.
+            </p>
+          </div>
+        </section>
+
+        <!-- 7. Local Data & Backups -->
+        <section id="sec-data-backup" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">7</span>
+            <h2>Local Data Sovereignty & Backup Responsibility</h2>
+          </div>
+          <p>
+            Because WordQuest does not maintain centralized servers or remote user accounts, all study progress, statistics, vocabulary notebooks,
+            and cosmetic unlocks exist exclusively within your device's local ObjectBox database:
+          </p>
+          <ul>
+            <li>
+              <strong>User Responsibility for Backups:</strong> If you reset your device, lose your phone, or delete the Application without exporting
+              an encrypted backup (<code>.wqbak</code>), your progress cannot be restored by WordQuest administrators.
+            </li>
+            <li>
+              <strong>Cryptographic Passphrase Protection:</strong> Backups are encrypted client-side using Argon2id key derivation and AES-256-GCM.
+              We do not know, store, or recover passphrases. If you forget the passphrase you assigned to an encrypted backup file, the data is mathematically unrecoverable.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 8. In-Game Gold & Items -->
+        <section id="sec-virtual-items" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">8</span>
+            <h2>In-Game Gold, Badges & Virtual Items</h2>
+          </div>
+          <p>
+            WordQuest includes gamification elements such as in-game Gold coins, equipment items, wardrobe cosmetics, badges, and adventure ranks.
+          </p>
+          <ul>
+            <li>
+              <strong>Zero Real-World Monetary Value:</strong> In-game currency, items, and XP are earned solely through educational exercises and quest achievements.
+              They have no monetary value in the physical world and cannot be sold, traded, cashed out, or transferred.
+            </li>
+            <li>
+              <strong>No Pay-to-Win Mechanics:</strong> We do not offer or sell virtual currency, loot boxes, or boosters for real money.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 9. Warranty Disclaimers -->
+        <section id="sec-disclaimer" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">9</span>
+            <h2>Disclaimer of Warranties ("As-Is" Basis)</h2>
+          </div>
+          <p>
+            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WORDQUEST: ENGLISH ADVENTURE IS PROVIDED ON AN <strong>"AS IS"</strong> AND
+            <strong>"AS AVAILABLE"</strong> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.
+          </p>
+          <p>
+            WE EXPRESSLY DISCLAIM ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+            ACCURACY OF EDUCATIONAL CONTENT, ERROR-FREE OPERATION, OR CONTINUED COMPATIBILITY WITH FUTURE MOBILE OPERATING SYSTEM RELEASES.
+          </p>
+          <div class="callout callout-warning">
+            <div class="callout-title">
+              <span>⚠️</span> Learning Outcomes Notice
+            </div>
+            <p>
+              Language acquisition depends on individual effort, consistency, and external practice.
+              WordQuest does not warrant or guarantee any specific level of fluency, test score improvements, or academic outcomes.
+            </p>
+          </div>
+        </section>
+
+        <!-- 10. Limitation of Liability -->
+        <section id="sec-liability" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">10</span>
+            <h2>Limitation of Liability</h2>
+          </div>
+          <p>
+            TO THE FULLEST EXTENT PERMISSIBLE BY APPLICABLE LAW, IN NO EVENT SHALL THE CREATORS, DEVELOPERS, CONTRIBUTORS, OR DISTRIBUTORS OF WORDQUEST
+            BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES (INCLUDING BUT NOT LIMITED TO LOSS OF DATA,
+            DEVICE MALFUNCTION, INTERRUPTED STUDY, OR FORGOTTEN PASSWORDS) ARISING OUT OF OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE THE APPLICATION.
+          </p>
+          <p>
+            IN JURISDICTIONS THAT DO NOT PERMIT THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY LAW.
+            SINCE THE APPLICATION IS PROVIDED FREE OF CHARGE, OUR TOTAL AGGREGATE LIABILITY TO YOU SHALL NOT EXCEED ZERO DOLLARS ($0.00 USD).
+          </p>
+        </section>
+
+        <!-- 11. Modifications & Updates -->
+        <section id="sec-changes" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">11</span>
+            <h2>Modifications to Application & Terms</h2>
+          </div>
+          <p>
+            We reserve the right, at our sole discretion, to modify, update, or discontinue any feature, quest, world, or content pack within WordQuest
+            at any time without prior notice.
+          </p>
+          <p>
+            We may also revise these Terms from time to time. When revisions occur, the updated "Effective Date" at the top of this document will be revised.
+            Your continued use of WordQuest following any amendments constitutes your binding acceptance of the updated Terms.
+          </p>
+        </section>
+
+        <!-- 12. Governing Law & Contact -->
+        <section id="sec-governing" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">12</span>
+            <h2>Governing Law & Contact Information</h2>
+          </div>
+          <p>
+            These Terms of Usage shall be governed by and construed in accordance with the laws of the jurisdiction where the application authors reside,
+            without giving effect to any principles of conflicts of law.
+          </p>
+          <p>
+            If any provision of these Terms is determined by a court of competent jurisdiction to be invalid, illegal, or unenforceable, such provision
+            shall be severed, and the remaining provisions shall remain in full force and effect.
+          </p>
+
+          <div class="callout callout-success">
+            <div class="callout-title">
+              <span>📬</span> Support & Inquiries
+            </div>
+            <p>
+              If you have any questions, concerns, or notices regarding these Terms of Usage, please contact our team:<br><br>
+              <strong>Legal / Support Contact:</strong> <a href="mailto:publisher.perfectworld.studio@gmail.com">publisher.perfectworld.studio@gmail.com</a><br>
+              <strong>Privacy Inquiries:</strong> <a href="mailto:publisher.perfectworld.studio@gmail.com">publisher.perfectworld.studio@gmail.com</a><br>
+              <strong>Application Name:</strong> WordQuest: English Adventure
+            </p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        © 2026 WordQuest: English Adventure. All rights reserved. 100% Offline Educational Software.
+      </div>
+      <ul class="footer-links">
+        <li><a href="privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="terms_of_usage.html" style="color: var(--accent-primary);">Terms of Usage</a></li>
+        <li><a href="#sec-agreement">Back to Top ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Interactive Script (TOC Spy, Mobile Drawer, Theme Switcher)
+       ============================================================ -->
+  <script>
+    (function() {
+      // 1. Theme Management (Light / Dark)
+      const themeToggle = document.getElementById('themeToggle');
+      const root = document.documentElement;
+
+      function setTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('wq_legal_theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌓';
+      }
+
+      const savedTheme = localStorage.getItem('wq_legal_theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        themeToggle.textContent = prefersDark ? '☀️' : '🌓';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme);
+      });
+
+      // 2. Mobile TOC Accordion Toggle
+      const mobileTocBtn = document.getElementById('mobileTocBtn');
+      const sidebar = document.getElementById('tableOfContents');
+      const mobileTocIcon = document.getElementById('mobileTocIcon');
+
+      mobileTocBtn.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('mobile-open');
+        mobileTocBtn.setAttribute('aria-expanded', isOpen);
+        mobileTocIcon.textContent = isOpen ? '▲' : '▼';
+      });
+
+      // Close mobile TOC on clicking a link
+      const tocLinks = document.querySelectorAll('.toc-link');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (sidebar.classList.contains('mobile-open')) {
+            sidebar.classList.remove('mobile-open');
+            mobileTocBtn.setAttribute('aria-expanded', 'false');
+            mobileTocIcon.textContent = '▼';
+          }
+        });
+      });
+
+      // 3. Scrollspy for Active TOC Highlight
+      const sections = document.querySelectorAll('.legal-section');
+      window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        if (currentSectionId) {
+          tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
+          });
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

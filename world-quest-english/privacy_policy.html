@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Privacy Policy — WordQuest: English Adventure</title>
+  <meta name="description" content="Privacy Policy for WordQuest: English Adventure. 100% offline, zero data collection, zero cloud telemetry, and on-device data sovereignty.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       CSS Custom Properties / Theme Tokens
+       ------------------------------------------------------------- */
+    :root {
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Light Theme (Default) */
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-surface-tint: #f8fafc;
+      --bg-sidebar: #ffffff;
+      --bg-code: #f1f5f9;
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-on-accent: #ffffff;
+
+      --accent-primary: #ea580c; /* Warm Orange / Amber Adventure */
+      --accent-hover: #c2410c;
+      --accent-subtle: #ffedd5;
+      --accent-border: #fed7aa;
+
+      --success-bg: #ecfdf5;
+      --success-text: #065f46;
+      --success-border: #a7f3d0;
+
+      --info-bg: #eff6ff;
+      --info-text: #1e40af;
+      --info-border: #bfdbfe;
+
+      --border-color: #e2e8f0;
+      --border-light: #f1f5f9;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --shadow-card: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      --header-height: 68px;
+    }
+
+    /* Dark Mode Theme */
+    [data-theme="dark"] {
+      --bg-page: #0b0f17;
+      --bg-card: #131b26;
+      --bg-card-hover: #1a2433;
+      --bg-surface-tint: #111722;
+      --bg-sidebar: #131b26;
+      --bg-code: #1e293b;
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-on-accent: #ffffff;
+
+      --accent-primary: #f97316;
+      --accent-hover: #fb923c;
+      --accent-subtle: #2d1808;
+      --accent-border: #7c2d12;
+
+      --success-bg: #06281e;
+      --success-text: #34d399;
+      --success-border: #065f46;
+
+      --info-bg: #08203e;
+      --info-text: #60a5fa;
+      --info-border: #1e3a8a;
+
+      --border-color: #243142;
+      --border-light: #1a2433;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+      --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-page: #0b0f17;
+        --bg-card: #131b26;
+        --bg-card-hover: #1a2433;
+        --bg-surface-tint: #111722;
+        --bg-sidebar: #131b26;
+        --bg-code: #1e293b;
+
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --text-on-accent: #ffffff;
+
+        --accent-primary: #f97316;
+        --accent-hover: #fb923c;
+        --accent-subtle: #2d1808;
+        --accent-border: #7c2d12;
+
+        --success-bg: #06281e;
+        --success-text: #34d399;
+        --success-border: #065f46;
+
+        --info-bg: #08203e;
+        --info-text: #60a5fa;
+        --info-border: #1e3a8a;
+
+        --border-color: #243142;
+        --border-light: #1a2433;
+
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+        --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       Global Reset & Typography
+       ------------------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.68;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    /* -------------------------------------------------------------
+       Header & Navigation Bar
+       ------------------------------------------------------------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      height: var(--header-height);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(234, 88, 12, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      padding: 0.15rem 0.55rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--accent-border);
+      display: inline-block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .nav-tabs {
+      display: inline-flex;
+      background-color: var(--bg-surface-tint);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .nav-tab-link {
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.4rem 0.95rem;
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .nav-tab-link:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-tab-link.active {
+      background-color: var(--bg-card);
+      color: var(--accent-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .icon-btn {
+      background: var(--bg-surface-tint);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------
+       Hero Section
+       ------------------------------------------------------------- */
+    .hero-section {
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-page) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 2.75rem 1.25rem 2.25rem;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+    }
+
+    .badge-offline {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    .badge-privacy {
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      border: 1px solid var(--accent-border);
+    }
+
+    .badge-audit {
+      background: var(--info-bg);
+      color: var(--info-text);
+      border: 1px solid var(--info-border);
+    }
+
+    .hero-title {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.85rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .meta-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* -------------------------------------------------------------
+       Highlights Grid (Executive Summary Cards)
+       ------------------------------------------------------------- */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-border);
+    }
+
+    .highlight-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-body h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .highlight-body p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* -------------------------------------------------------------
+       Main Layout (Sidebar + Content)
+       ------------------------------------------------------------- */
+    .main-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* -------------------------------------------------------------
+       Sticky Sidebar & Table of Contents (TOC)
+       ------------------------------------------------------------- */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--header-height) + 1.5rem);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      max-height: calc(100vh - var(--header-height) - 3rem);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .toc-link {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      padding: 0.4rem 0.65rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .toc-link:hover {
+      background: var(--bg-card-hover);
+      color: var(--accent-primary);
+      text-decoration: none;
+    }
+
+    .toc-link.active {
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      font-weight: 700;
+      border-left: 3px solid var(--accent-primary);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .sidebar-support-card {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .sidebar-support-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .support-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 0.5rem 0.85rem;
+      background: var(--accent-primary);
+      color: var(--text-on-accent);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .support-btn:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(234, 88, 12, 0.4);
+    }
+
+    /* Mobile Quick Jump Drawer / Selector */
+    .mobile-toc-toggle {
+      display: none;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* -------------------------------------------------------------
+       Content Area & Legal Sections
+       ------------------------------------------------------------- */
+    .content-area {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .legal-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: calc(var(--header-height) + 1.5rem);
+    }
+
+    .legal-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .section-num {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--accent-subtle);
+      color: var(--accent-primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .legal-section h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 1.75rem 0 0.65rem;
+      color: var(--text-primary);
+    }
+
+    .legal-section p {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .legal-section ul, .legal-section ol {
+      margin: 0.75rem 0 1.25rem 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .legal-section li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .legal-section strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* -------------------------------------------------------------
+       Callouts, Tables & Visual Invariants
+       ------------------------------------------------------------- */
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      border-left: 4px solid;
+    }
+
+    .callout-success {
+      background: var(--success-bg);
+      border-left-color: #10b981;
+      color: var(--success-text);
+    }
+
+    .callout-info {
+      background: var(--info-bg);
+      border-left-color: #3b82f6;
+      color: var(--info-text);
+    }
+
+    .callout-warning {
+      background: var(--accent-subtle);
+      border-left-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .callout-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .callout p {
+      margin-bottom: 0 !important;
+      font-size: 0.9rem !important;
+      line-height: 1.55 !important;
+      color: inherit !important;
+    }
+
+    /* Data Table Styling */
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    thead {
+      background: var(--bg-surface-tint);
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    th {
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .code-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: var(--bg-code);
+      border: 1px solid var(--border-color);
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-sm);
+      color: var(--accent-primary);
+    }
+
+    /* Status Pill in Table */
+    .status-pill {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-zero {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    .status-local {
+      background: var(--info-bg);
+      color: var(--info-text);
+      border: 1px solid var(--info-border);
+    }
+
+    /* -------------------------------------------------------------
+       Footer
+       ------------------------------------------------------------- */
+    .site-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.25rem;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    /* -------------------------------------------------------------
+       Responsive Breakpoints
+       ------------------------------------------------------------- */
+    @media (max-width: 992px) {
+      .layout-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .sidebar.mobile-open {
+        display: block;
+        position: fixed;
+        top: calc(var(--header-height) + 10px);
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 100;
+        max-height: calc(100vh - var(--header-height) - 2rem);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .mobile-toc-toggle {
+        display: flex;
+      }
+
+      .content-area {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        height: auto;
+        padding: 0.65rem 0;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+
+      .header-actions {
+        justify-content: space-between;
+      }
+
+      .hero-section {
+        padding: 1.75rem 1rem 1.5rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-wrapper {
+        padding: 1.25rem 0.85rem 3rem;
+      }
+
+      .content-area {
+        padding: 1.25rem 0.85rem;
+        border-radius: var(--radius-md);
+      }
+
+      .section-header h2 {
+        font-size: 1.28rem;
+      }
+
+      .legal-section {
+        margin-bottom: 2.25rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+
+    /* -------------------------------------------------------------
+       Print Stylesheet
+       ------------------------------------------------------------- */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 12pt;
+      }
+
+      .site-header, .sidebar, .mobile-toc-toggle, .site-footer, .header-actions, .highlight-card, .support-btn {
+        display: none !important;
+      }
+
+      .main-wrapper, .hero-section {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .layout-grid {
+        display: block !important;
+      }
+
+      .content-area {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      .legal-section {
+        page-break-inside: avoid;
+        margin-bottom: 1.5in;
+      }
+
+      a {
+        color: #000000 !important;
+        text-decoration: underline !important;
+      }
+
+      .callout {
+        border-left: 2pt solid #666666 !important;
+        background: #f4f4f4 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Header & Global Navigation
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="privacy_policy.html" class="brand">
+        <div class="brand-icon">⚔️</div>
+        <div>
+          <span>WordQuest</span>
+          <span class="brand-tag">English Adventure</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- Navigation Tab Switcher -->
+        <nav class="nav-tabs" aria-label="Legal Documents Navigation">
+          <a href="privacy_policy.html" class="nav-tab-link active">
+            <span>🛡️</span> Privacy Policy
+          </a>
+          <a href="terms_of_usage.html" class="nav-tab-link">
+            <span>📜</span> Terms of Usage
+          </a>
+        </nav>
+
+        <!-- Theme Toggle Button -->
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme color" title="Toggle Dark/Light Mode">
+          🌓
+        </button>
+
+        <!-- Print Button -->
+        <button class="icon-btn" onclick="window.print()" aria-label="Print Document" title="Print this Policy">
+          🖨️
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       Hero Header & Executive Highlights
+       ============================================================ -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-badge-row">
+        <span class="badge badge-offline">⚡ 100% Offline Architecture</span>
+        <span class="badge badge-privacy">🔒 Zero Data Collection</span>
+        <span class="badge badge-audit">🛡️ Strict Local Sovereignty</span>
+      </div>
+
+      <h1 class="hero-title">Privacy Policy</h1>
+      <p class="hero-subtitle">
+        WordQuest is designed from the ground up on an uncompromising local-first privacy foundation.
+        Your learning journey, vocabulary logs, and voice recordings belong strictly to you and never leave your physical device.
+      </p>
+
+      <div class="hero-meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Application</span>
+          <span class="meta-value">WordQuest: English Adventure</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Effective Date</span>
+          <span class="meta-value">October 13, 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Version</span>
+          <span class="meta-value">1.0.0 (Production)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Compliance</span>
+          <span class="meta-value">COPPA, GDPR & CCPA/CPRA</span>
+        </div>
+      </div>
+
+      <!-- Highlights Grid -->
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-icon">🌐</div>
+          <div class="highlight-body">
+            <h4>No Internet Required</h4>
+            <p>The app does not declare or request Android internet permissions. Zero bytes transmitted.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">👤</div>
+          <div class="highlight-body">
+            <h4>No Accounts or Trackers</h4>
+            <p>No registration, email, phone number, social login, ads, or analytics SDKs.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🎙️</div>
+          <div class="highlight-body">
+            <h4>On-Device Audio Only</h4>
+            <p>Speaking practice audio is processed strictly locally and can be deleted anytime.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🔐</div>
+          <div class="highlight-body">
+            <h4>Encrypted Backups</h4>
+            <p>Optional backups are secured with Argon2id and AES-256-GCM encryption on your device.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Main Content & Sticky TOC Layout
+       ============================================================ -->
+  <div class="main-wrapper">
+    <!-- Mobile TOC Trigger -->
+    <button class="mobile-toc-toggle" id="mobileTocBtn" aria-expanded="false" aria-controls="tableOfContents">
+      <span>📖 Table of Contents</span>
+      <span id="mobileTocIcon">▼</span>
+    </button>
+
+    <div class="layout-grid">
+      <!-- Sticky Sidebar Navigation -->
+      <aside class="sidebar" id="tableOfContents">
+        <div class="sidebar-title">
+          <span>Table of Contents</span>
+          <span style="font-size: 0.75rem; color: var(--accent-primary);">12 Sections</span>
+        </div>
+        <nav>
+          <ul class="toc-list">
+            <li><a href="#sec-overview" class="toc-link active">1. Overview & Core Pledge</a></li>
+            <li><a href="#sec-offline" class="toc-link">2. Zero-Network Architecture</a></li>
+            <li><a href="#sec-not-collected" class="toc-link">3. Data We Do NOT Collect</a></li>
+            <li><a href="#sec-local-storage" class="toc-link">4. On-Device Local Storage</a></li>
+            <li><a href="#sec-audio" class="toc-link">5. Microphone & Audio Hygiene</a></li>
+            <li><a href="#sec-permissions" class="toc-link">6. Device Permissions</a></li>
+            <li><a href="#sec-backups" class="toc-link">7. Encrypted Portable Backups</a></li>
+            <li><a href="#sec-third-parties" class="toc-link">8. Zero Third-Party SDKs</a></li>
+            <li><a href="#sec-children" class="toc-link">9. Children's Privacy (COPPA)</a></li>
+            <li><a href="#sec-user-rights" class="toc-link">10. GDPR & CCPA Rights</a></li>
+            <li><a href="#sec-retention" class="toc-link">11. Retention & Deletion</a></li>
+            <li><a href="#sec-contact" class="toc-link">12. Contact & Governance</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-support-card">
+          <p>Questions regarding our privacy practices?</p>
+          <a href="mailto:publisher.perfectworld.studio@gmail.com" class="support-btn">Contact Privacy Officer</a>
+        </div>
+      </aside>
+
+      <!-- Main Legal Content Area -->
+      <main class="content-area">
+
+        <!-- 1. Overview & Core Pledge -->
+        <section id="sec-overview" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">1</span>
+            <h2>Overview & Core Privacy Pledge</h2>
+          </div>
+          <p>
+            Welcome to <strong>WordQuest: English Adventure</strong> ("WordQuest", "we", "our", or "the Application").
+            WordQuest is an immersive, offline-first educational adventure application engineered to empower English language learners
+            (CEFR A1–A2) through contextual quests, dialogue challenges, grammar battles, and pronunciation exercises.
+          </p>
+          <p>
+            Unlike conventional language learning applications that monetize user attention, harvest learning telemetry, or mandate continuous internet connectivity,
+            <strong>WordQuest is engineered around a zero-trust, local-only privacy invariant</strong>. We believe your learning records, voice recordings,
+            and personal study progression are intimate personal information that should never leave your physical smartphone or tablet.
+          </p>
+          
+          <div class="callout callout-success">
+            <div class="callout-title">
+              <span>🛡️</span> Our Core Privacy Guarantee
+            </div>
+            <p>
+              WordQuest does not collect, transmit, profile, share, monetize, or sell your personal data.
+              100% of curriculum content, gameplay progress, and audio self-evaluations reside exclusively on your local device storage.
+            </p>
+          </div>
+        </section>
+
+        <!-- 2. Zero-Network Architecture -->
+        <section id="sec-offline" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">2</span>
+            <h2>Zero-Network Architecture Guarantee</h2>
+          </div>
+          <p>
+            To substantiate our commitment to total privacy, WordQuest is structured with a physically sandboxed, offline-first design:
+          </p>
+          <ul>
+            <li>
+              <strong>Absence of Network Permissions:</strong> In the production Android build manifest (<code>AndroidManifest.xml</code>), the standard
+              <code>android.permission.INTERNET</code> and <code>android.permission.ACCESS_NETWORK_STATE</code> declarations are deliberately and entirely excluded.
+              The application runtime is physically incapable of transmitting any packet over Wi-Fi or cellular networks.
+            </li>
+            <li>
+              <strong>Self-Contained Content:</strong> The complete curriculum—including four themed adventure worlds, thousands of quest dialogues,
+              native pre-recorded pronunciation audio files, syntax rules, and assessment rubrics—ships bundled within the installed application package.
+            </li>
+            <li>
+              <strong>Guaranteed Airplane Mode Operation:</strong> WordQuest functions with full fidelity in airplane mode or in environments with zero cellular coverage.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 3. Data We Do NOT Collect -->
+        <section id="sec-not-collected" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">3</span>
+            <h2>Information We Do NOT Collect</h2>
+          </div>
+          <p>
+            For absolute clarity under Apple App Store Privacy Nutrition Labels and Google Play Data Safety standards, the following table details categories of personal data that are <strong>never collected, never requested, and never tracked</strong> by WordQuest:
+          </p>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data Category</th>
+                  <th>Examples</th>
+                  <th>Collection Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Identity & Accounts</strong></td>
+                  <td>Real name, email address, phone number, physical address, national ID</td>
+                  <td><span class="status-pill status-zero">Zero Collection</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Credentials & Logins</strong></td>
+                  <td>Passwords, social login tokens (Google, Apple, Facebook Sign-In)</td>
+                  <td><span class="status-pill status-zero">Zero Collection</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Financial & Payment</strong></td>
+                  <td>Credit card numbers, bank details, in-app purchase histories</td>
+                  <td><span class="status-pill status-zero">Zero Collection</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Device & Telemetry</strong></td>
+                  <td>IMEI, MAC address, Advertising ID (IDFA / GAID), IP address</td>
+                  <td><span class="status-pill status-zero">Zero Collection</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Precise Geolocation</strong></td>
+                  <td>GPS coordinates, cellular tower triangulation, Wi-Fi SSID logs</td>
+                  <td><span class="status-pill status-zero">Zero Collection</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Contacts & Files</strong></td>
+                  <td>Address book contacts, photos, camera feed, documents directory</td>
+                  <td><span class="status-pill status-zero">Zero Collection</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 4. On-Device Local Storage -->
+        <section id="sec-local-storage" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">4</span>
+            <h2>On-Device Local Storage & Data Models</h2>
+          </div>
+          <p>
+            Any data generated while playing WordQuest is stored strictly inside the private, sandboxed application documents directory on your local device.
+            This data is managed through an embedded, high-performance NoSQL local engine (<strong>ObjectBox</strong>) and secured preferences:
+          </p>
+          <ul>
+            <li>
+              <strong>Player Profile & Avatar:</strong> An optional display moniker (e.g., "Ranger", "Scholar") and cosmetic wardrobe selections chosen by the user.
+              This moniker is purely decorative and is never verified or shared.
+            </li>
+            <li>
+              <strong>Learning Progress & Spaced Repetition (SRS):</strong> Mastery levels, quest completion flags, review error notebooks, active streak counters,
+              and spaced repetition intervals calculated locally via an SM-2/FSRS algorithmic curve.
+            </li>
+            <li>
+              <strong>Game State & Inventory:</strong> In-game gold coins earned exclusively through completing educational quests, badges, inventory items,
+              and unlocked chapter nodes.
+            </li>
+            <li>
+              <strong>Application Settings:</strong> User preferences such as theme mode (Dark/Light), sound effect volume, background music toggles,
+              haptic feedback toggles, and localized interface language.
+            </li>
+          </ul>
+
+          <div class="callout callout-info">
+            <div class="callout-title">
+              <span>💾</span> Operating System Sandboxing
+            </div>
+            <p>
+              Your local ObjectBox database files reside strictly within the operating system's protected application sandbox.
+              Other applications installed on your device cannot access, read, or tamper with WordQuest's data.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. Microphone & Audio Hygiene -->
+        <section id="sec-audio" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">5</span>
+            <h2>Microphone & Speaking Studio Audio Hygiene</h2>
+          </div>
+          <p>
+            WordQuest includes a dedicated <strong>Speaking Studio</strong> feature allowing learners to practice English pronunciation by recording their speech
+            and comparing their waveform and playback against pre-recorded native audio references.
+          </p>
+          <p>
+            We enforce strict technical constraints around audio handling:
+          </p>
+          <ul>
+            <li>
+              <strong>On-Demand Recording Only:</strong> The microphone is activated <em>only</em> while you explicitly press and hold or tap the recording button
+              within a Speaking Practice quest. It is never activated in the background or during other gameplay sections.
+            </li>
+            <li>
+              <strong>Zero Cloud Uploads:</strong> Audio recordings are stored temporarily or persistently (per user preference) strictly within the application's local sandbox.
+              Audio data is never transmitted to cloud speech-to-text APIs or external AI evaluation engines.
+            </li>
+            <li>
+              <strong>User-Controlled Deletion:</strong> You may delete any recorded audio sample at any time directly within the Speaking Studio interface or via
+              the <em>Data & Privacy Management</em> screen.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 6. Device Permissions -->
+        <section id="sec-permissions" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">6</span>
+            <h2>Device Permissions & Technical Rationale</h2>
+          </div>
+          <p>
+            WordQuest requests only the minimum runtime permissions strictly required to execute core offline educational features:
+          </p>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Platform Permission</th>
+                  <th>Category</th>
+                  <th>Technical Purpose & Privacy Protection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="code-badge">RECORD_AUDIO</span></td>
+                  <td>Microphone</td>
+                  <td>
+                    Required for the Speaking Studio pronunciation self-assessment module.
+                    Recorded audio remains 100% on-device and is never sent over any network.
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="code-badge">POST_NOTIFICATIONS</span></td>
+                  <td>Notifications</td>
+                  <td>
+                    Enables local study reminders and streak preservation alerts on Android 13+ (API 33+).
+                    Delivered purely via local device alarms without remote push notification servers.
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="code-badge">SCHEDULE_EXACT_ALARM</span></td>
+                  <td>Alarms</td>
+                  <td>
+                    Allows Android system alarms to trigger spaced-repetition study reminders at the precise hour selected by the user.
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="code-badge">RECEIVE_BOOT_COMPLETED</span></td>
+                  <td>System Boot</td>
+                  <td>
+                    Allows WordQuest to reschedule your local study alarms if your device is restarted or power-cycled.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 7. Encrypted Portable Backups -->
+        <section id="sec-backups" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">7</span>
+            <h2>Encrypted Portable Backups (<code>.wqbak</code>)</h2>
+          </div>
+          <p>
+            Because WordQuest rejects central cloud accounts, we provide an on-device data backup and migration utility:
+          </p>
+          <ul>
+            <li>
+              <strong>Client-Side Encryption Pipeline:</strong> Backups are exported as a single encrypted file (<code>.wqbak</code>) utilizing
+              industry-standard <strong>AES-256-GCM</strong> authenticated encryption.
+            </li>
+            <li>
+              <strong>Argon2id Key Derivation:</strong> Your user-selected passphrase is salted with a 16-byte cryptographically secure random salt and derived
+              using Argon2id (Memory: 64MB, Iterations: 3, Parallelism: 2) to resist brute-force attacks.
+            </li>
+            <li>
+              <strong>Zero Knowledge:</strong> We do not store or transmit your passphrase. If you forget your backup passphrase, the backup cannot be decrypted.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 8. Zero Third-Party SDKs -->
+        <section id="sec-third-parties" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">8</span>
+            <h2>Third-Party Services, SDKs & Trackers</h2>
+          </div>
+          <p>
+            Conventional mobile apps frequently embed third-party tracking libraries that monitor user behavior behind the scenes.
+            <strong>WordQuest does not include any third-party advertising, analytics, social media, or surveillance SDKs.</strong>
+          </p>
+          <ul>
+            <li>❌ <strong>No Advertising SDKs:</strong> Zero Google AdMob, Unity Ads, AppLovin, or IronSource.</li>
+            <li>❌ <strong>No Analytics SDKs:</strong> Zero Google Firebase Analytics, Facebook App Events, Mixpanel, or Amplitude.</li>
+            <li>❌ <strong>No Telemetry SDKs:</strong> Zero Crashlytics, Sentry, Bugsnag, or automated diagnostic data uploaders.</li>
+            <li>❌ <strong>No Cloud Sync Brokers:</strong> Zero data brokers or commercial data aggregators.</li>
+          </ul>
+        </section>
+
+        <!-- 9. Children's Privacy -->
+        <section id="sec-children" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">9</span>
+            <h2>Children's Privacy (COPPA & GDPR-K Compliance)</h2>
+          </div>
+          <p>
+            WordQuest is an educational tool suitable for learners of all ages, including children, students, and families.
+            Because WordQuest does not collect, transmit, or store any personally identifiable information (PII), we fully comply with:
+          </p>
+          <ul>
+            <li><strong>COPPA (Children's Online Privacy Protection Act):</strong> We collect zero personal data from children under 13 years of age.</li>
+            <li><strong>GDPR-K (European General Data Protection Regulation for Children):</strong> We process zero cloud data from children under 16 years of age in the EU/EEA.</li>
+            <li><strong>Google Play Families Policy & Apple Kids Category Standards:</strong> The application contains zero behavioral advertisements, zero commercial tracking, and zero in-app purchases.</li>
+          </ul>
+        </section>
+
+        <!-- 10. GDPR & CCPA Rights -->
+        <section id="sec-user-rights" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">10</span>
+            <h2>Your Rights & Data Sovereignty (GDPR & CCPA/CPRA)</h2>
+          </div>
+          <p>
+            Under international privacy regulations (such as the European Union GDPR and California Consumer Privacy Act / CPRA), users have specific rights regarding their data.
+            Because WordQuest implements 100% on-device data sovereignty, you can exercise these rights directly on your own device at any second:
+          </p>
+          <ul>
+            <li>
+              <strong>Right to Access & Portability:</strong> You can export a full, unencrypted JSON manifest or an encrypted <code>.wqbak</code> archive of all your
+              learning records directly from <em>Settings → Data Management → Export Backup</em>.
+            </li>
+            <li>
+              <strong>Right to Erasure (Right to be Forgotten):</strong> You can permanently wipe all study logs, vocabulary progress, audio recordings, and profiles
+              by tapping <em>"Reset All Data"</em> in the settings menu or by clearing the application storage via your device settings.
+            </li>
+            <li>
+              <strong>Right to Non-Discrimination:</strong> WordQuest provides the exact same full, ad-free educational experience to all users worldwide without discrimination.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 11. Retention & Deletion -->
+        <section id="sec-retention" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">11</span>
+            <h2>Data Retention & Permanent Deletion</h2>
+          </div>
+          <p>
+            All learning progress, settings, and recorded voice samples persist on your local device for as long as you choose to keep WordQuest installed.
+            We maintain zero remote backup servers or copies.
+          </p>
+          <p>
+            <strong>To permanently and irrevocably erase all data:</strong>
+          </p>
+          <ol>
+            <li>Open WordQuest and navigate to <strong>Profile → Settings → Data Management</strong>.</li>
+            <li>Tap <strong>"Reset All Data"</strong> and confirm the warning prompt. All local ObjectBox tables and audio files will be deleted immediately.</li>
+            <li>Alternatively, uninstalling WordQuest via your operating system (iOS or Android) triggers an immediate, unrecoverable purge of the application sandbox.</li>
+          </ol>
+        </section>
+
+        <!-- 12. Contact & Governance -->
+        <section id="sec-contact" class="legal-section">
+          <div class="section-header">
+            <span class="section-num">12</span>
+            <h2>Policy Updates & Contact Information</h2>
+          </div>
+          <p>
+            We may occasionally update this Privacy Policy to reflect software feature updates or regulatory changes.
+            Any updates will be reflected with a revised "Effective Date" at the top of this document and will accompany application release notes.
+          </p>
+          <p>
+            If you have questions, feedback, or legal inquiries regarding our privacy model or data architecture, please contact our team:
+          </p>
+
+          <div class="callout callout-warning">
+            <div class="callout-title">
+              <span>📬</span> WordQuest Privacy & Support Team
+            </div>
+            <p>
+              <strong>Email:</strong> <a href="mailto:publisher.perfectworld.studio@gmail.com">publisher.perfectworld.studio@gmail.com</a><br>
+              <strong>General Support:</strong> <a href="mailto:publisher.perfectworld.studio@gmail.com">publisher.perfectworld.studio@gmail.com</a><br>
+              <strong>Project Repository / Documentation:</strong> WordQuest: English Adventure Documentation
+            </p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        © 2026 WordQuest: English Adventure. All rights reserved. 100% Offline & Private by Design.
+      </div>
+      <ul class="footer-links">
+        <li><a href="privacy_policy.html" style="color: var(--accent-primary);">Privacy Policy</a></li>
+        <li><a href="terms_of_usage.html">Terms of Usage</a></li>
+        <li><a href="#sec-overview">Back to Top ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Interactive Script (TOC Spy, Mobile Drawer, Theme Switcher)
+       ============================================================ -->
+  <script>
+    (function() {
+      // 1. Theme Management (Light / Dark)
+      const themeToggle = document.getElementById('themeToggle');
+      const root = document.documentElement;
+
+      function setTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('wq_legal_theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌓';
+      }
+
+      const savedTheme = localStorage.getItem('wq_legal_theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        themeToggle.textContent = prefersDark ? '☀️' : '🌓';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme);
+      });
+
+      // 2. Mobile TOC Accordion Toggle
+      const mobileTocBtn = document.getElementById('mobileTocBtn');
+      const sidebar = document.getElementById('tableOfContents');
+      const mobileTocIcon = document.getElementById('mobileTocIcon');
+
+      mobileTocBtn.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('mobile-open');
+        mobileTocBtn.setAttribute('aria-expanded', isOpen);
+        mobileTocIcon.textContent = isOpen ? '▲' : '▼';
+      });
+
+      // Close mobile TOC on clicking a link
+      const tocLinks = document.querySelectorAll('.toc-link');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (sidebar.classList.contains('mobile-open')) {
+            sidebar.classList.remove('mobile-open');
+            mobileTocBtn.setAttribute('aria-expanded', 'false');
+            mobileTocIcon.textContent = '▼';
+          }
+        });
+      });
+
+      // 3. Scrollspy for Active TOC Highlight
+      const sections = document.querySelectorAll('.legal-section');
+      window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        if (currentSectionId) {
+          tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
+          });
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
