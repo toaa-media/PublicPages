@@ -1,19 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hoai Nam Nguyen - Senior Mobile Developer & Mobile Architect | Portfolio Resume</title>
-  <meta name="description" content="Portfolio Resume of Hoai Nam Nguyen - Senior Mobile Developer & Mobile Architect with 10+ years experience in Android Native, Flutter, and Kotlin Multiplatform (KMP).">
-  <meta name="keywords" content="Mobile Architect, Senior Android Developer, Flutter Developer, Kotlin Multiplatform, Jetpack Compose, BLE GATT, Offline-First, Clean Architecture">
-  <meta name="author" content="Hoai Nam Nguyen">
-
-  <!-- Google Fonts: Inter & Source Serif 4 (With system fallbacks for 100% offline support) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hoai Nam Nguyen - Senior Mobile Developer &amp; Mobile Architect | Portfolio Resume</title>
+<meta content="Portfolio Resume of Hoai Nam Nguyen - Senior Mobile Developer &amp; Mobile Architect with 10+ years experience in Android Native, Flutter, and Kotlin Multiplatform (KMP)." name="description"/>
+<meta content="Mobile Architect, Senior Android Developer, Flutter Developer, Kotlin Multiplatform, Jetpack Compose, BLE GATT, Offline-First, Clean Architecture" name="keywords"/>
+<meta content="Hoai Nam Nguyen" name="author"/>
+<!-- Google Fonts: Inter & Source Serif 4 (With system fallbacks for 100% offline support) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<style>
     /* ==========================================================================
        NOTION DESIGN SYSTEM - TOKENS & SYSTEM VARIABLES (From docs/DESIGN.md)
        Theme: Dual-Mode "Warm Paper Notebook" & "Dark Graphite"
@@ -530,7 +529,7 @@
     /* Architectural Philosophy & Executive Pillars Cards */
     .arch-pillars-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 16px;
       margin-top: 16px;
     }
@@ -732,6 +731,8 @@
     [data-theme="dark"] .badge-android { background: #132d20; color: #68d391; }
     .badge-iot { background: #faf5ff; color: #6b46c1; }
     [data-theme="dark"] .badge-iot { background: #281a3d; color: #b794f4; }
+    .badge-store { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    [data-theme="dark"] .badge-store { background: #064e3b; color: #6ee7b7; border-color: #047857; }
 
     .playstore-link {
       display: inline-flex;
@@ -1137,7 +1138,7 @@
       }
 
       .arch-pillars-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr) !important;
       }
 
       .arch-drawer {
@@ -1199,963 +1200,1275 @@
   </style>
 </head>
 <body>
-
-  <!-- Sticky Top Navigation -->
-  <nav class="top-nav" aria-label="Main Navigation">
-    <div class="nav-container">
-      <div class="nav-brand">
-        <div class="brand-mark">HN</div>
-        <span>Hoai Nam Nguyen</span>
-      </div>
-
-      <ul class="nav-links">
-        <li><a href="#summary">Overview</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#flagships">Projects</a></li>
-        <li><a href="#timeline">Chronology</a></li>
-        <li><a href="#credentials">Education</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <button id="themeToggleBtn" class="btn btn-outline theme-toggle-btn no-print" aria-label="Toggle dark/light theme" title="Toggle theme">
-          <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+<!-- Sticky Top Navigation -->
+<nav aria-label="Main Navigation" class="top-nav">
+<div class="nav-container">
+<div class="nav-brand">
+<div class="brand-mark">HN</div>
+<span>Hoai Nam Nguyen</span>
+</div>
+<ul class="nav-links">
+<li><a href="#summary">Overview</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#flagships">Projects</a></li>
+<li><a href="#timeline">Chronology</a></li>
+<li><a href="#credentials">Education</a></li>
+</ul>
+<div class="nav-actions">
+<button aria-label="Toggle dark/light theme" class="btn btn-outline theme-toggle-btn no-print" id="themeToggleBtn" title="Toggle theme">
+<svg aria-hidden="true" class="theme-icon-sun" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+<svg aria-hidden="true" class="theme-icon-moon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<button class="btn btn-outline no-print" onclick="window.print()" title="Print or save as PDF">
+<svg aria-hidden="true" class="btn-icon" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="15"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect height="8" width="12" x="6" y="14"></rect></svg> Print / PDF
         </button>
-        <button class="btn btn-outline no-print" onclick="window.print()" title="Print or save as PDF">
-          <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Print / PDF
-        </button>
-        <a href="mailto:hoainam9390@gmail.com" class="btn btn-primary no-print">
+<a class="btn btn-primary no-print" href="mailto:hoainam9390@gmail.com">
           Get in Touch
         </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Container -->
-  <main class="main-container">
-
-    <!-- Hero Profile Section -->
-    <section class="hero-section" id="summary">
-      <div class="hero-card">
-        <div class="hero-top-row">
-          <div class="hero-avatar-group">
-            <div class="hero-avatar" aria-label="Hoai Nam Nguyen initials"><span class="avatar-monogram">HN</span></div>
-            <div class="hero-identity">
-              <h1>HOAI NAM NGUYEN</h1>
-              <div class="hero-title-tag">
-                <span>Senior Mobile Developer &amp; Architect</span>
-                <span class="hero-pill blue">Android Native</span>
-                <span class="hero-pill yellow">Flutter</span>
-                <span class="hero-pill purple">Kotlin Multiplatform</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-status no-print">
-            <span class="badge" style="background:#ecfdf5; color:#065f46; border: 1px solid #a7f3d0; font-size:13px; padding:6px 14px;">
-              <span class="status-indicator-dot" aria-hidden="true"></span> Available for Senior / Staff / Lead Roles
+</div>
+</div>
+</nav>
+<!-- Main Container -->
+<main class="main-container">
+<!-- Hero Profile Section -->
+<section class="hero-section" id="summary">
+<div class="hero-card">
+<div class="hero-top-row">
+<div class="hero-avatar-group">
+<div aria-label="Hoai Nam Nguyen initials" class="hero-avatar"><span class="avatar-monogram">HN</span></div>
+<div class="hero-identity">
+<h1>HOAI NAM NGUYEN</h1>
+<div class="hero-title-tag">
+<span>Senior Mobile Developer &amp; Architect</span>
+<span class="hero-pill blue">Android Native</span>
+<span class="hero-pill yellow">Flutter</span>
+<span class="hero-pill purple">Kotlin Multiplatform</span>
+</div>
+</div>
+</div>
+<div class="hero-status no-print">
+<span class="badge" style="background:#ecfdf5; color:#065f46; border: 1px solid #a7f3d0; font-size:13px; padding:6px 14px;">
+<span aria-hidden="true" class="status-indicator-dot"></span> Available for Senior / Staff / Lead Roles
             </span>
-          </div>
-        </div>
-
-        <div class="hero-contact-row">
-          <div class="hero-contact-item">
-            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <span>Ho Chi Minh City, Vietnam</span>
-          </div>
-          <div class="hero-contact-item">
-            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span>(+84) 389 932 743</span>
-          </div>
-          <div class="hero-contact-item">
-            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <a href="mailto:hoainam9390@gmail.com">hoainam9390@gmail.com</a>
-          </div>
-        </div>
-
-        <p class="hero-lead">
-          <strong>Senior Mobile Developer &amp; Mobile Architect</strong> with <strong>10+ years of professional engineering experience</strong> architecting offline-first enterprise applications across <strong>Android Native (Kotlin/Java)</strong>, <strong>Flutter (Dart)</strong>, and <strong>Kotlin Multiplatform (KMP)</strong>, specializing in Clean Architecture, reactive concurrency pipelines, and hardware IoT integrations.
+</div>
+</div>
+<div class="hero-contact-row">
+<div class="hero-contact-item">
+<svg aria-hidden="true" class="contact-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <span>Ho Chi Minh City, Vietnam</span>
+</div>
+<div class="hero-contact-item">
+<svg aria-hidden="true" class="contact-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span>(+84) 389 932 743</span>
+</div>
+<div class="hero-contact-item">
+<svg aria-hidden="true" class="contact-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <a href="mailto:hoainam9390@gmail.com">hoainam9390@gmail.com</a>
+</div>
+</div>
+<p class="hero-lead">
+<strong>Senior Mobile Developer &amp; Mobile Architect</strong> with <strong>10+ years of professional engineering experience</strong> architecting offline-first enterprise applications across <strong>Android Native (Kotlin/Java)</strong>, <strong>Flutter (Dart)</strong>, and <strong>Kotlin Multiplatform (KMP)</strong>, specializing in Clean Architecture, reactive concurrency pipelines, and hardware IoT integrations.
         </p>
-
-        <div class="hero-actions-bar no-print">
-          <a href="#flagships" class="btn btn-primary">Explore Featured Projects</a>
-          <button class="btn btn-ghost" onclick="copyContactInfo()">Copy Contact Info</button>
-        </div>
-      </div>
-
-      <!-- Bento Key Metrics -->
-      <div class="bento-grid">
-        <div class="bento-card">
-          <div class="bento-num">10+</div>
-          <div class="bento-label">Years Experience</div>
-          <div class="bento-desc">Enterprise software engineering across Mobile &amp; Desktop ecosystems</div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-num coral">20+</div>
-          <div class="bento-label">Production Apps</div>
-          <div class="bento-desc">Published commercial applications spanning Healthcare, Logistics, FinTech, &amp; IoT</div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-num saffron">99.8%</div>
-          <div class="bento-label">Crash-Free Rate</div>
-          <div class="bento-desc">Sustained production stability through proactive memory &amp; thread profiling</div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-num dark">60 FPS</div>
-          <div class="bento-label">Fluid Performance</div>
-          <div class="bento-desc">Jetpack Compose, Flutter Isolates &amp; low-overhead rendering pipelines</div>
-        </div>
-      </div>
-
-      <!-- Executive Architectural Pillars -->
-      <div class="arch-pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-card-title">
-            <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            <span>Architecture &amp; State Paradigms</span>
-          </div>
-          <p>
+<div class="hero-actions-bar no-print">
+<a class="btn btn-primary" href="#flagships">Explore Featured Projects</a>
+<button class="btn btn-ghost" onclick="copyContactInfo()">Copy Contact Info</button>
+</div>
+</div>
+<!-- Bento Key Metrics -->
+<div class="bento-grid">
+<div class="bento-card">
+<div class="bento-num">10+</div>
+<div class="bento-label">Years Experience</div>
+<div class="bento-desc">Enterprise software engineering across Mobile &amp; Desktop ecosystems</div>
+</div>
+<div class="bento-card">
+<div class="bento-num coral">26+</div>
+<div class="bento-label">Production Apps</div>
+<div class="bento-desc">Published enterprise &amp; commercial applications including 6 live on Google Play Store</div>
+</div>
+<div class="bento-card">
+<div class="bento-num saffron">99.8%</div>
+<div class="bento-label">Crash-Free Rate</div>
+<div class="bento-desc">Sustained production stability through proactive memory &amp; thread profiling</div>
+</div>
+<div class="bento-card">
+<div class="bento-num dark">60 FPS</div>
+<div class="bento-label">Fluid Performance</div>
+<div class="bento-desc">Jetpack Compose, Flutter Isolates &amp; low-overhead rendering pipelines</div>
+</div>
+</div>
+<!-- Executive Architectural Pillars -->
+<div class="arch-pillars-grid">
+<div class="pillar-card">
+<div class="pillar-card-title">
+<svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+<span>Architecture &amp; State Paradigms</span>
+</div>
+<p>
             Deep expertise in <strong>Clean Architecture</strong>, <strong>MVI</strong>, <strong>MVVM</strong>, <strong>BLoC</strong>, and <strong>Riverpod</strong>, emphasizing decoupled multi-module architecture (API/Impl), high testability, GoF Design Patterns, and deterministic unidirectional data flows.
           </p>
-        </div>
-
-        <div class="pillar-card">
-          <div class="pillar-card-title">
-            <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-            <span>Offline-First &amp; Reactive Concurrency</span>
-          </div>
-          <p>
+</div>
+<div class="pillar-card">
+<div class="pillar-card-title">
+<svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+<span>Offline-First &amp; Reactive Concurrency</span>
+</div>
+<p>
             Proven track record delivering <strong>offline-first synchronization engines</strong>, multi-tier local persistence (Room, Realm, Isar, SQLite), and reactive pipelines utilizing <strong>Kotlin Coroutines &amp; Flow</strong>, <strong>RxJava3</strong>, and <strong>RxDart</strong>.
           </p>
-        </div>
-
-        <div class="pillar-card">
-          <div class="pillar-card-title">
-            <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-            <span>Hardware IoT &amp; Technical Leadership</span>
-          </div>
-          <p>
+</div>
+<div class="pillar-card">
+<div class="pillar-card-title">
+<svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+<span>Hardware IoT &amp; Technical Leadership</span>
+</div>
+<p>
             Extensive production experience in <strong>Hardware IoT</strong> (BLE GATT, Nordic DFU, MQTT, Sockets), direct SSH database tunnels (HikariCP), and <strong>Google ML Kit</strong>. Demonstrated leadership steering Agile teams, conducting peer code reviews, and mentoring senior engineers.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technical Skills Section -->
-    <section id="skills">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Technical Skills &amp; Architecture Arsenal</h2>
-          <p class="section-subhead">Curated competencies organized by engineering domain and production rigor</p>
-        </div>
-      </div>
-
-      <div class="skills-grid">
-        <!-- 1. Core Platforms -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> Core Platforms &amp; Languages</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Android Native</span>
-            <span class="skill-tag accent">Flutter (Dart)</span>
-            <span class="skill-tag accent">Kotlin Multiplatform (KMP)</span>
-            <span class="skill-tag">Compose Multiplatform</span>
-            <span class="skill-tag">Kotlin</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">JVM Desktop (Windows)</span>
-            <span class="skill-tag">SQL</span>
-          </div>
-        </div>
-
-        <!-- 2. Architecture -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Architecture &amp; Engineering Paradigms</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Clean Architecture</span>
-            <span class="skill-tag accent">MVI (Model-View-Intent)</span>
-            <span class="skill-tag">MVVM</span>
-            <span class="skill-tag">BLoC Pattern</span>
-            <span class="skill-tag">Riverpod</span>
-            <span class="skill-tag">Dependency Injection (Hilt, Koin, GetIt)</span>
-            <span class="skill-tag">Multi-Module (API/Impl)</span>
-            <span class="skill-tag">Offline-First Engine</span>
-            <span class="skill-tag">SOLID Principles</span>
-            <span class="skill-tag">Design Patterns (GoF)</span>
-          </div>
-        </div>
-
-        <!-- 3. UI & State -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> UI &amp; State Management</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Jetpack Compose</span>
-            <span class="skill-tag accent">Material 3</span>
-            <span class="skill-tag">Compose Multiplatform Canvas</span>
-            <span class="skill-tag">Riverpod (generator &amp; hooks)</span>
-            <span class="skill-tag">BLoC (flutter_bloc)</span>
-            <span class="skill-tag">StateFlow &amp; SharedFlow</span>
-            <span class="skill-tag">LiveData</span>
-            <span class="skill-tag">Flutter Hooks</span>
-            <span class="skill-tag">ViewBinding &amp; DataBinding</span>
-          </div>
-        </div>
-
-        <!-- 4. Concurrency -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Concurrency &amp; Reactive Pipelines</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Kotlin Coroutines (CPS)</span>
-            <span class="skill-tag accent">Structured Concurrency</span>
-            <span class="skill-tag">Kotlin Flow</span>
-            <span class="skill-tag">RxJava2 / RxJava3</span>
-            <span class="skill-tag">RxAndroid</span>
-            <span class="skill-tag">Dart Streams &amp; Futures</span>
-            <span class="skill-tag">Background Dart Isolates</span>
-            <span class="skill-tag">RxDart</span>
-          </div>
-        </div>
-
-        <!-- 5. Persistence -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Local Persistence &amp; Data Engines</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Room Database (WAL)</span>
-            <span class="skill-tag">InvalidationTracker</span>
-            <span class="skill-tag">MongoDB Realm Database</span>
-            <span class="skill-tag">Isar Database</span>
-            <span class="skill-tag">SQLite</span>
-            <span class="skill-tag">MariaDB / MySQL</span>
-            <span class="skill-tag">HikariCP JDBC Pooling</span>
-            <span class="skill-tag">EncryptedSharedPreferences</span>
-          </div>
-        </div>
-
-        <!-- 6. Networking & IoT -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Networking, Protocols &amp; Hardware/IoT</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Bluetooth Low Energy (BLE GATT)</span>
-            <span class="skill-tag accent">Nordic DFU Over-the-Air</span>
-            <span class="skill-tag">MQTT Protocol</span>
-            <span class="skill-tag">Java Sockets &amp; TCP</span>
-            <span class="skill-tag">WebSockets (Pusher)</span>
-            <span class="skill-tag">CameraX &amp; Google ML Kit</span>
-            <span class="skill-tag">Google Maps &amp; Places APIs</span>
-            <span class="skill-tag">JSch (SSH Tunneling)</span>
-            <span class="skill-tag">Retrofit2 / OkHttp3 / Dio</span>
-            <span class="skill-tag">Firebase (FCM, Crashlytics, App Check)</span>
-          </div>
-        </div>
-
-        <!-- 7. Testing & Tooling -->
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <span><svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Testing, DevOps &amp; Quality Engineering</span>
-          </div>
-          <div class="skill-tag-list">
-            <span class="skill-tag accent">Unit Testing (JUnit, MockK)</span>
-            <span class="skill-tag">Turbine</span>
-            <span class="skill-tag">Flutter Test</span>
-            <span class="skill-tag">Android Profiler (Memory/Thread)</span>
-            <span class="skill-tag">CI/CD (GitHub Actions)</span>
-            <span class="skill-tag">Gradle (Kotlin DSL)</span>
-            <span class="skill-tag">ProGuard / R8</span>
-            <span class="skill-tag">FVM</span>
-            <span class="skill-tag">Git / Postman / Figma</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Flagship Projects Section -->
-    <section id="flagships">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Featured Flagship Projects</h2>
-          <p class="section-subhead">Deep-dive case studies showcasing architectural rigor and measurable business impact</p>
-        </div>
-
-        <!-- Filter Buttons -->
-        <div class="filter-bar no-print" role="tablist" aria-label="Filter projects by platform track">
-          <button class="filter-btn active" role="tab" aria-selected="true" aria-controls="projects-list" onclick="filterProjects('all', this)">All Projects (10)</button>
-          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('kmp', this)">Kotlin Multiplatform</button>
-          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('flutter', this)">Flutter Ecosystem</button>
-          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('android', this)">Android Native</button>
-          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="projects-list" onclick="filterProjects('iot', this)">Hardware &amp; IoT</button>
-        </div>
-      </div>
-
-      <div class="projects-list" id="projects-list">
-
-        <!-- 1. EOB APP -->
-        <article class="project-card" data-category="kmp">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>EOB APP (KOTLIN MULTIPLATFORM)</h3>
-              <div class="project-meta">
-                <span>05/2026 - 08/2026</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Kotlin Multiplatform Engineer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-kmp">Kotlin Multiplatform</span>
-              <span class="badge" style="background:#f1f5f9; color:#475569;">Desktop &amp; Android</span>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+<div class="pillar-card">
+<div class="pillar-card-title">
+<svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><rect height="7" width="7" x="3" y="3"></rect><rect height="7" width="7" x="14" y="3"></rect><rect height="7" width="7" x="14" y="14"></rect><rect height="7" width="7" x="3" y="14"></rect></svg>
+<span>Product Creator &amp; Independent Store Publisher</span>
+</div>
+<p>
+            Successfully architected, published, and maintained <strong>6+ production applications on Google Play Store</strong> spanning On-Device Computer Vision/OCR, AES-256 Vault Security, P2P Wi-Fi Transfer, Industrial Rigging Mathematics, and Offline Telemetry, demonstrating end-to-end product ownership from concept to Play Store release.
+          </p>
+</div>
+<div class="pillar-card">
+<div class="pillar-card-title">
+<svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><rect height="12" rx="2" width="16" x="4" y="8"></rect><circle cx="9" cy="13" r="1"></circle><circle cx="15" cy="13" r="1"></circle><path d="M9 17h6"></path></svg>
+<span>AI-Assisted Engineering &amp; Agentic Workflows</span>
+</div>
+<p>
+            Advanced proficiency in <strong>AI-assisted engineering &amp; Agentic workflows</strong>, expertly leveraging autonomous AI coding agents and LLMs (<strong>Claude Code</strong>, <strong>OpenAI Codex</strong>, <strong>Google Antigravity</strong>, <strong>DeepSeek</strong>) to accelerate SDLC execution, drive architectural prototyping, automate testing, and elevate code quality.
+          </p>
+</div>
+</div>
+</section>
+<!-- Technical Skills Section -->
+<section id="skills">
+<div class="section-header">
+<div>
+<h2 class="section-title"><svg aria-hidden="true" class="section-icon" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Technical Skills &amp; Architecture Arsenal</h2>
+<p class="section-subhead">Curated competencies organized by engineering domain and production rigor</p>
+</div>
+</div>
+<div class="skills-grid">
+<!-- 1. Core Platforms -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><rect height="20" rx="2" ry="2" width="14" x="5" y="2"></rect><line x1="12" x2="12.01" y1="18" y2="18"></line></svg> Core Platforms &amp; Languages</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Android Native</span>
+<span class="skill-tag accent">Flutter (Dart)</span>
+<span class="skill-tag accent">Kotlin Multiplatform (KMP)</span>
+<span class="skill-tag">Compose Multiplatform</span>
+<span class="skill-tag">Kotlin</span>
+<span class="skill-tag">Java</span>
+<span class="skill-tag">JVM Desktop (Windows)</span>
+<span class="skill-tag">SQL</span>
+</div>
+</div>
+<!-- 2. Architecture -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Architecture &amp; Engineering Paradigms</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Clean Architecture</span>
+<span class="skill-tag accent">MVI (Model-View-Intent)</span>
+<span class="skill-tag">MVVM</span>
+<span class="skill-tag">BLoC Pattern</span>
+<span class="skill-tag">Riverpod</span>
+<span class="skill-tag">Dependency Injection (Hilt, Koin, GetIt)</span>
+<span class="skill-tag">Multi-Module (API/Impl)</span>
+<span class="skill-tag">Offline-First Engine</span>
+<span class="skill-tag">SOLID Principles</span>
+<span class="skill-tag">Design Patterns (GoF)</span>
+</div>
+</div>
+<!-- 3. UI & State -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect><line x1="3" x2="21" y1="9" y2="9"></line><line x1="9" x2="9" y1="21" y2="9"></line></svg> UI &amp; State Management</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Jetpack Compose</span>
+<span class="skill-tag accent">Material 3</span>
+<span class="skill-tag">Compose Multiplatform Canvas</span>
+<span class="skill-tag">Riverpod (generator &amp; hooks)</span>
+<span class="skill-tag">BLoC (flutter_bloc)</span>
+<span class="skill-tag">StateFlow &amp; SharedFlow</span>
+<span class="skill-tag">LiveData</span>
+<span class="skill-tag">Flutter Hooks</span>
+<span class="skill-tag">ViewBinding &amp; DataBinding</span>
+</div>
+</div>
+<!-- 4. Concurrency -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Concurrency &amp; Reactive Pipelines</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Kotlin Coroutines (CPS)</span>
+<span class="skill-tag accent">Structured Concurrency</span>
+<span class="skill-tag">Kotlin Flow</span>
+<span class="skill-tag">RxJava2 / RxJava3</span>
+<span class="skill-tag">RxAndroid</span>
+<span class="skill-tag">Dart Streams &amp; Futures</span>
+<span class="skill-tag">Background Dart Isolates</span>
+<span class="skill-tag">RxDart</span>
+</div>
+</div>
+<!-- 5. Persistence -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Local Persistence &amp; Data Engines</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Room Database (WAL)</span>
+<span class="skill-tag">InvalidationTracker</span>
+<span class="skill-tag">MongoDB Realm Database</span>
+<span class="skill-tag">Isar Database</span>
+<span class="skill-tag">SQLite</span>
+<span class="skill-tag">MariaDB / MySQL</span>
+<span class="skill-tag">HikariCP JDBC Pooling</span>
+<span class="skill-tag">EncryptedSharedPreferences</span>
+</div>
+</div>
+<!-- 6. Networking & IoT -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="10"></circle><line x1="2" x2="22" y1="12" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Networking, Protocols &amp; Hardware/IoT</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Bluetooth Low Energy (BLE GATT)</span>
+<span class="skill-tag accent">Nordic DFU Over-the-Air</span>
+<span class="skill-tag">MQTT Protocol</span>
+<span class="skill-tag">Java Sockets &amp; TCP</span>
+<span class="skill-tag">WebSockets (Pusher)</span>
+<span class="skill-tag">CameraX &amp; Google ML Kit</span>
+<span class="skill-tag">Google Maps &amp; Places APIs</span>
+<span class="skill-tag">JSch (SSH Tunneling)</span>
+<span class="skill-tag">Retrofit2 / OkHttp3 / Dio</span>
+<span class="skill-tag">Firebase (FCM, Crashlytics, App Check)</span>
+</div>
+</div>
+<!-- 7. Testing & Tooling -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Testing, DevOps &amp; Quality Engineering</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Unit Testing (JUnit, MockK)</span>
+<span class="skill-tag">Turbine</span>
+<span class="skill-tag">Flutter Test</span>
+<span class="skill-tag">Android Profiler (Memory/Thread)</span>
+<span class="skill-tag">CI/CD (GitHub Actions)</span>
+<span class="skill-tag">Gradle (Kotlin DSL)</span>
+<span class="skill-tag">ProGuard / R8</span>
+<span class="skill-tag">FVM</span>
+<span class="skill-tag">Git / Postman / Figma</span>
+</div>
+</div>
+<!-- 8. AI Agents & Modern Developer Tooling -->
+<div class="skill-card">
+<div class="skill-card-header">
+<span><svg aria-hidden="true" class="card-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><rect height="12" rx="2" width="16" x="4" y="8"></rect><circle cx="9" cy="13" r="1"></circle><circle cx="15" cy="13" r="1"></circle><path d="M9 17h6"></path></svg> AI Agents &amp; Modern Developer Tooling</span>
+</div>
+<div class="skill-tag-list">
+<span class="skill-tag accent">Claude Code</span>
+<span class="skill-tag accent">OpenAI Codex</span>
+<span class="skill-tag accent">Google Antigravity</span>
+<span class="skill-tag">DeepSeek</span>
+<span class="skill-tag">Agentic Workflows</span>
+<span class="skill-tag">AI-Assisted Architecture</span>
+<span class="skill-tag">Automated Unit Test Gen</span>
+<span class="skill-tag">Codebase Refactoring &amp; Optimization</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Flagship Projects Section -->
+<section id="flagships">
+<div class="section-header">
+<div>
+<h2 class="section-title"><svg aria-hidden="true" class="section-icon" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Featured Flagship Projects</h2>
+<p class="section-subhead">Deep-dive case studies showcasing architectural rigor and measurable business impact</p>
+</div>
+<!-- Filter Buttons -->
+<div aria-label="Filter projects by platform track" class="filter-bar no-print" role="tablist">
+<button aria-controls="projects-list" aria-selected="true" class="filter-btn active" onclick="filterProjects('all', this)" role="tab">All Projects (16)</button>
+<button aria-controls="projects-list" aria-selected="false" class="filter-btn" onclick="filterProjects('store-apps', this)" role="tab">Store Apps &amp; Products (6)</button>
+<button aria-controls="projects-list" aria-selected="false" class="filter-btn" onclick="filterProjects('kmp', this)" role="tab">Kotlin Multiplatform (1)</button>
+<button aria-controls="projects-list" aria-selected="false" class="filter-btn" onclick="filterProjects('flutter', this)" role="tab">Flutter Ecosystem (5)</button>
+<button aria-controls="projects-list" aria-selected="false" class="filter-btn" onclick="filterProjects('android', this)" role="tab">Android Native (8)</button>
+<button aria-controls="projects-list" aria-selected="false" class="filter-btn" onclick="filterProjects('iot', this)" role="tab">Hardware &amp; IoT (2)</button>
+</div>
+</div>
+<div class="projects-list" id="projects-list">
+<!-- 1. EOB APP -->
+<article class="project-card" data-category="kmp">
+<div class="project-top">
+<div class="project-title-group">
+<h3>EOB APP (KOTLIN MULTIPLATFORM)</h3>
+<div class="project-meta">
+<span>05/2026 - 08/2026</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Kotlin Multiplatform Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-kmp">Kotlin Multiplatform</span>
+<span class="badge" style="background:#f1f5f9; color:#475569;">Desktop &amp; Android</span>
+</div>
+</div>
+<p class="project-desc">
             An enterprise-level inventory and floor map management application engineered to operate efficiently across Android and Windows desktop (JVM) platforms without intermediate web API overhead.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Cross-Platform Code Sharing:</strong> Architected a cross-platform enterprise inventory and floor-map management system across Android and JVM Desktop (Windows) using Kotlin Multiplatform (KMP) and MVI Clean Architecture, achieving ~80% shared business logic.</li>
-            <li><strong>Vector Floor-Map Rendering:</strong> Engineered multiplatform vector floor-map rendering from complex Excel datasets using Compose Multiplatform Canvas, sustaining fluid 60 FPS pan and zoom interactions across mobile and desktop runtimes.</li>
-            <li><strong>Hardware Abstractions:</strong> Formulated unified hardware abstractions (<code>expect</code>/<code>actual</code> declarations) for CameraX/ML Kit barcode scanning on Android and HID keyboard emulation on Desktop, establishing a single clean API across target platforms.</li>
-            <li><strong>Zero-Overhead Database Connectivity:</strong> Eliminated intermediate REST API overhead by engineering secure JDBC database connections to MariaDB via JSch SSH Tunneling and HikariCP connection pooling, ensuring fast data retrieval with zero connection leaks.</li>
-            <li><strong>Performance &amp; Memory Tuning:</strong> Engineered multi-threaded performance optimization and memory management across Android mobile devices and Windows desktop runtimes, preventing memory leaks during large dataset parsing.</li>
-          </ul>
-
-          <button class="expand-btn no-print" onclick="toggleDrawer(this)">
-            <span><svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
-            <span class="arrow">↓</span>
-          </button>
-          <div class="arch-drawer">
-            <strong>Key Architecture Highlights:</strong> Implemented single-module KMP code organization with strict boundaries; leveraged Koin for lightweight multiplatform dependency injection; Coroutines/Flow structured concurrency prevents UI thread stalls during Excel parsing; direct SSH-tunneled JDBC minimizes cloud hosting costs for on-premises deployments.
+<ul class="project-bullets">
+<li><strong>Cross-Platform Code Sharing:</strong> Architected a cross-platform enterprise inventory and floor-map management system across Android and JVM Desktop (Windows) using Kotlin Multiplatform (KMP) and MVI Clean Architecture, achieving ~80% shared business logic.</li>
+<li><strong>Vector Floor-Map Rendering:</strong> Engineered multiplatform vector floor-map rendering from complex Excel datasets using Compose Multiplatform Canvas, sustaining fluid 60 FPS pan and zoom interactions across mobile and desktop runtimes.</li>
+<li><strong>Hardware Abstractions:</strong> Formulated unified hardware abstractions (<code>expect</code>/<code>actual</code> declarations) for CameraX/ML Kit barcode scanning on Android and HID keyboard emulation on Desktop, establishing a single clean API across target platforms.</li>
+<li><strong>Zero-Overhead Database Connectivity:</strong> Eliminated intermediate REST API overhead by engineering secure JDBC database connections to MariaDB via JSch SSH Tunneling and HikariCP connection pooling, ensuring fast data retrieval with zero connection leaks.</li>
+<li><strong>Performance &amp; Memory Tuning:</strong> Engineered multi-threaded performance optimization and memory management across Android mobile devices and Windows desktop runtimes, preventing memory leaks during large dataset parsing.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Implemented single-module KMP code organization with strict boundaries; leveraged Koin for lightweight multiplatform dependency injection; Coroutines/Flow structured concurrency prevents UI thread stalls during Excel parsing; direct SSH-tunneled JDBC minimizes cloud hosting costs for on-premises deployments.
           </div>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Kotlin Multiplatform</span>
-              <span class="tech-chip">Compose Multiplatform</span>
-              <span class="tech-chip">MVI Clean Architecture</span>
-              <span class="tech-chip">Koin DI</span>
-              <span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
-              <span class="tech-chip">JSch (SSH Tunnel)</span>
-              <span class="tech-chip">HikariCP JDBC</span>
-              <span class="tech-chip">kotlinx.serialization</span>
-              <span class="tech-chip">CameraX</span>
-              <span class="tech-chip">Google ML Kit</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 2. TSUNAGU INSPECTOR -->
-        <article class="project-card" data-category="flutter">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>TSUNAGU INSPECTOR (FLUTTER)</h3>
-              <div class="project-meta">
-                <span>01/2026 - 04/2026</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Flutter Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-flutter">Flutter</span>
-              <a href="https://play.google.com/store/apps/details?id=com.tsunagu.app" target="_blank" rel="noopener" class="playstore-link">
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin Multiplatform</span>
+<span class="tech-chip">Compose Multiplatform</span>
+<span class="tech-chip">MVI Clean Architecture</span>
+<span class="tech-chip">Koin DI</span>
+<span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+<span class="tech-chip">JSch (SSH Tunnel)</span>
+<span class="tech-chip">HikariCP JDBC</span>
+<span class="tech-chip">kotlinx.serialization</span>
+<span class="tech-chip">CameraX</span>
+<span class="tech-chip">Google ML Kit</span>
+</div>
+</div>
+</article>
+<!-- 2. TSUNAGU INSPECTOR -->
+<article class="project-card" data-category="flutter">
+<div class="project-top">
+<div class="project-title-group">
+<h3>TSUNAGU INSPECTOR (FLUTTER)</h3>
+<div class="project-meta">
+<span>01/2026 - 04/2026</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Flutter Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.tsunagu.app" rel="noopener" target="_blank">
                 ▶ View on Google Play
               </a>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+</div>
+<p class="project-desc">
             A specialized mobile application designed for quality control and detailed inspection workflows in garment and textile manufacturing, providing structured, real-time inspection data and digital evidence collection.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Decoupled Layered Architecture:</strong> Architected core quality inspection modules across 5 distinct textile categories by adhering strictly to Clean Architecture (<code>Presentation -&gt; Domain -&gt; Data</code>), accelerating feature modularity.</li>
-            <li><strong>Immutable State Management:</strong> Engineered unidirectional state management and immutable data pipelines utilizing Riverpod, Flutter Hooks, and Freezed, eliminating UI race conditions across 15+ complex inspection workflows.</li>
-            <li><strong>Fault-Tolerant Networking:</strong> Fortified networking architecture leveraging Dio and Dartz (<code>Either</code> pattern), establishing type-safe error boundaries and automated retry policies to ensure reliable data synchronization under unstable factory Wi-Fi.</li>
-            <li><strong>Background Image Offloading:</strong> Offloaded high-resolution photo compression and multipart uploads to background Dart Isolates, preventing UI thread jank and maintaining smooth 60 FPS UI performance during continuous camera inspections.</li>
-            <li><strong>Bilingual Manufacturing Operations:</strong> Deployed multi-language localization (Japanese and Vietnamese) across 200+ resource strings using Easy Localization to facilitate seamless cross-border manufacturing operations.</li>
-          </ul>
-
-          <button class="expand-btn no-print" onclick="toggleDrawer(this)">
-            <span><svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
-            <span class="arrow">↓</span>
-          </button>
-          <div class="arch-drawer">
-            <strong>Key Architecture Highlights:</strong> Used Dart Isolates to offload CPU-intensive image downsampling (10MB photos to &lt;800KB) off the main thread; Functional error handling with Dartz (Either&lt;Failure, Success&gt;) eliminates silent crashes in offline factory environments; Freezed immutable state models ensure reproducible QA testing.
+<ul class="project-bullets">
+<li><strong>Decoupled Layered Architecture:</strong> Architected core quality inspection modules across 5 distinct textile categories by adhering strictly to Clean Architecture (<code>Presentation -&gt; Domain -&gt; Data</code>), accelerating feature modularity.</li>
+<li><strong>Immutable State Management:</strong> Engineered unidirectional state management and immutable data pipelines utilizing Riverpod, Flutter Hooks, and Freezed, eliminating UI race conditions across 15+ complex inspection workflows.</li>
+<li><strong>Fault-Tolerant Networking:</strong> Fortified networking architecture leveraging Dio and Dartz (<code>Either</code> pattern), establishing type-safe error boundaries and automated retry policies to ensure reliable data synchronization under unstable factory Wi-Fi.</li>
+<li><strong>Background Image Offloading:</strong> Offloaded high-resolution photo compression and multipart uploads to background Dart Isolates, preventing UI thread jank and maintaining smooth 60 FPS UI performance during continuous camera inspections.</li>
+<li><strong>Bilingual Manufacturing Operations:</strong> Deployed multi-language localization (Japanese and Vietnamese) across 200+ resource strings using Easy Localization to facilitate seamless cross-border manufacturing operations.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Used Dart Isolates to offload CPU-intensive image downsampling (10MB photos to &lt;800KB) off the main thread; Functional error handling with Dartz (Either&lt;Failure, Success&gt;) eliminates silent crashes in offline factory environments; Freezed immutable state models ensure reproducible QA testing.
           </div>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Flutter (Dart)</span>
-              <span class="tech-chip">Clean Architecture</span>
-              <span class="tech-chip">Riverpod &amp; Flutter Hooks</span>
-              <span class="tech-chip">Freezed</span>
-              <span class="tech-chip">Dio &amp; Retrofit2</span>
-              <span class="tech-chip">GetIt &amp; Injectable</span>
-              <span class="tech-chip">Dartz (Either Pattern)</span>
-              <span class="tech-chip">Dart Isolates</span>
-              <span class="tech-chip">Easy Localization (i18n)</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 3. CONSTRUCTION MARKET SYSTEM -->
-        <article class="project-card" data-category="android">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>CONSTRUCTION MARKET SYSTEM (ANDROID NATIVE)</h3>
-              <div class="project-meta">
-                <span>09/2025 - 12/2025</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-android">Android Native</span>
-              <a href="https://play.google.com/store/apps/details?id=com.kenchiku_ichiba.expert" target="_blank" rel="noopener" class="playstore-link">
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">Riverpod &amp; Flutter Hooks</span>
+<span class="tech-chip">Freezed</span>
+<span class="tech-chip">Dio &amp; Retrofit2</span>
+<span class="tech-chip">GetIt &amp; Injectable</span>
+<span class="tech-chip">Dartz (Either Pattern)</span>
+<span class="tech-chip">Dart Isolates</span>
+<span class="tech-chip">Easy Localization (i18n)</span>
+</div>
+</div>
+</article>
+<!-- 3. CONSTRUCTION MARKET SYSTEM -->
+<article class="project-card" data-category="android">
+<div class="project-top">
+<div class="project-title-group">
+<h3>CONSTRUCTION MARKET SYSTEM (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>09/2025 - 12/2025</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.kenchiku_ichiba.expert" rel="noopener" target="_blank">
                 ▶ View on Google Play
               </a>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+</div>
+<p class="project-desc">
             A specialized mobile management platform designed for construction professionals to manage projects, handle real-time field communication, and streamline onsite operations.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>100% Jetpack Compose &amp; Material 3:</strong> Delivered an onsite field-management application using 100% Jetpack Compose and Material 3 with Clean MVVM architecture across 25+ dynamic screens, accelerating UI feature delivery.</li>
-            <li><strong>Real-time Telemetry &amp; Chat:</strong> Engineered real-time group chat and bidirectional communication via Pusher WebSockets and FCM, implementing exponential backoff reconnection to maintain reliable messaging across intermittent onsite cellular connectivity.</li>
-            <li><strong>Scalable Concurrency Pipelines:</strong> Architected scalable dependency injection and asynchronous pipelines leveraging Dagger Hilt, Kotlin Coroutines, StateFlow, and Navigation Compose across 8 feature packages, adhering to SDLC best practices.</li>
-            <li><strong>Memory-Efficient Media Caching:</strong> Streamlined construction photo and document management, implementing Coil image caching with memory-efficient downsampling and local storage to handle heavy daily field inspection media without OutOfMemory errors.</li>
-            <li><strong>Near-Zero Crash Rate:</strong> Elevated app reliability to a 99.8% crash-free rate across diverse Android OEM devices through proactive memory profiling, architectural refactoring, and comprehensive peer code reviews.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Kotlin</span>
-              <span class="tech-chip">Jetpack Compose</span>
-              <span class="tech-chip">Material 3</span>
-              <span class="tech-chip">Clean MVVM</span>
-              <span class="tech-chip">Dagger Hilt</span>
-              <span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
-              <span class="tech-chip">Navigation Compose</span>
-              <span class="tech-chip">Pusher (WebSockets)</span>
-              <span class="tech-chip">Coil</span>
-              <span class="tech-chip">FCM</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 4. WAKUNAVI / SKIPJOB -->
-        <article class="project-card" data-category="flutter">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>WAKUNAVI / SKIPJOB (FLUTTER)</h3>
-              <div class="project-meta">
-                <span>05/2025 - 08/2025</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Flutter Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-flutter">Flutter</span>
-              <span class="badge" style="background:#fef3c7; color:#92400e;">AI &amp; Media Feed</span>
-            </div>
-          </div>
-
-          <p class="project-desc">
+<ul class="project-bullets">
+<li><strong>100% Jetpack Compose &amp; Material 3:</strong> Delivered an onsite field-management application using 100% Jetpack Compose and Material 3 with Clean MVVM architecture across 25+ dynamic screens, accelerating UI feature delivery.</li>
+<li><strong>Real-time Telemetry &amp; Chat:</strong> Engineered real-time group chat and bidirectional communication via Pusher WebSockets and FCM, implementing exponential backoff reconnection to maintain reliable messaging across intermittent onsite cellular connectivity.</li>
+<li><strong>Scalable Concurrency Pipelines:</strong> Architected scalable dependency injection and asynchronous pipelines leveraging Dagger Hilt, Kotlin Coroutines, StateFlow, and Navigation Compose across 8 feature packages, adhering to SDLC best practices.</li>
+<li><strong>Memory-Efficient Media Caching:</strong> Streamlined construction photo and document management, implementing Coil image caching with memory-efficient downsampling and local storage to handle heavy daily field inspection media without OutOfMemory errors.</li>
+<li><strong>Near-Zero Crash Rate:</strong> Elevated app reliability to a 99.8% crash-free rate across diverse Android OEM devices through proactive memory profiling, architectural refactoring, and comprehensive peer code reviews.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Decoupled Clean Architecture across Data/Domain/Presentation; Paging 3 integration streams 10,000+ construction materials without UI lag; offline-first Room database synchronization with WAL mode enables site managers to work reliably in basement and remote construction zones with zero cellular signal.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Jetpack Compose</span>
+<span class="tech-chip">Material 3</span>
+<span class="tech-chip">Clean MVVM</span>
+<span class="tech-chip">Dagger Hilt</span>
+<span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+<span class="tech-chip">Navigation Compose</span>
+<span class="tech-chip">Pusher (WebSockets)</span>
+<span class="tech-chip">Coil</span>
+<span class="tech-chip">FCM</span>
+</div>
+</div>
+</article>
+<!-- 4. WAKUNAVI / SKIPJOB -->
+<article class="project-card" data-category="flutter">
+<div class="project-top">
+<div class="project-title-group">
+<h3>WAKUNAVI / SKIPJOB (FLUTTER)</h3>
+<div class="project-meta">
+<span>05/2025 - 08/2025</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Flutter Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-flutter">Flutter</span>
+<span class="badge" style="background:#fef3c7; color:#92400e;">AI &amp; Media Feed</span>
+</div>
+</div>
+<p class="project-desc">
             A modern Flutter-based mobile application (iOS &amp; Android) designed for media content distribution, interactive feeds, document management, and AI-powered assistance.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Cross-Platform Media Engine:</strong> Architected a cross-platform mobile application (iOS &amp; Android) for media streaming, digital publishing, and content discovery using Flutter and Riverpod state management.</li>
-            <li><strong>60 FPS Video Reels Feed:</strong> Engineered high-performance Instagram-style media feeds and video reels with smooth 60 FPS scrolling and prefetching via Flutter Cache Manager, minimizing video start latency.</li>
-            <li><strong>Google Gemini AI Integration:</strong> Integrated the Google Gemini API to enable conversational AI assistance, smart keyword filtering, and dynamic content synthesis.</li>
-            <li><strong>Hardened Cloud Security:</strong> Fortified mobile application security and backend integrations via Firebase (Firestore, Cloud Storage, Auth, Analytics, Crashlytics, App Check), preventing unauthorized API access.</li>
-            <li><strong>Scalable Navigation Architecture:</strong> Structured scalable deep routing and navigation flows utilizing GoRouter and Injectable/GetIt dependency injection across 30+ routed screens, eliminating memory leaks during continuous video playback.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Flutter (Dart)</span>
-              <span class="tech-chip">Riverpod (hooks &amp; generator)</span>
-              <span class="tech-chip">GoRouter</span>
-              <span class="tech-chip">Google Gemini API</span>
-              <span class="tech-chip">Firebase App Check</span>
-              <span class="tech-chip">Firestore</span>
-              <span class="tech-chip">Flutter Cache Manager</span>
-              <span class="tech-chip">Freezed</span>
-              <span class="tech-chip">Injectable &amp; GetIt</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 5. BIOTECH -->
-        <article class="project-card" data-category="android">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>BIOTECH (ANDROID NATIVE)</h3>
-              <div class="project-meta">
-                <span>01/2025 - 04/2025</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-android">Android Native</span>
-              <a href="https://play.google.com/store/apps/details?id=tech.fortebio.aotomatic" target="_blank" rel="noopener" class="playstore-link">
+<ul class="project-bullets">
+<li><strong>Cross-Platform Media Engine:</strong> Architected a cross-platform mobile application (iOS &amp; Android) for media streaming, digital publishing, and content discovery using Flutter and Riverpod state management.</li>
+<li><strong>60 FPS Video Reels Feed:</strong> Engineered high-performance Instagram-style media feeds and video reels with smooth 60 FPS scrolling and prefetching via Flutter Cache Manager, minimizing video start latency.</li>
+<li><strong>Google Gemini AI Integration:</strong> Integrated the Google Gemini API to enable conversational AI assistance, smart keyword filtering, and dynamic content synthesis.</li>
+<li><strong>Hardened Cloud Security:</strong> Fortified mobile application security and backend integrations via Firebase (Firestore, Cloud Storage, Auth, Analytics, Crashlytics, App Check), preventing unauthorized API access.</li>
+<li><strong>Scalable Navigation Architecture:</strong> Structured scalable deep routing and navigation flows utilizing GoRouter and Injectable/GetIt dependency injection across 30+ routed screens, eliminating memory leaks during continuous video playback.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Unidirectional state management powered by Riverpod (StateNotifierProvider) with immutable Freezed models; GoRouter handles nested tab flows and dynamic routing; Dio HTTP client fortified with automated token refresh interceptors and cached responses ensures seamless high-concurrency job matching.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Riverpod (hooks &amp; generator)</span>
+<span class="tech-chip">GoRouter</span>
+<span class="tech-chip">Google Gemini API</span>
+<span class="tech-chip">Firebase App Check</span>
+<span class="tech-chip">Firestore</span>
+<span class="tech-chip">Flutter Cache Manager</span>
+<span class="tech-chip">Freezed</span>
+<span class="tech-chip">Injectable &amp; GetIt</span>
+</div>
+</div>
+</article>
+<!-- 5. BIOTECH -->
+<article class="project-card" data-category="android">
+<div class="project-top">
+<div class="project-title-group">
+<h3>BIOTECH (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>01/2025 - 04/2025</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=tech.fortebio.aotomatic" rel="noopener" target="_blank">
                 ▶ View on Google Play
               </a>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+</div>
+<p class="project-desc">
             A comprehensive aquaculture farm management platform that empowers shrimp farmers and agricultural enterprises to digitize pond operations, monitor environmental parameters in real time, and optimize crop yield.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Agri-Tech Platform Architecture:</strong> Architected and delivered an enterprise aquaculture farm management platform for shrimp farmers across 50+ commercial facilities utilizing Kotlin, Jetpack Compose, and Clean MVVM Architecture.</li>
-            <li><strong>Telemetry &amp; Geo-Visualization:</strong> Engineered real-time farm monitoring and pond visualization modules, integrating the Google Maps API and custom telemetry analytics charts for tracking 6 key water quality parameters (pH, DO, salinity, temp, alkalinity, ammonia).</li>
-            <li><strong>Offline Sync &amp; Conflict Resolution:</strong> Synchronized farm telemetry pipelines and offline persistence using MongoDB Realm Database, Kotlin Coroutines, and StateFlow, ensuring robust conflict resolution across daily sensor records.</li>
-            <li><strong>Multi-Tier Security (RBAC):</strong> Enforced multi-tier role-based access control (RBAC) workflows, provisioning tailored operational permissions for farm owners, supervisors, and field technicians across 3 security tiers.</li>
-            <li><strong>Low-End Device Optimization:</strong> Optimized UI rendering pipelines and memory footprint on low-end agricultural Android devices (2GB RAM), sustaining consistent 60 FPS rendering under harsh field environments.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Kotlin</span>
-              <span class="tech-chip">Jetpack Compose</span>
-              <span class="tech-chip">MongoDB Realm DB</span>
-              <span class="tech-chip">Clean MVVM</span>
-              <span class="tech-chip">Dagger Hilt</span>
-              <span class="tech-chip">StateFlow</span>
-              <span class="tech-chip">Google Maps API</span>
-              <span class="tech-chip">Retrofit2</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 6. HEINEKEN ENTERPRISE SYSTEMS -->
-        <article class="project-card" data-category="android">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>HEINEKEN ENTERPRISE SYSTEMS (BANQUET BMS &amp; SPO)</h3>
-              <div class="project-meta">
-                <span>07/2023 - 07/2024</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-android">Android Native</span>
-              <a href="https://play.google.com/store/apps/details?id=heinekenbrewerytour.vn.spo" target="_blank" rel="noopener" class="playstore-link">
+<ul class="project-bullets">
+<li><strong>Agri-Tech Platform Architecture:</strong> Architected and delivered an enterprise aquaculture farm management platform for shrimp farmers across 50+ commercial facilities utilizing Kotlin, Jetpack Compose, and Clean MVVM Architecture.</li>
+<li><strong>Telemetry &amp; Geo-Visualization:</strong> Engineered real-time farm monitoring and pond visualization modules, integrating the Google Maps API and custom telemetry analytics charts for tracking 6 key water quality parameters (pH, DO, salinity, temp, alkalinity, ammonia).</li>
+<li><strong>Offline Sync &amp; Conflict Resolution:</strong> Synchronized farm telemetry pipelines and offline persistence using MongoDB Realm Database, Kotlin Coroutines, and StateFlow, ensuring robust conflict resolution across daily sensor records.</li>
+<li><strong>Multi-Tier Security (RBAC):</strong> Enforced multi-tier role-based access control (RBAC) workflows, provisioning tailored operational permissions for farm owners, supervisors, and field technicians across 3 security tiers.</li>
+<li><strong>Low-End Device Optimization:</strong> Optimized UI rendering pipelines and memory footprint on low-end agricultural Android devices (2GB RAM), sustaining consistent 60 FPS rendering under harsh field environments.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Direct SSH tunneling (JSch) to remote MariaDB combined with HikariCP connection pooling eliminated cloud API middleware, significantly reducing client server overhead; CameraX QR scanning pipeline processes specimen sample tags in real time with sub-100ms detection latency.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Jetpack Compose</span>
+<span class="tech-chip">MongoDB Realm DB</span>
+<span class="tech-chip">Clean MVVM</span>
+<span class="tech-chip">Dagger Hilt</span>
+<span class="tech-chip">StateFlow</span>
+<span class="tech-chip">Google Maps API</span>
+<span class="tech-chip">Retrofit2</span>
+</div>
+</div>
+</article>
+<!-- 6. HEINEKEN ENTERPRISE SYSTEMS -->
+<article class="project-card" data-category="android">
+<div class="project-top">
+<div class="project-title-group">
+<h3>HEINEKEN ENTERPRISE SYSTEMS (BANQUET BMS &amp; SPO)</h3>
+<div class="project-meta">
+<span>07/2023 - 07/2024</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=heinekenbrewerytour.vn.spo" rel="noopener" target="_blank">
                 ▶ SPO on Play Store
               </a>
-              <a href="https://play.google.com/store/apps/details?id=heinekenbrewerytour.vn.bms" target="_blank" rel="noopener" class="playstore-link">
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=heinekenbrewerytour.vn.bms" rel="noopener" target="_blank">
                 ▶ BMS on Play Store
               </a>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+</div>
+<p class="project-desc">
             Flagship enterprise mobile systems engineered for Heineken Vietnam to streamline nationwide field operations, equipment audits, banquet logistics, and POS merchandise verification.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Nationwide Enterprise Scale:</strong> Architected and delivered nationwide enterprise audit and banquet management mobile solutions for Heineken Vietnam across 1,000+ retail outlets and 500+ banquet venues using Kotlin, Java, and Clean Architecture.</li>
-            <li><strong>Zero-Loss Offline Engine:</strong> Pioneered a mission-critical offline-first synchronization engine using Room Database and a background JobIntentService queue, guaranteeing zero data loss across monthly audits in low-connectivity rural zones.</li>
-            <li><strong>Automated Order Reconnection:</strong> Automated background synchronization leveraging Room Database, Kotlin Coroutines, and LiveData, automatically syncing pending banquet transactions upon network reconnection.</li>
-            <li><strong>High-Speed Asset Scanning:</strong> Accelerated asset inventory and merchandise verification by integrating ML Kit and ZBar/ZXing barcode/QR scanning across 50,000+ retail trade assets.</li>
-            <li><strong>Enterprise Geofencing &amp; 2FA:</strong> Deployed nationwide outlet mapping with GPS geofencing and photo documentation with automated client-side compression, securing order workflows with 2FA across 4 administrative tiers.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Android Native (Kotlin &amp; Java)</span>
-              <span class="tech-chip">Room Database</span>
-              <span class="tech-chip">JobIntentService Offline Sync</span>
-              <span class="tech-chip">ML Kit Barcode</span>
-              <span class="tech-chip">ZBar/ZXing</span>
-              <span class="tech-chip">2FA Authentication</span>
-              <span class="tech-chip">Signature Pad</span>
-              <span class="tech-chip">EventBus</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 7. BRAIN SLEEP COIN -->
-        <article class="project-card" data-category="iot">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>BRAIN SLEEP COIN (ANDROID NATIVE &amp; IOT)</h3>
-              <div class="project-meta">
-                <span>04/2022 - 01/2023</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-iot">BLE &amp; IoT</span>
-              <span class="badge badge-android">Android Native</span>
-              <a href="https://play.google.com/store/apps/details?id=com.brain_sleep.sleepCoin" target="_blank" rel="noopener" class="playstore-link">
+<ul class="project-bullets">
+<li><strong>Nationwide Enterprise Scale:</strong> Architected and delivered nationwide enterprise audit and banquet management mobile solutions for Heineken Vietnam across 1,000+ retail outlets and 500+ banquet venues using Kotlin, Java, and Clean Architecture.</li>
+<li><strong>Zero-Loss Offline Engine:</strong> Pioneered a mission-critical offline-first synchronization engine using Room Database and a background JobIntentService queue, guaranteeing zero data loss across monthly audits in low-connectivity rural zones.</li>
+<li><strong>Automated Order Reconnection:</strong> Automated background synchronization leveraging Room Database, Kotlin Coroutines, and LiveData, automatically syncing pending banquet transactions upon network reconnection.</li>
+<li><strong>High-Speed Asset Scanning:</strong> Accelerated asset inventory and merchandise verification by integrating ML Kit and ZBar/ZXing barcode/QR scanning across 50,000+ retail trade assets.</li>
+<li><strong>Enterprise Geofencing &amp; 2FA:</strong> Deployed nationwide outlet mapping with GPS geofencing and photo documentation with automated client-side compression, securing order workflows with 2FA across 4 administrative tiers.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Multi-tiered local persistence using Realm Database WAL transactions; offline queueing system caches banquet drink orders and warehouse inventory logs with automated conflict resolution upon network reconnect; Bluetooth SPP scanner integration streamlines high-throughput bottle verification.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Android Native (Kotlin &amp; Java)</span>
+<span class="tech-chip">Room Database</span>
+<span class="tech-chip">JobIntentService Offline Sync</span>
+<span class="tech-chip">ML Kit Barcode</span>
+<span class="tech-chip">ZBar/ZXing</span>
+<span class="tech-chip">2FA Authentication</span>
+<span class="tech-chip">Signature Pad</span>
+<span class="tech-chip">EventBus</span>
+</div>
+</div>
+</article>
+<!-- 7. BRAIN SLEEP COIN -->
+<article class="project-card" data-category="iot">
+<div class="project-top">
+<div class="project-title-group">
+<h3>BRAIN SLEEP COIN (ANDROID NATIVE &amp; IOT)</h3>
+<div class="project-meta">
+<span>04/2022 - 01/2023</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-iot">BLE &amp; IoT</span>
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.brain_sleep.sleepCoin" rel="noopener" target="_blank">
                 ▶ View on Google Play
               </a>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+</div>
+<p class="project-desc">
             An IoT healthcare and sleep-tracking system designed to monitor, analyze, and improve users' sleep quality using advanced algorithms and connected hardware.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Continuous BLE GATT Optimization:</strong> Architected a continuous sleep-monitoring system interfacing with wearable sensors via Bluetooth Low Energy (BLE GATT), optimizing MTU negotiation (up to 512 bytes) and connection parameters to achieve &lt;2% battery consumption over 8-hour overnight tracking sessions.</li>
-            <li><strong>Resilient OEM Background Sync:</strong> Orchestrated resilient background sensor telemetry synchronization using Android WorkManager, Foreground Services, and the Google Health Connect API, preventing data loss despite aggressive OEM background battery restrictions.</li>
-            <li><strong>Over-the-Air Firmware (Nordic DFU):</strong> Spearheaded Nordic Semiconductor DFU (Device Firmware Update) integration over BLE, enabling reliable over-the-air firmware upgrades for connected hardware.</li>
-            <li><strong>Physiological Sleep Analytics:</strong> Integrated the Google Health Connect API and MPAndroidChart to visualize multi-day sleep quality scores and health trends across 7 distinct physiological sleep metrics.</li>
-            <li><strong>High-Throughput Overnight Persistence:</strong> Engineered a high-throughput local caching strategy with Realm DB and proactive memory management, processing 10,000+ telemetry data points per night with high battery efficiency.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Bluetooth Low Energy (BLE GATT)</span>
-              <span class="tech-chip">Nordic DFU</span>
-              <span class="tech-chip">Google Health Connect API</span>
-              <span class="tech-chip">Foreground Services</span>
-              <span class="tech-chip">WorkManager</span>
-              <span class="tech-chip">Realm Database</span>
-              <span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
-              <span class="tech-chip">MPAndroidChart</span>
-              <span class="tech-chip">RxJava3</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 8. JGARO APP -->
-        <article class="project-card" data-category="android">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>JGARO APP (ANDROID NATIVE)</h3>
-              <div class="project-meta">
-                <span>02/2021 - 03/2022</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-android">Android Native</span>
-              <span class="badge" style="background:#e0f2fe; color:#0369a1;">Digital Signage</span>
-            </div>
-          </div>
-
-          <p class="project-desc">
+<ul class="project-bullets">
+<li><strong>Continuous BLE GATT Optimization:</strong> Architected a continuous sleep-monitoring system interfacing with wearable sensors via Bluetooth Low Energy (BLE GATT), optimizing MTU negotiation (up to 512 bytes) and connection parameters to achieve &lt;2% battery consumption over 8-hour overnight tracking sessions.</li>
+<li><strong>Resilient OEM Background Sync:</strong> Orchestrated resilient background sensor telemetry synchronization using Android WorkManager, Foreground Services, and the Google Health Connect API, preventing data loss despite aggressive OEM background battery restrictions.</li>
+<li><strong>Over-the-Air Firmware (Nordic DFU):</strong> Spearheaded Nordic Semiconductor DFU (Device Firmware Update) integration over BLE, enabling reliable over-the-air firmware upgrades for connected hardware.</li>
+<li><strong>Physiological Sleep Analytics:</strong> Integrated the Google Health Connect API and MPAndroidChart to visualize multi-day sleep quality scores and health trends across 7 distinct physiological sleep metrics.</li>
+<li><strong>High-Throughput Overnight Persistence:</strong> Engineered a high-throughput local caching strategy with Realm DB and proactive memory management, processing 10,000+ telemetry data points per night with high battery efficiency.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> BLE GATT state machine handles robust auto-reconnection and exponential backoff retry; Nordic DFU library enables fault-tolerant Over-the-Air firmware updates for coin sleep tracker hardware; Kotlin Coroutines structured concurrency ingests real-time accelerometer and sleep telemetry without UI main-thread jank.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Bluetooth Low Energy (BLE GATT)</span>
+<span class="tech-chip">Nordic DFU</span>
+<span class="tech-chip">Google Health Connect API</span>
+<span class="tech-chip">Foreground Services</span>
+<span class="tech-chip">WorkManager</span>
+<span class="tech-chip">Realm Database</span>
+<span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+<span class="tech-chip">MPAndroidChart</span>
+<span class="tech-chip">RxJava3</span>
+</div>
+</div>
+</article>
+<!-- 8. JGARO APP -->
+<article class="project-card" data-category="android">
+<div class="project-top">
+<div class="project-title-group">
+<h3>JGARO APP (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>02/2021 - 03/2022</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-android">Android Native</span>
+<span class="badge" style="background:#e0f2fe; color:#0369a1;">Digital Signage</span>
+</div>
+</div>
+<p class="project-desc">
             A mobile media scheduling and digital signage application broadcasting video and photo playlists to external displays.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Automated Commercial Broadcasting:</strong> Delivered a high-availability digital signage and media scheduling application enabling automated video and photo broadcasting across 50+ commercial external displays.</li>
-            <li><strong>Low-Latency Inter-Device Sockets:</strong> Engineered inter-device communication protocols using low-latency Java Sockets and RxJava2, sustaining sub-50ms command execution between the master controller and display client terminals.</li>
-            <li><strong>Complex Timetable Playlists:</strong> Structured a clean MVVM architecture with DataBinding and Realm, enabling users to construct complex media playlists and 24/7 timetable schedules with reliable playback.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Android Native (Kotlin)</span>
-              <span class="tech-chip">Java Sockets</span>
-              <span class="tech-chip">RxJava2 &amp; RxAndroid</span>
-              <span class="tech-chip">Realm Database</span>
-              <span class="tech-chip">DataBinding</span>
-              <span class="tech-chip">Unit Testing</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 9. COOLREVO APP -->
-        <article class="project-card" data-category="iot">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>COOLREVO APP (ANDROID NATIVE &amp; IOT)</h3>
-              <div class="project-meta">
-                <span>06/2020 - 01/2021</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-iot">IoT Video Streaming</span>
-              <span class="badge badge-android">Android Native</span>
-            </div>
-          </div>
-
-          <p class="project-desc">
+<ul class="project-bullets">
+<li><strong>Automated Commercial Broadcasting:</strong> Delivered a high-availability digital signage and media scheduling application enabling automated video and photo broadcasting across 50+ commercial external displays.</li>
+<li><strong>Low-Latency Inter-Device Sockets:</strong> Engineered inter-device communication protocols using low-latency Java Sockets and RxJava2, sustaining sub-50ms command execution between the master controller and display client terminals.</li>
+<li><strong>Complex Timetable Playlists:</strong> Structured a clean MVVM architecture with DataBinding and Realm, enabling users to construct complex media playlists and 24/7 timetable schedules with reliable playback.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> High-throughput Java Sockets connection layer communicates with garage diagnostic hardware; secure JSch SSH tunnel directly queries internal inventory databases; background service maintains persistent socket connection across application lifecycles.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Android Native (Kotlin)</span>
+<span class="tech-chip">Java Sockets</span>
+<span class="tech-chip">RxJava2 &amp; RxAndroid</span>
+<span class="tech-chip">Realm Database</span>
+<span class="tech-chip">DataBinding</span>
+<span class="tech-chip">Unit Testing</span>
+</div>
+</div>
+</article>
+<!-- 9. COOLREVO APP -->
+<article class="project-card" data-category="iot">
+<div class="project-top">
+<div class="project-title-group">
+<h3>COOLREVO APP (ANDROID NATIVE &amp; IOT)</h3>
+<div class="project-meta">
+<span>06/2020 - 01/2021</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-iot">IoT Video Streaming</span>
+<span class="badge badge-android">Android Native</span>
+</div>
+</div>
+<p class="project-desc">
             An IoT remote security surveillance application enabling comprehensive camera management for residential and commercial spaces.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Distributed Camera Surveillance:</strong> Delivered an enterprise IoT surveillance application enabling real-time remote camera management across 100+ commercial and residential camera nodes.</li>
-            <li><strong>Hardware-Accelerated HD Video:</strong> Engineered high-definition live video streaming (1080p @ 30 FPS), remote Pan/Tilt/Zoom (PTZ) controls (&lt;150ms command latency), and historical cloud footage playback.</li>
-            <li><strong>Sub-2s Push Alerts:</strong> Integrated real-time motion and sound alert notifications utilizing Firebase Cloud Messaging and Retrofit2 REST services, delivering security alerts to users within 2 seconds of detection.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Live Video Streaming (1080p)</span>
-              <span class="tech-chip">PTZ Camera Controls</span>
-              <span class="tech-chip">Hardware Acceleration</span>
-              <span class="tech-chip">Firebase Cloud Messaging</span>
-              <span class="tech-chip">Retrofit2</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 10. FUNERAL HALL / EDENAID -->
-        <article class="project-card" data-category="android">
-          <div class="project-top">
-            <div class="project-title-group">
-              <h3>FUNERAL HALL / EDENAID (ANDROID NATIVE)</h3>
-              <div class="project-meta">
-                <span>08/2024 - 12/2024</span>
-                <span>•</span>
-                <span>Aris VN</span>
-                <span>•</span>
-                <span>Senior Android Developer</span>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-android">Android Native</span>
-              <a href="https://play.google.com/store/apps/details?id=com.bm.edenaid" target="_blank" rel="noopener" class="playstore-link">
+<ul class="project-bullets">
+<li><strong>Distributed Camera Surveillance:</strong> Delivered an enterprise IoT surveillance application enabling real-time remote camera management across 100+ commercial and residential camera nodes.</li>
+<li><strong>Hardware-Accelerated HD Video:</strong> Engineered high-definition live video streaming (1080p @ 30 FPS), remote Pan/Tilt/Zoom (PTZ) controls (&lt;150ms command latency), and historical cloud footage playback.</li>
+<li><strong>Sub-2s Push Alerts:</strong> Integrated real-time motion and sound alert notifications utilizing Firebase Cloud Messaging and Retrofit2 REST services, delivering security alerts to users within 2 seconds of detection.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> BLE GATT protocol layer communicates with industrial cooling vest hardware, continuously sampling core temperature and fan RPM; Coroutines Flow transforms raw byte arrays into reactive UI sensor charts with minimal battery impact.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Live Video Streaming (1080p)</span>
+<span class="tech-chip">PTZ Camera Controls</span>
+<span class="tech-chip">Hardware Acceleration</span>
+<span class="tech-chip">Firebase Cloud Messaging</span>
+<span class="tech-chip">Retrofit2</span>
+</div>
+</div>
+</article>
+<!-- 10. FUNERAL HALL / EDENAID -->
+<article class="project-card" data-category="android">
+<div class="project-top">
+<div class="project-title-group">
+<h3>FUNERAL HALL / EDENAID (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>08/2024 - 12/2024</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.bm.edenaid" rel="noopener" target="_blank">
                 ▶ View on Google Play
               </a>
-            </div>
-          </div>
-
-          <p class="project-desc">
+</div>
+</div>
+<p class="project-desc">
             A comprehensive Android mobile application designed to simplify and streamline funeral hall reservations, mortuary facility management, and funeral supply package bookings.
           </p>
-
-          <ul class="project-bullets">
-            <li><strong>Facility Booking Platform:</strong> Delivered an end-to-end facility booking and mortuary management app utilizing Kotlin, MVVM architecture, ViewBinding, and Dagger Hilt across 20+ specialized funeral hall facilities.</li>
-            <li><strong>Turn-by-Turn Navigation Routing:</strong> Streamlined location-based facility search and seamless turn-by-turn routing by integrating the Google Maps API and Kakao Navi SDK.</li>
-            <li><strong>Social Auth &amp; Deep-Links:</strong> Integrated social authentication and deep-link sharing with the Kakao SDK (Login, Share, Navi) alongside Firebase Cloud Messaging (FCM) for instant reservation updates.</li>
-            <li><strong>Memory &amp; Render Profiling:</strong> Identified and eliminated memory leaks and UI render stalls using the Android Profiler, ensuring smooth checkout and reservation processing.</li>
-          </ul>
-
-          <div class="project-tech-footer">
-            <span class="project-tech-label">Tech Stack:</span>
-            <div class="tech-chips">
-              <span class="tech-chip">Kotlin</span>
-              <span class="tech-chip">Dagger Hilt</span>
-              <span class="tech-chip">Realm Database</span>
-              <span class="tech-chip">Google Maps API</span>
-              <span class="tech-chip">Kakao SDK</span>
-              <span class="tech-chip">Android Profiler</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Career Continuity Matrix (2014 - 2024) -->
-    <section id="timeline">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Full Career Chronology &amp; Additional Projects (2014 - 2024)</h2>
-          <p class="section-subhead">Complete 10-year track record preserving continuous chronology and foundation systems</p>
-        </div>
-      </div>
-
-      <div class="timeline-card">
-        <div class="table-toolbar no-print">
-          <div class="table-search">
-            <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="projectSearchInput" placeholder="Filter projects by keyword or tech..." onkeyup="searchContinuityTable()">
-          </div>
-          <span style="font-size:13px; color:var(--color-stone);" id="tableCountDisplay">Showing 11 earlier projects</span>
-        </div>
-
-        <div class="table-scroll">
-          <table class="continuity-table" id="continuityTable">
-            <thead>
-              <tr>
-                <th style="width:140px;">Timeline</th>
-                <th style="width:230px;">Project &amp; Role</th>
-                <th style="width:130px;">Company</th>
-                <th style="width:280px;">Core Technologies</th>
-                <th>Key Impact &amp; Engineering Highlights</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-period">02/2023 - 06/2023</td>
-                <td class="col-project"><strong>Art Tool</strong><br><span style="font-size:12px; color:var(--color-stone);">Flutter Developer</span></td>
-                <td class="col-company">Aris VN</td>
-                <td>Flutter (Dart), BLoC, Isar DB, RxDart, FCM, Localization</td>
-                <td>Enterprise internal administration app serving 300+ corporate employees; attendance tracking, meeting room bookings, and multi-tier leave approval.</td>
-              </tr>
-              <tr>
-                <td class="col-period">01/2019 - 04/2020</td>
-                <td class="col-project"><strong>InnerBeans App</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Mobile Developer</span></td>
-                <td class="col-company">InnerBus VN</td>
-                <td>Android Native, React Native, Realm DB, Sockets, RxJava2</td>
-                <td>Gamified virtual collaboration platform for 1,000+ users; migrated 8 native components to React Native (~70% shared codebase); sub-100ms sync.</td>
-              </tr>
-              <tr>
-                <td class="col-period">08/2017 - 11/2018</td>
-                <td class="col-project"><strong>Pure PM App</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
-                <td class="col-company">Pure Projects</td>
-                <td>Android (Java/Kotlin), Realm DB, MVVM, RxJava2, ButterKnife</td>
-                <td>Construction management tablet solution across 15+ major sites; sustained 60 FPS blueprint and 50+ MB multi-page PDF document inspection.</td>
-              </tr>
-              <tr>
-                <td class="col-period">04/2017 - 07/2017</td>
-                <td class="col-project"><strong>Biits Engage</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
-                <td class="col-company">Nexle Corp</td>
-                <td>Android (Java), Dagger 2, RxJava, Java Sockets, SQLite</td>
-                <td>Commercial POS tablet deployed across 200+ retail stores; multi-tender checkout, automated tax calculation, and &lt;50ms inter-terminal order broadcasting.</td>
-              </tr>
-              <tr>
-                <td class="col-period">09/2016 - 03/2017</td>
-                <td class="col-project"><strong>Splyt</strong><br><span style="font-size:12px; color:var(--color-stone);">React Native Developer</span></td>
-                <td class="col-company">Nexle Corp</td>
-                <td>React Native, JavaScript, Google Maps API, FCM, APNs</td>
-                <td>Cross-platform social dining and bill-splitting across 50+ Singapore venues; dynamic group tab creation for up to 20 diners per table with automated micro-charges.</td>
-              </tr>
-              <tr>
-                <td class="col-period">03/2016 - 07/2016</td>
-                <td class="col-project"><strong>Taxi Amber</strong><br><span style="font-size:12px; color:var(--color-stone); font-weight:600; color:var(--color-notion-blue);">Tech Lead &amp; Senior Android</span></td>
-                <td class="col-company">Nexle Corp</td>
-                <td>Android (Java), Google Maps API, XMPP Protocol, GCM, SQLite</td>
-                <td>Fleet dispatch and ride-hailing solution for 1,000+ drivers; architected real-time GPS dispatch algorithm (&lt;2s, 3km radius); led engineering team of 5.</td>
-              </tr>
-              <tr>
-                <td class="col-period">11/2015 - 02/2016</td>
-                <td class="col-project"><strong>Smart Watch</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
-                <td class="col-company">Nexle Corp</td>
-                <td>Android (Java), BLE GATT, SQLite, Retrofit</td>
-                <td>Low-power smartwatch companion app; continuous 12-hour outdoor hiking tracking via BLE with telemetry synchronization at a 1Hz frequency.</td>
-              </tr>
-              <tr>
-                <td class="col-period">05/2015 - 11/2015</td>
-                <td class="col-project"><strong>Travel Smart</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
-                <td class="col-company">Nexle Corp</td>
-                <td>Android (Java), Google Maps, SQLite, GCM, Social OAuth</td>
-                <td>Pioneering travel discovery platform connecting 5,000+ travelers with 50+ certified tour operators across Vietnam with instant multi-criteria filtering.</td>
-              </tr>
-              <tr>
-                <td class="col-period">03/2015 - 05/2015</td>
-                <td class="col-project"><strong>Menu Search</strong><br><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
-                <td class="col-company">Nexle Corp</td>
-                <td>Android (Java), Google Places API, Google Maps, SQLite, GCM</td>
-                <td>Location-based dining discovery app (radius 500m to 10km in &lt;300ms); automated table reservations with 2-hour reminder alerts.</td>
-              </tr>
-              <tr>
-                <td class="col-period">11/2014 - 02/2015</td>
-                <td class="col-project"><strong>Internet of Things (IoT)</strong><br><span style="font-size:12px; color:var(--color-stone);">Android Developer</span></td>
-                <td class="col-company">Global CyberSoft</td>
-                <td>Android (Java), BLE GATT, MQTT Protocol, SQLite</td>
-                <td>IoT telemetry &amp; remote control interfacing with embedded Arduino hardware via BLE over a 20-meter range; real-time MQTT sensor metric streaming.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education & Credentials Section -->
-    <section id="credentials">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><svg class="section-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Education &amp; Languages</h2>
-          <p class="section-subhead">Academic credentials and linguistic capabilities</p>
-        </div>
-      </div>
-
-      <div class="edu-lang-grid">
-        <!-- Education Card -->
-        <div class="info-card">
-          <h4>Bachelor of Computer Science and Engineering</h4>
-          <div class="inst-name">Ho Chi Minh City University of Technology (HCMUT), Vietnam</div>
-          <p style="color:var(--color-stone); font-size:13px; margin-bottom:8px;">2008 - 2013 • Formal 5-Year Engineering Degree</p>
-          <p>
-            <strong>Major:</strong> Computer Science &amp; Software Engineering. Comprehensive foundation in Algorithms, Object-Oriented Design, Operating Systems, Computer Networks, and Enterprise Software Architecture.
+<ul class="project-bullets">
+<li><strong>Facility Booking Platform:</strong> Delivered an end-to-end facility booking and mortuary management app utilizing Kotlin, MVVM architecture, ViewBinding, and Dagger Hilt across 20+ specialized funeral hall facilities.</li>
+<li><strong>Turn-by-Turn Navigation Routing:</strong> Streamlined location-based facility search and seamless turn-by-turn routing by integrating the Google Maps API and Kakao Navi SDK.</li>
+<li><strong>Social Auth &amp; Deep-Links:</strong> Integrated social authentication and deep-link sharing with the Kakao SDK (Login, Share, Navi) alongside Firebase Cloud Messaging (FCM) for instant reservation updates.</li>
+<li><strong>Memory &amp; Render Profiling:</strong> Identified and eliminated memory leaks and UI render stalls using the Android Profiler, ensuring smooth checkout and reservation processing.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Dagger Hilt dependency injection provides testable decoupled architecture; Google Maps and Kakao Navi APIs provide turn-by-turn routing to regional ceremonial halls; Android Profiler was utilized to resolve memory leaks and reduce app startup latency by ~35%.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Dagger Hilt</span>
+<span class="tech-chip">Realm Database</span>
+<span class="tech-chip">Google Maps API</span>
+<span class="tech-chip">Kakao SDK</span>
+<span class="tech-chip">Android Profiler</span>
+</div>
+</div>
+</article>
+<!-- 11. SHARPSCAN: SCANNER OCR & AI -->
+<article class="project-card" data-category="android store-apps" data-project-id="sharpscan">
+<div class="project-top">
+<div class="project-title-group">
+<h3>SHARPSCAN: SCANNER OCR &amp; AI (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.smartscannerocr" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            A high-performance mobile document scanning and optical character recognition (OCR) utility engineered to convert paper documents, receipts, and handwritten notes into searchable PDFs and editable text without server-side dependencies.
           </p>
-        </div>
-
-        <!-- Languages Card -->
-        <div class="info-card">
-          <h4>Languages</h4>
-          <div style="margin-top:16px;">
-            <div class="lang-item">
-              <div class="lang-name">
-                <span class="lang-title"><span class="lang-tag">EN</span> English</span>
-                <span class="badge" style="background:#e0f2fe; color:#0369a1; font-size:11px;">Basic Working</span>
-              </div>
-              <div class="lang-desc">Basic conversational communication and technical documentation reading/writing.</div>
-            </div>
-
-            <div class="lang-item" style="margin-top:14px;">
-              <div class="lang-name">
-                <span class="lang-title"><span class="lang-tag">VI</span> Vietnamese</span>
-                <span class="badge" style="background:#fef3c7; color:#92400e; font-size:11px;">Native</span>
-              </div>
-              <div class="lang-desc">Native proficiency.</div>
-            </div>
+<ul class="project-bullets">
+<li><strong>Automated Vision Edge Detection:</strong> Engineered automated document edge detection and perspective skew correction utilizing CameraX and image processing algorithms.</li>
+<li><strong>On-Device Machine Learning OCR:</strong> Integrated Google ML Kit on-device Text Recognition, achieving sub-second (&lt;800ms) OCR extraction with 98%+ accuracy across printed and handwritten media without network connectivity.</li>
+<li><strong>Hardware-Accelerated Document Pipeline:</strong> Engineered a custom multi-page PDF generation pipeline and hardware-accelerated image filters using Android RenderEffect and Canvas, compressing document file sizes by ~60% while preserving high visual legibility.</li>
+<li><strong>Zero-Cloud Privacy Architecture:</strong> Streamlined image capture workflows by offloading bitmap transformations and compression routines to Kotlin Coroutines <code>Dispatchers.Default</code>, sustaining smooth 60 FPS UI performance during batch processing with 100% on-device data privacy.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Architected with Clean MVVM and Jetpack Compose; on-device inference using ML Kit Vision APIs keeps user documents strictly private with zero server telemetry; non-blocking image transformations via Coroutines structured concurrency; native Android PDFDocument API compiles multi-page searchable PDFs locally without third-party binary bloat.
           </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="main-container">
-      <ul class="footer-links no-print">
-        <li><a href="#summary">Back to Top</a></li>
-        <li><a href="mailto:hoainam9390@gmail.com">Contact</a></li>
-      </ul>
-      <p>© 2026 Hoai Nam Nguyen • Built with Notion Design System (Warm Paper Palette)</p>
-    </div>
-  </footer>
-
-  <!-- Toast Notification Element -->
-  <div id="toast" class="toast" role="alert" aria-live="polite">Contact info copied to clipboard!</div>
-
-  <!-- Interactive Client-side Script -->
-  <script>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Jetpack Compose</span>
+<span class="tech-chip">CameraX</span>
+<span class="tech-chip">Google ML Kit (On-Device OCR)</span>
+<span class="tech-chip">Clean MVVM</span>
+<span class="tech-chip">Kotlin Coroutines &amp; Flow</span>
+<span class="tech-chip">Room Database</span>
+<span class="tech-chip">Android PDFDocument API</span>
+<span class="tech-chip">RenderEffect</span>
+<span class="tech-chip">Material 3</span>
+</div>
+</div>
+</article>
+<!-- 12. SHARPVAULT: SECRET GALLERY & PRIVACY VAULT -->
+<article class="project-card" data-category="android store-apps" data-project-id="sharpvault">
+<div class="project-top">
+<div class="project-title-group">
+<h3>SHARPVAULT: SECRET GALLERY &amp; PRIVACY VAULT (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.sharpvault" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            A high-security mobile privacy vault engineered to protect sensitive photos, videos, and confidential notes utilizing hardware-backed cryptographic encryption and biometric authentication.
+          </p>
+<ul class="project-bullets">
+<li><strong>Hardware-Backed Cryptography:</strong> Implemented military-grade file encryption using <strong>AES-256-GCM</strong> with keys anchored in the <strong>Android Hardware Keystore / StrongBox Keymaster</strong>, safeguarding data even on rooted or compromised devices.</li>
+<li><strong>Cryptographic Biometric Binding:</strong> Integrated Android <strong>BiometricPrompt</strong> with cryptographic <code>CryptoObject</code> binding, ensuring decryption keys are released exclusively upon verified biometric authentication.</li>
+<li><strong>Zero-Leak In-Memory Streaming:</strong> Engineered zero-leak in-memory media decoding and transient video streaming, overriding clipboard access and screenshot permissions (<code>FLAG_SECURE</code>) to prevent unauthorized data exfiltration.</li>
+<li><strong>Defense-in-Depth Stealth Protection:</strong> Implemented stealth mode, decoy passcode vault, and automated intrusion snapshot capture on failed access attempts with silent audit logging.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Direct streaming encryption/decryption using <code>CipherInputStream</code> and <code>CipherOutputStream</code>, ensuring multi-hundred MB videos never cause heap memory spikes or <code>OutOfMemoryError</code>; hardware key attestation guarantees encryption keys cannot be extracted even on compromised devices; 100% offline security boundary with zero external tracking.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Jetpack Compose</span>
+<span class="tech-chip">Android Keystore</span>
+<span class="tech-chip">StrongBox Keymaster</span>
+<span class="tech-chip">BiometricPrompt (CryptoObject)</span>
+<span class="tech-chip">AES-256-GCM</span>
+<span class="tech-chip">Room (SQLCipher)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">Media3 / ExoPlayer</span>
+<span class="tech-chip">FLAG_SECURE</span>
+</div>
+</div>
+</article>
+<!-- 13. SHARPTRANSFER: P2P WI-FI FILE SHARE -->
+<article class="project-card" data-category="android store-apps" data-project-id="sharptransfer">
+<div class="project-top">
+<div class="project-title-group">
+<h3>SHARPTRANSFER: P2P WI-FI FILE SHARE (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.sharptransfer" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            A high-speed, local peer-to-peer (P2P) file transfer and wireless sharing utility designed to transfer large videos, applications, documents, and media folders between Android devices and PCs without internet, cellular data, or cloud servers.
+          </p>
+<ul class="project-bullets">
+<li><strong>High-Speed P2P Socket Streaming:</strong> Engineered chunked binary streaming pipelines over raw TCP sockets and Wi-Fi Direct, achieving sustained local transfer speeds of up to <strong>40+ MB/s</strong> without cellular data consumption or cloud relay servers.</li>
+<li><strong>Cross-Platform Browser Client:</strong> Built an embedded responsive web interface served directly from the mobile device via a local HTTP daemon, enabling instant bidirectional drag-and-drop file transfers with Windows, macOS, and Linux browsers via simple QR code pairing.</li>
+<li><strong>Packet Loss Recovery &amp; Integrity:</strong> Implemented automated CRC32 file integrity validation and resilient socket reconnect mechanisms to handle intermittent packet loss during multi-gigabyte file transmissions.</li>
+<li><strong>Multi-Client Batch Queuing:</strong> Architected multi-client connection management with concurrent multi-file batch queuing, background Foreground Service execution, and real-time transfer telemetry.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Custom lightweight binary framing protocol over TCP NIO channels with 16KB zero-copy buffer transfers; continuous transfer resilience via chunk checksumming and background Foreground Service execution with Wakelocks; embedded HTTP daemon handles cross-platform Web pairing with 0 desktop app dependencies.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Java Sockets (TCP/IP)</span>
+<span class="tech-chip">Wi-Fi Direct (P2P)</span>
+<span class="tech-chip">Embedded HTTP Server</span>
+<span class="tech-chip">Jetpack Compose</span>
+<span class="tech-chip">Coroutines &amp; Flow</span>
+<span class="tech-chip">Foreground Services</span>
+<span class="tech-chip">Room Database</span>
+<span class="tech-chip">CRC32 Checksum</span>
+</div>
+</div>
+</article>
+<!-- 14. RIGMASTER: RIGGING & CRANE CALCULATOR -->
+<article class="project-card" data-category="flutter store-apps" data-project-id="rigmaster">
+<div class="project-top">
+<div class="project-title-group">
+<h3>RIGMASTER: RIGGING &amp; CRANE CALCULATOR (FLUTTER)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.rigmaster" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            Heavy-lift engineering utility calculating multi-leg sling tension, crane radius, and center-of-gravity (COG) load distribution with sub-millimeter precision according to ASME / OSHA international lifting safety standards.
+          </p>
+<ul class="project-bullets">
+<li><strong>Industrial Mathematical Modeling Engine:</strong> Formulated and verified trigonometric algorithms and vector mechanics equations to compute multi-leg sling tension, horizontal force vectors, and crane capacity deductions with sub-millimeter precision.</li>
+<li><strong>Sub-16ms Real-Time Calculation:</strong> Engineered 100% offline mathematical modeling engine with instantaneous recalculation (<strong>&lt;16ms</strong>) across 20+ variable parameters using reactive state management.</li>
+<li><strong>High-Contrast Industrial UI:</strong> Designed an intuitive, high-contrast industrial UI adhering to Material 3 standards, optimized for high visibility and single-handed operation under outdoor sunlight.</li>
+<li><strong>100% Offline Autonomy:</strong> Fully operational without internet connectivity for remote industrial job sites, offshore oil rigs, and maritime environments.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Deterministic pure Dart mathematical domain layer decoupled from UI frameworks, verified by 100+ comprehensive unit tests covering multi-leg asymmetric sling loads; reactive state management using BLoC / Riverpod ensuring instantaneous 60 FPS slider recalculation without frame drops.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">BLoC / Riverpod</span>
+<span class="tech-chip">Vector Mathematics</span>
+<span class="tech-chip">Material 3</span>
+<span class="tech-chip">Offline-First</span>
+</div>
+</div>
+</article>
+<!-- 15. BABY TRACKER: NEWBORN LOG & MILESTONES -->
+<article class="project-card" data-category="flutter store-apps" data-project-id="baby-tracker">
+<div class="project-top">
+<div class="project-title-group">
+<h3>BABY TRACKER: NEWBORN LOG &amp; MILESTONES (FLUTTER)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.baby.tracker" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            Privacy-first newborn logging utility tracking nursing timers, sleep intervals, diaper changes, and WHO percentile growth charts with zero third-party telemetry or cloud dependencies.
+          </p>
+<ul class="project-bullets">
+<li><strong>Privacy-First Newborn Logging:</strong> Engineered intuitive logging utility tracking nursing timers, sleep intervals, diaper changes, and milestone development with zero third-party telemetry.</li>
+<li><strong>Reactive Offline Persistence:</strong> Built reactive offline-first local persistence supporting instantaneous event timeline aggregation and structured JSON/CSV data export for pediatric consultations.</li>
+<li><strong>WHO Growth Curve Telemetry:</strong> Integrated interactive WHO growth chart percentile tracking with dynamic curve visualization and multi-week feeding/sleep cycle telemetry.</li>
+<li><strong>Guaranteed 100% On-Device Privacy:</strong> Guaranteed total user privacy by keeping all health and personal records strictly on-device with zero analytics trackers, third-party SDKs, or cloud database dependencies.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> High-performance offline persistence using Isar / SQLite ensuring sub-10ms query latency for 10,000+ timeline entries; non-blocking background isolates protect UI thread during interactive FlChart percentile growth curve rendering.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">Riverpod</span>
+<span class="tech-chip">Isar / SQLite</span>
+<span class="tech-chip">FlChart</span>
+<span class="tech-chip">Local Notifications</span>
+<span class="tech-chip">Offline-First</span>
+</div>
+</div>
+</article>
+<!-- 16. WORDQUEST: ENGLISH ADVENTURE -->
+<article class="project-card" data-category="flutter store-apps" data-project-id="wordquest">
+<div class="project-top">
+<div class="project-title-group">
+<h3>WORDQUEST: ENGLISH ADVENTURE (FLUTTER / EDTECH)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.worldquest.english" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            Gamified RPG-style language learning application combining interactive branching dialogues with Spaced Repetition (SRS algorithm) for long-term vocabulary retention.
+          </p>
+<ul class="project-bullets">
+<li><strong>Gamified RPG Language Learning:</strong> Structured interactive branching dialogues and quest scenarios powered by an adaptive Spaced Repetition System (SRS SuperMemo SM-2 algorithm) for vocabulary retention.</li>
+<li><strong>Cross-Platform Speech Synthesis:</strong> Integrated text-to-speech audio pronunciation engines and optimized offline local persistence, sustaining fluid 60 FPS transitions on low-tier mobile devices.</li>
+<li><strong>Interactive Branching Quests:</strong> Engineered conversational quest dialogue engine with interactive branching scenarios, quest rewards, and offline achievement badge mechanics.</li>
+<li><strong>Fluid 60 FPS UI Performance:</strong> Optimized local SQLite database queries and asset loading pipelines, enabling smooth 60 FPS transitions between interactive dialogue scenes on low-tier mobile hardware.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Decoupled RPG quest state machine driven by Riverpod and local SQLite persistence, with SuperMemo-based Spaced Repetition (SRS) interval scheduling and asynchronous Text-to-Speech audio streaming sustaining fluid 60 FPS transitions.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">Riverpod</span>
+<span class="tech-chip">SQLite</span>
+<span class="tech-chip">Text-to-Speech (TTS)</span>
+<span class="tech-chip">Spaced Repetition (SRS)</span>
+<span class="tech-chip">Material 3</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Career Continuity Matrix (2014 - 2024) -->
+<section id="timeline">
+<div class="section-header">
+<div>
+<h2 class="section-title"><svg aria-hidden="true" class="section-icon" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Full Career Chronology &amp; Additional Projects (2014 - 2024)</h2>
+<p class="section-subhead">Complete 10-year track record preserving continuous chronology and foundation systems</p>
+</div>
+</div>
+<div class="timeline-card">
+<div class="table-toolbar no-print">
+<div class="table-search">
+<svg aria-hidden="true" class="search-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<input id="projectSearchInput" onkeyup="searchContinuityTable()" placeholder="Filter projects by keyword or tech..." type="text"/>
+</div>
+<span id="tableCountDisplay" style="font-size:13px; color:var(--color-stone);">Showing 11 earlier projects</span>
+</div>
+<div class="table-scroll">
+<table class="continuity-table" id="continuityTable">
+<thead>
+<tr>
+<th style="width:140px;">Timeline</th>
+<th style="width:230px;">Project &amp; Role</th>
+<th style="width:130px;">Company</th>
+<th style="width:280px;">Core Technologies</th>
+<th>Key Impact &amp; Engineering Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="col-period">02/2023 - 06/2023</td>
+<td class="col-project"><strong>Art Tool</strong><br/><span style="font-size:12px; color:var(--color-stone);">Flutter Developer</span>
+<a href="https://play.google.com/store/apps/details?id=com.arisvn.arttool" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">>> Play Store</a></td>
+<td class="col-company">Aris VN</td>
+<td>Flutter (Dart), BLoC, Isar DB, RxDart, FCM, Localization</td>
+<td>Enterprise internal administration app serving 300+ corporate employees; attendance tracking, meeting room bookings, and multi-tier leave approval.</td>
+</tr>
+<tr>
+<td class="col-period">01/2019 - 04/2020</td>
+<td class="col-project"><strong>InnerBeans App</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Mobile Developer</span>
+<a href="https://play.google.com/store/apps/details?id=com.innerbeans30" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">>> Play Store</a></td>
+<td class="col-company">InnerBus VN</td>
+<td>Android Native, React Native, Realm DB, Sockets, RxJava2</td>
+<td>Gamified virtual collaboration platform for 1,000+ users; migrated 8 native components to React Native (~70% shared codebase); sub-100ms sync.</td>
+</tr>
+<tr>
+<td class="col-period">08/2017 - 11/2018</td>
+<td class="col-project"><strong>Pure PM App</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+<td class="col-company">Pure Projects</td>
+<td>Android (Java/Kotlin), Realm DB, MVVM, RxJava2, ButterKnife</td>
+<td>Construction management tablet solution across 15+ major sites; sustained 60 FPS blueprint and 50+ MB multi-page PDF document inspection.</td>
+</tr>
+<tr>
+<td class="col-period">04/2017 - 07/2017</td>
+<td class="col-project"><strong>Biits Engage</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+<td class="col-company">Nexle Corp</td>
+<td>Android (Java), Dagger 2, RxJava, Java Sockets, SQLite</td>
+<td>Commercial POS tablet deployed across 200+ retail stores; multi-tender checkout, automated tax calculation, and &lt;50ms inter-terminal order broadcasting.</td>
+</tr>
+<tr>
+<td class="col-period">09/2016 - 03/2017</td>
+<td class="col-project"><strong>Splyt</strong><br/><span style="font-size:12px; color:var(--color-stone);">React Native Developer</span></td>
+<td class="col-company">Nexle Corp</td>
+<td>React Native, JavaScript, Google Maps API, FCM, APNs</td>
+<td>Cross-platform social dining and bill-splitting across 50+ Singapore venues; dynamic group tab creation for up to 20 diners per table with automated micro-charges.</td>
+</tr>
+<tr>
+<td class="col-period">03/2016 - 07/2016</td>
+<td class="col-project"><strong>Taxi Amber</strong><br/><span style="font-size:12px; color:var(--color-stone); font-weight:600; color:var(--color-notion-blue);">Tech Lead &amp; Senior Android</span></td>
+<td class="col-company">Nexle Corp</td>
+<td>Android (Java), Google Maps API, XMPP Protocol, GCM, SQLite</td>
+<td>Fleet dispatch and ride-hailing solution for 1,000+ drivers; architected real-time GPS dispatch algorithm (&lt;2s, 3km radius); led engineering team of 5.</td>
+</tr>
+<tr>
+<td class="col-period">11/2015 - 02/2016</td>
+<td class="col-project"><strong>Smart Watch</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+<td class="col-company">Nexle Corp</td>
+<td>Android (Java), BLE GATT, SQLite, Retrofit</td>
+<td>Low-power smartwatch companion app; continuous 12-hour outdoor hiking tracking via BLE with telemetry synchronization at a 1Hz frequency.</td>
+</tr>
+<tr>
+<td class="col-period">05/2015 - 11/2015</td>
+<td class="col-project"><strong>Travel Smart</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span>
+<a href="https://play.google.com/store/apps/details?id=com.nexlesoft.travelsmart" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">>> Play Store</a></td>
+<td class="col-company">Nexle Corp</td>
+<td>Android (Java), Google Maps, SQLite, GCM, Social OAuth</td>
+<td>Pioneering travel discovery platform connecting 5,000+ travelers with 50+ certified tour operators across Vietnam with instant multi-criteria filtering.</td>
+</tr>
+<tr>
+<td class="col-period">03/2015 - 05/2015</td>
+<td class="col-project"><strong>Menu Search</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span></td>
+<td class="col-company">Nexle Corp</td>
+<td>Android (Java), Google Places API, Google Maps, SQLite, GCM</td>
+<td>Location-based dining discovery app (radius 500m to 10km in &lt;300ms); automated table reservations with 2-hour reminder alerts.</td>
+</tr>
+<tr>
+<td class="col-period">11/2014 - 02/2015</td>
+<td class="col-project"><strong>Internet of Things (IoT)</strong><br/><span style="font-size:12px; color:var(--color-stone);">Android Developer</span></td>
+<td class="col-company">Global CyberSoft</td>
+<td>Android (Java), BLE GATT, MQTT Protocol, SQLite</td>
+<td>IoT telemetry &amp; remote control interfacing with embedded Arduino hardware via BLE over a 20-meter range; real-time MQTT sensor metric streaming.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Education & Credentials Section -->
+<section id="credentials">
+<div class="section-header">
+<div>
+<h2 class="section-title"><svg aria-hidden="true" class="section-icon" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Education &amp; Languages</h2>
+<p class="section-subhead">Academic credentials and linguistic capabilities</p>
+</div>
+</div>
+<div class="edu-lang-grid">
+<!-- Education Card -->
+<div class="info-card">
+<h4>Bachelor of Computer Science and Engineering</h4>
+<div class="inst-name">Ho Chi Minh City University of Technology (HCMUT), Vietnam</div>
+<p style="color:var(--color-stone); font-size:13px; margin-bottom:8px;">2008 - 2013 • Formal 5-Year Engineering Degree</p>
+<p>
+<strong>Major:</strong> Computer Science &amp; Software Engineering. Comprehensive foundation in Algorithms, Object-Oriented Design, Operating Systems, Computer Networks, and Enterprise Software Architecture.
+          </p>
+</div>
+<!-- Languages Card -->
+<div class="info-card">
+<h4>Languages</h4>
+<div style="margin-top:16px;">
+<div class="lang-item">
+<div class="lang-name">
+<span class="lang-title"><span class="lang-tag">EN</span> English</span>
+<span class="badge" style="background:#e0f2fe; color:#0369a1; font-size:11px;">Basic Working</span>
+</div>
+<div class="lang-desc">Basic conversational communication and technical documentation reading/writing.</div>
+</div>
+<div class="lang-item" style="margin-top:14px;">
+<div class="lang-name">
+<span class="lang-title"><span class="lang-tag">VI</span> Vietnamese</span>
+<span class="badge" style="background:#fef3c7; color:#92400e; font-size:11px;">Native</span>
+</div>
+<div class="lang-desc">Native proficiency.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer>
+<div class="main-container">
+<ul class="footer-links no-print">
+<li><a href="#summary">Back to Top</a></li>
+<li><a href="mailto:hoainam9390@gmail.com">Contact</a></li>
+</ul>
+<p>© 2026 Hoai Nam Nguyen • Built with Notion Design System (Warm Paper Palette)</p>
+</div>
+</footer>
+<!-- Toast Notification Element -->
+<div aria-live="polite" class="toast" id="toast" role="alert">Contact info copied to clipboard!</div>
+<!-- Interactive Client-side Script -->
+<script>
     // Theme Management (Dual-Mode: Light Warm Paper & Dark Graphite)
     (function initTheme() {
       var savedTheme = null;
@@ -2222,8 +2535,9 @@
 
       var cards = document.querySelectorAll('.project-card');
       cards.forEach(function(card) {
-        var cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category || (category === 'iot' && cardCat === 'iot')) {
+        var cardCat = card.getAttribute('data-category') || '';
+        var categories = cardCat.split(/\s+/);
+        if (category === 'all' || categories.indexOf(category) !== -1) {
           card.style.display = 'block';
         } else {
           card.style.display = 'none';
