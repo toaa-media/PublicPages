@@ -1157,7 +1157,168 @@
       }
     }
 
-    /* Responsive Breakpoints */
+    /* Mobile Menu Drawer & Toggle */
+    .mobile-menu-btn {
+      display: none;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      color: var(--color-stone);
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-btn);
+      border: var(--border-hairline);
+      background: var(--color-card-bg);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--color-ink-black);
+      border-color: rgba(125, 125, 125, 0.3);
+    }
+
+    .mobile-menu-btn .close-icon {
+      display: none;
+    }
+
+    .mobile-menu-btn.is-active .hamburger-icon {
+      display: none;
+    }
+
+    .mobile-menu-btn.is-active .close-icon {
+      display: block;
+      color: var(--color-ink-black);
+    }
+
+    /* Modern Mobile Navigation Sheet Overlay */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      padding: 24px 20px 32px;
+      overflow-y: auto;
+      border-top: var(--border-hairline);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      animation: mobileOverlayFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    [data-theme="dark"] .mobile-nav-overlay {
+      background: rgba(20, 20, 20, 0.96);
+    }
+
+    @keyframes mobileOverlayFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mobile-nav-overlay.is-open {
+      display: flex;
+    }
+
+    .mobile-nav-header {
+      margin-bottom: 12px;
+    }
+
+    .mobile-nav-eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-stone);
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-ink-black);
+      padding: 12px 14px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      background: transparent;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link:active {
+      background: var(--color-paper-warmth);
+      color: var(--color-notion-blue);
+    }
+
+    [data-theme="dark"] .mobile-nav-link:hover,
+    [data-theme="dark"] .mobile-nav-link:active {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-nav-link .link-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mobile-nav-link .link-icon {
+      color: var(--color-notion-blue);
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-link .link-index {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--color-stone);
+      font-family: var(--font-mono, monospace);
+    }
+
+    .mobile-nav-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mobile-nav-footer .btn {
+      width: 100%;
+      height: 44px;
+      font-size: 13.5px;
+      justify-content: center;
+    }
+
+    /* Mobile Table Hint (Hidden - converted to mobile cards) */
+    .mobile-table-hint {
+      display: none;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS: HIGH-END MOBILE & TABLET ADAPTATION
+       ========================================================================== */
+
+    /* Tablet & Medium Screens */
     @media (max-width: 992px) {
       .bento-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1173,28 +1334,515 @@
       }
     }
 
+    /* Mobile & Small Tablets */
     @media (max-width: 768px) {
+      /* Layout & Nav Rhythm */
+      .top-nav {
+        height: 56px;
+      }
+      .nav-container {
+        padding: 0 16px;
+        height: 56px;
+      }
+      .nav-brand {
+        font-size: 14.5px;
+        gap: 10px;
+      }
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        font-size: 11.5px;
+      }
       .nav-links {
-        display: none;
+        display: none !important;
+      }
+      .btn-print {
+        display: none !important;
+      }
+      .btn-contact {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+      .nav-actions {
+        gap: 8px;
+      }
+      .theme-toggle-btn {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Container & Section Spacing */
+      .main-container {
+        padding: 0 16px;
+      }
+      section {
+        margin-top: 36px;
+      }
+      .section-header {
+        margin-bottom: 14px;
+      }
+      .section-title {
+        font-size: 19px;
+        line-height: 1.3;
+        gap: 8px;
+      }
+      .section-icon {
+        width: 18px;
+        height: 18px;
+      }
+      .section-subhead {
+        font-size: 13px;
+        margin-top: 3px;
+        line-height: 1.45;
+      }
+
+      /* Hero Section Polish */
+      .hero-section {
+        padding: 16px 0 12px;
       }
       .hero-card {
-        padding: 24px 18px;
+        padding: 20px 16px;
+        border-radius: 16px;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.04);
+      }
+      .hero-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .hero-avatar-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-avatar {
+        width: 52px;
+        height: 52px;
+        border-width: 2px;
+      }
+      .avatar-monogram {
+        font-size: 18px;
       }
       .hero-identity h1 {
-        font-size: 28px;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .hero-title-tag {
+        font-size: 13px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 4px;
+      }
+      .hero-pill {
+        font-size: 10.5px;
+        padding: 2px 7px;
+      }
+      .hero-status {
+        width: 100%;
+        margin-top: 2px;
+      }
+      .hero-status .badge {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 12px;
+        font-size: 11.5px;
+        border-radius: 8px;
+        box-sizing: border-box;
+      }
+      .hero-contact-row {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: var(--border-hairline);
+        font-size: 12.5px;
+      }
+      .hero-lead {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-top: 12px;
+        color: var(--color-graphite);
+      }
+      .hero-actions-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .hero-actions-bar .btn {
+        width: 100%;
+        padding: 9px 8px;
+        font-size: 12.5px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* Bento Grid: Compact Executive Dashboard Tiles */
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .bento-card {
+        padding: 14px 12px;
+        border-radius: 12px;
+        min-height: 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .bento-num {
+        font-size: 26px !important;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 2px;
+        letter-spacing: -0.02em;
+      }
+      .bento-label {
+        font-size: 11.5px;
+        font-weight: 600;
+        color: var(--color-ink-black);
+        line-height: 1.25;
+        margin-top: 2px;
+      }
+      .bento-desc {
+        display: none !important;
+      }
+
+      /* Architectural Pillars Grid */
+      .arch-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .pillar-card {
+        padding: 14px 14px;
+        border-radius: 12px;
+        border-left: 3px solid var(--color-notion-blue);
+      }
+      .pillar-card:nth-child(2) {
+        border-left-color: #e89d01;
+      }
+      .pillar-card:nth-child(3) {
+        border-left-color: #8b5cf6;
+      }
+      .pillar-card-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      .pillar-card p {
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--color-graphite);
+        margin: 0;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .skill-card {
+        padding: 14px 14px;
+        border-radius: 12px;
+        gap: 8px;
+      }
+      .skill-card-header {
+        font-size: 13.5px;
+        font-weight: 700;
+      }
+      .skill-tag-list {
+        gap: 5px;
+      }
+      .skill-tag {
+        font-size: 11px;
+        padding: 2.5px 7px;
+        border-radius: 4px;
+      }
+
+      /* Horizontal Scrolling Filter Bar */
+      .filter-bar {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 7px;
+        padding: 4px 0 10px;
+        margin-bottom: 12px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .filter-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .filter-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 5.5px 12px;
+        border-radius: 9999px;
+      }
+
+      /* Project Cards Polish */
+      .projects-list {
+        gap: 14px;
+      }
+      .project-card {
+        padding: 16px 14px;
+        border-radius: 14px;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
+      }
+      .project-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        margin-bottom: 8px;
+      }
+      .project-title-group h3 {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+      }
+      .project-meta {
+        font-size: 11.5px;
+        color: var(--color-stone);
+        gap: 5px;
+        margin-top: 2px;
+      }
+      .project-badges {
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 3px;
+      }
+      .badge {
+        font-size: 10.5px;
+        padding: 2px 7px;
+      }
+      .playstore-link {
+        font-size: 10.5px;
+        padding: 2px 7px;
+      }
+      .project-desc {
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--color-graphite);
+        margin-bottom: 10px;
+      }
+      .project-bullets {
+        padding-left: 16px;
+        margin-bottom: 10px;
+      }
+      .project-bullets li {
+        font-size: 12px;
+        line-height: 1.55;
+        margin-bottom: 6px;
+        color: var(--color-graphite);
+      }
+      .project-bullets li strong {
+        color: var(--color-ink-black);
+      }
+      .expand-btn {
+        width: 100%;
+        justify-content: space-between;
+        padding: 7px 11px;
+        font-size: 11.5px;
+        border-radius: 6px;
+      }
+      .arch-drawer {
+        font-size: 11.5px;
+        line-height: 1.55;
+        padding: 9px 11px;
+        border-radius: 6px;
+        margin-top: 6px;
+        background: var(--color-paper-warmth);
+        border-left: 3px solid var(--color-notion-blue);
+      }
+      [data-theme="dark"] .arch-drawer {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .project-tech-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        margin-top: 10px;
+        padding-top: 8px;
+      }
+      .project-tech-label {
+        font-size: 10.5px;
+        font-weight: 600;
+      }
+      .tech-chips {
+        gap: 4px;
+      }
+      .tech-chip {
+        font-size: 10.5px;
+        padding: 2px 6.5px;
+        border-radius: 4px;
+      }
+
+      /* Career Continuity: Beautiful Mobile Cards (No Horizontal Scrolling) */
+      .timeline-card {
+        background: transparent;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+      }
+      .table-toolbar {
+        margin-bottom: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .table-search {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .table-scroll {
+        overflow-x: visible;
+        border: none;
+      }
+      table.continuity-table,
+      .continuity-table thead,
+      .continuity-table tbody,
+      .continuity-table tr,
+      .continuity-table td {
+        display: block;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+      }
+      .continuity-table thead {
+        display: none;
+      }
+      .continuity-table tr {
+        background: var(--color-card-bg);
+        border: var(--border-hairline);
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 10px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+      }
+      .continuity-table td {
+        padding: 2px 0;
+        border: none;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .continuity-table td.col-period {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: var(--color-notion-blue);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 2px;
+      }
+      .continuity-table td.col-project {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--color-ink-black);
+        margin-bottom: 3px;
+        line-height: 1.35;
+      }
+      .continuity-table td.col-company {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--color-graphite);
+        background: var(--color-chip-bg);
+        padding: 2px 7px;
+        border-radius: 4px;
+        margin-bottom: 6px;
+      }
+      .continuity-table td:nth-child(4) {
+        font-size: 11px;
+        color: var(--color-stone);
+        margin-bottom: 5px;
+        border-top: 1px dashed rgba(125, 125, 125, 0.15);
+        padding-top: 5px;
+        line-height: 1.45;
+      }
+      .continuity-table td:nth-child(5) {
+        font-size: 12px;
+        color: var(--color-ink-black);
+        line-height: 1.5;
+        padding-top: 3px;
+      }
+
+      /* Education & Languages */
+      .edu-lang-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .info-card {
+        padding: 14px 14px;
+        border-radius: 12px;
+      }
+      .info-card h4 {
+        font-size: 14.5px;
+        line-height: 1.35;
+      }
+      .inst-name {
+        font-size: 12px;
+        margin-top: 2px;
+      }
+      .info-card p {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      /* Toast */
+      .toast {
+        left: 14px;
+        right: 14px;
+        bottom: 20px;
+        transform: translateY(120px);
+        width: calc(100% - 28px);
+        max-width: none;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 12.5px;
+        padding: 10px 14px;
+        border-radius: 8px;
+      }
+      .toast.show {
+        transform: translateY(0);
+      }
+    }
+
+    /* Extra Narrow Mobile (<= 400px) */
+    @media (max-width: 400px) {
+      .main-container {
+        padding: 0 12px;
+      }
+      .nav-container {
+        padding: 0 12px;
+      }
+      .nav-brand span {
+        font-size: 13.5px;
+      }
+      .hero-actions-bar {
+        grid-template-columns: 1fr;
       }
       .bento-grid {
         grid-template-columns: 1fr;
       }
-      .project-card {
-        padding: 20px 16px;
-      }
-      .hero-actions-bar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .hero-actions-bar .btn {
-        width: 100%;
+      .hero-identity h1 {
+        font-size: 20px;
       }
     }
   </style>
@@ -1219,12 +1867,68 @@
 <svg aria-hidden="true" class="theme-icon-sun" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
 <svg aria-hidden="true" class="theme-icon-moon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
 </button>
-<button class="btn btn-outline no-print" onclick="window.print()" title="Print or save as PDF">
-<svg aria-hidden="true" class="btn-icon" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="15"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect height="8" width="12" x="6" y="14"></rect></svg> Print / PDF
-        </button>
-<a class="btn btn-primary no-print" href="mailto:hoainam9390@gmail.com">
-          Get in Touch
-        </a>
+<button class="btn btn-outline btn-print no-print" onclick="window.print()" title="Print or save as PDF">
+<svg aria-hidden="true" class="btn-icon" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="15"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect height="8" width="12" x="6" y="14"></rect></svg> <span class="btn-text">Print / PDF</span>
+</button>
+<a class="btn btn-primary btn-contact no-print" href="mailto:hoainam9390@gmail.com" title="Get in touch via email">
+<svg aria-hidden="true" class="btn-icon" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <span class="btn-text">Get in Touch</span>
+</a>
+<button aria-label="Toggle mobile menu" aria-expanded="false" class="btn btn-outline mobile-menu-btn no-print" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+<svg aria-hidden="true" class="hamburger-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+<svg aria-hidden="true" class="close-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation Overlay (High-End Fullscreen Glass Drawer) -->
+<div class="mobile-nav-overlay no-print" id="mobileNavMenu">
+<div class="mobile-nav-header">
+<span class="mobile-nav-eyebrow">PORTFOLIO DIRECTORY</span>
+</div>
+<div class="mobile-nav-links">
+<a class="mobile-nav-link" href="#summary" onclick="closeMobileMenu()">
+<span class="link-label">
+<svg aria-hidden="true" class="link-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Overview &amp; Profile
+      </span>
+<span class="link-index">01</span>
+</a>
+<a class="mobile-nav-link" href="#skills" onclick="closeMobileMenu()">
+<span class="link-label">
+<svg aria-hidden="true" class="link-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect><line x1="3" x2="21" y1="9" y2="9"></line><line x1="9" x2="9" y1="21" y2="9"></line></svg>
+        Technical Skills Matrix
+      </span>
+<span class="link-index">02</span>
+</a>
+<a class="mobile-nav-link" href="#flagships" onclick="closeMobileMenu()">
+<span class="link-label">
+<svg aria-hidden="true" class="link-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        Production Projects (16)
+      </span>
+<span class="link-index">03</span>
+</a>
+<a class="mobile-nav-link" href="#timeline" onclick="closeMobileMenu()">
+<span class="link-label">
+<svg aria-hidden="true" class="link-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Career Chronology
+      </span>
+<span class="link-index">04</span>
+</a>
+<a class="mobile-nav-link" href="#credentials" onclick="closeMobileMenu()">
+<span class="link-label">
+<svg aria-hidden="true" class="link-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        Education &amp; Credentials
+      </span>
+<span class="link-index">05</span>
+</a>
+</div>
+<div class="mobile-nav-footer">
+<a class="btn btn-primary" href="mailto:hoainam9390@gmail.com" onclick="closeMobileMenu()">
+<svg aria-hidden="true" class="btn-icon" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Get in Touch via Email
+    </a>
+<button class="btn btn-outline" onclick="copyContactInfo(); closeMobileMenu();">
+      Copy Contact Details
+    </button>
 </div>
 </div>
 </nav>
@@ -2324,6 +3028,7 @@
 </div>
 <span id="tableCountDisplay" style="font-size:13px; color:var(--color-stone);">Showing 11 earlier projects</span>
 </div>
+<div class="mobile-table-hint no-print">← Swipe horizontally to view full table details →</div>
 <div class="table-scroll">
 <table class="continuity-table" id="continuityTable">
 <thead>
@@ -2604,6 +3309,51 @@
         toast.classList.remove('show');
       }, 2500);
     }
+
+    // Mobile Navigation Drawer Toggle with Body Lock & Outside Click Protection
+    function toggleMobileMenu() {
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileNavMenu');
+      if (!btn || !menu) return;
+      var isOpen = menu.classList.contains('is-open');
+      if (isOpen) {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      } else {
+        menu.classList.add('is-open');
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeMobileMenu() {
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileNavMenu');
+      if (btn && menu) {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Auto-close mobile menu on desktop resize or outside click
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      var nav = document.querySelector('.top-nav');
+      var menu = document.getElementById('mobileNavMenu');
+      if (nav && menu && !nav.contains(e.target) && !menu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
   </script>
 </body>
 </html>
