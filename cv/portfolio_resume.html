@@ -978,10 +978,11 @@
       white-space: nowrap;
     }
 
-    /* Education & Languages */
+    /* Education */
+    .edu-grid,
     .edu-lang-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 20px;
     }
 
@@ -1783,7 +1784,8 @@
         padding-top: 3px;
       }
 
-      /* Education & Languages */
+      /* Education */
+      .edu-grid,
       .edu-lang-grid {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -1916,7 +1918,7 @@
 <a class="mobile-nav-link" href="#credentials" onclick="closeMobileMenu()">
 <span class="link-label">
 <svg aria-hidden="true" class="link-icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-        Education &amp; Credentials
+        Education
       </span>
 <span class="link-index">05</span>
 </a>
@@ -2211,12 +2213,12 @@
 </div>
 <div class="projects-list" id="projects-list">
 <!-- 1. EOB APP -->
-<article class="project-card" data-category="kmp">
+<article class="project-card" data-category="kmp" data-project-id="eob">
 <div class="project-top">
 <div class="project-title-group">
 <h3>EOB APP (KOTLIN MULTIPLATFORM)</h3>
 <div class="project-meta">
-<span>05/2026 - 08/2026</span>
+<span>07/2026 - 11/2026</span>
 <span>•</span>
 <span>Aris VN</span>
 <span>•</span>
@@ -2261,13 +2263,13 @@
 </div>
 </div>
 </article>
-<!-- 2. TSUNAGU INSPECTOR -->
-<article class="project-card" data-category="flutter">
+
+<article class="project-card" data-category="flutter" data-project-id="tsunagu">
 <div class="project-top">
 <div class="project-title-group">
 <h3>TSUNAGU INSPECTOR (FLUTTER)</h3>
 <div class="project-meta">
-<span>01/2026 - 04/2026</span>
+<span>01/2026 - 05/2026</span>
 <span>•</span>
 <span>Aris VN</span>
 <span>•</span>
@@ -2313,8 +2315,8 @@
 </div>
 </div>
 </article>
-<!-- 3. CONSTRUCTION MARKET SYSTEM -->
-<article class="project-card" data-category="android">
+
+<article class="project-card" data-category="android" data-project-id="construction">
 <div class="project-top">
 <div class="project-title-group">
 <h3>CONSTRUCTION MARKET SYSTEM (ANDROID NATIVE)</h3>
@@ -2365,8 +2367,8 @@
 </div>
 </div>
 </article>
-<!-- 4. WAKUNAVI / SKIPJOB -->
-<article class="project-card" data-category="flutter">
+
+<article class="project-card" data-category="flutter" data-project-id="wakunavi">
 <div class="project-top">
 <div class="project-title-group">
 <h3>WAKUNAVI / SKIPJOB (FLUTTER)</h3>
@@ -2414,8 +2416,8 @@
 </div>
 </div>
 </article>
-<!-- 5. BIOTECH -->
-<article class="project-card" data-category="android">
+
+<article class="project-card" data-category="android" data-project-id="biotech">
 <div class="project-top">
 <div class="project-title-group">
 <h3>BIOTECH (ANDROID NATIVE)</h3>
@@ -2464,8 +2466,55 @@
 </div>
 </div>
 </article>
-<!-- 6. HEINEKEN ENTERPRISE SYSTEMS -->
-<article class="project-card" data-category="android">
+
+<article class="project-card" data-category="android" data-project-id="funeral-hall">
+<div class="project-top">
+<div class="project-title-group">
+<h3>FUNERAL HALL / EDENAID (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>08/2024 - 12/2024</span>
+<span>•</span>
+<span>Aris VN</span>
+<span>•</span>
+<span>Senior Android Developer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.bm.edenaid" rel="noopener" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            A comprehensive Android mobile application designed to simplify and streamline funeral hall reservations, mortuary facility management, and funeral supply package bookings.
+          </p>
+<ul class="project-bullets">
+<li><strong>Facility Booking Platform:</strong> Delivered an end-to-end facility booking and mortuary management app utilizing Kotlin, MVVM architecture, ViewBinding, and Dagger Hilt across 20+ specialized funeral hall facilities.</li>
+<li><strong>Turn-by-Turn Navigation Routing:</strong> Streamlined location-based facility search and seamless turn-by-turn routing by integrating the Google Maps API and Kakao Navi SDK.</li>
+<li><strong>Social Auth &amp; Deep-Links:</strong> Integrated social authentication and deep-link sharing with the Kakao SDK (Login, Share, Navi) alongside Firebase Cloud Messaging (FCM) for instant reservation updates.</li>
+<li><strong>Memory &amp; Render Profiling:</strong> Identified and eliminated memory leaks and UI render stalls using the Android Profiler, ensuring smooth checkout and reservation processing.</li>
+</ul>
+ <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Dagger Hilt dependency injection provides testable decoupled architecture; Google Maps and Kakao Navi APIs provide turn-by-turn routing to regional ceremonial halls; Android Profiler was utilized to resolve memory leaks and reduce app startup latency by ~35%.
+          </div><div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Dagger Hilt</span>
+<span class="tech-chip">Realm Database</span>
+<span class="tech-chip">Google Maps API</span>
+<span class="tech-chip">Kakao SDK</span>
+<span class="tech-chip">Android Profiler</span>
+</div>
+</div>
+</article>
+
+<article class="project-card" data-category="android" data-project-id="heineken">
 <div class="project-top">
 <div class="project-title-group">
 <h3>HEINEKEN ENTERPRISE SYSTEMS (BANQUET BMS &amp; SPO)</h3>
@@ -2517,8 +2566,8 @@
 </div>
 </div>
 </article>
-<!-- 7. BRAIN SLEEP COIN -->
-<article class="project-card" data-category="iot">
+
+<article class="project-card" data-category="iot" data-project-id="brain-sleep">
 <div class="project-top">
 <div class="project-title-group">
 <h3>BRAIN SLEEP COIN (ANDROID NATIVE &amp; IOT)</h3>
@@ -2569,8 +2618,8 @@
 </div>
 </div>
 </article>
-<!-- 8. JGARO APP -->
-<article class="project-card" data-category="android">
+
+<article class="project-card" data-category="android" data-project-id="jgaro">
 <div class="project-top">
 <div class="project-title-group">
 <h3>JGARO APP (ANDROID NATIVE)</h3>
@@ -2613,8 +2662,8 @@
 </div>
 </div>
 </article>
-<!-- 9. COOLREVO APP -->
-<article class="project-card" data-category="iot">
+
+<article class="project-card" data-category="iot" data-project-id="coolrevo">
 <div class="project-top">
 <div class="project-title-group">
 <h3>COOLREVO APP (ANDROID NATIVE &amp; IOT)</h3>
@@ -2656,54 +2705,106 @@
 </div>
 </div>
 </article>
-<!-- 10. FUNERAL HALL / EDENAID -->
-<article class="project-card" data-category="android">
+
+<article class="project-card" data-category="flutter store-apps" data-project-id="rigmaster">
 <div class="project-top">
 <div class="project-title-group">
-<h3>FUNERAL HALL / EDENAID (ANDROID NATIVE)</h3>
+<h3>RIGMASTER: RIGGING &amp; CRANE CALCULATOR (FLUTTER)</h3>
 <div class="project-meta">
-<span>08/2024 - 12/2024</span>
+<span>2024 - Present</span>
 <span>•</span>
-<span>Aris VN</span>
+<span>Google Play Store</span>
 <span>•</span>
-<span>Senior Android Developer</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
 </div>
 </div>
 <div class="project-badges">
-<span class="badge badge-android">Android Native</span>
-<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.bm.edenaid" rel="noopener" target="_blank">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.rigmaster" rel="noopener noreferrer" target="_blank">
                 ▶ View on Google Play
               </a>
 </div>
 </div>
 <p class="project-desc">
-            A comprehensive Android mobile application designed to simplify and streamline funeral hall reservations, mortuary facility management, and funeral supply package bookings.
+            Heavy-lift engineering utility calculating multi-leg sling tension, crane radius, and center-of-gravity (COG) load distribution with sub-millimeter precision according to ASME / OSHA international lifting safety standards.
           </p>
 <ul class="project-bullets">
-<li><strong>Facility Booking Platform:</strong> Delivered an end-to-end facility booking and mortuary management app utilizing Kotlin, MVVM architecture, ViewBinding, and Dagger Hilt across 20+ specialized funeral hall facilities.</li>
-<li><strong>Turn-by-Turn Navigation Routing:</strong> Streamlined location-based facility search and seamless turn-by-turn routing by integrating the Google Maps API and Kakao Navi SDK.</li>
-<li><strong>Social Auth &amp; Deep-Links:</strong> Integrated social authentication and deep-link sharing with the Kakao SDK (Login, Share, Navi) alongside Firebase Cloud Messaging (FCM) for instant reservation updates.</li>
-<li><strong>Memory &amp; Render Profiling:</strong> Identified and eliminated memory leaks and UI render stalls using the Android Profiler, ensuring smooth checkout and reservation processing.</li>
+<li><strong>Industrial Mathematical Modeling Engine:</strong> Formulated and verified trigonometric algorithms and vector mechanics equations to compute multi-leg sling tension, horizontal force vectors, and crane capacity deductions with sub-millimeter precision.</li>
+<li><strong>Sub-16ms Real-Time Calculation:</strong> Engineered 100% offline mathematical modeling engine with instantaneous recalculation (<strong>&lt;16ms</strong>) across 20+ variable parameters using reactive state management.</li>
+<li><strong>High-Contrast Industrial UI:</strong> Designed an intuitive, high-contrast industrial UI adhering to Material 3 standards, optimized for high visibility and single-handed operation under outdoor sunlight.</li>
+<li><strong>100% Offline Autonomy:</strong> Fully operational without internet connectivity for remote industrial job sites, offshore oil rigs, and maritime environments.</li>
 </ul>
- <button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
 <span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
 <span class="arrow">↓</span>
 </button>
 <div class="arch-drawer">
-<strong>Key Architecture Highlights:</strong> Dagger Hilt dependency injection provides testable decoupled architecture; Google Maps and Kakao Navi APIs provide turn-by-turn routing to regional ceremonial halls; Android Profiler was utilized to resolve memory leaks and reduce app startup latency by ~35%.
-          </div><div class="project-tech-footer">
+<strong>Key Architecture Highlights:</strong> Deterministic pure Dart mathematical domain layer decoupled from UI frameworks, verified by 100+ comprehensive unit tests covering multi-leg asymmetric sling loads; reactive state management using BLoC / Riverpod ensuring instantaneous 60 FPS slider recalculation without frame drops.
+          </div>
+<div class="project-tech-footer">
 <span class="project-tech-label">Tech Stack:</span>
 <div class="tech-chips">
-<span class="tech-chip">Kotlin</span>
-<span class="tech-chip">Dagger Hilt</span>
-<span class="tech-chip">Realm Database</span>
-<span class="tech-chip">Google Maps API</span>
-<span class="tech-chip">Kakao SDK</span>
-<span class="tech-chip">Android Profiler</span>
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">BLoC / Riverpod</span>
+<span class="tech-chip">Vector Mathematics</span>
+<span class="tech-chip">Material 3</span>
+<span class="tech-chip">Offline-First</span>
 </div>
 </div>
 </article>
-<!-- 11. SHARPSCAN: SCANNER OCR & AI -->
+
+<article class="project-card" data-category="flutter store-apps" data-project-id="wordquest">
+<div class="project-top">
+<div class="project-title-group">
+<h3>WORDQUEST: ENGLISH ADVENTURE (FLUTTER / EDTECH)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.worldquest.english" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            Gamified RPG-style language learning application combining interactive branching dialogues with Spaced Repetition (SRS algorithm) for long-term vocabulary retention.
+          </p>
+<ul class="project-bullets">
+<li><strong>Gamified RPG Language Learning:</strong> Structured interactive branching dialogues and quest scenarios powered by an adaptive Spaced Repetition System (SRS SuperMemo SM-2 algorithm) for vocabulary retention.</li>
+<li><strong>Cross-Platform Speech Synthesis:</strong> Integrated text-to-speech audio pronunciation engines and optimized offline local persistence, sustaining fluid 60 FPS transitions on low-tier mobile devices.</li>
+<li><strong>Interactive Branching Quests:</strong> Engineered conversational quest dialogue engine with interactive branching scenarios, quest rewards, and offline achievement badge mechanics.</li>
+<li><strong>Fluid 60 FPS UI Performance:</strong> Optimized local SQLite database queries and asset loading pipelines, enabling smooth 60 FPS transitions between interactive dialogue scenes on low-tier mobile hardware.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Decoupled RPG quest state machine driven by Riverpod and local SQLite persistence, with SuperMemo-based Spaced Repetition (SRS) interval scheduling and asynchronous Text-to-Speech audio streaming sustaining fluid 60 FPS transitions.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">Riverpod</span>
+<span class="tech-chip">SQLite</span>
+<span class="tech-chip">Text-to-Speech (TTS)</span>
+<span class="tech-chip">Spaced Repetition (SRS)</span>
+<span class="tech-chip">Material 3</span>
+</div>
+</div>
+</article>
+
 <article class="project-card" data-category="android store-apps" data-project-id="sharpscan">
 <div class="project-top">
 <div class="project-title-group">
@@ -2756,7 +2857,109 @@
 </div>
 </div>
 </article>
-<!-- 12. SHARPVAULT: SECRET GALLERY & PRIVACY VAULT -->
+
+<article class="project-card" data-category="flutter store-apps" data-project-id="baby-tracker">
+<div class="project-top">
+<div class="project-title-group">
+<h3>BABY TRACKER: NEWBORN LOG &amp; MILESTONES (FLUTTER)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-flutter">Flutter</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.baby.tracker" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            Privacy-first newborn logging utility tracking nursing timers, sleep intervals, diaper changes, and WHO percentile growth charts with zero third-party telemetry or cloud dependencies.
+          </p>
+<ul class="project-bullets">
+<li><strong>Privacy-First Newborn Logging:</strong> Engineered intuitive logging utility tracking nursing timers, sleep intervals, diaper changes, and milestone development with zero third-party telemetry.</li>
+<li><strong>Reactive Offline Persistence:</strong> Built reactive offline-first local persistence supporting instantaneous event timeline aggregation and structured JSON/CSV data export for pediatric consultations.</li>
+<li><strong>WHO Growth Curve Telemetry:</strong> Integrated interactive WHO growth chart percentile tracking with dynamic curve visualization and multi-week feeding/sleep cycle telemetry.</li>
+<li><strong>Guaranteed 100% On-Device Privacy:</strong> Guaranteed total user privacy by keeping all health and personal records strictly on-device with zero analytics trackers, third-party SDKs, or cloud database dependencies.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> High-performance offline persistence using Isar / SQLite ensuring sub-10ms query latency for 10,000+ timeline entries; non-blocking background isolates protect UI thread during interactive FlChart percentile growth curve rendering.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Flutter (Dart)</span>
+<span class="tech-chip">Clean Architecture</span>
+<span class="tech-chip">Riverpod</span>
+<span class="tech-chip">Isar / SQLite</span>
+<span class="tech-chip">FlChart</span>
+<span class="tech-chip">Local Notifications</span>
+<span class="tech-chip">Offline-First</span>
+</div>
+</div>
+</article>
+
+<article class="project-card" data-category="android store-apps" data-project-id="sharptransfer">
+<div class="project-top">
+<div class="project-title-group">
+<h3>SHARPTRANSFER: P2P WI-FI FILE SHARE (ANDROID NATIVE)</h3>
+<div class="project-meta">
+<span>2024 - Present</span>
+<span>•</span>
+<span>Google Play Store</span>
+<span>•</span>
+<span>Creator &amp; Lead Mobile Engineer</span>
+</div>
+</div>
+<div class="project-badges">
+<span class="badge badge-store">Google Play Store</span>
+<span class="badge badge-android">Android Native</span>
+<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.sharptransfer" rel="noopener noreferrer" target="_blank">
+                ▶ View on Google Play
+              </a>
+</div>
+</div>
+<p class="project-desc">
+            A high-speed, local peer-to-peer (P2P) file transfer and wireless sharing utility designed to transfer large videos, applications, documents, and media folders between Android devices and PCs without internet, cellular data, or cloud servers.
+          </p>
+<ul class="project-bullets">
+<li><strong>High-Speed P2P Socket Streaming:</strong> Engineered chunked binary streaming pipelines over raw TCP sockets and Wi-Fi Direct, achieving sustained local transfer speeds of up to <strong>40+ MB/s</strong> without cellular data consumption or cloud relay servers.</li>
+<li><strong>Cross-Platform Browser Client:</strong> Built an embedded responsive web interface served directly from the mobile device via a local HTTP daemon, enabling instant bidirectional drag-and-drop file transfers with Windows, macOS, and Linux browsers via simple QR code pairing.</li>
+<li><strong>Packet Loss Recovery &amp; Integrity:</strong> Implemented automated CRC32 file integrity validation and resilient socket reconnect mechanisms to handle intermittent packet loss during multi-gigabyte file transmissions.</li>
+<li><strong>Multi-Client Batch Queuing:</strong> Architected multi-client connection management with concurrent multi-file batch queuing, background Foreground Service execution, and real-time transfer telemetry.</li>
+</ul>
+<button class="expand-btn no-print" onclick="toggleDrawer(this)">
+<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
+<span class="arrow">↓</span>
+</button>
+<div class="arch-drawer">
+<strong>Key Architecture Highlights:</strong> Custom lightweight binary framing protocol over TCP NIO channels with 16KB zero-copy buffer transfers; continuous transfer resilience via chunk checksumming and background Foreground Service execution with Wakelocks; embedded HTTP daemon handles cross-platform Web pairing with 0 desktop app dependencies.
+          </div>
+<div class="project-tech-footer">
+<span class="project-tech-label">Tech Stack:</span>
+<div class="tech-chips">
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Java Sockets (TCP/IP)</span>
+<span class="tech-chip">Wi-Fi Direct (P2P)</span>
+<span class="tech-chip">Embedded HTTP Server</span>
+<span class="tech-chip">Jetpack Compose</span>
+<span class="tech-chip">Coroutines &amp; Flow</span>
+<span class="tech-chip">Foreground Services</span>
+<span class="tech-chip">Room Database</span>
+<span class="tech-chip">CRC32 Checksum</span>
+</div>
+</div>
+</article>
+
 <article class="project-card" data-category="android store-apps" data-project-id="sharpvault">
 <div class="project-top">
 <div class="project-title-group">
@@ -2809,207 +3012,6 @@
 </div>
 </div>
 </article>
-<!-- 13. SHARPTRANSFER: P2P WI-FI FILE SHARE -->
-<article class="project-card" data-category="android store-apps" data-project-id="sharptransfer">
-<div class="project-top">
-<div class="project-title-group">
-<h3>SHARPTRANSFER: P2P WI-FI FILE SHARE (ANDROID NATIVE)</h3>
-<div class="project-meta">
-<span>2024 - Present</span>
-<span>•</span>
-<span>Google Play Store</span>
-<span>•</span>
-<span>Creator &amp; Lead Mobile Engineer</span>
-</div>
-</div>
-<div class="project-badges">
-<span class="badge badge-store">Google Play Store</span>
-<span class="badge badge-android">Android Native</span>
-<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.sharptransfer" rel="noopener noreferrer" target="_blank">
-                ▶ View on Google Play
-              </a>
-</div>
-</div>
-<p class="project-desc">
-            A high-speed, local peer-to-peer (P2P) file transfer and wireless sharing utility designed to transfer large videos, applications, documents, and media folders between Android devices and PCs without internet, cellular data, or cloud servers.
-          </p>
-<ul class="project-bullets">
-<li><strong>High-Speed P2P Socket Streaming:</strong> Engineered chunked binary streaming pipelines over raw TCP sockets and Wi-Fi Direct, achieving sustained local transfer speeds of up to <strong>40+ MB/s</strong> without cellular data consumption or cloud relay servers.</li>
-<li><strong>Cross-Platform Browser Client:</strong> Built an embedded responsive web interface served directly from the mobile device via a local HTTP daemon, enabling instant bidirectional drag-and-drop file transfers with Windows, macOS, and Linux browsers via simple QR code pairing.</li>
-<li><strong>Packet Loss Recovery &amp; Integrity:</strong> Implemented automated CRC32 file integrity validation and resilient socket reconnect mechanisms to handle intermittent packet loss during multi-gigabyte file transmissions.</li>
-<li><strong>Multi-Client Batch Queuing:</strong> Architected multi-client connection management with concurrent multi-file batch queuing, background Foreground Service execution, and real-time transfer telemetry.</li>
-</ul>
-<button class="expand-btn no-print" onclick="toggleDrawer(this)">
-<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
-<span class="arrow">↓</span>
-</button>
-<div class="arch-drawer">
-<strong>Key Architecture Highlights:</strong> Custom lightweight binary framing protocol over TCP NIO channels with 16KB zero-copy buffer transfers; continuous transfer resilience via chunk checksumming and background Foreground Service execution with Wakelocks; embedded HTTP daemon handles cross-platform Web pairing with 0 desktop app dependencies.
-          </div>
-<div class="project-tech-footer">
-<span class="project-tech-label">Tech Stack:</span>
-<div class="tech-chips">
-<span class="tech-chip">Kotlin</span>
-<span class="tech-chip">Java Sockets (TCP/IP)</span>
-<span class="tech-chip">Wi-Fi Direct (P2P)</span>
-<span class="tech-chip">Embedded HTTP Server</span>
-<span class="tech-chip">Jetpack Compose</span>
-<span class="tech-chip">Coroutines &amp; Flow</span>
-<span class="tech-chip">Foreground Services</span>
-<span class="tech-chip">Room Database</span>
-<span class="tech-chip">CRC32 Checksum</span>
-</div>
-</div>
-</article>
-<!-- 14. RIGMASTER: RIGGING & CRANE CALCULATOR -->
-<article class="project-card" data-category="flutter store-apps" data-project-id="rigmaster">
-<div class="project-top">
-<div class="project-title-group">
-<h3>RIGMASTER: RIGGING &amp; CRANE CALCULATOR (FLUTTER)</h3>
-<div class="project-meta">
-<span>2024 - Present</span>
-<span>•</span>
-<span>Google Play Store</span>
-<span>•</span>
-<span>Creator &amp; Lead Mobile Engineer</span>
-</div>
-</div>
-<div class="project-badges">
-<span class="badge badge-store">Google Play Store</span>
-<span class="badge badge-flutter">Flutter</span>
-<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.perfectworld.rigmaster" rel="noopener noreferrer" target="_blank">
-                ▶ View on Google Play
-              </a>
-</div>
-</div>
-<p class="project-desc">
-            Heavy-lift engineering utility calculating multi-leg sling tension, crane radius, and center-of-gravity (COG) load distribution with sub-millimeter precision according to ASME / OSHA international lifting safety standards.
-          </p>
-<ul class="project-bullets">
-<li><strong>Industrial Mathematical Modeling Engine:</strong> Formulated and verified trigonometric algorithms and vector mechanics equations to compute multi-leg sling tension, horizontal force vectors, and crane capacity deductions with sub-millimeter precision.</li>
-<li><strong>Sub-16ms Real-Time Calculation:</strong> Engineered 100% offline mathematical modeling engine with instantaneous recalculation (<strong>&lt;16ms</strong>) across 20+ variable parameters using reactive state management.</li>
-<li><strong>High-Contrast Industrial UI:</strong> Designed an intuitive, high-contrast industrial UI adhering to Material 3 standards, optimized for high visibility and single-handed operation under outdoor sunlight.</li>
-<li><strong>100% Offline Autonomy:</strong> Fully operational without internet connectivity for remote industrial job sites, offshore oil rigs, and maritime environments.</li>
-</ul>
-<button class="expand-btn no-print" onclick="toggleDrawer(this)">
-<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
-<span class="arrow">↓</span>
-</button>
-<div class="arch-drawer">
-<strong>Key Architecture Highlights:</strong> Deterministic pure Dart mathematical domain layer decoupled from UI frameworks, verified by 100+ comprehensive unit tests covering multi-leg asymmetric sling loads; reactive state management using BLoC / Riverpod ensuring instantaneous 60 FPS slider recalculation without frame drops.
-          </div>
-<div class="project-tech-footer">
-<span class="project-tech-label">Tech Stack:</span>
-<div class="tech-chips">
-<span class="tech-chip">Flutter (Dart)</span>
-<span class="tech-chip">Clean Architecture</span>
-<span class="tech-chip">BLoC / Riverpod</span>
-<span class="tech-chip">Vector Mathematics</span>
-<span class="tech-chip">Material 3</span>
-<span class="tech-chip">Offline-First</span>
-</div>
-</div>
-</article>
-<!-- 15. BABY TRACKER: NEWBORN LOG & MILESTONES -->
-<article class="project-card" data-category="flutter store-apps" data-project-id="baby-tracker">
-<div class="project-top">
-<div class="project-title-group">
-<h3>BABY TRACKER: NEWBORN LOG &amp; MILESTONES (FLUTTER)</h3>
-<div class="project-meta">
-<span>2024 - Present</span>
-<span>•</span>
-<span>Google Play Store</span>
-<span>•</span>
-<span>Creator &amp; Lead Mobile Engineer</span>
-</div>
-</div>
-<div class="project-badges">
-<span class="badge badge-store">Google Play Store</span>
-<span class="badge badge-flutter">Flutter</span>
-<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.baby.tracker" rel="noopener noreferrer" target="_blank">
-                ▶ View on Google Play
-              </a>
-</div>
-</div>
-<p class="project-desc">
-            Privacy-first newborn logging utility tracking nursing timers, sleep intervals, diaper changes, and WHO percentile growth charts with zero third-party telemetry or cloud dependencies.
-          </p>
-<ul class="project-bullets">
-<li><strong>Privacy-First Newborn Logging:</strong> Engineered intuitive logging utility tracking nursing timers, sleep intervals, diaper changes, and milestone development with zero third-party telemetry.</li>
-<li><strong>Reactive Offline Persistence:</strong> Built reactive offline-first local persistence supporting instantaneous event timeline aggregation and structured JSON/CSV data export for pediatric consultations.</li>
-<li><strong>WHO Growth Curve Telemetry:</strong> Integrated interactive WHO growth chart percentile tracking with dynamic curve visualization and multi-week feeding/sleep cycle telemetry.</li>
-<li><strong>Guaranteed 100% On-Device Privacy:</strong> Guaranteed total user privacy by keeping all health and personal records strictly on-device with zero analytics trackers, third-party SDKs, or cloud database dependencies.</li>
-</ul>
-<button class="expand-btn no-print" onclick="toggleDrawer(this)">
-<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
-<span class="arrow">↓</span>
-</button>
-<div class="arch-drawer">
-<strong>Key Architecture Highlights:</strong> High-performance offline persistence using Isar / SQLite ensuring sub-10ms query latency for 10,000+ timeline entries; non-blocking background isolates protect UI thread during interactive FlChart percentile growth curve rendering.
-          </div>
-<div class="project-tech-footer">
-<span class="project-tech-label">Tech Stack:</span>
-<div class="tech-chips">
-<span class="tech-chip">Flutter (Dart)</span>
-<span class="tech-chip">Clean Architecture</span>
-<span class="tech-chip">Riverpod</span>
-<span class="tech-chip">Isar / SQLite</span>
-<span class="tech-chip">FlChart</span>
-<span class="tech-chip">Local Notifications</span>
-<span class="tech-chip">Offline-First</span>
-</div>
-</div>
-</article>
-<!-- 16. WORDQUEST: ENGLISH ADVENTURE -->
-<article class="project-card" data-category="flutter store-apps" data-project-id="wordquest">
-<div class="project-top">
-<div class="project-title-group">
-<h3>WORDQUEST: ENGLISH ADVENTURE (FLUTTER / EDTECH)</h3>
-<div class="project-meta">
-<span>2024 - Present</span>
-<span>•</span>
-<span>Google Play Store</span>
-<span>•</span>
-<span>Creator &amp; Lead Mobile Engineer</span>
-</div>
-</div>
-<div class="project-badges">
-<span class="badge badge-store">Google Play Store</span>
-<span class="badge badge-flutter">Flutter</span>
-<a class="playstore-link" href="https://play.google.com/store/apps/details?id=com.vn.toaa.worldquest.english" rel="noopener noreferrer" target="_blank">
-                ▶ View on Google Play
-              </a>
-</div>
-</div>
-<p class="project-desc">
-            Gamified RPG-style language learning application combining interactive branching dialogues with Spaced Repetition (SRS algorithm) for long-term vocabulary retention.
-          </p>
-<ul class="project-bullets">
-<li><strong>Gamified RPG Language Learning:</strong> Structured interactive branching dialogues and quest scenarios powered by an adaptive Spaced Repetition System (SRS SuperMemo SM-2 algorithm) for vocabulary retention.</li>
-<li><strong>Cross-Platform Speech Synthesis:</strong> Integrated text-to-speech audio pronunciation engines and optimized offline local persistence, sustaining fluid 60 FPS transitions on low-tier mobile devices.</li>
-<li><strong>Interactive Branching Quests:</strong> Engineered conversational quest dialogue engine with interactive branching scenarios, quest rewards, and offline achievement badge mechanics.</li>
-<li><strong>Fluid 60 FPS UI Performance:</strong> Optimized local SQLite database queries and asset loading pipelines, enabling smooth 60 FPS transitions between interactive dialogue scenes on low-tier mobile hardware.</li>
-</ul>
-<button class="expand-btn no-print" onclick="toggleDrawer(this)">
-<span><svg aria-hidden="true" class="btn-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg> Architectural Details &amp; Under-the-hood</span>
-<span class="arrow">↓</span>
-</button>
-<div class="arch-drawer">
-<strong>Key Architecture Highlights:</strong> Decoupled RPG quest state machine driven by Riverpod and local SQLite persistence, with SuperMemo-based Spaced Repetition (SRS) interval scheduling and asynchronous Text-to-Speech audio streaming sustaining fluid 60 FPS transitions.
-          </div>
-<div class="project-tech-footer">
-<span class="project-tech-label">Tech Stack:</span>
-<div class="tech-chips">
-<span class="tech-chip">Flutter (Dart)</span>
-<span class="tech-chip">Clean Architecture</span>
-<span class="tech-chip">Riverpod</span>
-<span class="tech-chip">SQLite</span>
-<span class="tech-chip">Text-to-Speech (TTS)</span>
-<span class="tech-chip">Spaced Repetition (SRS)</span>
-<span class="tech-chip">Material 3</span>
-</div>
-</div>
-</article>
 </div>
 </section>
 <!-- Career Continuity Matrix (2014 - 2024) -->
@@ -3044,7 +3046,7 @@
 <tr>
 <td class="col-period">02/2023 - 06/2023</td>
 <td class="col-project"><strong>Art Tool</strong><br/><span style="font-size:12px; color:var(--color-stone);">Flutter Developer</span>
-<a href="https://play.google.com/store/apps/details?id=com.arisvn.arttool" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">>> Play Store</a></td>
+<a href="https://play.google.com/store/apps/details?id=com.arisvn.arttool" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">▶ View on Google Play</a></td>
 <td class="col-company">Aris VN</td>
 <td>Flutter (Dart), BLoC, Isar DB, RxDart, FCM, Localization</td>
 <td>Enterprise internal administration app serving 300+ corporate employees; attendance tracking, meeting room bookings, and multi-tier leave approval.</td>
@@ -3052,7 +3054,7 @@
 <tr>
 <td class="col-period">01/2019 - 04/2020</td>
 <td class="col-project"><strong>InnerBeans App</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Mobile Developer</span>
-<a href="https://play.google.com/store/apps/details?id=com.innerbeans30" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">>> Play Store</a></td>
+<a href="https://play.google.com/store/apps/details?id=com.innerbeans30" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">▶ View on Google Play</a></td>
 <td class="col-company">InnerBus VN</td>
 <td>Android Native, React Native, Realm DB, Sockets, RxJava2</td>
 <td>Gamified virtual collaboration platform for 1,000+ users; migrated 8 native components to React Native (~70% shared codebase); sub-100ms sync.</td>
@@ -3095,7 +3097,7 @@
 <tr>
 <td class="col-period">05/2015 - 11/2015</td>
 <td class="col-project"><strong>Travel Smart</strong><br/><span style="font-size:12px; color:var(--color-stone);">Senior Android Developer</span>
-<a href="https://play.google.com/store/apps/details?id=com.nexlesoft.travelsmart" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">>> Play Store</a></td>
+<a href="https://play.google.com/store/apps/details?id=com.nexlesoft.travelsmart" target="_blank" rel="noopener noreferrer" class="playstore-link" style="display:block;margin-top:4px;font-size:12px;">▶ View on Google Play</a></td>
 <td class="col-company">Nexle Corp</td>
 <td>Android (Java), Google Maps, SQLite, GCM, Social OAuth</td>
 <td>Pioneering travel discovery platform connecting 5,000+ travelers with 50+ certified tour operators across Vietnam with instant multi-criteria filtering.</td>
@@ -3119,15 +3121,15 @@
 </div>
 </div>
 </section>
-<!-- Education & Credentials Section -->
+<!-- Education Section -->
 <section id="credentials">
 <div class="section-header">
 <div>
-<h2 class="section-title"><svg aria-hidden="true" class="section-icon" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Education &amp; Languages</h2>
-<p class="section-subhead">Academic credentials and linguistic capabilities</p>
+<h2 class="section-title"><svg aria-hidden="true" class="section-icon" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Education</h2>
+<p class="section-subhead">Academic credentials and engineering background</p>
 </div>
 </div>
-<div class="edu-lang-grid">
+<div class="edu-grid">
 <!-- Education Card -->
 <div class="info-card">
 <h4>Bachelor of Computer Science and Engineering</h4>
@@ -3136,26 +3138,6 @@
 <p>
 <strong>Major:</strong> Computer Science &amp; Software Engineering. Comprehensive foundation in Algorithms, Object-Oriented Design, Operating Systems, Computer Networks, and Enterprise Software Architecture.
           </p>
-</div>
-<!-- Languages Card -->
-<div class="info-card">
-<h4>Languages</h4>
-<div style="margin-top:16px;">
-<div class="lang-item">
-<div class="lang-name">
-<span class="lang-title"><span class="lang-tag">EN</span> English</span>
-<span class="badge" style="background:#e0f2fe; color:#0369a1; font-size:11px;">Basic Working</span>
-</div>
-<div class="lang-desc">Basic conversational communication and technical documentation reading/writing.</div>
-</div>
-<div class="lang-item" style="margin-top:14px;">
-<div class="lang-name">
-<span class="lang-title"><span class="lang-tag">VI</span> Vietnamese</span>
-<span class="badge" style="background:#fef3c7; color:#92400e; font-size:11px;">Native</span>
-</div>
-<div class="lang-desc">Native proficiency.</div>
-</div>
-</div>
 </div>
 </div>
 </section>
